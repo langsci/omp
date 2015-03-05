@@ -1,0 +1,238 @@
+/**
+ * langscipress.css
+ *
+ * Copyright (c) 2013 Christian Pietsch
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ */
+
+/* default, english */ 
+q:before, q[lang|="en"]:before, q:lang(en):before { content: "\201C"; } 
+q:after, q[lang|="en"]:after, q:lang(en):after { content: "\201D"; } 
+q q:before, q[lang|="en"] q:before, q:lang(en) q:before { content: "\2018"; } 
+q q:after, q[lang|="en"] q:after, q:lang(en) q:after { content: "\2019"; } 
+
+/* german */ 
+q[lang|="de"]:before,   q:lang(de):before   { content: "\201E"; } 
+q[lang|="de"]:after,    q:lang(de):after    { content: "\201C"; } 
+q[lang|="de"] q:before, q:lang(de) q:before { content: "\201A"; } 
+q[lang|="de"] q:after,  q:lang(de) q:after  { content: "\2018"; } 
+
+/* japanese */ 
+q[lang|="ja"]:before, q:lang(ja):before { content: "\300C"; } 
+q[lang|="ja"]:after, q:lang(ja):after { content: "\300D"; }
+
+@font-face {
+    font-family: 'Linux Libertine'; /* normal */
+    src: url('/Meta/fonts/LinLibertine_R.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Linux Libertine'; /* italic */
+    src: url('/Meta/fonts/LinLibertine_RI.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'Linux Libertine'; /* bold */
+    src: url('/Meta/fonts/LinLibertine_RB.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+body, span.blockTitle, h2, .h2, h3, .h3, h4, .h4 {
+  font-family: "Linux Libertine", arial !important;
+}
+.pkp_structure_head a {
+  font-family: arial !important;
+}
+h3, .h3,  h4, .h4 {
+  text-transform: none !important;
+}
+h1 {
+  margin-bottom: 0.3em;
+  line-height: 1.1em;
+}
+h2, h3, h4 {
+  margin-bottom: 0.2em;
+}
+.pkp_structure_main {
+  font-size: 16px !important;
+/*   line-height: 20px !important; */
+}
+.pkp_structure_sidebar {
+  font-size: 14px !important;
+  line-height: 18px !important;
+}
+p {
+  line-height: 20px !important;
+}
+/*
+.pkp_structure_main a {
+  font-size: 14px !important;
+}
+a[href] {font-family: arial !important;}
+*/
+
+.pkp_structure_main li {
+  /* hack to avoid cutting off part of the bullet: */
+  /* list-style-position: inside; */
+  margin-left: 1em;
+}
+
+/* St. Mü. */
+
+.pkp_structure_main ul li {
+     padding-left: 0.5em ; /* St. Mü. */
+}
+
+.pkp_structure_main ol li {
+     padding-left: 0.5em ; /* St. Mü. */
+}
+
+/*
+
+http://stackoverflow.com/questions/10874352/hide-the-word-followers-from-twitter-follow-button
+
+*/
+
+#titter-div {
+    border-radius: 4px; /* to mimic the curved edges of the count box */
+    border-right: 1px solid #AAAAAA; /* this is the width and color of the count box border */
+    height: 20px; /* this height works for the medium button */
+    width: 60px; /* precise width to hide the word */
+    overflow: hidden; /* actually hides the word */
+}
+
+
+/*
+
+
+Robert Forkel, 20.01.2014
+
+
+*/
+
+/*
+ (unter der Annahme, dass anchor mit href kein name Attribut haben).
+*/
+a[name] {
+    color: black;
+}
+
+
+
+.pkp_structure_main ul li, .pkp_structure_main ol ul li {
+list-style-type : disc ;
+}
+
+.pkp_structure_main #spotlightsHome ul li, #monographListContainer ul li {
+    list-style-type : none;
+    margin-left: 0;
+}
+
+.pkp_structure_main #spotlightsHome ul li {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.pkp_structure_main ol li, .pkp_structure_main ul ol li {
+list-style-type : decimal ;
+}
+
+
+body, .pkp_structure_foot, .pkp_structure_head, .pkp_structure_masthead { background-color: #63bee1 !important; }
+.sf-menu li li { 
+    background-color: #63bee1 !important; 
+    height: auto !important;
+}
+.pkp_structure_foot { color: white; }
+.pkp_structure_foot img.pkp_helpers_align_right { display: none; }
+.pkp_structure_body { border-bottom: none !important; background-color: #d0ecf6 !important; margin-bottom: 0 !important;}
+.pkp_structure_subfoot { border-top: none !important; }
+.pkp_structure_head_siteNav {
+    border-color: #63bee1 !important;
+}
+.pkp_structure_main, .pkp_structure_sidebar {
+    background-color: white !important;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 6px 6px 10px 0px rgba(130,147,153,1);
+    -moz-box-shadow: 6px 6px 10px 0px rgba(130,147,153,1);
+    box-shadow: 6px 6px 10px 0px rgba(130,147,153,1);
+}
+
+.pkp_structure_main {
+    border: 1px solid #c7cacc !important;
+    padding: 10px;
+    min-height: 20em;
+}
+
+.pkp_structure_sidebar {
+    border: 2px solid #92d2ea !important;
+}
+
+.pkp_structure_sidebar div.block {
+    border-bottom: 2px solid #92d2ea !important;
+}
+
+.pkp_structure_sidebar div.block:last-child {
+    border-bottom: none !important;
+}
+
+.pkp_structure_sidebar .pkp_helpers_dotted_underline {
+    border-bottom: 2px solid #92d2ea !important;
+}
+
+.pkp_structure_sidebar span.blockTitle {
+    display: block;
+    padding-left: 10px;
+    list-style: none !important;
+}
+
+.pkp_structure_head_siteNav ul.pkp_helpers_align_right {
+    border: 1px solid white;
+}
+
+.pkp_structure_head_siteNav ul.pkp_helpers_align_right li {
+    border-right: 1px solid white;
+    padding: 5px;
+}
+
+.pkp_structure_head_siteNav ul.pkp_helpers_flatlist li:last-child {
+    border-right: none !important;
+}
+
+.sf-menu {
+    font-size: 80% !important;
+    height: 2em;
+    background-color: #db0031;
+    margin-top: 1.1em;
+    margin-bottom: 0 !important;
+}
+
+ul.sf-menu li {
+    height: 2em;
+}
+
+ul.sf-menu li:first-child {
+    background-color: #00a5db;
+}
+
+ul.sf-menu li:nth-child(2) {
+    background-color: #005678;
+}
+
+ul.sf-menu li:nth-child(3) {
+    background-color: #f29400;
+}
+
+ul.sf-menu li:nth-child(4) {
+    background-color: #b1c800;
+}

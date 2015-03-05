@@ -1,0 +1,1185 @@
+/**
+ * langscipress.css
+ *
+ * Copyright (c) 2013 Christian Pietsch
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ */
+ 
+ @font-face{font-family:'FontAwesome';src:url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/fonts/fontawesome-webfont.eot?v=4.2.0');src:url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'),url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/fonts/fontawesome-webfont.woff?v=4.2.0') format('woff'),url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/fonts/fontawesome-webfont.ttf?v=4.2.0') format('truetype'),url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/fonts/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');font-weight:normal;font-style:normal}.shariff::after,.shariff::before{content:" ";display:table}.shariff::after{clear:both}.shariff ul{padding:0;margin:0}.shariff li{height:30px;display:inline-block;margin-right:14px;overflow:hidden;width:120px}.shariff li:last-child{margin-right:0}.shariff li a{font-family:Arial,Helvetica,sans-serif;color:#fff;position:relative;display:block;padding-left:34px;padding-right:5px;font-size:12px;line-height:31px;text-decoration:none}.shariff li.shariff-button a::before{position:absolute;left:5px;font-family:FontAwesome;font-weight:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shariff li.facebook a{padding-left:24px;background-color:#3b5998}.shariff li.facebook a:hover{background-color:#4273c8}.shariff li.facebook a::before{content:"\f09a";font-size:17px}.shariff li.facebook .share_count{color:#183a75;background-color:#99adcf}.shariff li.whatsapp a{padding-left:24px;background-color:#5cbe4a}.shariff li.whatsapp a:hover{background-color:#34af23}.shariff li.twitter a{background-color:#55acee}.shariff li.twitter a:hover{background-color:#32bbf5}.shariff li.twitter a::before{content:"\f099";font-size:24px}.shariff li.twitter .share_count{color:#0174a4;background-color:#96D4EE}.shariff li.googleplus a{background-color:#d34836}.shariff li.googleplus a:hover{background-color:#f75b44}.shariff li.googleplus a::before{content:"\f0d5";font-size:17px;top:1px}.shariff li.googleplus .share_count{color:#a31601;background-color:#eda79d}.shariff li.mail a{background-color:#999}.shariff li.mail a:hover{background-color:#a8a8a8}.shariff li.mail a::before{content:"\f0e0";font-size:18px}.shariff li.info{width:23px;height:28px;border:1px solid #ccc}.shariff li.info a{padding:0}.shariff li.info a::before{content:"\f129";font-size:16px;left:9px;color:#666}.shariff li.info a:hover{background-color:#efefef}.shariff li.info .share_text{display:block;text-indent:-9999px}.shariff li .share_count{padding:0 8px;height:28px;position:absolute;top:1px;right:1px;line-height:30px}.shariff .theme-grey .twitter a,.shariff .theme-grey .facebook a,.shariff .theme-grey .googleplus a,.shariff .theme-grey .mail a{background-color:#b0b0b0}.shariff .theme-grey .twitter .share_count,.shariff .theme-grey .facebook .share_count,.shariff .theme-grey .googleplus .share_count,.shariff .theme-grey .mail .share_count{background-color:#ccc;color:#333}.shariff .theme-grey .twitter a:hover{background-color:#55acee}.shariff .theme-grey .facebook a:hover{background-color:#3b5998}.shariff .theme-grey .googleplus a:hover{background-color:#d34836}.shariff .theme-grey .send_by_email a:hover{background-color:#999}.shariff .theme-white .shariff-button{border:1px solid #ddd}.shariff .theme-white .shariff-button a{background-color:#fff}.shariff .theme-white .shariff-button a:hover{background-color:#eee}.shariff .theme-white .shariff-button .share_count{background-color:#fff;color:#999}.shariff .theme-white .twitter a{color:#55acee}.shariff .theme-white .facebook a{color:#3b5998}.shariff .theme-white .googleplus a{color:#d34836}.shariff .theme-white .mail a{color:#999}.shariff .theme-white .info{height:30px}.shariff .orientation-vertical li{display:block;margin:5px 0}.shariff .orientation-vertical li .share_count{width:24px;text-align:right}.shariff .orientation-vertical li.facebook a{padding-left:34px}.shariff .orientation-vertical li.info{margin-left:95px}
+
+/* default, english */ 
+q:before, q[lang|="en"]:before, q:lang(en):before { content: "\201C"; } 
+q:after, q[lang|="en"]:after, q:lang(en):after { content: "\201D"; } 
+q q:before, q[lang|="en"] q:before, q:lang(en) q:before { content: "\2018"; } 
+q q:after, q[lang|="en"] q:after, q:lang(en) q:after { content: "\2019"; } 
+
+/* german */ 
+q[lang|="de"]:before,   q:lang(de):before   { content: "\201E"; } 
+q[lang|="de"]:after,    q:lang(de):after    { content: "\201C"; } 
+q[lang|="de"] q:before, q:lang(de) q:before { content: "\201A"; } 
+q[lang|="de"] q:after,  q:lang(de) q:after  { content: "\2018"; } 
+
+/* japanese */ 
+q[lang|="ja"]:before, q:lang(ja):before { content: "\300C"; } 
+q[lang|="ja"]:after, q:lang(ja):after { content: "\300D"; }
+
+@font-face {
+    font-family: 'Linux Libertine'; /* normal */
+    src: url('../../../public/fonts/LinLibertine_R.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Linux Libertine'; /* italic */
+    src: url('../../../public/fonts/LinLibertine_RI.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Linux Libertine'; /* bold */
+    src: url('../../../public/fonts/LinLibertine_RB.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body, span.blockTitle, h2, .h2, h3, .h3, h4, .h4 {
+  font-family: "Linux Libertine", arial !important;
+}
+.pkp_structure_head a {
+  font-family: arial !important;
+}
+h3, .h3,  h4, .h4 {
+  text-transform: none !important;
+}
+h1 {
+  margin-bottom: 0.3em;
+  line-height: 1.1em;
+}
+h2, h3, h4 {
+  margin-bottom: 0.2em;
+}
+.pkp_structure_main {
+  font-size: 16px !important;
+/*   line-height: 20px !important; */
+}
+.pkp_structure_sidebar {
+  font-size: 14px !important;
+  line-height: 18px !important;
+}
+p {
+  line-height: 20px !important;
+}
+/*
+.pkp_structure_main a {
+  font-size: 14px !important;
+}
+a[href] {font-family: arial !important;}
+*/
+
+.pkp_structure_main li {
+  /* hack to avoid cutting off part of the bullet: */
+  /* list-style-position: inside; */
+  margin-left: 1em;
+}
+
+/* St. Mü. */
+
+.pkp_structure_main ul li {
+     padding-left: 0.5em ; /* St. Mü. */
+}
+
+.pkp_structure_main ol li {
+     padding-left: 0.5em ; /* St. Mü. */
+}
+
+/*
+
+http://stackoverflow.com/questions/10874352/hide-the-word-followers-from-twitter-follow-button
+
+*/
+
+#titter-div {
+    border-radius: 4px; /* to mimic the curved edges of the count box */
+    border-right: 1px solid #AAAAAA; /* this is the width and color of the count box border */
+    height: 20px; /* this height works for the medium button */
+    width: 60px; /* precise width to hide the word */
+    overflow: hidden; /* actually hides the word */
+}
+
+/* responsive - Svantje Lilienthal 2014-11-06 */
+
+
+@media only screen and (max-width: 1000px) {
+	
+	/* display menu under logo */
+	.size1of5{width:100%;}
+	.size4of5{width:100%;}
+
+	.pkp_structure_content {
+		width: 95% !important;
+	}
+
+	.pkp_structure_main {
+		float: left !important;
+		width: 100% !important;
+		padding: 5px !important;
+	
+	}
+	
+	/* hide carousel which wont be displayed properly otherwise */
+	.pkp_catalog_carousel_wrapper{
+		display:none !important;
+	}
+	
+	/* hide spotlight which wont be displayed properly otherwise */
+	#spotlightsHome{
+		display:none !important;
+	}
+	
+}
+
+/* workaround to prevent overlapping of menu and sidebar - can be deleted when menu is better looking ;) */
+@media only screen and (max-width: 800px) {
+	
+	.pkp_structure_main {
+		margin-top: 30px !important;
+	}	
+}
+
+
+@media only screen and (max-width: 500px) {
+	
+	.pkp_structure_main {
+		margin-top: 30px !important;
+	}	
+}
+
+@media only screen and (max-width: 425px) {
+	
+	.pkp_structure_main {
+		margin-top: 60px !important;
+	}	
+}
+
+@media only screen and (max-width: 330px) {
+	
+	.pkp_structure_main {
+		margin-top: 90px !important;
+	}	
+}
+
+/* end workaround */
+
+/* end responsive - SL*/
+
+
+/*
+
+Robert Forkel, 20.01.2014
+
+*/
+
+/*
+ (unter der Annahme, dass anchor mit href kein name Attribut haben).
+*/
+a[name] {
+    color: black;
+}
+
+.pkp_structure_main ul li, .pkp_structure_main ol ul li {
+list-style-type : disc ;
+}
+
+.pkp_structure_main #spotlightsHome ul li, #monographListContainer ul li {
+    list-style-type : none;
+    margin-left: 0;
+}
+
+.pkp_structure_main #spotlightsHome ul li {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.pkp_structure_main ol li, .pkp_structure_main ul ol li {
+list-style-type : decimal ;
+}
+
+
+body, .pkp_structure_foot, .pkp_structure_head, .pkp_structure_masthead { background-color: #63bee1 !important; }
+.sf-menu li li { 
+    background-color: #63bee1 !important; 
+    height: auto !important;
+}
+
+.pkp_structure_foot { 
+  color: white; 
+}
+
+.pkp_structure_foot img.pkp_helpers_align_right {
+  display: none;   
+}
+.pkp_structure_body { 
+  padding-top:10px;
+  border-bottom: none !important; background-color: #d0ecf6 !important; 
+  margin-bottom: 0 !important;
+}
+
+.pkp_structure_subfoot { 
+  border-top: none !important; 
+position:relative !important; 
+}
+
+.pkp_structure_head_siteNav {
+    border-color: #63bee1 !important;
+}
+
+.pkp_structure_main, .pkp_structure_sidebar {
+    background-color: white !important;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 6px 6px 10px 0px rgba(130,147,153,1);
+    -moz-box-shadow: 6px 6px 10px 0px rgba(130,147,153,1);
+    box-shadow: 6px 6px 10px 0px rgba(130,147,153,1);
+}
+
+.pkp_structure_main {
+    border: 1px solid #c7cacc !important;
+    /* change, Carola Fanselow, alt:
+   padding: 10px; */
+	padding: 10px 100px 10px 100px;
+    min-height: 20em;
+}
+
+.pkp_structure_sidebar {
+    border: 2px solid #92d2ea !important;
+}
+
+.pkp_structure_sidebar div.block {
+    border-bottom: 2px solid #92d2ea !important;
+}
+
+.pkp_structure_sidebar div.block:last-child {
+    border-bottom: none !important;
+}
+
+.pkp_structure_sidebar .pkp_helpers_dotted_underline {
+    border-bottom: 2px solid #92d2ea !important;
+}
+
+.pkp_structure_sidebar span.blockTitle {
+    display: block;
+    padding-left: 10px;
+    list-style: none !important;
+}
+
+.pkp_structure_head_siteNav ul.pkp_helpers_align_right {
+    border: 1px solid white;
+    background-color: #63BEE1; /* sl */
+}
+
+.pkp_structure_head_siteNav ul.pkp_helpers_align_right li {
+    border-right: 1px solid white;
+    padding: 5px;
+}
+
+.pkp_structure_head_siteNav ul.pkp_helpers_flatlist li:last-child {
+    border-right: none !important;
+}
+
+.sf-menu {
+    font-size: 80% !important;
+    height: 2em;
+ /*   background-color: #db0031; */
+    margin-top: 1.1em;
+    margin-bottom: 0 !important;
+}
+
+ul.sf-menu li {
+    height: 2em;
+}
+
+ul.sf-menu li:first-child {
+    background-color: #00a5db;
+}
+
+ul.sf-menu li:nth-child(2) {
+    background-color: #005678;
+}
+
+ul.sf-menu li:nth-child(3) {
+    background-color: #f29400;
+}
+
+ul.sf-menu li:nth-child(4) {
+    background-color: #b1c800;
+}
+
+ul.sf-menu li:nth-child(5) {
+	background-color: #db0031;
+}
+
+ul.sf-menu li:nth-child(6) {
+	background-color: #F9C402;
+}
+
+ul.sf-menu li:nth-child(7) {
+	background-color: #0B3B17;
+}
+
+ 
+.lsp-sm{
+  display:inline;
+  margin:2px;
+}
+
+.lsp-footer-info{
+  float:left;
+}
+
+.lsp-footer-sm{
+  float:right;
+}
+
+.b6{
+  border-collapse:inherit !important; /*fix G+ size*/
+}
+
+
+.ui-tabs .ui-tabs-nav li:hover{ 
+    border: 1px double #DDDDFF;
+    box-shadow: 1px 1px 0px 0px;
+    border-radius: 5px 5px 0 0 ;
+}
+
+
+.ui-tabs .ui-tabs-nav li a{
+  padding: 0.5em 0.5em !important;
+}
+
+.ui-tabs-selected{
+  border-radius: 5px 5px 0px 0px !important;
+}
+
+.lsp-h2{
+  font-weight:bold;
+  display:block;
+}
+
+a{
+  cursor:pointer;
+}
+
+ /*very evil hack to introduce own CSS into GUI-HTML editor's gory output*/
+.pkp_catalog_seriesDescription ol li{
+    border-bottom: 1px solid #92D2EA;
+    display: block; 
+    font-size: 120%;
+    font-weight: bold;
+    list-style: none outside none; 
+    margin-top: 20px;
+    width: 250px;
+}
+
+.pkp_catalog_seriesDescription h3{
+    border-bottom: 1px solid #92D2EA;
+    display: block; 
+    font-size: 120%;
+    font-weight: bold;
+    list-style: none outside none; 
+    margin-top: 20px;
+    width: 250px;
+}
+
+.pkp_catalog_seriesDescription p{
+  margin-left:30px;
+}
+
+.pkp_catalog_seriesDescription ul{
+  margin-left:10px;
+}
+
+.submission_actions li{
+  list-style: none !important;
+}
+
+/*.ui-tabs-nav{
+ border-width: 0 0 0 !important;
+}
+
+.ui-tabs .ui-tabs-nav li{
+  border-bottom:1px solid gray !important;
+}
+
+.ui-tabs-nav li.ui-state-active{ 
+  border-bottom:0px solid gray !important;
+}*/
+
+.pkp_catalog_seriesDescription{
+  padding-left:20px;
+  padding-right:20px;
+}
+
+#twitter-widget-0{
+  width:55px!important;
+}
+
+#twitter-widget-1{
+  width:140px!important;
+}
+
+#sm-facebook {
+    position: relative;
+    top: -3px;
+}
+
+#___plusone_0{
+  position:relative;
+  top:4px;
+}
+
+#button{
+  top:4px;
+  height:20px;
+}
+
+.statsrow {
+    border-left: 5px solid;
+    border-right: 5px solid;
+}
+
+.statsrow td {
+    border-collapse: separate;
+    border-style: dotted;
+    border-width: 1px;
+    padding: 5px;
+}
+
+
+.pkp_page_header .submission_progress{
+  padding: 12px 2px;    
+  border-bottom: 1px solid #ddd;
+  border-radius: 3px;
+  border-top: 1px solid #ddd;
+  background:#d0ecf6;
+}
+
+
+.pkp_page_header .submission_progress li{
+  background:#00a5db;  
+  background-image:none !important;
+  border-radius: 0 15px 15px 0;
+  border-right: 3px solid #005678;
+}
+ 
+.pkp_page_header .submission_progress li.current{
+  background: #005678 !important;
+  font-size: 12px !important;
+}
+
+.pkp_page_header .submission_progress li.complete{
+  background: #b1c800 !important;
+  font-size: 12px !important;
+}
+
+.pkp_page_header .submission_progress li.complete a:after{
+  content:"✓"
+}
+
+.pkp_page_header .submission_progress li.productionReady{
+  background-image:none !important;
+  background: #b1c800 !important;
+  font-size: 12px !important;
+}
+
+.pkp_page_header .submission_progress li.productionReady{
+  content:"★"
+}
+
+.pkp_page_header .submission_progress li a{
+   font-family:  Arial, Helvetica, sans serif !important; 
+}
+  
+.pkp_page_header .submission_progress li a:after {
+  content:none !important;
+}
+ 
+ 
+/* ----- book info page -------  */
+/*Display all content on one page without need to use
+javascript for additional content*/
+/*#bookInfoTabs .ui-tabs-nav li{
+ display:none !important;
+}
+
+#bookInfoTabs #abstractTab{
+ display:block !important;
+}
+
+#bookInfoTabs #sharingTab{
+ display:none;
+}
+
+#bookInfoTabs #downloadTab{
+ display:block !important;
+}*/
+ 
+ 
+/*  catalog management */
+ div.pkp_controllers_grid .row_controls {
+/*     display: block; */ /*set to none for easier access to terms*/
+}
+
+
+   
+.pkp_catalog_book .bookInfo .publicationFormatName {
+    float: left;
+    width: 100%; 
+}
+
+
+#downloadTab ul  li {
+    list-style:none;
+    margin-top:10px;
+}
+
+
+
+#downloadTab ul  li:first-child {
+    font-weight: bold; 
+    margin-left: -20px !important;
+}
+
+.pkp_catalog_book .bookInfo .publicationFormatName { 
+    padding: 5px;
+    width: 50%;
+    text-indent: -20px; /*indents second line for long titles*/
+}
+
+#downloadTab ul  .sprite {
+    display: none;
+    line-height: 24px;
+}
+  
+   
+
+.publicationFormatLink {
+    background: none repeat scroll 0 0 #d0ecf6;
+    border-radius: 5px;
+    display: inline;
+    float: right; 
+    padding: 3px;
+    width: 150px;  
+    min-width: 90px;
+    text-align:center;
+}
+
+
+.publicationFormatLink:hover {
+    box-shadow:1px 1px 2px 1px
+}
+
+
+.publicationFormatLink  a{
+    text-decoration:none;
+}
+
+
+#downloadTab ul  li:first-child {
+    font-weight: bold; 
+    margin-left: -20px !important;
+}
+.pkp_catalog_book .ui-tabs-panel {
+    border-bottom: none;
+}
+ 
+
+
+#downloadTab ul  li:nth-child(2) a:hover {
+    box-shadow:1px 1px 2px 1px
+}
+
+
+.pkp_catalog_carousel_wrapper .pkp_catalog_carousel .details_box {
+    background-color: #d0ecf6;
+    border: 1px solid grey;
+    border-radius: 0 15px 15px;
+    top: 200px; 
+    left: 150px; 
+    opacity: 0.95;
+    padding: 15px;
+    position: absolute;
+    width: 85%;
+}
+
+.pkp_catalog_carousel .roundabout-in-focus .details_box .pkp_catalog_formats {
+    display: none;
+}
+
+.pkp_structure_head_localNav{
+position:relative;
+top:3px;
+}
+
+#topSearchForm{
+  display:none;
+}
+
+.pkp_structure_head_localNav .sf-menu a {
+    padding-right: 1.2em !important;
+}
+
+.pkp_structure_navigation {
+    margin-left: 30px !important;
+}
+
+/* Anfang Carolas Teil */
+/* LSP general */
+
+.LSP input[type=checkbox] {
+	margin:0px 8px 3px 0px;
+	vertical-align:middle;
+	height:30px;
+}
+
+.LSP input[type=radio] {
+	margin:0px 8px 3px 0px;
+	vertical-align:middle;
+	height:30px;
+}
+
+
+.LSP input {
+   height: 20px;
+	padding-left: 4px;
+	font-family: 'Linux Libertine';
+	font-size: 15px;
+}
+
+.LSP textarea {
+	padding-left: 4px;
+	font-family: 'Linux Libertine';
+	font-size: 15px;
+}
+
+.LSP select {
+	font-family: 'Linux Libertine';
+   width: 310px;
+   height: 25px;
+	font-size: 15px;
+}
+
+.LSP option.inputOption {
+	font-family: 'Linux Libertine';
+}
+
+.LSP span.red {
+	color:#820200;
+}
+
+.LSP p.required {
+	color:#820200;
+}
+
+.LSP span.italic {
+	font-style:italic;
+}
+
+.LSP span.bold {
+	font-weight:bold;
+}
+
+/* LSP register page and profile */
+
+.LSP div.registerPage p.intro {
+	font-weight: bold;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.LSP div.registerPage p.footnote {
+	line-height: 12px !important;
+	font-size: 12px;
+}
+
+.LSP div.registerPage div.footnotes {
+	padding-top: 25px;
+}
+
+.LSP div.registerPage a.privacyStatement {
+	padding-left: 170px;
+}
+
+.LSP div.registerPage div.input {
+	float:left;
+	padding-right: 14px;
+}
+
+.LSP div.registerPage #reviewerQuestionText {
+	float:left;
+	width: 280px;
+	padding-left: 25px;
+	padding-bottom: 40px;
+}
+
+.LSP div.registerPage #reviewerQuestionText p{
+	line-height: 22px !important;
+}
+
+.LSP div.registerPage #selectArea2, #selectArea1, #selectArea3 {
+	margin: 8px 0px 6px 0px;
+}
+
+.LSP div.registerPage #checkboxexReviewLanguages {
+	padding-top: 10px;
+}
+
+.LSP div.registerPage #checkboxEnglish,#checkboxGerman,#checkboxFrench,#checkboxOther {
+	height: 17px;
+}
+
+.LSP div.registerPage #buttonRegister {
+	width: 100px;
+	height: 40px;
+	margin: 40px 0px 10px 250px;
+}
+
+.LSP div.registerPage #inputPassword,#inputPassword2,#inputAffiliation,#inputEmail,#inputUserUrl {
+	width: 300px;
+}
+
+.LSP div.registerPage #inputAcademicTitle,#inputUsername,#captcha {
+	width: 170px;
+}
+
+.LSP div.registerPage #inputOtherLanguage {
+	width: 220px;
+	margin-left: 15px;
+}
+
+.LSP div.registerPage #inputFirstName,#inputLastName {
+	width: 203px;
+}
+
+.LSP div.registerPage #reviewerQuestions {
+	padding-bottom: 25px;
+	display:none;
+}
+
+.LSP div.registerPage #privacyStatement {
+	padding-top: 30px;
+}
+
+.LSP div.registerPage #checkboxCaptchaCorrect {
+	display: none;
+}
+
+.LSP div.registerPage #buttonSaveSubscriptionChanges {
+	height: 30px;
+	float:left;
+	margin: 20px 20px 0px 0px;
+}
+
+
+/* group mail */
+
+.LSP div.groupMail p.header{
+	margin-top: 20px;
+	font-weight:bold;
+}
+
+.LSP div.groupMail #buttonPreviewEmail{
+	margin-top: 30px;
+	height: 30px;
+	font-family: 'Linux Libertine';
+}
+
+.LSP div.groupMail .button{
+	float:left;
+	margin:10px 20px 10px 0px;
+	height: 30px;
+	width: 100px;
+	font-family: 'Linux Libertine';
+}
+
+.LSP div.groupMail div.greyBox{
+	padding: 4px;
+	width: 400px;
+	background-color:#eee;
+}
+
+.LSP div.groupMail div.checkboxBox {
+	float:left;
+	margin-right: 20px;
+}
+
+.LSP div.groupMail div.cancel {
+	padding-top: 20px;
+}
+
+.LSP div.groupMail #addressBox {
+	clear:left;
+}
+
+.LSP div.groupMail #testAddresses {
+	display:block;
+}
+
+
+/* LSP series page */
+
+
+/* Variante: 
+.LSP .seriesPage div.seriesCover{
+	padding: 20px 30px 0px 0px;
+}
+
+.LSP .seriesPage div.seriesCover div.coverTitle{
+	float: left;
+}
+
+.LSP .seriesPage div.seriesCover div.coverImg {
+	float: left;
+}
+
+.LSP .seriesPage div.seriesCover div.coverImg img{
+	width: 50px;
+}
+
+.LSP .seriesPage div.seriesCover div.coverTitle p{
+	width: 160px;
+	padding-left: 5px;
+} */
+
+.LSP .seriesPage ul {
+	padding: 10px 0px 0px 0px;
+	margin:0;
+}
+
+.LSP .seriesPage li {
+	list-style-type:none;
+	padding:8px 0px 8px 0px;
+	margin:0;
+}
+
+
+.LSP .seriesPage img {
+	width:15px;
+	float:left;
+	padding: 0px 10px 0px 0px;
+}
+
+/* LSP hall of fame */
+
+
+.LSP .hallOfFame table {
+	margin-left: 20px;
+}
+
+.LSP .hallOfFame td.topleft {
+	width: 400px;
+	padding:0px;
+	margin:0px;
+}
+
+.LSP .hallOfFame td.topbottom {
+	padding: 0px;
+	margin: 0px;
+	padding: 5px 0px 15px 30px;
+}
+
+.LSP .hallOfFame td.topbottom ul {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+
+.LSP .hallOfFame td.topbottom ul li {
+	padding: 2px 0px 2px 0px;
+}
+
+.LSP .hallOfFame #stars1 {
+background-image: url('../../../plugins/generic/hallOfFame/img/star15.jpg');
+}
+
+.LSP .hallOfFame #stars2 {
+background-image: url('../../../plugins/generic/hallOfFame/img/star15.jpg');
+}
+
+.LSP .hallOfFame ul {
+	display: none;
+}
+
+.LSP .hallOfFame button.showSubmissions {
+	background-color: white;
+	width: 20px;
+	height: 18px;
+	margin: 0px;
+	padding: 0px;
+	border:none;
+	vertical-align: middle;
+	margin-right:10px;
+	background-image: url('../../../plugins/generic/hallOfFame/img/arrowright20.jpg');
+	background-repeat:no-repeat;
+}
+
+.LSP .hallOfFame button::-moz-focus-inner {
+  border: 0;
+}
+
+
+/* nötig, damit auf den managementseiten der Inhalt in unsere Breite passt, bessere Lösung suchen!!! */
+#stTabswrapper {
+	width: 750px !important;
+}
+
+/* Anfang Simplify Workflow */
+
+
+
+/* NOCH BEARBEITEN!!! */
+/* noch ändern!: move to buttons to the right und danach in den richtigen Abschnitt einordnen */
+#editor_decision_actions_1 {
+	padding-left: 330px;
+}
+
+#editor_decision_actions_3 {
+	padding-left: 445px;
+}
+
+#editor_decision_actions_4 {
+	padding-left: 625px;
+}
+
+/* noch ändern!: Accept Submission: keine Files ins Editorial schicken, Editorila: keine Files nach Production schicken prüfen, ob
+nur diese beiden Abschnitte davon betroffen sind! */
+#promote #availableFiles  {
+	display:none;
+}
+
+
+
+
+
+/* in catalog metadata, kann nicht auskommentiert werden, da es immer wieder eingelesen wird */
+.LSP #productCompositionCode {
+	display:none;
+}
+
+/* start typing Feld in "add reviewer" größer */
+#searchByNameReviewerForm #reviewerId_container  input{
+ font-size: 15px;
+}
+
+/* advanced search funktioniert nicht -> Link ausblenden */
+#searchByNameReviewerForm .action_links a:nth-child(1){
+	display:none;
+}
+
+/* buttons auf "Information for Authors" */
+.LSPconverterButtonBrowse {
+	height: 30px !important;
+}
+
+/* buttons auf "Information for Authors" */
+.LSPconverterButtonSubmit {
+	height: 30px !important;
+	margin-left: 4px;
+	padding-right: 7px;
+}
+
+/* SUBMISSION PROCESS */
+
+
+ #submitTabs  #submitStep1Form #cancelFormButton,
+ #submitTabs  #submitStep2Form #cancelFormButton,
+ #submitTabs  #submitStep3Form #cancelFormButton {
+	display:none;
+}
+
+#submitTabs #submitStep1Form #LSPcancelLink {
+	padding-top: 10px;
+	float:left;
+}
+
+#submitTabs #submitStep1Form #LSPstep1Buttons {
+	float:right;
+}
+
+/* WORKFLOW */
+
+/* remove Link "Internal Review" in submission workflow*/
+ul.submission_progress li:nth-child(2) {
+	display:none;
+}
+
+/* SUBMISSION STAGE */
+
+/* remove button "send to internal review" in submission stage */
+#submissionWorkflow #submissionEditorDecisionsDiv #editor_decision_actions_1 a:nth-child(1)  {
+	display:none;
+}
+
+/* style button "send to external review" in submission stage */
+#submissionWorkflow #submissionEditorDecisionsDiv  #editor_decision_actions_1 a:nth-child(2)  {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+/* EXTERNAL REVIEW */
+
+/* Tabelle anzeigen
+#submissionWorkflow #reviewTabs table tr,#submissionWorkflow #reviewTabs table th,#submissionWorkflow #reviewTabs table td{
+	border: 1px solid blue;
+}*/
+
+/* remove button "request revisions" in review stage */
+#submissionWorkflow #reviewTabs  #editor_decision_actions_3 a:nth-child(1)  {
+	display:none;
+}
+
+/* remove button "resubmit for review" in review stage */
+#submissionWorkflow #reviewTabs  #editor_decision_actions_3 a:nth-child(2)  {
+	display:none;
+}
+
+/* style button "accept submission" in review stage */
+#submissionWorkflow #reviewTabs #editor_decision_actions_3 a:nth-child(3)  {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+/* External Review, alle Tabllen: Header weg */
+#submissionWorkflow #reviewTabs table thead tr th{
+	display:none;
+}
+
+/* External Review, alle Tabllen: zweite Spalte verstecken */
+#submissionWorkflow #reviewTabs table tbody tr td:nth-child(2) {
+
+	visibility: hidden;
+}
+
+/* External Review, alle Tabllen: dritte Spalte verstecken */
+#submissionWorkflow #reviewTabs table tbody tr td:nth-child(3) {
+
+	visibility: hidden;	
+}
+
+#submissionWorkflow #reviewTabs .pkp_grid_description {
+	padding-bottom: 0px;
+}
+
+.ui-widget-content li a{
+color: black !important;
+font-size: 100% !important;
+background:white !important;
+} 
+
+/* EDITORIAL */
+
+/* Editorial, oben, remove name, element*/
+#submissionWorkflow #editorial #finalDraftGrid table thead tr th {
+	display:none;
+}
+
+/* Editorial, oben, element name */
+#submissionWorkflow #editorial #finalDraftGrid table tr td:nth-child(2) {
+	display:none;
+}
+
+/* Editorial, oben, description text */
+#submissionWorkflow #editorial #finalDraftGrid p.pkp_grid_description {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+
+/* Editorial, unten, remove Assign Auditor */
+#submissionWorkflow #editorial #copyeditingGrid  .grid_header_bar a:nth-child(2) {
+	display:none;
+}
+
+
+/* Editorial, unten, remove "no files" und "no items" */
+#submissionWorkflow #editorial #copyeditingGrid tbody.category_placeholder {
+display:none !important;
+}
+
+/* Editorial, unten, remove considered, approved*/
+#submissionWorkflow #editorial #copyeditingGrid table thead tr th{
+		display:none;
+}
+
+/* Editorial, unten, Hintergrundfarbe Filelist */
+#submissionWorkflow #editorial #copyeditingGrid table  tbody tr{
+	background-color:white;
+}
+
+/* Editorial, unten, description text */
+#submissionWorkflow #editorial #copyeditingGrid p.pkp_grid_description {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+
+/* PRODUCTION */
+
+/* remove checkboxes Proof, Catalog, Available from publication format element */
+#publicationFormats th:nth-child(2),#publicationFormats th:nth-child(3),#publicationFormats th:nth-child(4),
+#publicationFormats td:nth-child(2),#publicationFormats td:nth-child(3),#publicationFormats td:nth-child(4) {
+	display:none;
+}
+
+/* Production: links assign auditor und document library weg */
+#submissionWorkflow #production #publicationFormatTabsContainer .grid_header_bar a:nth-child(2),
+#submissionWorkflow #production #publicationFormatTabsContainer .grid_header_bar a:nth-child(3) {
+	display:none;
+}
+
+/*  Production, Publication Formats, remove "auditors" */
+#submissionWorkflow #production #publicationFormatTabsContainer tbody.category_placeholder {
+	display:none;
+}
+
+/* Production: considered header weg*/
+#submissionWorkflow #production #publicationFormatTabsContainer table thead tr th:nth-child(3){
+	display:none;
+	
+}
+
+/* Production: considered body weg*/
+#submissionWorkflow #production #publicationFormatTabsContainer table tbody tr.gridRow td:nth-child(2){
+	display:none;
+}
+
+
+/* Production, unten, remove considered, approved*/
+#submissionWorkflow #production #publicationFormatTabsContainer table  tbody tr{
+	background-color:white;
+}
+
+/* ausgeblendete Texte wieder einblenden und Frage lösen, warum das manchmal ausgeschaltet wird! */
+.pkp_help {
+	display:block !important;
+}
+
+.pkp_grid_description {
+	display:block !important;
+}
+
+
+
+
+
+/* Ende Simplify Workflow */
+
+/* end LSP */
+/* Ende Carolas Teil */
+
+
