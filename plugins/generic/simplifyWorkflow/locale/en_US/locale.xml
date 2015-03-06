@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/simplifyWorkflow/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2014 Freie Universität Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.simplifyWorkflow.name">Simplify Workflow Plugin</message>
+	<message key="plugins.generic.simplifyWorkflow.description">A number of smaller modifications to increase usability</message>
+
+	<message key="common.subtitle.tip.lsp"></message>	
+	<message key="submission.rights.tip.lsp">The Language Scienc Press standard rights are CC-BY.</message>
+	<message key="editor.submission.introduction.lsp"></message>
+<!--	<message key="editor.externalReview.introduction.lsp">You can decline the submission or accept it conditional upon the implementation of a set of changes.</message>-->
+	<message key="editor.externalReview.introduction.lsp">Select reviewers and files to send out to the reviewers. After receiving the reviews, either decline the submission or inform the author about requested changes. The author will upload files with incorporated revisions, which will then be sent out for proofreading in the editorial stage.</message>
+	<message key="editor.submission.editorial.introduction.lsp"></message>
+	<message key="editor.submission.production.introduction.lsp"></message>
+
+</locale>

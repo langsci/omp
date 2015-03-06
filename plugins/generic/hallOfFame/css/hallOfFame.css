@@ -1,0 +1,56 @@
+
+/* LSP hall of fame */
+
+
+.LSP .hallOfFame  table tr.submissions {
+	visibility: collapse;
+}
+
+.LSP .hallOfFame table td  {
+	padding: 10px 0px 10px 0px;
+}
+
+.LSP .hallOfFame table td.userGroup {
+	padding-top: 30px;
+	font-weight: bold;
+}
+
+.LSP .hallOfFame table tr.users td{	
+	padding-left: 30px;
+}
+
+.LSP .hallOfFame table tr.submissions td{	
+	padding:0;
+}
+
+.LSP .hallOfFame table tr.submissions ul{	
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	margin: 0px 0px 0px 60px;
+	padding: 10px 0px 0px 0px;
+}
+
+.LSP .hallOfFame table tr.submissions li {	
+	margin-bottom: 10px;
+}
+
+.LSP .hallOfFame button.showSubmissions {
+	width: 20px;
+	height: 18px;
+	margin: 0px;
+	padding: 0px;
+	border:none;
+	vertical-align: middle;
+	margin-right:10px;
+	background-image: url('../img/arrowright.jpg');
+	background-repeat:no-repeat;
+}
+.LSP .hallOfFame #stars1 {
+background-image: url('../img/star.jpg');
+}
+
+.LSP .hallOfFame #stars2 {
+background-image: url('../img/star.jpg');
+}
+
+

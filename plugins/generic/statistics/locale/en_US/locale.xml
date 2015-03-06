@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/statistics/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2014 CeDiS, Freie Universität Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.statistics.name">Statistics Plugin</message>
+	<message key="plugins.generic.statistics.description">Adds statistic images of the book to the download tab.</message>
+	<message key="plugins.generic.statistics.title">Statistics</message>
+</locale>

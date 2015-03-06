@@ -1,0 +1,14 @@
+{
+	"cache": {
+		"ttl": 60,
+		"cacheDir": "/data/omp/langsci-test/plugins/generic/shariff/shariff-backend/cache"
+	},
+	"domain": "test.langsci-press.org",
+	"services": [
+		"GooglePlus",
+		"Twitter",
+		"Facebook",
+		"Pinterest",
+		"Flattr"
+	]
+}
