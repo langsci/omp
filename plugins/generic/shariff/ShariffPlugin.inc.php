@@ -52,13 +52,15 @@ class ShariffPlugin extends GenericPlugin {
 		$template =& $args[1];
 		$output =& $args[2];
 		
-		$output .= '<div class="shariff" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;flattr&quot;]"  data-backend-url="/shariff-backend/" data-url="http://test.langsci-press.org"></div> <script src="'. Request::getBaseUrl() .'/'. $this->getPluginPath().'/shariff.complete.js"></script>';
+		$output .= '
+		<link rel="stylesheet" href="'. Request::getBaseUrl() .'/'. $this->getPluginPath().'/css/shariff.min.css" type="text/css" />
+		<div class="shariff" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;flattr&quot;]"  data-backend-url="/shariff-backend/" data-url="http://test.langsci-press.org"></div> <script src="'. Request::getBaseUrl() .'/'. $this->getPluginPath().'/shariff.complete.js"></script>';
 		
 		return false;
 	}
 	
 	function getStyleSheet(){
-		return $this->getPluginPath() . '/shariff.min.css';
+		return $this->getPluginPath() . '/css/shariff.min.css';
 	}
 
 }
