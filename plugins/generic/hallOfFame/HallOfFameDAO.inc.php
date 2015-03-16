@@ -18,10 +18,10 @@ class HallOfFameDAO extends DAO {
 		parent::DAO();
 	}
 
-	function existsLangSciSettings() {
+	function existsTable($table) {
 
 		$result = $this->retrieve(
-			"SHOW TABLES LIKE 'langsci_user_websitesettings'"
+			"SHOW TABLES LIKE '".$table."'"
 		);
 
 		if ($result->RecordCount() == 0) {

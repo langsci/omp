@@ -37,21 +37,28 @@
 	{/literal}
 
 </script> 
-
+<script language="javascript" type="text/javascript" src="add.js"></script>
 
 <link rel="stylesheet" href="{$baseUrl}/plugins/generic/hallOfFame/css/hallOfFame.css" type="text/css" />
 
+<script type="text/javascript">
+	// Initialize JS handler for catalog header.
 
-<div class="LSP">
-<div class="hallOfFame">
+	$(function() {ldelim}
+		$(".hallOfFameAccordion" ).accordion({ldelim} collapsible: true, autoHeight: false, active: true {rdelim});
+	{rdelim});
+
+</script>
+
+
+<div id="hallOfFame">
+
 <br>
-{translate key="plugins.generic.hallOfFame.intro"}
-
+{translate key="plugins.generic.hallOfFame.intro"}<br><br><br>
 
 {$htmlContent}
 
-</div> 
-</div> 
+</div>
 
 {strip}
 		{include file="common/footer.tpl"}

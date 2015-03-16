@@ -12,12 +12,12 @@
 <script type="text/javascript">
 	$(function() {ldelim}
 		// Attach the form handler.
-		$('#addThisPluginSettingsForm').pkpHandler('$.pkp.controllers.form.AjaxFormHandler');
+		$('#hallOfFamePluginSettingsForm').pkpHandler('$.pkp.controllers.form.AjaxFormHandler');
 	{rdelim});
 </script>
 
 
-<form class="pkp_form" id="addThisPluginSettingsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="plugin" category="generic" plugin=$pluginName verb="settings" tab="basic" save="true"}">
+<form class="pkp_form" id="hallOfFamePluginSettingsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT op="plugin" category="generic" plugin=$pluginName verb="settings" tab="basic" save="true"}">
 
 	<input type="hidden" name="tab" value="settings" />
 

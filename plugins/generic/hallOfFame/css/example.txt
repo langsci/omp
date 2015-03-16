@@ -1,0 +1,46 @@
+	<div id="usersAccordion">
+		<h3><a class="stars" style="background-image: url('http://localhost/omp11/plugins/generic/hallOfFame/img/silver.png'),url('http://localhost/omp11/plugins/generic/hallOfFame/img/gold.png');
+	background-repeat:no-repeat;
+	background-position: 355px 0px, 250px 0px;
+	width: 488px;" href="#">autor1</a></h3>
+		<div>
+			<ul >
+				<li>lit1asggsa</li>
+				<li>lit2</li>
+				<li>lit3</li>				
+			</ul>
+		</div>
+		<h3><a class="stars" style="background-image: url('http://localhost/omp11/plugins/generic/hallOfFame/img/silver.png'),url('http://localhost/omp11/plugins/generic/hallOfFame/img/gold.png');
+	background-repeat:no-repeat;
+	background-position: 355px 0px, 250px 0px;
+	width: 488px;" href="#">autor2</a></h3>
+		<div>
+			<ul>
+				<li>lit1</li>
+				<li>lit2</li>
+				<li>lit3</li>				
+			</ul>
+		</div>
+		<h3><a class="stars" style="background-image: url('http://localhost/omp11/plugins/generic/hallOfFame/img/silver.png'),url('http://localhost/omp11/plugins/generic/hallOfFame/img/gold.png');
+	background-repeat:no-repeat;
+	background-position: 355px 0px, 250px 0px;
+	width: 488px;" href="#">autor3</a></h3>
+		<div>
+			<ul>
+				<li>lit1</li>
+				<li>lit2</li>
+				<li>lit3</li>				
+			</ul>
+		</div>
+		<h3><a class="stars" style="background-image: url('http://localhost/omp11/plugins/generic/hallOfFame/img/silver.png'),url('http://localhost/omp11/plugins/generic/hallOfFame/img/gold.png');
+	background-repeat:no-repeat;
+	background-position: 355px 0px, 250px 0px;
+	width: 488px;" href="#">autor4</a></h3>
+		<div>
+			<ul>
+				<li>lit1</li>
+				<li>lit2</li>
+				<li>lit3</li>				
+			</ul>
+		</div>
+	</div>
