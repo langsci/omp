@@ -66,7 +66,6 @@ class HallOfFameDAO extends DAO {
 			$result->Close();
 			return $this->convertFromDB($row['user_group_id']);
 		}	
-
 	}	
 
 	function getNameOfUser($user_id) {
@@ -158,6 +157,8 @@ class HallOfFameDAO extends DAO {
 			return $submissions;
 		}	
 	}
+	// get user_group_id by user_group (e.g. Typesetting, Proofreader, ...)
+
 
 	// get user_group_id by user_group (e.g. Typesetting, Proofreader, ...)
 	function getUserGroupId($user_group) {
@@ -174,8 +175,7 @@ class HallOfFameDAO extends DAO {
 			$result->Close();
 			return $this->convertFromDB($row['user_group_id']);
 		}				
-	}
-	
+	}	
 }
 
 ?>

@@ -18,10 +18,16 @@
 	<message key="plugins.generic.hallOfFame.title">Hall Of Fame</message>
 	<message key="plugins.generic.hallOfFame.settings.title">Settings of the Hall of Fame Plugin</message>
 	<message key="plugins.generic.hallOfFame.settings">Settings</message>
-	<message key="plugins.generic.hallOfFame.intro">The following people already supported our press. Each star signifies one monograph. Click on the arrow to the left to get the names of the monograph(s) a person worked on.</message>
+	<message key="plugins.generic.hallOfFame.intro">The following people already supported our press. Each star signifies one monograph. Click on the name to get the list of the monograph(s) a person worked on.</message>
 
-	<message key="plugins.generic.hallOfFame.form.userGroupsHallOfFame">What user groups shall be included in the hall of fame? Separate with commas. </message>
-	<message key="plugins.generic.hallOfFame.form.pathHallOfFame">Path of hall of fame page.</message>
+	<message key="plugins.generic.hallOfFame.form.pathIntro">Path to the hall of fame page:</message>
+	<message key="plugins.generic.hallOfFame.form.path">(e.g. about/hallOfFame results in the path presspath/about/hallOfFame)</message>
+	<message key="plugins.generic.hallOfFame.form.userGroupsIntro">What user groups shall be included in the hall of fame? Separate with commas.</message>
+	<message key="plugins.generic.hallOfFame.form.userGroups">(e.g. Typesetter, Author, Proofreader)</message>
+
+
+
+
 	<message key="plugins.generic.hallOfFame.form.onlyPublishedMonographs">Only published monographs will be included</message>
 	<message key="plugins.generic.hallOfFame.form.linksToPublicProfile">Add links to public profiles</message>
 	<message key="plugins.generic.hallOfFame.form.unifiedStyleSheetForLinguistics">Use Unified Style Sheet for Linguistics</message>

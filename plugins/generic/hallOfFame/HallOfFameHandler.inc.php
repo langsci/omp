@@ -52,26 +52,31 @@ class HallOfFameHandler extends Handler {
 		$hallOfFameDAO = new HallOfFameDAO;
 
 		$press = $request -> getPress();
-		$settingString = $press->getSetting('userGroupsHallOfFame');
-		$settingArray = explode(",",$settingString); 
+		$userGroupsString = $press->getSetting('langsci_hallOfFame_userGroups');
+		$userGroupsArray = explode(",",$userGroupsString); 
 
 		$completePressPath = $this->getPressPath($request);
 
-		$onlyPublishedSubmissions = $press->getSetting('onlyPublishedMonographs');
-		$unifiedStyleSheetForLinguistics = $press->getSetting('unifiedStyleSheetForLinguistics');
-		$linksToPublicProfile = $press->getSetting('linksToPublicProfile');
+		$onlyPublishedSubmissions = $press->getSetting('langsci_hallOfFame_onlyPublishedMonographs');
+		$unifiedStyleSheetForLinguistics = $press->getSetting('langsci_hallOfFame_unifiedStyleSheetForLinguistics');
+		$linksToPublicProfile = $press->getSetting('langsci_hallOfFame_linksToPublicProfile');
 	
 		$existsLangSciSettings = $hallOfFameDAO->existsTable("langsci_website_settings");
 		$baseUrl = $request->getBaseUrl();
 
 		$htmlContent = "";
+		$htmlIntro1 = "<p id='intro'>The following people already supported our press (go to the section for";
+		$htmlIntro2 = "). Each star signifies one monograph. Click on the name to get the list of the monograph(s) a person worked on.</p>";
+
 		$nameAccordion = array();
 
 		// for all elements in setting string
-		for ($i=0; $i<sizeof($settingArray); $i++) {
+		for ($i=0; $i<sizeof($userGroupsArray); $i++) {
 
-			$htmlContent .= "<h3>".trim($settingArray[$i])."</h3>";
-			$userGroupId = $hallOfFameDAO -> getUserGroupIdByName(trim($settingArray[$i]));
+			$userGroupName = trim($userGroupsArray[$i]);
+			$htmlContent .= "<h3 class='userGroup'><a class='userGroup' name='".$userGroupName."'>".$userGroupName."</a></h3>";
+			$htmlIntro1 .= " <a href='#".$userGroupName."'>".$userGroupName."s</a>";
+			$userGroupId = $hallOfFameDAO -> getUserGroupIdByName($userGroupName);
 
 			// for all existing user groups
 			if ($userGroupId) {
@@ -82,11 +87,6 @@ class HallOfFameHandler extends Handler {
 				// user group
 				$userRanking = $hallOfFameDAO -> getUserRanking($userGroupId,$onlyPublishedSubmissions);
 
-				if (sizeof($userRanking)>0) {
-					//$htmlContentUserGroup .= "<p style='background-color:yellow;'>".trim($settingArray[$i]).
-						//					 "</p>";				
-				}
-
 				// for all users
 				for ($ii=0; $ii<sizeof($userRanking); $ii++) {
 
@@ -95,8 +95,7 @@ class HallOfFameHandler extends Handler {
 					// check if person wants to be include in the hall of fame
 					$includeUser = true;
 					if ($existsLangSciSettings) {
-
-						$includeUser = $hallOfFameDAO->getUserSetting($userId,"hall of fame")=="true";
+						$includeUser = $hallOfFameDAO->getUserSetting($userId,"HallOfFame")=="true";
 					}
 
 					if ($includeUser) {
@@ -111,23 +110,28 @@ class HallOfFameHandler extends Handler {
 						// add stars
 						$numberOfStars = $userRanking[$ii][0];
 						$pos  = 350;
-						$width = $pos - 45 + $numberOfStars*25;
+						$width = $pos  + $numberOfStars*25;
 
 						// user name
 						$addLinkToProfile = false;
 						if ($existsLangSciSettings) {
-							$addLinkToProfile = $hallOfFameDAO->getUserSetting($userId,"public profile")=="true";
+							$addLinkToProfile = $hallOfFameDAO->getUserSetting($userId,"PublicProfile")=="true";
 						}
   
-					    $htmlContent .= "<div class='hallOfFameAccordion'>";
+					   $htmlContent .= "<div class='hallOfFameAccordion'>";
 						$userEntry = "";
 						if ($linksToPublicProfile && $addLinkToProfile) {
-							
-							$userEntry .= "<h3><a style='background-image: url(&#39;".$baseUrl."/plugins/generic/hallOfFame/img/goldsmall.png&#39;);'>".$nameOfUser."</a></h3>" ;
+							$pathToProfiles = $press->getSetting('langsci_publicProfiles_path');
+
+							$userEntry .= "<h3 style='background-image: url(&#39;".$baseUrl."/plugins/generic/hallOfFame/img/goldsmall.png&#39;) !important;
+												background-repeat:no-repeat !important;background-position: ".$pos."px 2px !important;
+												width: ".$width."px !important;'><a>".$nameOfUser."</a>
+												<a class='linkPublicProfile' href='../".$pathToProfiles."/".$userId."' >view profile</a></h3>" ;
+
 						} else {
-							$userEntry .= "<h3><a style='background-image: url(&#39;".$baseUrl."/plugins/generic/hallOfFame/img/goldsmall.png&#39;);	background-repeat:no-repeat;
-	background-position: ".$pos."px 0px;
-	width: ".$width."px;'>".$nameOfUser."</a></h3>" ;
+							$userEntry .= "<h3 style='background-image: url(&#39;".$baseUrl."/plugins/generic/hallOfFame/img/goldsmall.png&#39;) !important;
+												background-repeat:no-repeat !important;background-position: ".$pos."px 2px !important;
+												width: ".$width."px !important;'><a>".$nameOfUser."</a></h3>" ;
 						} 
 
 						$htmlContent .= $userEntry;
@@ -138,7 +142,7 @@ class HallOfFameHandler extends Handler {
 						$submissions = $hallOfFameDAO->getSubmissionsFromStageAssignments($userId, $userGroupId,
 														$onlyPublishedSubmissions);
 
-						$htmlContentUserGroup = "<div><ul>";
+						$htmlContentUserGroup = "<div class='lsp_content'><ul>";
 						for ($iii=0; $iii<sizeof($submissions); $iii++) {
 							$submissionString="";
 							if ($unifiedStyleSheetForLinguistics) {
@@ -168,6 +172,8 @@ class HallOfFameHandler extends Handler {
 			}
 
 		}
+
+		$htmlContent = $htmlIntro1 . $htmlIntro2 . $htmlContent;
 
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('htmlContent',$htmlContent);

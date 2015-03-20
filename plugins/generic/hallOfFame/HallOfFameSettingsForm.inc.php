@@ -83,11 +83,11 @@ class HallOfFameSettingsForm extends Form {
 
 		if (isset($plugin)) {
 			$this->_data = array(
-				'userGroupsHallOfFame' => $press->getSetting('userGroupsHallOfFame'),
-				'pathHallOfFame' => $press->getSetting('pathHallOfFame'),
-				'onlyPublishedMonographs' => $press->getSetting('onlyPublishedMonographs'),
-				'linksToPublicProfile' => $press->getSetting('linksToPublicProfile'),
-				'unifiedStyleSheetForLinguistics' => $press->getSetting('unifiedStyleSheetForLinguistics'),
+				'langsci_hallOfFame_userGroups' => $press->getSetting('langsci_hallOfFame_userGroups'),
+				'langsci_hallOfFame_path' => $press->getSetting('langsci_hallOfFame_path'),
+				'langsci_hallOfFame_onlyPublishedMonographs' => $press->getSetting('langsci_hallOfFame_onlyPublishedMonographs'),
+				'langsci_hallOfFame_linksToPublicProfile' => $press->getSetting('langsci_hallOfFame_linksToPublicProfile'),
+				'langsci_hallOfFame_unifiedStyleSheetForLinguistics' => $press->getSetting('langsci_hallOfFame_unifiedStyleSheetForLinguistics'),
 			);
 		}
 	}
@@ -118,11 +118,11 @@ class HallOfFameSettingsForm extends Form {
 	 */
 	function readInputData() {
 		$this->readUserVars(array(
-			'pathHallOfFame',
-			'userGroupsHallOfFame',
-			'onlyPublishedMonographs',
-			'linksToPublicProfile',
-			'unifiedStyleSheetForLinguistics',
+			'langsci_hallOfFame_path',
+			'langsci_hallOfFame_userGroups',
+			'langsci_hallOfFame_onlyPublishedMonographs',
+			'langsci_hallOfFame_linksToPublicProfile',
+			'langsci_hallOfFame_unifiedStyleSheetForLinguistics',
 		));
 	}
 
@@ -134,11 +134,11 @@ class HallOfFameSettingsForm extends Form {
 		$plugin = $this->getPlugin();
 		$press = $this->getPress();
 
-		$press->updateSetting('pathHallOfFame', trim($this->getData('pathHallOfFame'), "\"\';"), 'string');
-		$press->updateSetting('userGroupsHallOfFame', trim($this->getData('userGroupsHallOfFame'), "\"\';"), 'string');
-		$press->updateSetting('onlyPublishedMonographs', trim($this->getData('onlyPublishedMonographs'), "\"\';"), 'string');
-		$press->updateSetting('linksToPublicProfile', trim($this->getData('linksToPublicProfile'), "\"\';"), 'string');
-		$press->updateSetting('unifiedStyleSheetForLinguistics', trim($this->getData('unifiedStyleSheetForLinguistics'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_path', trim($this->getData('langsci_hallOfFame_path'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_userGroups', trim($this->getData('langsci_hallOfFame_userGroups'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_onlyPublishedMonographs', trim($this->getData('langsci_hallOfFame_onlyPublishedMonographs'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_linksToPublicProfile', trim($this->getData('langsci_hallOfFame_linksToPublicProfile'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_unifiedStyleSheetForLinguistics', trim($this->getData('langsci_hallOfFame_unifiedStyleSheetForLinguistics'), "\"\';"), 'string');
 	}
 }
 ?>
