@@ -59,6 +59,12 @@ class SeriesPagePlugin extends GenericPlugin {
 		return __('plugins.generic.seriesPage.description');
 	}
 
+	/**
+	 * @copydoc PKPPlugin::getTemplatePath
+	 */
+	function getTemplatePath() {
+		return parent::getTemplatePath() . 'templates/';
+	}
 }
 
 ?>

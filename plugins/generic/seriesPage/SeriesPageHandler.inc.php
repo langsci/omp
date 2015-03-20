@@ -23,47 +23,32 @@ class SeriesPageHandler extends Handler {
 		$series = $seriesPageDAO->getSeries();
 		$submissionIds = $seriesPageDAO->getSubmissionIds();
 
- 		$host = "http://$_SERVER[HTTP_HOST]";
-		$shortUrl = substr($_SERVER[REQUEST_URI],1,strpos($_SERVER[REQUEST_URI],"series")-1);
-		$pressUrl = $host ."/".$shortUrl;
+		$baseUrl = $request->getBaseUrl();
+		$pressPath = $this->getPressPath($request);
+
+
 
 		$data = array();
 		for ($i=0;$i<sizeof($series);$i++) {
-			$data[$i]['link'] = "<a href=".$pressUrl."catalog/series/".$series[$i][0].">".$series[$i][1]."</a>";
-			$data[$i]['image'] = "<img src='" .$this->getOmpUrl('series')."plugins/generic/seriesPage/img/".$series[$i][0].".png' alt='".$series[$i][0]."'>";
+			$data[$i]['link'] = "<a href=".$pressPath."/catalog/series/".$series[$i][0].">".$series[$i][1]."</a>";
+			$data[$i]['image'] = "<img src='" .$baseUrl."/plugins/generic/seriesPage/img/".$series[$i][0].".png' alt='".$series[$i][0]."'>";
 		}
 
-		$templateMgr = $this->getTemplateManager($request);
+		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pageTitle', 'plugins.generic.title.seriesPage');
 		$templateMgr->assign('data', $data);
-		$this->displayTemplate($templateMgr,'page.tpl');
-	}
+		$templateMgr->assign('baseUrl',$baseUrl);	
 
-
-	function getOmpUrl($cut) {
- 		$host = "http://$_SERVER[HTTP_HOST]";
-		$shortUrl = substr($_SERVER[REQUEST_URI],1,strpos($_SERVER[REQUEST_URI], $cut)-1);
-		$nativeUrl = substr($shortUrl ,0,strpos($shortUrl, '/'));
-		if (!$nativeUrl=="") {
-			$nativeUrl = $nativeUrl . "/";
-		}
-		return $host ."/".$nativeUrl;	
-	}
-
-	function getTemplateManager($request)	{
-		$this->validate();
-		$press = $request->getPress();
-		$this->setupTemplate($request, $press);
-		$contentOnly = $request->getUserVar('contentOnly');
-		$templateMgr = TemplateManager::getManager($request);
-		$server_path = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";       
-		$templateMgr->assign('ompUrl',substr($server_path,0,strpos($server_path, 'index.php')));	
-		return $templateMgr;
-	}
-
-	function displayTemplate($templateMgr,$filename) {
 		$seriesPagePlugin = PluginRegistry::getPlugin('generic', SERIESPAGE_PLUGIN_NAME);
-		$templateMgr->display($seriesPagePlugin->getTemplatePath().$filename);
+		$templateMgr->display($seriesPagePlugin->getTemplatePath().'seriesPage.tpl');
+
+	}
+
+	function getPressPath(&$request) {
+		$press = $request -> getPress();
+		$pressPath = $press -> getPath();
+ 		$completeUrl = $request->getCompleteUrl();
+		return substr($completeUrl,0,strpos($completeUrl,$pressPath)) . $pressPath ;
 	}
 
 }
