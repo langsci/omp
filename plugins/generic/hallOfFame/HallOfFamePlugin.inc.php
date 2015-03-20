@@ -72,7 +72,7 @@ class HallOfFamePlugin extends GenericPlugin {
 		$tailUrl = "/".implode("/",$request->getRequestedArgs());
 
 		// get path components specified in the plugin settings
-		$settingPathArray = explode("/", $press->getSetting('pathHallOfFame'));
+		$settingPathArray = explode("/", $press->getSetting('langsci_hallOfFame_path'));
 		$numberOfComponentsSettings = sizeof($settingPathArray);
 		$pageSettings = $settingPathArray[0];
 		$opSettings = $settingPathArray[1];
@@ -181,10 +181,10 @@ class HallOfFamePlugin extends GenericPlugin {
 	 */ 
 	function statsConfigured($press) {
 
-		$userGroupsHallOfFame = $press->getSetting('userGroupsHallOfFame');
-		$pathHallOfFame = $press->getSetting('pathHallOfFame');
+		$langsci_hallOfFame_userGroups = $press->getSetting('langsci_hallOfFame_userGroups');
+		$langsci_hallOfFame_path = $press->getSetting('langsci_hallOfFame_path');
 
-		if (isset($pathHallOfFame) && isset($userGroupsHallOfFame)) {
+		if (isset($langsci_hallOfFame_userGroups) && isset($langsci_hallOfFame_path)) {
 			return true;
 		}
 

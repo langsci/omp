@@ -1,15 +1,51 @@
-#hallOfFame ul {
-	background-color: #ddd;
+
+
+/* background-image aus jquery css überschreiben*/
+/*
+.ui-widget-content {
+	background: none !important;
+}*/
+
+#hallOfFame #intro {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
-#hallOfFame li {
-	width: 550px;
+#hallOfFame .ui-accordion-header a {
+	line-height: 1.9em !important;
+	display: inline !important;
+
 }
 
-#hallOfFame h3.ui-state-active{
-	color: #569BBE !important;
+#hallOfFame a {
+	color:#569BBE !important;
+}
+
+#hallOfFame a:hover {
+	color:#2E6E9E !important;
+}
+
+#hallOfFame a.linkPublicProfile {
+	line-height: 1.9em !important;
+	display: inline !important;
+	padding-left: 0px !important;
+	text-decoration:underline !important;
+}
+
+#hallOfFame a.linkPublicProfile:hover {
+
+	text-decoration:underline !important;
 }
 
 
+#hallOfFame a.userGroup {
+	color: black !important;
+}
 
+#hallOfFame a.userGroup:hover {
+	color: black !important;
+}
+#hallOfFame h3.userGroup {
 
+	padding-top: 30px !important;
+}
