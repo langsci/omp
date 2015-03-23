@@ -42,7 +42,7 @@ class RemoveSubtitlesPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * Overwrite the monograph templates
+	 * Overwrite the monograph template
 	 * @param $hookName string The name of the hook being invoked
 	 * @param $args array The parameters to the invoked hook
 	 */
@@ -63,6 +63,9 @@ class RemoveSubtitlesPlugin extends GenericPlugin {
 
 	/**
 	 * Hook callback: Handle requests.
+	 * The templates catalog/monographs.tpl and/or catalog/monograph.tpl are included 
+	 * from catalog/index.tpl and catalog/series.tpl.
+	 * This function leads the includes to handleReaderTemplateInclude where they are overwritten
 	 * @param $hookName string The name of the hook being invoked
 	 * @param $args array The parameters to the invoked hook
 	 */
@@ -72,6 +75,9 @@ class RemoveSubtitlesPlugin extends GenericPlugin {
 
 		switch ($template) {
 			case 'catalog/index.tpl':
+				HookRegistry::register ('TemplateManager::include', array(&$this, 'handleReaderTemplateInclude'));
+				break;
+			case 'catalog/series.tpl':
 				HookRegistry::register ('TemplateManager::include', array(&$this, 'handleReaderTemplateInclude'));
 				break;
 		}
