@@ -1,6 +1,6 @@
 [submodule "lib/pkp"]
 	path = lib/pkp
-	url = git://github.com/langsci/pkp-lib
+	url = https://github.com/langsci/pkp-lib.git
 [submodule "plugins/generic/customBlockManager"]
 	path = plugins/generic/customBlockManager
 	url = git://github.com/pkp/customBlockManager
