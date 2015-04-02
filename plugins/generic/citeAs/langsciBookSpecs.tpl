@@ -42,27 +42,73 @@
 			<br>
 			<!-- cite as -->
 			<div class="citeAs">
+				<!-- get type of book: edited volume or monograph -->
+				{assign var=type value=$publishedMonograph->getWorkType()}
+				
 				<!-- authors / volume editors -->
 				{assign var=authors value=$publishedMonograph->getAuthors()}
 				{assign var=authorCount value=$authors|@count}
-				{foreach from=$authors item=author name=authors key=i}
-					<!-- volume editors have userGroup id 14 -->
-					{assign var=userGroup value=$author->getUserGroupId()}
-					{assign var=firstName value=$author->getFirstName()}
-					{$author->getLastName()|escape}, {$firstName|escape}{if $userGroup==14} (ed.){/if}.<!-- |truncate:1:"":true -->
-					{if $i==$authorCount-2}, &amp; {elseif $i<$authorCount-1}, 
-					{/if}
-				{/foreach}
+				
+				{if $type == "0" || $type == "2"} 
+					{foreach from=$authors item=author name=authors key=i}
+						{assign var=userGroup value=$author->getUserGroupId()}
+						{if $userGroup == 5}
+							{assign var=firstName value=$author->getFirstName()}
+							{assign var=middleName value=$author->getMiddleName()}
+							{assign var=lastName value=$author->getLastName()}
+							{if $i == 0}
+								{$firstName|escape} {$middleName|escape} {$lastName|escape}
+							{elseif $i}
+								&amp; {$lastName|escape}, {$middleName|escape} {$firstName|escape}
+							{/if}
+						{/if}
+					{/foreach}
+				{elseif $type == "1"}
+					{assign var=authorsDisplayed value=0}
+					{foreach from=$authors item=author name=authors key=i}
+						{assign var=userGroup value=$author->getUserGroupId()}
+						{if $userGroup == 6}
+							{assign var=firstName value=$author->getFirstName()}
+							{assign var=middleName value=$author->getMiddleName()}
+							{assign var=lastName value=$author->getLastName()}
+							{if $i == 0}
+								{$firstName|escape} {$middleName|escape} {$lastName|escape}
+							{elseif $i}
+								&amp; {$lastName|escape}, {$middleName|escape} {$firstName|escape}
+							{/if}
+							{assign var=authorsDisplayed value=$authorsDisplayed+1}
+						{/if}
+					{/foreach}
+					{if $authorsDisplayed == 1}(ed.){/if}
+					{if $authorsDisplayed > 1}(eds.){/if}
+				{/if}
+				
 				<!-- year -->
-				{if $publishedMonograph->getDatePublished()}{$publishedMonograph->getDatePublished()|date_format:'%Y'}.{/if}
+				
+				{assign var=datePublished value="????"}
+				
+				{if $publishedMonograph->getDatePublished()}{assign var=datePublished value= $publishedMonograph->getDatePublished()|date_format:'%Y'}.{/if}
+				
+				{$datePublished}
+				
 				<!-- title -->
 				<em>{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}</em>
+				
 				<!-- series -->
 				({$series->getLocalizedFullTitle()|escape} 
+				
 				<!-- series position -->
-				{$publishedMonograph->getSeriesPosition()|escape}). 
+				{assign var=seriesPosition value=$publishedMonograph->getSeriesPosition()}
+				{if $seriesPosition == ""}
+					tba).
+				{elseif $seriesPosition}
+					{$seriesPosition|escape}). 
+				{/if}
+				
 				<!-- press -->
 				Berlin: Language Science Press.
+				
+				
 			</div>
 			<!-- end cite as -->
 			
