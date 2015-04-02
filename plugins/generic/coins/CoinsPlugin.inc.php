@@ -111,10 +111,15 @@ class CoinsPlugin extends GenericPlugin {
 					array('rft.genre', 'book'),
 					// booktitle
 					array('rft.btitle', $publishedMonograph->getLocalizedFullTitle()),
+					
 					// author
-					array('rft.aulast', $firstAuthor->getLastName()),
-					array('rft.aufirst', $firstAuthor->getFirstName()),
-					array('rft.auinit', $firstAuthor->getMiddleName()),
+					foreach ($authors as $author) {
+						$vars[] = array('rft.au', $author->getFullName());
+					}
+					
+				//	array('rft.aulast', $firstAuthor->getLastName()),
+				//	array('rft.aufirst', $firstAuthor->getFirstName()),
+				//	array('rft.auinit', $firstAuthor->getMiddleName()),
 				//	array('rft.au', $publishedMonograph->getAuthorString()),
 				
 					// series
@@ -148,9 +153,7 @@ class CoinsPlugin extends GenericPlugin {
 					$vars[] = array('rft.date', date('Y-m-d', strtotime($datePublished)));
 				} */
 
-				foreach ($authors as $author) {
-					$vars[] = array('rft.au', $author->getFullName());
-				}
+				
 
 			//	if ($doi = $publishedMonograph->getPubId('doi')) $vars[] = array('rft_id', 'info:doi/' . $doi);
 			//	if ($publishedMonograph->getPages()) $vars[] = array('rft.pages', $publishedMonograph->getPages());
