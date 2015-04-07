@@ -4,16 +4,16 @@
 <!--
   * version.xml
   *
-  * Copyright (c) 2014 Carola Fanselow
+  * Copyright (c) 2015 Carola Fanselow
   * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
-  * Plugin Meta Pages.
+  * Hall of fame plugin.
   -->
 <version>
 	<application>hallOfFame</application>
 	<type>plugins.generic</type>
-	<release>1.1.0.0</release>
-	<date>2015-06-20</date>
+	<release>1.0.1.0</release>
+	<date>2015-04-06</date>
 	<lazy-load>1</lazy-load>
 	<sitewide>1</sitewide>
 	<class>HallOfFamePlugin</class>

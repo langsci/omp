@@ -1,4 +1,11 @@
-
+{**
+ * plugins/generic/hallOfFame/hallOfFame.tpl
+ *
+ * Copyright (c) 2015 Carola Fanselow, FU Berlin
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * main template for the hall of fame plugin
+ *}
 
 {strip}
 	{if !$contentOnly}

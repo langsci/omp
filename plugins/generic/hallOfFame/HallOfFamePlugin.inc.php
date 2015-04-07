@@ -3,13 +3,11 @@
 /**
  * @file StaticPagesPlugin.inc.php
  *
- * Copyright (c) 2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
+ * Copyright (c) 2015 Carola Fanselow
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @package plugins.generic.staticPages
- * @class StaticPagesPlugin
- * Static pages plugin main class
+ * @class HallOfFamePlugin
+ * Hall of fame plugin main class
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');

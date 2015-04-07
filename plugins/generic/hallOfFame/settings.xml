@@ -2,10 +2,9 @@
 <!DOCTYPE plugin_settings SYSTEM "../../../lib/pkp/dtd/pluginSettings.dtd">
 
 <!--
-  * plugins/generic/addThis/settings.xml
+  * plugins/generic/hallOfFame/settings.xml
   *
-  * Copyright (c) 2014 Simon Fraser University Library
-  * Copyright (c) 2003-2014 John Willinsky
+  * Copyright (c) 2015 Carola Fanselow, FU Berlin
   * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
   * Default plugin settings.

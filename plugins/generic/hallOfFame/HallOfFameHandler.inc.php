@@ -1,15 +1,12 @@
 <?php
 
 /**
- * @file StaticPagesHandler.inc.php
+ * @file hallOfFameHandler.inc.php
  *
- * Copyright (c) 2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
+ * Copyright (c) 2015 Carola Fanselow, FU Berlin
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @package plugins.generic.staticPages
- * @class StaticPagesHandler
- * Find static page content and display it when requested.
+ * @class HallOfFameHandler
  */
 
 import('classes.handler.Handler');
@@ -95,6 +92,7 @@ class HallOfFameHandler extends Handler {
 					// check if person wants to be include in the hall of fame
 					$includeUser = true;
 					if ($existsLangSciSettings) {
+
 						$includeUser = $hallOfFameDAO->getUserSetting($userId,"HallOfFame")=="true";
 					}
 

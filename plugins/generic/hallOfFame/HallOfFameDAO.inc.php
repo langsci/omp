@@ -3,7 +3,7 @@
 /**
  * @file plugins/generic/hallOfFame/HallOfFameDAO.inc.php
  *
- * Copyright (c) 2000-2014 Carola Fanselow, Freie Universität Berlin
+ * Copyright (c) 2000-2015 Carola Fanselow, Freie Universität Berlin
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class HallOfFameDAO
@@ -90,17 +90,29 @@ class HallOfFameDAO extends DAO {
 	function getUserRanking($user_group_id,$onlyPublishedSubmissions) {
 
 		if ($onlyPublishedSubmissions) {
-			$result = $this->retrieve(
+
+				$result = $this->retrieve(
 				'SELECT COUNT(*) AS number_of_entries, user_id from stage_assignments WHERE
 				user_group_id = '.$user_group_id.' AND
 				submission_id IN (SELECT submission_id FROM published_submissions) 
 				GROUP BY user_id
 				ORDER BY number_of_entries DESC,user_id'
 			);
+
 		} else {
+/*
 			$result = $this->retrieve(
 				'SELECT COUNT(*) AS number_of_entries, user_id from stage_assignments WHERE
 				user_group_id = '.$user_group_id.'
+				GROUP BY user_id
+				ORDER BY number_of_entries DESC,user_id'
+			);*/
+
+			/* Version, temporär: alle im Katalog außer die mit forthcoming im Namen*/
+			$result = $this->retrieve(
+				'SELECT COUNT(*) AS number_of_entries, user_id from stage_assignments WHERE
+				user_group_id = '.$user_group_id.' AND
+				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions)) 
 				GROUP BY user_id
 				ORDER BY number_of_entries DESC,user_id'
 			);
@@ -134,13 +146,21 @@ class HallOfFameDAO extends DAO {
 				user_group_id=" . $user_group_id . " AND
 				submission_id IN (SELECT submission_id FROM published_submissions)"
 			);
-
 		} else {
-			$result = $this->retrieve(
+
+		/*	$result = $this->retrieve(
 				"SELECT submission_id FROM stage_assignments WHERE
 				user_id = ".$user_id." AND
 				user_group_id=" . $user_group_id
+			);*/
+		/* Version: temporär: alle im Katolog außer die mit Forthcoming im Prefix */
+			$result = $this->retrieve(
+				'SELECT submission_id FROM stage_assignments WHERE
+				user_id = ' . $user_id . ' AND
+				user_group_id=' . $user_group_id . ' AND
+				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions))'
 			);
+
 		}
 		
 		if ($result->RecordCount() == 0) {
