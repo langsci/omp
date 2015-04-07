@@ -113,13 +113,13 @@ class CoinsPlugin extends GenericPlugin {
 					array('rft.btitle', $publishedMonograph->getLocalizedFullTitle()),
 					
 					// author
-					foreach ($authors as $author) {
-						$vars[] = array('rft.au', $author->getFullName());
-					}
+				//	foreach ($authors as $author) {
+				//		$vars[] = array('rft.au', $author->getFullName());
+				//	}
 					
-				//	array('rft.aulast', $firstAuthor->getLastName()),
-				//	array('rft.aufirst', $firstAuthor->getFirstName()),
-				//	array('rft.auinit', $firstAuthor->getMiddleName()),
+					array('rft.aulast', $firstAuthor->getLastName()),
+					array('rft.aufirst', $firstAuthor->getFirstName()),
+					array('rft.auinit', $firstAuthor->getMiddleName()),
 				//	array('rft.au', $publishedMonograph->getAuthorString()),
 				
 					// series
