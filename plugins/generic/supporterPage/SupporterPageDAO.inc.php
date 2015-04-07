@@ -3,7 +3,7 @@
 /**
  * @file plugins/generic/supporterPage/SupporterPageDAO.inc.php
  *
- * Copyright (c) 2000-2014 Carola Fanselow, Freie Universität Berlin
+ * Copyright (c) 2014-2015 Carola Fanselow, Freie Universität Berlin
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class SupporterPageDAO
@@ -88,7 +88,7 @@ class SupporterPageDAO extends DAO {
 
 	function getSupporterAcademics() {
 
-		$result = $this->retrieve('SELECT user_id, academic_title FROM langsci_user_academic WHERE user_id IN
+		$result = $this->retrieve('SELECT user_id, salutation FROM users WHERE user_id IN
 											(SELECT user_id FROM user_user_groups WHERE user_group_id=
 											(SELECT user_group_id FROM user_group_settings WHERE locale="en_US" AND setting_value="Supporter"))');
 
@@ -100,7 +100,7 @@ class SupporterPageDAO extends DAO {
 			while (!$result->EOF) {
 				$row = $result->getRowAssoc(false);
 				$key = $this->convertFromDB($row['user_id']);
-				$academics[$key] = $this->convertFromDB($row['academic_title']);			 
+				$academics[$key] = $this->convertFromDB($row['salutation']);			 
 				$result->MoveNext();
 			}
 			$result->Close();

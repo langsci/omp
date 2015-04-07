@@ -4,7 +4,7 @@
 <!--
   * version.xml
   *
-  * Copyright (c) 2014 Carola Fanselow
+  * Copyright (c) 2014-2015 Carola Fanselow
   * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
   * Supporter Page Plugin
@@ -12,8 +12,8 @@
 <version>
 	<application>supporterPage</application>
 	<type>plugins.generic</type>
-	<release>1.0.0.0</release>
-	<date>2014-12-18</date>
+	<release>1.0.1.0</release>
+	<date>2015-04-06</date>
 	<lazy-load>1</lazy-load>
 	<sitewide>1</sitewide>
 	<class>SupporterPagePlugin</class>
