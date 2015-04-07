@@ -45,10 +45,7 @@
 	{** Carola Fanselow Categories werden in categories.tpl auskommentiert **}
 	{$additionalFormFields}
 	
-	
-
-
-	{**	Carola Fanselow: Extended Metadata immer ausgeklappt <div id="metadataAccordion"><h3><a href="#">{translate key="submission.submit.extendedMetadata"}adgf</a></h3>  **}
+	{**	Carola Fanselow: Extended Metadata immer ausgeklappt <div id="metadataAccordion"><h3><a href="#">{translate key="submission.submit.extendedMetadata"}</a></h3>  **}
 			<div id="extraSubmissionFields">
 	<h3>{translate key="submission.submit.extendedMetadata"}</h3>
 	{include file="core:submission/submissionMetadataFormFields.tpl"}

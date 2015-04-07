@@ -30,6 +30,7 @@
 	{rdelim});
 </script>
 <br>
+
 {** Carola Fanselow: disable author dashboard**}
 <div id="authorDashboard">
 	{include file="authorDashboard/top.tpl"}

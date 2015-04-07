@@ -13,10 +13,9 @@
 
 <div id="editorial">
 
-
 	{url|assign:copyeditingEditorDecisionsUrl op="editorDecisionActions" submissionId=$submission->getId() stageId=$stageId contextId="copyediting" escape=false}
 
-	<p class="pkp_help">{translate key="editor.submission.editorial.introduction.lsp"}</p>
+	<p class="pkp_help">{translate key="editor.submission.editorial.introduction"}</p> 
 
 	{url|assign:finalDraftGridUrl router=$smarty.const.ROUTE_COMPONENT component="grid.files.final.FinalDraftFilesGridHandler" op="fetchGrid" submissionId=$submission->getId() stageId=$stageId escape=false}
 
@@ -26,6 +25,7 @@
 
 	{load_url_in_div id="copyeditingGrid" url=$copyeditingGridUrl}
 
+	{** Carola Fanselow: Buttonleiste von oben nach hier unten verschoben **}
 	{load_url_in_div id="copyeditingEditorDecisionsDiv" url=$copyeditingEditorDecisionsUrl class="editorDecisionActions"}
 
 

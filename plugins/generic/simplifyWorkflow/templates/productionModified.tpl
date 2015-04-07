@@ -27,16 +27,13 @@
 <div id="production">
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="productionNotification" requestOptions=$productionNotificationRequestOptions}
 
-	<p class="pkp_help">{translate key="editor.submission.production.introduction.lsp"}</p>
+	<p class="pkp_help">{translate key="editor.submission.production.introduction"}</p>
 
 	{url|assign:productionReadyFilesGridUrl router=$smarty.const.ROUTE_COMPONENT component="grid.files.productionReady.ProductionReadyFilesGridHandler" op="fetchGrid" submissionId=$submission->getId() stageId=$stageId escape=false}
 
-{** Carola Fanselow: remove production ready files upload 
-
+	{** Carola Fanselow: remove production ready files upload 
 	{load_url_in_div id="productionReadyFilesGridDiv" url=$productionReadyFilesGridUrl}
-
-
-**}
+	**}
 
 	{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR), $userRoles)}
 

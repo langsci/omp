@@ -109,21 +109,22 @@
 
 {** Carola Fanselow: product composition code weg **}
 
-<div class="LSP">
-<div id="productCompositionCode">
+<div style="display:none">
 
 	{fbvFormArea id="productComposition" class="border"}
 		{fbvFormSection for="productCompositionCode" title="monograph.publicationFormat.productComposition" required="true"}
 
-			{fbvElement type="select" from=$productCompositionCodes selected=$productCompositionCode translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
+			{fbvElement type="select" from=$productCompositionCodes selected="00" translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}
 
-		{**	{fbvElement type="select" label="monograph.publicationFormat.productFormDetailCode" from=$productFormDetailCodes selected=$productFormDetailCode translate=false id="productFormDetailCode" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}**}
+{**			{fbvElement type="select" from=$productCompositionCodes selected=$productCompositionCode translate=false id="productCompositionCode" required="true" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}**}
+
+			{** Carola Fanselow: product detail ausgeblendet {fbvElement type="select" label="monograph.publicationFormat.productFormDetailCode" from=$productFormDetailCodes selected=$productFormDetailCode translate=false id="productFormDetailCode" defaultValue="" defaultLabel="" size=$fbvStyles.size.MEDIUM inline=true}**}
 
 		{/fbvFormSection}
 	{/fbvFormArea}
 
 </div>
-</div>
+
 
 
 	{fbvFormArea id="productAvailability" title="monograph.publicationFormat.productAvailability" class="border"}

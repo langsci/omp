@@ -13,17 +13,15 @@
 
 {url|assign:submissionEditorDecisionsUrl op="editorDecisionActions" submissionId=$submission->getId() stageId=$stageId contextId="submission" escape=false}
 
-<p class="pkp_help">{translate key="editor.submission.introduction.lsp"}</p>
-
+<p class="pkp_help">{translate key="editor.submission.introduction"}</p>
 
 {url|assign:submissionFilesGridUrl router=$smarty.const.ROUTE_COMPONENT component="grid.files.submission.EditorSubmissionDetailsFilesGridHandler" op="fetchGrid" submissionId=$submission->getId() stageId=$stageId escape=false}
 {load_url_in_div id="submissionFilesGridDiv" url=$submissionFilesGridUrl}
 
-{** Carola Fanselow: Press Library weg
+{** Carola Fanselow: Press Library auskommentiert
 {url|assign:documentsGridUrl router=$smarty.const.ROUTE_COMPONENT component="grid.files.submissionDocuments.SubmissionDocumentsFilesGridHandler" op="fetchGrid" submissionId=$submission->getId() escape=false}
 {load_url_in_div id="documentsGridDiv" url=$documentsGridUrl}
 **}
- 
 
 {load_url_in_div id="submissionEditorDecisionsDiv" url=$submissionEditorDecisionsUrl class="editorDecisionActions"}
 

@@ -10,6 +10,9 @@
  *
  */
 
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+
 class SimplifyWorkflowDAO extends DAO {
 	/**
 	 * Constructor
@@ -26,9 +29,10 @@ class SimplifyWorkflowDAO extends DAO {
 	function getSeriesEditors($submission_id) {
 
 		$result = $this->retrieve(
-			'select user_id from series_editors
-			 where series_id = (select series_id from submissions
-			 where submission_id='.$submission_id.');'
+			'SELECT user_id FROM series_editors
+			 WHERE press_id=1 AND
+			 series_id = (SELECT series_id FROM submissions
+			 WHERE submission_id='.$submission_id.');'
 		);
 
 		if ($result->RecordCount() == 0) {
@@ -92,9 +96,20 @@ class SimplifyWorkflowDAO extends DAO {
 
 	function assignParticipant($submission_id,$user_group_id,$user_id) {
 
-		$this->update('insert into stage_assignments (submission_id, user_group_id, user_id, date_assigned)
-				values('.$submission_id.','.$user_group_id.','.$user_id.',NOW())'
+		// only assign participant if he/she is not already assigned
+		$result = $this->retrieve(
+			"SELECT  * FROM stage_assignments WHERE submission_id=".$submission_id." AND user_group_id=".$user_group_id." AND user_id=".$user_id
 		);
+
+		if ($result->RecordCount() == 0) {
+			$result->Close();
+			$this->update('insert into stage_assignments (submission_id, user_group_id, user_id, date_assigned)
+				values('.$submission_id.','.$user_group_id.','.$user_id.',NOW())'
+			);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	function deleteNotificationAssignEditor() {
@@ -103,38 +118,72 @@ class SimplifyWorkflowDAO extends DAO {
 	}
 
 	// add publication format: PDF, digital, physical_format
+	// add PDF and BibTeX and 5 Chapter for Edited Volumes
 	function addStandardValuesAfterSubmit($submission_id) {
 
-		// add PDF and BibTeX
-		$publication_format_id = NULL;
+		// is the submission an edited volume?
+		$edvolume = $this->retrieve(
+			'SELECT edited_volume from submissions
+			 WHERE submission_id = '.$submission_id
+		);
+ 	
+		$editedVolume = 2;
+		if ($edvolume->RecordCount() == 0) {
+			$edvolume->Close();
+			return null;
+		} else {
+			$row = $edvolume->getRowAssoc(false);
+			$editedVolume = $this->convertFromDB($row['edited_volume']);
+			$edvolume->Close();
+		}
 
-		$this->update('INSERT INTO publication_formats(submission_id, physical_format, entry_key,
-						product_composition_code,is_available,imprint)
-						VALUES('.$submission_id.',0, "DA","00",1,"Language Science Press")');
-		$this->update('INSERT INTO publication_formats(submission_id, physical_format, entry_key,
-						product_composition_code,is_available,imprint)
-						VALUES('.$submission_id.',0, "DA","00",1,"Language Sciece Press")');
+		// insert publication formats for the submission
+		$numberOfPubFormats = 2;
+		if ($editedVolume==1) {
+			$numberOfPubFormats = 7;
+		}
+		for ($i=0; $i<$numberOfPubFormats; $i++) {
+			$this->update('INSERT INTO publication_formats(submission_id, physical_format, entry_key,
+						   product_composition_code,is_available,imprint)
+						   VALUES('.$submission_id.',0, "DA","00",1,"Language Sciece Press")');			
+		}
 
-		$result = $this->retrieve(
+		// get publication format ids
+		$pfids = $this->retrieve(
 			'SELECT publication_format_id FROM publication_formats
 			 WHERE submission_id = '.$submission_id
 		);
 
-		if ($result->RecordCount() == 0) {
-			$result->Close();
+		$pubFormatIds = array();
+		if ($pfids->RecordCount() == 0) {
+			$pfids->Close();
 			return null;
 		} else {
-			$row = $result->getRowAssoc(false);
-			$publication_format_id_pdf = $this->convertFromDB($row['publication_format_id']);
-			$result->MoveNext();
-			$row = $result->getRowAssoc(false);
-			$publication_format_id_bib = $this->convertFromDB($row['publication_format_id']);
+			while (!$pfids->EOF) {
+				$row = $pfids->getRowAssoc(false);
+				$pubFormatIds[] = $this->convertFromDB($row['publication_format_id']);
+				$pfids->MoveNext();
+			}
+			$pfids->Close();
 		}
-	
+
+		// add names to the publication formats
 		$this->update("INSERT INTO publication_format_settings
-				VALUES(".$publication_format_id_pdf.",'en_US','name','PDF','string')");
+				VALUES(".$pubFormatIds[0].",'en_US','name','Complete','string')");
 		$this->update("INSERT INTO publication_format_settings
-				VALUES(".$publication_format_id_bib.",'en_US','name','BibTeX','string')");
+				VALUES(".$pubFormatIds[1].",'en_US','name','BibTeX','string')");
+		if ($editedVolume==1) {
+			$this->update("INSERT INTO publication_format_settings
+					VALUES(".$pubFormatIds[2].",'en_US','name','Chapter1','string')");
+			$this->update("INSERT INTO publication_format_settings
+					VALUES(".$pubFormatIds[3].",'en_US','name','Chapter2','string')");
+			$this->update("INSERT INTO publication_format_settings
+					VALUES(".$pubFormatIds[4].",'en_US','name','Chapter3','string')");
+			$this->update("INSERT INTO publication_format_settings
+					VALUES(".$pubFormatIds[5].",'en_US','name','Chapter4','string')");
+			$this->update("INSERT INTO publication_format_settings
+					VALUES(".$pubFormatIds[6].",'en_US','name','Chapter5','string')");
+		}
 
 	}
 

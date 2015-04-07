@@ -25,13 +25,6 @@
 	{/fbvFormArea}
 {/if}
 
-
-
-
-
-
-{**{assign var="rights" value="Bob"}**}
-
 {fbvFormArea id="additionalDublinCore" title="common.type" class="border"}
 
 	{** Carola Fanselow: Type weg 
@@ -57,7 +50,7 @@
 	**}
 
 
-	{fbvFormSection label="submission.rights" for="rights" description="submission.rights.tip.lsp"}
+	{fbvFormSection label="submission.rights" for="rights" description="submission.rights.tip"}
 		{fbvElement type="text" multilingual=true name="rights" id="rights" value=$rights maxlength="255" readonly=$readOnly}
 	{/fbvFormSection}
 

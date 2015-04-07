@@ -11,15 +11,139 @@
  
 <locale name="en_US" full_name="U.S. English">
 
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- überschreibe locals aus locale/en_US/locale.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<!-- workflow: production, Überschrift Page Proofs -> Final Files -->
+	<message key="submission.pageProofs">Final Files</message>
+	<!-- workflow: production, Erklärung zu Final Files -->
+	<message key="monograph.proofReadingDescription">These are the files that are downloadable from the catalog - if they are approved and metadata for the publication format is included in the catalog entry for this book.</message>
+	<!-- workflow, catalog popup Erklärung -->
+	<message key="catalog.manage.entryDescription">To list a book in the catalog, select the Content tab and fill in the necessary information. Information for each of the book’s formats can be included in the catalog entry by selecting the tab for the format. The metadata specifications are based on ONIX for Books which is an international standard used by the book industry for communication product information.</message>
+
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- überschreibe locals aus lib/pkp/locale/en_US/common.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<!-- catalog popup Monograph/content tab -->
+	<message key="common.subtitle.tip"></message>
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- überschreibe locals aus lib/pkp/locale/en_US/submission.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<message key="submission.authorDashboard.description">The author dashboard is not available yet.</message>
+	<message key="submission.rights.tip">The Language Scienc Press standard rights are CC-BY.</message>
+	<!-- in catalog popup über contributors list -->
+	<message key="submission.contributorsDescription"></message>
+	<!-- worflow: submission, button "Accept Submission" 
+	<message key="editor.submission.decision.accept">cccccccc</message> -->
+	<!-- workflow: external review, Review Files -> Files for Review -->
+	<message key="reviewer.submission.reviewFiles">Files for Review</message>
+	<!-- workflow: editorial, copyediting -> Typeset Files -->
+	<message key="submission.copyediting">Typeset Files</message>
+	<!-- workflow: editorial, Final Draft File -> Proofread Files -->
+	<message key="submission.finalDraft">Proofread Files</message>
+	<!-- workflow: Production, Popup wenn man auf approve klickt -->
+	<message key="editor.submission.decision.approveProofsDescription">The page proof file must be
+		 checked as approved to be made Available. Do you want to approve it?</message>
+	<!-- Submission, Tab: Next steps, Return to your dashboard -> return to your panel -->
+	<message key="submission.submit.whatNext.return">Return to your panel</message>
+
+
+
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- überschreibe locals aus locale/en_US/submission.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<!-- catalog popup tab Catalog -> Cover -->
+	<message key="submission.catalogEntry.catalogMetadata">Cover</message>
+	<!-- catalog popup tab Monograph -> Content -->
+	<message key="submission.catalogEntry.monographMetadata">Content</message>
+	<!-- submission wizard, Tab: Upload -->
+	<message key="submission.submit.upload.description"></message>
+
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- lib/pkp/locale/en_US/editor.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<!-- Erklärung/Einleitung zur Editorial-Seite im workflow -->
+	<message key="editor.submission.editorial.introduction"></message>
+	<!-- Workflow: External Review, Section: Reviewers -->
+	<message key="editor.submission.review.reviewersDescription"></message>
+	<!-- Workflow: Editorial, Erklärung Final Draft Files/Proofread Files -->
+	<message key="editor.submission.editorial.finalDraftDescription"></message>
+	<!-- Workflow: Editorial, Erklärung Copyediting/Typeset Files -->
+	<message key="editor.submission.editorial.copyeditingDescription"></message>
+	<!-- workflow: External review, Revisions -> Files with incorporated revisions -->
+	<message key="editor.submission.revisions">Files with incorporated revisions</message>
+	<!-- workflow: External review, Erklärung zu Files with incorporated revisions -->
+	<message key="editor.submission.revisionsDescription">Please upload the revisions of the
+							submission files listed in "Files for Review" (see above).</message>
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- locale/en_US/editor.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<!-- Erklärung/Einleitung zur Submission-Seite im workflow -->
+	<message key="editor.submission.introduction"></message>
+	<!-- Erklärung/Einleitung zur Editorial-Seite im workflow -->
+	<message key="editor.submission.production.introduction"></message>
+	<!-- Workflow: Production, Erklärung zu Publication Formats -->
+	<message key="editor.monograph.production.publicationFormatDescription"></message>
+	<!-- Workflow: Production, Erklärung zu Production Ready Files -->
+	<message key="editor.submission.production.productionReadyFilesDescription"></message>
+	<!-- Workflow: External Review, Einleitung/Erklärung -->
+	<message key="editor.externalReview.introduction">Select reviewers and files to send out to the reviewers. After receiving the reviews, either decline the submission or inform the author about requested changes. The author will upload files with incorporated revisions, which will then be sent out for proofreading in the editorial stage.</message>
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- lib/pkp/locale/en_US/grid.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<!-- Workflow, tooltip von Accept Submission (ggf. Erklärung für conditional acceptance -->
+	<message key="grid.action.accept">Accept this submission</message>
+	<!-- Workflow:, upload Proofread Files: Erklärung -->
+	<message key="editor.submission.final.manageFinalDraftFilesDescription">Any files that have already been uploaded to any submission stage can be added to the Final Draft Files listing by checking the Include checkbox below and clicking Search: all available files will be listed and can be chosen for inclusion. Additional files not already uploaded to a stage can be added to the listing by clicking the Upload A Final Draft link.</message>
+
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- lib/pkp/locale/en_US/user.xml -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+	<!-- Workflow, tooltip von Accept Submission (ggf. Erklärung für conditional acceptance -->
+	<message key="user.salutation">Academic title</message>
+
+
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- noch einzuordnen -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+
+
+	
+
+
+<!--	<message key="editor.externalReview.introduction.lsp">You can decline the submission or accept it conditional upon the implementation of a set of changes.</message>-->
+	
+
+
+
+
+
+
+
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<!-- locals für Simplify Workflow -->
+	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 	<message key="plugins.generic.simplifyWorkflow.name">Simplify Workflow Plugin</message>
 	<message key="plugins.generic.simplifyWorkflow.description">A number of smaller modifications to increase usability</message>
 
-	<message key="common.subtitle.tip.lsp"></message>	
-	<message key="submission.rights.tip.lsp">The Language Scienc Press standard rights are CC-BY.</message>
-	<message key="editor.submission.introduction.lsp"></message>
-<!--	<message key="editor.externalReview.introduction.lsp">You can decline the submission or accept it conditional upon the implementation of a set of changes.</message>-->
-	<message key="editor.externalReview.introduction.lsp">Select reviewers and files to send out to the reviewers. After receiving the reviews, either decline the submission or inform the author about requested changes. The author will upload files with incorporated revisions, which will then be sent out for proofreading in the editorial stage.</message>
-	<message key="editor.submission.editorial.introduction.lsp"></message>
-	<message key="editor.submission.production.introduction.lsp"></message>
+
+
+
 
 </locale>

@@ -36,25 +36,31 @@ class SimplifyWorkflowPlugin extends GenericPlugin {
 		if (parent::register($category, $path)) {
 
 			if ($this->getEnabled()) {
+				$locale = AppLocale::getLocale();
+				$localeFiles = AppLocale::getLocaleFiles($locale);
+
+				HookRegistry::register('PKPLocale::registerLocaleFile', array(&$this, 'addAsTopLocale'));
+
 				HookRegistry::register ('TemplateManager::display',
 						array(&$this, 'handleDisplayTemplate'));
 				HookRegistry::register ('TemplateManager::include',
+
+				// set template
 						array(&$this, 'handleIncludeTemplate'));
-				HookRegistry::register ('catalogentryformatmetadataform::Constructor',
-						array(&$this, 'handlePublicationEntryForm'));									// Catalog popup, tab: PDF, BibTeX, ..
-				HookRegistry::register ('catalogentrycatalogmetadataform::Constructor',
-						array(&$this, 'handleCatalogEntryForm'));                               // Catalog popup, tab: Catalog
 				HookRegistry::register ('addparticipantform::Constructor',
 						array(&$this, 'handleAddParticipantForm')); 
-				// Catalog popup, tab: Monograph?? -> controllers/modals/submissionMetadata/form/catalogEntrySubmissionReviewForm.tpl
-				//HookRegistry::register ('catalogentrysubmissionreviewform::Constructor',
-				//		array(&$this, 'handleMonographEntryForm'));									
+				HookRegistry::register ('submissionfilesuploadform::Constructor', array(&$this, 
+									  'handleSubmissionFilesUploadForm'));
+				HookRegistry::register ('catalogentrycatalogmetadataform::Constructor',
+						array(&$this, 'handleCatalogEntryForm'));
+				HookRegistry::register ('catalogentryformatmetadataform::Constructor',
+						array(&$this, 'handlePublicationEntryForm'));
+
+
 				HookRegistry::register ('eventlogdao::_insertobject',
 						array(&$this, 'handleInsertObject'));
-				//HookRegistry::register('submissionsubmitstep3form::Constructor', array(&$this, 'handleConstructorForm3'));
 				HookRegistry::register('submissionsubmitstep3form::validate', array(&$this, 'handleAssignEditors'));
 				HookRegistry::register ('LoadHandler', array(&$this, 'handleOnLoadDeleteNotifications'));
-				HookRegistry::register ('submissionfilesuploadform::Constructor', array(&$this, 'handleSubmissionFilesUploadForm'));
 
 			}
 			return true;
@@ -68,6 +74,27 @@ $file = fopen("test.txt","a");
 fwrite($file,"\r\n include hook: ");
 fclose($file);*/
 
+
+	/* -> PKPLocale.inc.php, static function registerLocaleFile ($locale, $filename, $addToTop = false) */
+	/* workaround: warte bis zum letzten locale file und füge dann den localefile von simplifyWorkflow hinzug, 
+	   kann u.U. noch besser gelöst werden */
+	function addAsTopLocale($hookName, $args) {
+
+		$locale =& $args[0];
+		$localeFilename =& $args[1];
+ 
+		if ($localeFilename=="lib/pkp/locale/en_US/submission.xml" ||
+			$localeFilename=="locale/en_US/submission.xml" ||
+			$localeFilename=="locale/en_US/locale.xml" ||
+			$localeFilename=="lib/pkp/locale/en_US/user.xml" ||
+			$localeFilename=="lib/pkp/locale/en_US/common.xml" ||
+			$localeFilename=="lib/pkp/locale/en_US/grid.xml" ||
+			$localeFilename=="lib/pkp/locale/en_US/editor.xml" ||
+			$localeFilename=="locale/en_US/editor.xml") {
+			AppLocale::registerLocaleFile($locale, "plugins/generic/simplifyWorkflow/locale/en_US/locale.xml");
+		}
+	}
+
 	function handleAddParticipantForm($hookName, $args)  {
 
 		$form =& $args[0]; 
@@ -76,39 +103,6 @@ fclose($file);*/
 				'templates/coreAddParticipantFormModified.tpl'); 
 		return true;
 
-	}
-
-	function handleMonographEntryForm($hookName, $args) {
-
-		$form =& $args[0]; 
-
-		$form->setTemplate($this->getTemplatePath() . 
-				'templates/catalogEntrySubmissionReviewFormModified.tpl'); 
-		return true;
-	}
-
-	function handleInsertObject($hookName, $args) {
-
-		$sql =& $args[0]; 
-		$parameters =& $args[1];
-		$message = $parameters[5];
-
-		if ($message=='submission.event.fileUploaded') {
-
-			$simplifyWorkflowDAO = new SimplifyWorkflowDAO;
-			$simplifyWorkflowDAO->setTermsToOpenAcess();
-		}
-		return true;
-	}
-
-	function handleCatalogEntryForm($hookName, $args) {
-
-		$form =& $args[0]; 
-
-		$form->setTemplate($this->getTemplatePath() . 
-				'templates/catalogMetadataFormFieldsModified.tpl'); 
-
-		return true;
 	}
 
 	function handleSubmissionFilesUploadForm($hookName, $args) {
@@ -121,6 +115,15 @@ fclose($file);*/
 		return true;
 	}
 
+
+	function handleCatalogEntryForm($hookName, $args) {
+
+		$form =& $args[0]; 
+
+		$form->setTemplate($this->getTemplatePath() . 
+				'templates/catalogMetadataFormFieldsModified.tpl'); 
+		return true;
+	}
 
 	function handlePublicationEntryForm($hookName, $args) {
 
@@ -141,25 +144,20 @@ fclose($file);*/
 		if (!isset($params['smarty_include_tpl_file'])) return false;
 		switch ($params['smarty_include_tpl_file']) {
 			case 'core:submission/form/step1.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'templates/coreStep1Modified.tpl', 'text/html', 'TemplateManager::include');
+				$templateMgr->display($this->getTemplatePath() . 
+				'templates/coreStep1Modified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 			case 'core:submission/form/step3.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'templates/coreStep3Modified.tpl', 'text/html', 'TemplateManager::include');
+				$templateMgr->display($this->getTemplatePath() . 
+				'templates/coreStep3Modified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 			case 'core:submission/submissionMetadataFormFields.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'templates/coreSubmissionMetadataFormFieldsModified.tpl', 'text/html', 'TemplateManager::include');
+				$templateMgr->display($this->getTemplatePath() . 
+				'templates/coreSubmissionMetadataFormFieldsModified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 			case 'submission/form/categories.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'templates/categoriesModified.tpl', 'text/html', 'TemplateManager::include');
-				return true;
-			case 'core:submission/submissionMetadataFormTitleFields.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'templates/coreSubmissionMetadataFormTitleFieldsModified.tpl', 'text/html', 'TemplateManager::include');
-				return true;
-			case 'authorDashboard/submissionDocuments.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'templates/submissionDocumentsModified.tpl', 'text/html', 'TemplateManager::include');
-				return true;
-			case 'authorDashboard/stages/internalReview.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'templates/internalReviewModified.tpl', 'text/html', 'TemplateManager::include');
+				$templateMgr->display($this->getTemplatePath() . 
+				'templates/categoriesModified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 		}
 		return false;
@@ -175,11 +173,11 @@ fclose($file);*/
 
 			case 'workflow/submission.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/submissionModified.tpl', 'text/html', 'TemplateManager::display');
+				'templates/coreSubmissionModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
 			case 'workflow/editorial.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/editorialModified.tpl', 'text/html', 'TemplateManager::display');
+				'templates/coreEditorialModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
 			case 'workflow/production.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
@@ -193,6 +191,19 @@ fclose($file);*/
 		return false;
 	}
 
+	function handleInsertObject($hookName, $args) {
+
+		$sql =& $args[0]; 
+		$parameters =& $args[1];
+		$message = $parameters[5];
+
+		if ($message=='submission.event.fileUploaded') {
+
+			$simplifyWorkflowDAO = new SimplifyWorkflowDAO;
+			$simplifyWorkflowDAO->setTermsToOpenAcess();
+		}
+		return true;
+	}
 
 	function handleAssignEditors($hookName, $args) {
 
