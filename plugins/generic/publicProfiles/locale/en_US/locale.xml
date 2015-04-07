@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/publicProfiles/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2015 Carola Fanselow, FU Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for this plugin.
+  *
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.publicProfiles.displayName">Public Profiles Plugin</message>
+	<message key="plugins.generic.publicProfiles.description">Adds public profile for each user. </message>
+	<message key="plugins.generic.publicProfiles.title">Public profile</message>
+
+	<message key="plugins.generic.publicProfiles.settings">Settings</message>
+	<message key="plugins.generic.publicProfiles.settings.title">Settings of the Public Profiles Plugin</message>
+	<message key="plugins.generic.publicProfiles.settings.pathIntro">Path to the public profile page:</message>
+	<message key="plugins.generic.publicProfiles.settings.path">(e.g. user/publicProfile results in the path presspath/user/publicProfile/[user_id])</message>
+	<message key="plugins.generic.publicProfiles.settings.userGroupsIntro">What user groups shall be included in the public profile? Separate with commas.</message>
+	<message key="plugins.generic.publicProfiles.settings.userGroups">(e.g. Typesetter, Author, Proofreader)</message>
+
+	<message key="plugins.generic.publicProfiles.settings.onlyPublishedMonographs">Only published monographs will be included</message>
+	<message key="plugins.generic.publicProfiles.settings.unifiedStyleSheetForLinguistics">Use Unified Style Sheet for Linguistics</message>
+
+
+
+plugins.generic.publicProfiles.form.userGroupsIntro
+
+
+</locale>
