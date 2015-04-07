@@ -20,9 +20,25 @@
 	
 </script>
 
+{** Carola Fanselow: the first download link ($downloadUrl) is used for the cover image **}
+{if $availableFiles|@count != 0}
+    {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+    {if $publicationFormats[0]->getIsAvailable()}
+        {assign var="publicationFormatId" value=$publicationFormats[0]->getId()}
+        {assign var="availableFilesPF" value=$availableFiles[$publicationFormatId]}
+        {assign var="availableFile" value=$availableFilesPF[0]}
+        {if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
+            {url|assign:downloadUrl op="view" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
+        {else}
+            {url|assign:downloadUrl op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
+        {/if}
+    {/if}
+{/if} 
+{** end carola **}
+
 <div class="bookSpecs">
 	{assign var=coverImage value=$publishedMonograph->getCoverImage()}
-	<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$bookImageLinkUrl}"><img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}" /></a>
+	<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$downloadUrl}"><img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}" /></a>
 	<div class="bookAccordion">
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
@@ -57,9 +73,9 @@
 							{assign var=middleName value=$author->getMiddleName()}
 							{assign var=lastName value=$author->getLastName()}
 							{if $i == 0}
-								{$firstName|escape} {$middleName|escape} {$lastName|escape}
+								{$firstName|escape} {$middleName|escape} {$lastName}
 							{elseif $i}
-								&amp; {$lastName|escape}, {$middleName|escape} {$firstName|escape}
+								&amp; {$lastName|escape}, {$middleName|escape} {$firstName}
 							{/if}
 						{/if}
 					{/foreach}
@@ -72,9 +88,9 @@
 							{assign var=middleName value=$author->getMiddleName()}
 							{assign var=lastName value=$author->getLastName()}
 							{if $i == 0}
-								{$firstName|escape} {$middleName|escape} {$lastName|escape}
+								{$firstName|escape} {$middleName|escape} {$lastName}
 							{elseif $i}
-								&amp; {$lastName|escape}, {$middleName|escape} {$firstName|escape}
+								&amp; {$lastName|escape}, {$middleName|escape} {$firstName}
 							{/if}
 							{assign var=authorsDisplayed value=$authorsDisplayed+1}
 						{/if}
@@ -87,7 +103,7 @@
 				
 				{assign var=datePublished value="????"}
 				
-				{if $publishedMonograph->getDatePublished()}{assign var=datePublished value= $publishedMonograph->getDatePublished()|date_format:'%Y'}.{/if}
+				{if $publishedMonograph->getDatePublished()}{assign var=datePublished value= $publishedMonograph->getDatePublished()|date_format:'%Y'}{/if}
 				
 				{$datePublished}
 				
