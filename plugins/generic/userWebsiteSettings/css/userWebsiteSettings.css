@@ -1,0 +1,27 @@
+/* 
+  * plugins/generic/userWebsiteSettings/css/userWebsiteSettings.css
+  *
+  * Copyright (c) 2015 Carola Fanselow, FU Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * style sheet for the User website settings plugin
+}*/
+
+#langsciUserWebsiteSettings li{
+	display:block !important;
+	float:none !important;
+}
+
+#langsciUserWebsiteSettings p.intro {
+	font-weight: bold;
+}
+
+#langsciUserWebsiteSettings div.links {
+	padding-left: 25px;
+}
+
+
+
+
+
+

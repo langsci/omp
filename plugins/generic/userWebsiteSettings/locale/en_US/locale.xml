@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/userWebsiteSettings/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2015 Carola Fanselow
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for this plugin.
+  *
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.userWebsiteSettings.displayName">User Website Settings Plugin</message>
+	<message key="plugins.generic.userWebsiteSettings.description">Adds a page to allow users to configure their individual website settings.</message>
+	<message key="plugins.generic.userWebsiteSettings.title">My website settings</message>
+
+
+	<message key="plugins.generic.userWebsiteSettings.settings">Settings</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.title">Settings of the User Website Settings Plugin</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.pathIntro">Path to the user website settings page:</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.path">(e.g. user/websiteSettings results in the path presspath/user/websiteSettings)</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.publicProfile">Ask if the user wants a public profile.</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.email">Ask if the user wants to add his/her email address to the public profile.</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.hallOfFame">Ask if the user wants to be included in the hall of fame.</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.profileImage">Allow profile image upload.</message>
+	<message key="plugins.generic.userWebsiteSettings.settings.saved">Your changes have been saved.</message>
+
+	<message key="plugins.generic.userWebsiteSettings.intro">Configure your personal website settings here:</message>
+
+
+</locale>
