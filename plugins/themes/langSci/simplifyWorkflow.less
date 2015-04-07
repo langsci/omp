@@ -1,0 +1,234 @@
+/* Anfang Simplify Workflow */
+
+
+
+/* NOCH BEARBEITEN!!! */
+/* noch ändern!: move to buttons to the right und danach in den richtigen Abschnitt einordnen */
+#editor_decision_actions_1 {
+	padding-left: 330px;
+}
+
+#editor_decision_actions_3 {
+	padding-left: 445px;
+}
+
+#editor_decision_actions_4 {
+	padding-left: 625px;
+}
+
+/* noch ändern!: Accept Submission: keine Files ins Editorial schicken, Editorila: keine Files nach Production schicken prüfen, ob
+nur diese beiden Abschnitte davon betroffen sind! */
+#promote #availableFiles  {
+	display:none;
+}
+
+/* in catalog metadata, kann nicht auskommentiert werden, da es immer wieder eingelesen wird 
+.LSP #productCompositionCode {
+	display:none;
+}*/
+
+/* start typing Feld in "add reviewer" größer */
+#searchByNameReviewerForm #reviewerId_container  input{
+ font-size: 15px;
+}
+
+/* advanced search funktioniert nicht -> Link ausblenden */
+#searchByNameReviewerForm .action_links a:nth-child(1){
+	display:none;
+}
+
+/* buttons auf "Information for Authors" */
+.LSPconverterButtonBrowse {
+	height: 30px !important;
+}
+
+/* buttons auf "Information for Authors" */
+.LSPconverterButtonSubmit {
+	height: 30px !important;
+	margin-left: 4px;
+	padding-right: 7px;
+}
+
+/* SUBMISSION PROCESS */
+
+
+ #submitTabs  #submitStep1Form #cancelFormButton,
+ #submitTabs  #submitStep2Form #cancelFormButton,
+ #submitTabs  #submitStep3Form #cancelFormButton {
+	display:none;
+}
+
+#submitTabs #submitStep1Form #LSPcancelLink {
+	padding-top: 10px;
+	float:left;
+}
+
+#submitTabs #submitStep1Form #LSPstep1Buttons {
+	float:right;
+}
+
+/* WORKFLOW */
+
+/* remove Link "Internal Review" in submission workflow*/
+ul.submission_progress li:nth-child(2) {
+	display:none;
+}
+
+/* SUBMISSION STAGE */
+
+/* remove button "send to internal review" in submission stage */
+#submissionWorkflow #submissionEditorDecisionsDiv #editor_decision_actions_1 a:nth-child(1)  {
+	display:none;
+}
+
+/* style button "send to external review" in submission stage */
+#submissionWorkflow #submissionEditorDecisionsDiv  #editor_decision_actions_1 a:nth-child(2)  {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+/* EXTERNAL REVIEW */
+
+/* Tabelle anzeigen
+#submissionWorkflow #reviewTabs table tr,#submissionWorkflow #reviewTabs table th,#submissionWorkflow #reviewTabs table td{
+	border: 1px solid blue;
+}*/
+
+/* remove button "request revisions" in review stage */
+#submissionWorkflow #reviewTabs  #editor_decision_actions_3 a:nth-child(1)  {
+	display:none;
+}
+
+/* remove button "resubmit for review" in review stage */
+#submissionWorkflow #reviewTabs  #editor_decision_actions_3 a:nth-child(2)  {
+	display:none;
+}
+
+/* style button "accept submission" in review stage */
+#submissionWorkflow #reviewTabs #editor_decision_actions_3 a:nth-child(3)  {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+/* External Review, alle Tabllen: Header weg */
+#submissionWorkflow #reviewTabs table thead tr th{
+	display:none;
+}
+
+/* External Review, alle Tabllen: zweite Spalte verstecken */
+#submissionWorkflow #reviewTabs table tbody tr td:nth-child(2) {
+
+	visibility: hidden;
+}
+
+/* External Review, alle Tabllen: dritte Spalte verstecken */
+#submissionWorkflow #reviewTabs table tbody tr td:nth-child(3) {
+
+	visibility: hidden;	
+}
+
+#submissionWorkflow #reviewTabs .pkp_grid_description {
+	padding-bottom: 0px;
+}
+
+.ui-widget-content li a{
+color: black !important;
+font-size: 100% !important;
+background:white !important;
+} 
+
+/* EDITORIAL */
+
+/* Editorial, oben, remove name, element*/
+#submissionWorkflow #editorial #finalDraftGrid table thead tr th {
+	display:none;
+}
+
+/* Editorial, oben, element name */
+#submissionWorkflow #editorial #finalDraftGrid table tr td:nth-child(2) {
+	display:none;
+}
+
+/* Editorial, oben, description text */
+#submissionWorkflow #editorial #finalDraftGrid p.pkp_grid_description {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+
+/* Editorial, unten, remove Assign Auditor */
+#submissionWorkflow #editorial #copyeditingGrid  .grid_header_bar a:nth-child(2) {
+	display:none;
+}
+
+
+/* Editorial, unten, remove "no files" und "no items" */
+#submissionWorkflow #editorial #copyeditingGrid tbody.category_placeholder {
+display:none !important;
+}
+
+/* Editorial, unten, remove considered, approved*/
+#submissionWorkflow #editorial #copyeditingGrid table thead tr th{
+		display:none;
+}
+
+/* Editorial, unten, Hintergrundfarbe Filelist */
+#submissionWorkflow #editorial #copyeditingGrid table  tbody tr{
+	background-color:white;
+}
+
+/* Editorial, unten, description text */
+#submissionWorkflow #editorial #copyeditingGrid p.pkp_grid_description {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+
+/* PRODUCTION */
+
+/* remove checkboxes Proof, Catalog, Available from publication format element 
+#publicationFormats th:nth-child(2),#publicationFormats th:nth-child(3),#publicationFormats th:nth-child(4),
+#publicationFormats td:nth-child(2),#publicationFormats td:nth-child(3),#publicationFormats td:nth-child(4) {
+	display:none;
+}*/
+
+/* Production: links assign auditor und document library weg */
+#submissionWorkflow #production #publicationFormatTabsContainer .grid_header_bar a:nth-child(2),
+#submissionWorkflow #production #publicationFormatTabsContainer .grid_header_bar a:nth-child(3) {
+	display:none;
+}
+
+/*  Production, Publication Formats, remove "auditors" */
+#submissionWorkflow #production #publicationFormatTabsContainer tbody.category_placeholder {
+	display:none;
+}
+
+/* Production: considered header weg*/
+#submissionWorkflow #production #publicationFormatTabsContainer table thead tr th:nth-child(3){
+	display:none;
+	
+}
+
+/* Production: considered body weg*/
+#submissionWorkflow #production #publicationFormatTabsContainer table tbody tr.gridRow td:nth-child(2){
+	display:none;
+}
+
+
+/* Production, unten, remove considered, approved*/
+#submissionWorkflow #production #publicationFormatTabsContainer table  tbody tr{
+	background-color:white;
+}
+
+/* ausgeblendete Texte wieder einblenden und Frage lösen, warum das manchmal ausgeschaltet wird! */
+.pkp_help {
+	display:block !important;
+}
+
+.pkp_grid_description {
+	display:block !important;
+}
+
+
+/* Ende Simplify Workflow */
+

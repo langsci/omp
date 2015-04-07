@@ -12,7 +12,7 @@
 @import url("pnotify.less");
 @import url("superfish.less");
 @import url("responsive.less");
-
+@import url("simplifyWorkflow.less");
 
 @color_header: #63bee1;
 
@@ -162,7 +162,7 @@ border: 2px solid #92d2ea;
 
 
 .pkp_structure_main ul li, .pkp_structure_main ol ul li {
-list-style-type : disc;
+	list-style-type : none;
 }
 
 
@@ -775,6 +775,17 @@ a.task:hover {
 
 
 /* Ende testversion-css */
+
+
+/* ausgeblendete Texte wieder einblenden und Frage lösen, warum das manchmal ausgeschaltet wird! */
+.pkp_help {
+	display:block !important;
+}
+
+.pkp_grid_description {
+	display:block !important;
+}
+/* ende */
 
 
 
