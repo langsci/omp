@@ -1,0 +1,41 @@
+#sign a.privacyStatement {
+	float:right;
+}
+
+#sign div.sign_inputs {
+	height:60px;
+}
+
+#sign #registerUserInfos {
+	padding-left:25px;
+}
+
+
+#sign #selectCountry {
+	width: 210px;
+}
+
+#sign label.labelSelect {
+	font-weight: normal;
+	font-size: 14px;
+	color: #999;
+}
+
+#sign #inputCaptcha {
+	width: 200px;
+}
+
+#sign div.footnotes {
+	font-size: 12px;
+}
+
+#sign div.footnotes p{
+	padding:0 ;
+}
+
+#sign #captchSection {
+	padding-left:25px;
+
+}
+
+

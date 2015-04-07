@@ -1,0 +1,41 @@
+
+
+#subscriptionDetails li{
+	display:block !important;
+	float:none !important;
+}
+
+#subscriptionDetails #reviewerQuestions {
+	display:none;
+	padding: 20px 0px 20px 30px;
+}
+/*
+#subscriptionDetails #reviewerQuestionText {
+	float:left;
+	width: 280px;
+	padding-left: 25px;
+	padding-bottom: 40px;
+	background-color:yellow;
+}*/
+
+#subscriptionDetails #inputOtherLanguage {
+	width: 200px;
+	height: 20px;
+}
+
+#subscriptionDetails #selectArea1,#selectArea2,#selectArea3 {
+	width: 300px;
+}
+
+#subscriptionDetails #reviewLanguageIntro {
+	padding-top: 20px;
+}
+
+#subscriptionDetails #reviewLanguageList {
+	padding-top: 10px;
+}
+
+
+
+
+

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2014 Carola Fanselow Freie Universität Berlin
+  * Distributed under the GNU GPL v2. 
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+-->
+
+<locale name="en_US" full_name="U.S. English">
+
+<message key="plugins.generic.registerPage.displayName">Register Plugin</message>
+<message key="plugins.generic.registerPage.description">Modifies OMP-Registering</message>
+<message key="plugins.generic.registerPage.title">Register with Language Science Press</message>
+<message key="plugins.generic.registerPage.intro1">I want to register with Languages Science Press:</message>
+<message key="plugins.generic.registerPage.intro2">I want to support Language Science Press as:</message>
+<message key="plugins.generic.registerPage.intro3">I want to subscribe to:</message>
+<message key="plugins.generic.registerPage.intro4">Please verify that you are human:</message>
+<message key="plugins.generic.registerPage.intro5">Confirmation:</message>
+<message key="plugins.generic.registerPage.privacyStatement">Privacy Statement</message>
+
+<message key="plugins.generic.registerPage.label.academicTitle"><![CDATA[Academic title<sup>1</sup>]]></message>
+<message key="plugins.generic.registerPage.label.firstName">First name</message>
+<message key="plugins.generic.registerPage.label.lastName">Last name</message>
+<message key="plugins.generic.registerPage.label.username"><![CDATA[Username<sup>2</sup>]]></message>
+<message key="plugins.generic.registerPage.label.password1">Password</message>
+<message key="plugins.generic.registerPage.label.password2">Repeat password</message>
+<message key="plugins.generic.registerPage.label.affiliation">Affiliation</message>
+<message key="plugins.generic.registerPage.label.emailAddress">Email address</message>
+<message key="plugins.generic.registerPage.label.personalHomepageURL">Personal homepage URL</message>
+<message key="plugins.generic.registerPage.label.country">Country</message>
+
+<message key="plugins.generic.registerPage.contentPrivacyStatement">The names and email addresses entered in this press
+		site will be used exclusively for the stated purposes of this press and will not be made available for any
+		other purpose or to any other party.</message>
+<message key="plugins.generic.registerPage.footnote0"><![CDATA[
+		<span class="required">*</span>  Denotes req field.]]></message>
+<message key="plugins.generic.registerPage.footnote1"><![CDATA[
+		1  Please use your degree, e.g. <span class="italic">Dr</span>, rather than your job title, e.g <span class="italic">lecturer</span>.]]></message>
+<message key="plugins.generic.registerPage.footnote2"><![CDATA[
+		2 The username must contain only lowercase letters, numbers, and hyphens/underscores.]]></message>
+
+
+
+
+
+<message key="plugins.generic.registerPage.checkboxSupporter"><![CDATA[
+		Public supporter (my name will be listed on the public <a href="{$pressUrl}about/supporters">supporter page</a>).]]></message>
+<message key="plugins.generic.registerPage.checkboxReader"><![CDATA[
+		Reader]]></message> 
+<message key="plugins.generic.registerPage.checkboxAuthor"><![CDATA[
+		Author (<a href="{$pressUrl}information/forAuthors">more information</a>)]]></message>
+<message key="plugins.generic.registerPage.checkboxVolumeEditor"><![CDATA[
+		Volume Editor (<a href="{$pressUrl}information/forAuthors">more information</a>)]]></message>
+<message key="plugins.generic.registerPage.checkboxReviewer"><![CDATA[
+		Reviewer]]></message>
+<message key="plugins.generic.registerPage.checkboxProofreader"><![CDATA[
+		Proofreader and subscribe to the LangSci proofreader mailing list.]]></message>
+<message key="plugins.generic.registerPage.checkboxTypesetter"><![CDATA[
+		L<sup>A</sup>T<sub>E</sub>X Typesetter and subscribe to the LangSci typesetter mailing list.]]></message>
+
+
+
+
+
+<message key="plugins.generic.registerPage.checkboxNewsletter">LangSci newsletter</message>
+<message key="plugins.generic.registerPage.checkboxML">LangSci general mailing list</message>
+<message key="plugins.generic.registerPage.checkboxConfirmation">Send me a confirmation email including my username and password</message>
+
+
+<message key="plugins.generic.registerPage.captcha">Please answer the following question to demonstrate that you are not a machine run by spammers. Just give the obvious answer.</message>
+<message key="plugins.generic.registerPage.captchaError"><![CDATA[<span class="req">Answer not correct!</span>]]></message>
+
+<message key="plugins.generic.registerPage.primaryArea"><![CDATA[Primary area<span class="req">*</span> (Suggest a new area):]]></message>
+<message key="plugins.generic.registerPage.secondaryArea">Secondary area:</message>
+<message key="plugins.generic.registerPage.tertiaryArea">Tertiary area:</message>
+
+<message key="plugins.generic.registerPage.reviewLanguage"><![CDATA[Review language<span class="req">*</span>:]]></message>
+<message key="plugins.generic.registerPage.checkboxEnglish"><![CDATA[English]]></message>
+<message key="plugins.generic.registerPage.checkboxGerman"><![CDATA[German]]></message>
+<message key="plugins.generic.registerPage.checkboxFrench"><![CDATA[French]]></message>
+<message key="plugins.generic.registerPage.checkboxOther"><![CDATA[Other: ]]></message>
+
+<message key="plugins.generic.registerPage.requiredAcademicTitle"><![CDATA[<span class="req">An academic title is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredFirstName"><![CDATA[<span class="req">A first name is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredLastName"><![CDATA[<span class="req">A last name is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredUsername"><![CDATA[<span class="req">A username is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredPassword"><![CDATA[<span class="req">A password is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredPassword2"><![CDATA[<span class="req">It's required to repeat the password.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredAffiliation"><![CDATA[<span class="req">An affiliation is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredEmailAddress"><![CDATA[<span class="req">An email address is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredArea1"><![CDATA[<span class="req">A primary area is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredLanguage"><![CDATA[<span class="req">At least one reviewing language is required.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredPasswordsMatch"><![CDATA[<span class="req">Passwords don't match.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredEmailValid"><![CDATA[<span class="req">Email not valid.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredUrlValid"><![CDATA[<span class="req">Url not valid.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredUsernameUnique"><![CDATA[<span class="req">Username already in use.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredEmailUnique"><![CDATA[<span class="req">Email already in use.</span>]]></message>
+
+
+<message key="plugins.generic.registerPage.requiredUsernameAlphanumeric"><![CDATA[<span class="req">Username must only contain lowercase letters, numbers, and hyphens/underscores.</span>]]></message>
+<message key="plugins.generic.registerPage.requiredPassword6Characters"><![CDATA[<span class="req">Password is not long enough.</span>]]></message>
+
+<message key="plugins.generic.registerPage.finished">Thank you for registering with Language Science Press! Please activate your account by clicking the link in the verification mail sent to you.</message>
+
+<message key="plugins.generic.registerPage.accountActivated">You have activated your account and can now login.</message>
+
+<message key="plugins.generic.registerPage.activationFailed">The activation of your account failed. Please contact Language Science Press.</message>
+
+<message key="plugins.generic.title.subscriptions">My Subscriptions and User Groups</message>
+<message key="plugins.generic.title.websiteSettings">My Website Settings</message>
+<message key="plugins.generic.title.achievements">My Achievements</message>
+<message key="plugins.generic.title.reviewConfigurations">My Review Configurations</message>
+<message key="plugins.generic.title.publicProfile">User Profile</message>
+
+
