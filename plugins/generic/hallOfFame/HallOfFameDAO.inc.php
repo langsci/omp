@@ -94,7 +94,7 @@ class HallOfFameDAO extends DAO {
 				$result = $this->retrieve(
 				'SELECT COUNT(*) AS number_of_entries, user_id from stage_assignments WHERE
 				user_group_id = '.$user_group_id.' AND
-				submission_id IN (SELECT submission_id FROM published_submissions) 
+				submission_id IN (SELECT submission_id FROM published_submissions WHERE date_published IS NOT NULL) 
 				GROUP BY user_id
 				ORDER BY number_of_entries DESC,user_id'
 			);
@@ -112,7 +112,7 @@ class HallOfFameDAO extends DAO {
 			$result = $this->retrieve(
 				'SELECT COUNT(*) AS number_of_entries, user_id from stage_assignments WHERE
 				user_group_id = '.$user_group_id.' AND
-				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions)) 
+				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions WHERE date_published IS NOT NULL)) 
 				GROUP BY user_id
 				ORDER BY number_of_entries DESC,user_id'
 			);
@@ -144,7 +144,7 @@ class HallOfFameDAO extends DAO {
 				"SELECT submission_id FROM stage_assignments WHERE
 				user_id = " . $user_id . " AND
 				user_group_id=" . $user_group_id . " AND
-				submission_id IN (SELECT submission_id FROM published_submissions)"
+				submission_id IN (SELECT submission_id FROM published_submissions WHERE date_published IS NOT NULL)"
 			);
 		} else {
 
@@ -158,7 +158,7 @@ class HallOfFameDAO extends DAO {
 				'SELECT submission_id FROM stage_assignments WHERE
 				user_id = ' . $user_id . ' AND
 				user_group_id=' . $user_group_id . ' AND
-				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions))'
+				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions WHERE date_published IS NOT NULL))'
 			);
 
 		}

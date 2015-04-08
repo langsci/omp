@@ -301,7 +301,8 @@ class HallOfFameHandler extends Handler {
 			if (sizeof($pubformats)>0) {
 				for ($i=0; $i<sizeof($pubformats); $i++) {
 					$formatName = implode($pubformats[$i]->getName());
-					if ($formatName="PDF") {
+
+					if ($formatName=="PDF" || $formatName=="Complete" || $formatName==".") {
 						$pubdates = $pubformats[$i] -> getPublicationDates();
 						$pubdatesArray = $pubdates->toArray();
 						for ($ii=0;$ii<sizeof($pubdatesArray);$ii++) {
