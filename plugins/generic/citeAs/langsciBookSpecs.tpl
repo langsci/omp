@@ -20,9 +20,11 @@
 	
 </script>
 
+
 {** Carola Fanselow: the first download link ($downloadUrl) is used for the cover image **}
 {if $availableFiles|@count != 0}
     {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+    {if $publicationFormats|@count>0}
     {if $publicationFormats[0]->getIsAvailable()}
         {assign var="publicationFormatId" value=$publicationFormats[0]->getId()}
         {assign var="availableFilesPF" value=$availableFiles[$publicationFormatId]}
@@ -33,7 +35,8 @@
             {url|assign:downloadUrl op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
         {/if}
     {/if}
-{/if} 
+    {/if}
+{/if}
 {** end carola **}
 
 <div class="bookSpecs">
