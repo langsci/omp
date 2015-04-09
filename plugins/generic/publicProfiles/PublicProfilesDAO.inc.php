@@ -167,7 +167,7 @@ class PublicProfilesDAO extends DAO {
 				"SELECT submission_id FROM stage_assignments WHERE
 				user_id = " . $user_id . " AND
 				user_group_id=" . $user_group_id . " AND
-				submission_id IN (SELECT submission_id FROM published_submissions)"
+				submission_id IN (SELECT submission_id FROM published_submissions WHERE date_published IS NOT NULL)"
 			);
 
 		} else {

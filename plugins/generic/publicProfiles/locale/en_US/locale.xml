@@ -16,6 +16,10 @@
 	<message key="plugins.generic.publicProfiles.displayName">Public Profiles Plugin</message>
 	<message key="plugins.generic.publicProfiles.description">Adds public profile for each user. </message>
 	<message key="plugins.generic.publicProfiles.title">Public profile</message>
+	<message key="plugins.generic.publicProfiles.notLoggedIn.title">No access</message>
+	<message key="plugins.generic.publicProfiles.message"><![CDATA[You must be logged in to view the public profiles. Go to the <a href="{$pressPath}/login">login page</a> to log in or to the <a href="{$pressPath}/user/register">register page</a> to register.]]></message>
+
+
 
 	<message key="plugins.generic.publicProfiles.settings">Settings</message>
 	<message key="plugins.generic.publicProfiles.settings.title">Settings of the Public Profiles Plugin</message>
@@ -26,10 +30,5 @@
 
 	<message key="plugins.generic.publicProfiles.settings.onlyPublishedMonographs">Only published monographs will be included</message>
 	<message key="plugins.generic.publicProfiles.settings.unifiedStyleSheetForLinguistics">Use Unified Style Sheet for Linguistics</message>
-
-
-
-plugins.generic.publicProfiles.form.userGroupsIntro
-
 
 </locale>

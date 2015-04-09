@@ -22,16 +22,27 @@ class PublicProfilesHandler extends Handler {
 
 	function viewPublicProfile($args, $request) {
 
-		// page is only processed if a user is logged in 
+		$templateMgr = $this->getTemplateManager($request);
+		$press = $request -> getPress();
+
+		// if no user is logged in: display information and link to log in page/register page
 		$user = $request->getUser();
 		if (!$user) {
-			$request->redirect('index');
+			$publicProfilesPlugin = PluginRegistry::getPlugin('generic', PUBLICPROFILES_PLUGIN_NAME);
+			$templateMgr->assign('pageTitle', 'plugins.generic.publicProfiles.notLoggedIn.title');
+			$templateMgr->assign('pressPath', $this -> getPressPath($request));
+			$templateMgr->display($publicProfilesPlugin->getTemplatePath().'notLoggedIn.tpl');
 		}
 
-		// get profile user id from url
-		$userId = substr($request->getCompleteUrl(),-strpos(strrev($request->getCompleteUrl()),"/"));
+		// get profile user id from url (last string in the url)
+		$requestedUrl = $request->getCompleteUrl();
+		if (substr($requestedUrl, -1)=="/") {
+			$requestedUrl = substr($requestedUrl,0,strlen($requestedUrl)-1);
+		}
+		$userId = substr($requestedUrl,-strpos(strrev($requestedUrl),"/"));
+
 		if (!ctype_digit ($userId)) {
-			$request->redirect('index');
+			$request->redirect($press->getPath());			
 		} 
 
 		// get setting variables
@@ -104,7 +115,6 @@ class PublicProfilesHandler extends Handler {
 			
 		}
 
-		$templateMgr = $this->getTemplateManager($request);
 		$templateMgr->assign('pageTitle', 'plugins.generic.publicProfiles.title');
 		$templateMgr->assign('showProfile', $showProfile);
 
@@ -264,7 +274,7 @@ class PublicProfilesHandler extends Handler {
 			if (sizeof($pubformats)>0) {
 				for ($i=0; $i<sizeof($pubformats); $i++) {
 					$formatName = implode($pubformats[$i]->getName());
-					if ($formatName="PDF") {
+					if ($formatName=="PDF"||$formatName=="complete"||$formatName==".") {
 						$pubdates = $pubformats[$i] -> getPublicationDates();
 						$pubdatesArray = $pubdates->toArray();
 						for ($ii=0;$ii<sizeof($pubdatesArray);$ii++) {
