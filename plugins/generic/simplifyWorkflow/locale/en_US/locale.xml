@@ -21,7 +21,8 @@
 	<message key="monograph.proofReadingDescription">These are the files that are downloadable from the catalog - if they are approved and metadata for the publication format is included in the catalog entry for this book.</message>
 	<!-- workflow, catalog popup Erklärung -->
 	<message key="catalog.manage.entryDescription">To list a book in the catalog, select the Content tab and fill in the necessary information. Information for each of the book’s formats can be included in the catalog entry by selecting the tab for the format. The metadata specifications are based on ONIX for Books which is an international standard used by the book industry for communication product information.</message>
-
+	<!-- book catalog, download tab -->
+	<message key="catalog.loginRequiredForPayment"></message>
 
 	<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
 	<!-- überschreibe locals aus lib/pkp/locale/en_US/common.xml -->
