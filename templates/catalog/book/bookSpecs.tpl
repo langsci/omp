@@ -16,7 +16,7 @@
 </script>
 
 {** Carola Fanselow: the first download link ($downloadUrl) is used for 
-the cover image **}
+the cover image 
 {if $availableFiles|@count != 0}
      {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
      {if $publicationFormats|@count>0}
@@ -35,7 +35,7 @@ the cover image **}
 		{/if}
      {/if}
      {/if}
-{/if}
+{/if}**}
 
 
 <div class="bookSpecs">
