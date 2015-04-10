@@ -15,9 +15,32 @@
 	{rdelim});
 </script>
 
+{** Carola Fanselow: the first download link ($downloadUrl) is used for 
+the cover image **}
+{if $availableFiles|@count != 0}
+     {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+     {if $publicationFormats|@count>0}
+     {if $publicationFormats[0]->getIsAvailable()}
+         {assign var="publicationFormatId" value=$publicationFormats[0]->getId()}
+         {assign var="availableFilesPF" value=$availableFiles[$publicationFormatId]}
+		 {if $availableFilesPF|@count>0}
+         	{assign var="availableFile" value=$availableFilesPF[0]}
+         	{if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
+            	 {url|assign:downloadUrl op="view"
+					path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
+         	{else}
+            	 {url|assign:downloadUrl op="download" 
+					path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
+         	{/if}
+		{/if}
+     {/if}
+     {/if}
+{/if}
+
+
 <div class="bookSpecs">
 	{assign var=coverImage value=$publishedMonograph->getCoverImage()}
-	<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$bookImageLinkUrl}"><img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}" /></a>
+	<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$downloadUrl}"><img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}" /></a>
 	<div id="bookAccordion">
 		<h3><a href="#">{translate key="catalog.publicationInfo"}</a></h3>
 		<div class="publicationInfo">
