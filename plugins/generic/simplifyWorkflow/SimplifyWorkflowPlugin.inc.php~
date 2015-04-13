@@ -232,7 +232,7 @@ fclose($file);*/
 			$simplifyWorkflowDAO->assignParticipant($submission_id,$seriesEditorId,$seriesEditors[$i]);
 		}
 	
-		// add standard values: publication format: names, digital, physical_format, composition code:00
+		// add standard values: publication format: PDF, digital, physical_format, composition code:00
 		// entry key: DA, ... ,rights: CC-BY
 		$simplifyWorkflowDAO->addStandardValuesAfterSubmit($submission_id);
 
