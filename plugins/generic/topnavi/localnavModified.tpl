@@ -54,7 +54,7 @@
 	{if $currentPress}
 
 		{* Carola Fanselow: Link to blog added for Language Science Press*}
-		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="blog"}">Blog</a>
+		<li><a href="http://userblogs.fu-berlin.de/langsci-press/">Blog</a>
 
 	{/if}
 {/capture}
@@ -158,8 +158,8 @@
 								</ul>
 							</li>
 
-							{* Carola Fanselow: Link to group mail added for Language Science Press *}
-							<li><a href="{url router=$smarty.const.ROUTE_PAGE page="management" op="groupMail"}">Group Mail</a></li>
+							{* Carola Fanselow: Link to group mail added for Language Science Press 
+							<li><a href="{url router=$smarty.const.ROUTE_PAGE page="management" op="groupMail"}">Group Mail</a></li>*}
 
 							{/if}
 						</ul>
@@ -167,7 +167,7 @@
 				{/if}{* ROLE_ID_MANAGER || ROLE_ID_SUB_EDITOR *}
 			{/if}
 			{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR, ROLE_ID_ASSISTANT, ROLE_ID_REVIEWER, ROLE_ID_AUTHOR), $userRoles)}
-				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="dashboard"}">{translate key="navigation.dashboard"}</a></li>
+				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="dashboard"}">Panel</a></li>
 			{/if}
 
 		</ul>
