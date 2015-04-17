@@ -12,10 +12,10 @@
   -->
 
 <locale name="en_US" full_name="U.S. English">
-	<message key="plugins.generic.hallOfFame.displayName">Hall Of Fame</message>
+	<message key="plugins.generic.hallOfFame.displayName">Hall of Fame</message>
 	<message key="plugins.generic.hallOfFame.description">Adds a page that displays users' achievements</message>
-	<message key="plugins.generic.hallOfFame.title">Hall Of Fame</message>
-	<message key="plugins.generic.hallOfFame.settings.title">Settings of the Hall of Fame Plugin</message>
+	<message key="plugins.generic.hallOfFame.title">Hall of Fame</message>
+	<message key="plugins.generic.hallOfFame.settings.title">Settings of the Hall of Fame plugin</message>
 	<message key="plugins.generic.hallOfFame.settings">Settings</message>
 	<message key="plugins.generic.hallOfFame.intro">The following people already supported our press. Each star signifies one monograph. Click on the name to get the list of the monograph(s) a person worked on.</message>
 
@@ -29,6 +29,6 @@
 
 	<message key="plugins.generic.hallOfFame.form.onlyPublishedMonographs">Only published monographs will be included</message>
 	<message key="plugins.generic.hallOfFame.form.linksToPublicProfile">Add links to public profiles</message>
-	<message key="plugins.generic.hallOfFame.form.unifiedStyleSheetForLinguistics">Use Unified Style Sheet for Linguistics</message>
+	<message key="plugins.generic.hallOfFame.form.unifiedStyleSheetForLinguistics">Use unified style sheet for linguistics</message>
 
 </locale>
