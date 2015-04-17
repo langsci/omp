@@ -158,9 +158,6 @@
 								</ul>
 							</li>
 
-							{* Carola Fanselow: Link to group mail added for Language Science Press 
-							<li><a href="{url router=$smarty.const.ROUTE_PAGE page="management" op="groupMail"}">Group Mail</a></li>*}
-
 							{/if}
 						</ul>
 					</li>
