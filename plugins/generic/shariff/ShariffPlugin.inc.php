@@ -54,13 +54,27 @@ class ShariffPlugin extends GenericPlugin {
 		
 		$output .= '
 		<link rel="stylesheet" href="'. Request::getBaseUrl() .'/'. $this->getPluginPath().'/css/shariff.min.css" type="text/css" />
-		<div class="shariff" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;flattr&quot;]"  data-backend-url="/shariff-backend/" data-url="http://test.langsci-press.org"></div> <script src="'. Request::getBaseUrl() .'/'. $this->getPluginPath().'/shariff.complete.js"></script>';
+		<div class="shariff" data-lang="en" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;flattr&quot;]"  data-backend-url="/shariff-backend/" data-url="http://test.langsci-press.org"></div> <script src="'. Request::getBaseUrl() .'/'. $this->getPluginPath().'/shariff.complete.js"></script>';
 		
 		return false;
 	}
 	
+	/**
+	 * Get the name and the path of the css file.
+	 * @return string
+	 */
 	function getStyleSheet(){
 		return $this->getPluginPath() . '/css/shariff.min.css';
+	}
+	
+	
+	/**
+	 * Get the name of the settings file to be installed on new press
+	 * creation.
+	 * @return string
+	 */
+	function getContextSpecificPluginSettingsFile() {
+		return $this->getPluginPath() . '/settings.xml';
 	}
 
 }
