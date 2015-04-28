@@ -23,6 +23,8 @@
 				{rdelim});
 	{rdelim});
 </script>
+
+{$smarty.const.ROUTE_COMPONENT}
 {if not $hideHelp}<p class="pkp_help">{translate key="catalog.manage.entryDescription"}</p>{/if}
 <div id="newCatalogEntryTabs">
 	<ul>
@@ -32,7 +34,14 @@
 		<li>
 			<a title="catalog" href="{url router=$smarty.const.ROUTE_COMPONENT component="tab.catalogEntry.CatalogEntryTabHandler" tab="catalog" op="catalogMetadata" submissionId=$submissionId stageId=$stageId tabPos="1"}">{translate key="submission.catalogEntry.catalogMetadata"}</a>
 		</li>
-		{counter start=2 assign="counter"}
+
+	{** Carola Fanselow: neuer Link eingefügt und start=2 auf start=3 gesetzt **}
+   <li>
+            <a title="new" href=" {url router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.catalogEntryTab.controllers.NewTabHandler" tab="new" op="newOp" submissionId=$submissionId stageId=$stageId tabPos="2"}">new</a>
+	</li>
+
+        {counter start=3 assign="counter"}
+
 		{foreach from=$publicationFormats item=format}
 			<li>
 				<a id="publication{$format->getId()|escape}"
