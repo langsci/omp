@@ -1,8 +1,8 @@
 {**
  * controllers/modals/submissionMetadata/form/catalogEntryTabs.tpl
  *
- * Copyright (c) 2014 Simon Fraser University Library
- * Copyright (c) 2003-2014 John Willinsky
+ * Copyright (c) 2014-2015 Simon Fraser University Library
+ * Copyright (c) 2003-2015 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Display a submission's catalog entry form.
@@ -23,10 +23,8 @@
 				{rdelim});
 	{rdelim});
 </script>
-
-{$smarty.const.ROUTE_COMPONENT}
 {if not $hideHelp}<p class="pkp_help">{translate key="catalog.manage.entryDescription"}</p>{/if}
-<div id="newCatalogEntryTabs">
+<div id="newCatalogEntryTabs" class="pkp_controllers_tab">
 	<ul>
 		<li>
 			<a title="submission" href="{url router=$smarty.const.ROUTE_COMPONENT component="tab.catalogEntry.CatalogEntryTabHandler" tab="submission" op="submissionMetadata" submissionId=$submissionId stageId=$stageId tabPos="0"}">{translate key="submission.catalogEntry.monographMetadata"}</a>
@@ -34,14 +32,7 @@
 		<li>
 			<a title="catalog" href="{url router=$smarty.const.ROUTE_COMPONENT component="tab.catalogEntry.CatalogEntryTabHandler" tab="catalog" op="catalogMetadata" submissionId=$submissionId stageId=$stageId tabPos="1"}">{translate key="submission.catalogEntry.catalogMetadata"}</a>
 		</li>
-
-	{** Carola Fanselow: neuer Link eingefügt und start=2 auf start=3 gesetzt **}
-   <li>
-            <a title="new" href=" {url router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.catalogEntryTab.controllers.NewTabHandler" tab="new" op="newOp" submissionId=$submissionId stageId=$stageId tabPos="2"}">new</a>
-	</li>
-
-        {counter start=3 assign="counter"}
-
+		{counter start=2 assign="counter"}
 		{foreach from=$publicationFormats item=format}
 			<li>
 				<a id="publication{$format->getId()|escape}"
