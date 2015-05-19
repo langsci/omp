@@ -20,27 +20,24 @@
 	
 </script>
 
-{** Carola Fanselow: the first download link ($downloadUrl) is used for 
-the cover image **}
+{** Carola Fanselow: the first download link ($downloadUrl) is used for the cover image **}
 {if $availableFiles|@count != 0}
-     {assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
-     {if $publicationFormats|@count>0}
-     {if $publicationFormats[0]->getIsAvailable()}
-         {assign var="publicationFormatId" value=$publicationFormats[0]->getId()}
-         {assign var="availableFilesPF" value=$availableFiles[$publicationFormatId]}
-		 {if $availableFilesPF|@count>0}
-         	{assign var="availableFile" value=$availableFilesPF[0]}
-         	{if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
-            	 {url|assign:downloadUrl op="view"
-					path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
-         	{else}
-            	 {url|assign:downloadUrl op="download" 
-					path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
-         	{/if}
+	{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+	{if $publicationFormats|@count>0}
+	{if $publicationFormats[0]->getIsAvailable()}
+		{assign var="publicationFormatId" value=$publicationFormats[0]->getId()}
+		{assign var="availableFilesPF" value=$availableFiles[$publicationFormatId]}
+		{assign var="availableFile" value=$availableFilesPF[0]}
+		{if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
+			{url|assign:downloadUrlpart op="view" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
+		{else}
+			{url|assign:downloadUrlpart op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
 		{/if}
-     {/if}
-     {/if}
+	{/if}
+	{/if}
 {/if}
+
+{assign var=downloadUrl value="https://via.hypothes.is/`$downloadUrlpart`?rewrite=no"}
 {** end carola **}
 
 <div class="bookSpecs">
