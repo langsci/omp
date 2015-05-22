@@ -13,3 +13,6 @@
 [submodule "plugins/generic/emailLogger"]
 	path = plugins/generic/emailLogger
 	url = git://github.com/pkp/emailLogger
+[submodule "plugins/generic/shariff"]
+	path = plugins/generic/shariff
+	url = https://github.com/langsci/shariff.git
