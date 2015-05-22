@@ -40,21 +40,23 @@
 		<div class="authorName">{$publishedMonograph->getAuthorString()}</div>
 	</div>
 	
-	<!-- TODO: display first document of filelist  -->
+	<!-- display first document of filelist  -->
+	<!-- TODO: get name of publicationFormat that should be displayed here from the settings -->
 	
 	{if $availableFiles|@count != 0}
 		<p>
 			<div>
 				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 				{assign var=currency value=$currentPress->getSetting('currency')}
-				
-				{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId="66" publishedMonograph=$publishedMonograph currency=$currency}
-					
+					{foreach from=$publicationFormats item=publicationFormat}
+						{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="pdf"}
+							{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
+						{/if}
+					{/foreach}
 			<div> 
 		</p><br> <br>
 	{/if}
 
-	
 	<!-- display download file 
 	{if $availableFiles|@count != 0}
 	<p>
