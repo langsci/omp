@@ -112,7 +112,7 @@
 		
 		
 		<!-- download files  -->
-		{if $availableFiles|@count != 0}
+		{if $availableFiles|@count > 1}
 			
 				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.contents"}</a></h3>
 				<div>
