@@ -49,7 +49,7 @@
 				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 				{assign var=currency value=$currentPress->getSetting('currency')}
 					{foreach from=$publicationFormats item=publicationFormat}
-						{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="pdf"}
+						{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
 							{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
 						{/if}
 					{/foreach}
@@ -112,7 +112,7 @@
 		
 		
 		<!-- download files  -->
-		{if $availableFiles|@count != 0}
+		{if $availableFiles|@count > 1}
 			
 				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.contents"}</a></h3>
 				<div>
