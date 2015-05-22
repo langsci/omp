@@ -77,25 +77,25 @@
 		<div>
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 		</div>
-	</div>
+	
 		
 		<!-- about the authors / volume editor -->
 		{assign var=authors value=$publishedMonograph->getAuthors()}
 			{foreach from=$authors item=author}
 				{if $author->getIncludeInBrowse()}
-				<div class="bookAccordion">
+				
 					<h3 class="langsciBookPage"><a href="#">About {$author->getFullName()}</a></h3>
 					<div>
 						{assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
 						{if $biography != ''}{$biography}{else}{translate key="catalog.noBioInfo"}{/if}
 					</div>
-				</div>
+				
 				{/if}
 			{/foreach}
 			
 		<!-- chapters  
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}
-			<div class="bookAccordion">
+			
 				<h3 class="langsciBookPage"><a href="#">Chapters</a></h3>
 				<div>
 					{foreach from=$chapters item=chapter}
@@ -105,13 +105,13 @@
 							<div class="authorName">{$chapterAuthors}</div>
 					{/foreach}
 				</div>
-			</div>
+			
 		{/if}-->
 		
 		
 		<!-- download files  -->
 		{if $availableFiles|@count != 0}
-			<div class="bookAccordion">
+			
 				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.contents"}</a></h3>
 				<div>
 					{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
@@ -122,23 +122,21 @@
 						{/if}
 					{/foreach}
 				</div>	
-			</div> 
+			 
 		{/if}
 		
 		<!-- Statistics -->
 		{if $availableFiles|@count != 0}
-			<div class="bookAccordion">
+			
 				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 				<div>
 					{assign var=imageUrl value="/plugins/generic/bookPage/"}
 					<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".jpg"}"><img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" /></a>
 				</div>	
-			</div>
+			
 		{/if}
 		
+	</div>	
 		
 		
-		
-
-
 </div>
