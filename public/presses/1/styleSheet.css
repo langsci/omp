@@ -1,9 +1,17 @@
 /* langsci blue header for accordions */
+
 h3.accordionHeader {
 	background-color: #D0ECF6 !important;
 	border-radius: 5px !important;
+	padding: 5px;
+}
+
+h3.accordionHeader.ui-state-active {
+	background-color: #00A5DB !important;
+	border-radius: 5px !important;
 
 }
+
 /* end of langsci blue header */
 
 .publicationFormatDownload{
