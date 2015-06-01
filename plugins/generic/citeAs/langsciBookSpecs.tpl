@@ -29,21 +29,19 @@
 		{assign var="availableFilesPF" value=$availableFiles[$publicationFormatId]}
 		{assign var="availableFile" value=$availableFilesPF[0]}
 		{if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
-			{url|assign:downloadUrlpart op="view" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
+			{url|assign:downloadUrl op="view" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
 		{else}
-			{url|assign:downloadUrlpart op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
+			{url|assign:downloadUrl op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
 		{/if}
 	{/if}
 	{/if}
 {/if}
 
-{assign var=downloadUrl value="https://via.hypothes.is/`$downloadUrlpart`?rewrite=no"}
 {** end carola **}
 
 <div class="bookSpecs">
 	{assign var=coverImage value=$publishedMonograph->getCoverImage()}
 		<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$downloadUrl}">
-			<img id="openReviewInfo" src="{$baseUrl}/public/site/img/openReview.png">
 			<img id="coverImageOpenReview" class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{url router=$smarty.const.ROUTE_COMPONENT 		component="submission.CoverHandler" op="catalog" submissionId=$publishedMonograph->getId()}">
 			</a>
 	<div class="bookAccordion">
