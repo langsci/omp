@@ -1,4 +1,4 @@
-{**
+ 	{**
  * templates/catalog/book/bookInfo.tpl
  *
  * Copyright (c) 2014 Simon Fraser University Library
@@ -60,7 +60,7 @@
 	
 		<!-- open review  -->
 		{if $publishedMonograph->getId()=="25"}
-			<h3 class="langsciBookPage focus"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
+			<h3 class="accordionHeader focus"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
 			<div>
 				This book is currently under <a title="Open review work at Language Science Press" href="http://test.langsci-press.org/openReview/intro"> open review</a>. 
 				See our <a title="How to comment on our PDF files" href="http://test.langsci-press.org/openReview/userGuide">user guide</a> to get acquainted with the commenting software.
@@ -77,7 +77,7 @@
 		{/if}
 	
 		<!-- about this book  -->
-		<h3 class="langsciBookPage"><a href="#">About this book</a></h3>
+		<h3 class="accordionHeader"><a href="#">About this book</a></h3>
 		<div>
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
 		</div>
@@ -88,7 +88,7 @@
 			{foreach from=$authors item=author}
 				{if $author->getIncludeInBrowse()}
 				
-					<h3 class="langsciBookPage"><a href="#">About {$author->getFullName()}</a></h3>
+					<h3 class="accordionHeader"><a href="#">About {$author->getFullName()}</a></h3>
 					<div>
 						{assign var=biography value=$author->getLocalizedBiography()|strip_unsafe_html}
 						{if $biography != ''}{$biography}{else}{translate key="catalog.noBioInfo"}{/if}
@@ -100,7 +100,7 @@
 		<!-- chapters  
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}
 			
-				<h3 class="langsciBookPage"><a href="#">Chapters</a></h3>
+				<h3 class="accordionHeader"><a href="#">Chapters</a></h3>
 				<div>
 					{foreach from=$chapters item=chapter}
 							<strong>{$chapter->getLocalizedTitle()}</strong>
@@ -116,7 +116,7 @@
 		<!-- download files  -->
 		{if $availableFiles|@count > 1} <!-- display this area only when there is more than one file to download -->
 			
-				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.contents"}</a></h3>
+				<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.contents"}</a></h3>
 				<div>
 					{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 					{assign var=currency value=$currentPress->getSetting('currency')}
@@ -133,7 +133,7 @@
 		<!-- TODO: add hook and put statistics in own plugin -->
 		<!-- TODO: get images from catalog -->
 		{if $availableFiles|@count != 0}
-				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
+				<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 				<div>
 					{assign var=imageUrl value="/plugins/generic/bookPage/"}
 					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" />

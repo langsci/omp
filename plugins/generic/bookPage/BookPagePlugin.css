@@ -1,18 +1,52 @@
-h3.langsciBookPage {
-	background-color: #D0ECF6 !important;
-	border-radius: 5px !important;
 
+.openReviewButton {
+    border-radius: 5px;
+    float: left;
+    padding: 10px;
 }
 
-h3.langsciBookPage.ui-state-active {
-	background-color: #00A5DB !important;
-	border-radius: 5px !important;
 
+img.icon {
+    border: 1px solid #fff;
+    height: 35px;
+    width: 35px;
 }
 
-.openReviewButton{
-	color: black !important;
-	background-color: #00A5DB;
-	border-radius: 5px;
-	text-decoration: none;
+img {
+    display: block;
+    padding: 2px 2px 0;
+}
+
+
+/* read more jquery test */
+
+body, input{
+	font-family: Calibri, Arial;
+	margin: 0px;
+	padding: 0px;
+}
+a {
+	color: #0254EB
+}
+a:visited {
+	color: #0254EB
+}
+#header h2 {
+	color: white;
+	background-color: #00A1E6;
+	margin:0px;
+	padding: 5px;
+}
+.comment {
+	width: 400px;
+	background-color: #f0f0f0;
+	margin: 10px;
+}
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+
 }
