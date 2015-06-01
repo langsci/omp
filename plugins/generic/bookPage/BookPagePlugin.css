@@ -4,9 +4,15 @@ h3.langsciBookPage {
 
 }
 
+h3.langsciBookPage.ui-state-active {
+	background-color: #00A5DB !important;
+	border-radius: 5px !important;
+
+}
+
 .openReviewButton{
-	background-color: #D0ECF6;
+	color: black !important;
+	background-color: #00A5DB;
 	border-radius: 5px;
 	text-decoration: none;
-	
 }

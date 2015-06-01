@@ -58,17 +58,21 @@
 
 	<div class="bookAccordion">
 	
-	
 		<!-- open review  -->
 		{if $publishedMonograph->getId()=="25"}
-			<h3 class="langsciBookPage"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
+			<h3 class="langsciBookPage focus"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
 			<div>
-				This book is currently <a title="What is open review?" href="http://test.langsci-press.org/openReview/intro"> open for comments</a>. 
-				See our <a title="How to comment on our PDF files?" href="http://test.langsci-press.org/openReview/userGuide">user guide</a> to get acquainted with the commenting software.
+				This book is currently under <a title="Open review work at Language Science Press" href="http://test.langsci-press.org/openReview/intro"> open review</a>. 
+				See our <a title="How to comment on our PDF files" href="http://test.langsci-press.org/openReview/userGuide">user guide</a> to get acquainted with the commenting software.
 				
 				<div>
-					<a class="openReviewButton" href="https://via.hypothes.is/http://test.langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf"><img class="icon" src="/public/site/img/userGuideHypothesis/comment.png" alt="" /><span>{translate key="plugins.generic.bookPage.openReview.link"}</span></a>
+					<a class="openReviewButton" href="https://via.hypothes.is/http://test.langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf"><img class="icon" src="/public/site/img/userGuideHypothesis/comment.png" alt="" /><span>preliminary version part 1</span></a>
 				</div>
+				
+				<div>
+					<a class="openReviewButton" href="https://via.hypothes.is/http://test.langsci-press.org/public/site/pdf/MuellerOpenReview2.pdf"><img class="icon" src="/public/site/img/userGuideHypothesis/comment.png" alt="" /><span>preliminary version part 2</span></a>
+				</div>
+				
 			</div>
 		{/if}
 	
