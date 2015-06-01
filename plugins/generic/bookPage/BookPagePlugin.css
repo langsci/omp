@@ -1,8 +1,3 @@
-h3.langsciBookPage {
-	background-color: #D0ECF6 !important;
-	border-radius: 5px !important;
-
-}
 
 h3.langsciBookPage.ui-state-active {
 	background-color: #00A5DB !important;
@@ -15,4 +10,53 @@ h3.langsciBookPage.ui-state-active {
 	background-color: #00A5DB;
 	border-radius: 5px;
 	text-decoration: none;
+}
+
+img.icon{
+	width: 35px;
+	height: 35px;
+		border: 1px solid #fff;
+}
+
+img.content{
+	width: 300px;
+	display:inline;
+	float:left;
+	margin-right: 25px;
+	padding:0;
+	border: 1px solid #999;
+}
+
+
+/* read more jquery test */
+
+body, input{
+	font-family: Calibri, Arial;
+	margin: 0px;
+	padding: 0px;
+}
+a {
+	color: #0254EB
+}
+a:visited {
+	color: #0254EB
+}
+#header h2 {
+	color: white;
+	background-color: #00A1E6;
+	margin:0px;
+	padding: 5px;
+}
+.comment {
+	width: 400px;
+	background-color: #f0f0f0;
+	margin: 10px;
+}
+a.morelink {
+	text-decoration:none;
+	outline: none;
+}
+.morecontent span {
+	display: none;
+
 }
