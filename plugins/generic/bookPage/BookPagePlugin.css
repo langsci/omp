@@ -23,36 +23,3 @@ img.content{
 	padding:0;
 	border: 1px solid #999;
 }
-
-/* read more jquery test */
-
-body, input{
-	font-family: Calibri, Arial;
-	margin: 0px;
-	padding: 0px;
-}
-a {
-	color: #0254EB
-}
-a:visited {
-	color: #0254EB
-}
-#header h2 {
-	color: white;
-	background-color: #00A1E6;
-	margin:0px;
-	padding: 5px;
-}
-.comment {
-	width: 400px;
-	background-color: #f0f0f0;
-	margin: 10px;
-}
-a.morelink {
-	text-decoration:none;
-	outline: none;
-}
-.morecontent span {
-	display: none;
-
-}
