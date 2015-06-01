@@ -78,6 +78,100 @@ class BookPagePlugin extends GenericPlugin {
 		}
 		return false;
 	}
+	
+	/***
+	FUNCTIONS FOR SETTINGS
+	*/
+	
+	
+	/**
+	 * @copydoc PKPPlugin::getManagementVerbs()
+	 */
+	function getManagementVerbs() {
+		$verbs = parent::getManagementVerbs();
+		if ($this->getEnabled()) {
+			$verbs[] = array('settings', __('plugins.generic.bookPage.settings'));
+		}
+		return $verbs;
+	}
+	
+	/**
+	 * Define management link actions for the settings verb.
+	 * @param $request PKPRequest
+	 * @param $verb string
+	 * @return LinkAction
+	 */ 
+	function getManagementVerbLinkAction($request, $verb) {
+		$router = $request->getRouter();
+
+		list($verbName, $verbLocalized) = $verb;
+
+		if ($verbName === 'settings') {
+			import('lib.pkp.classes.linkAction.request.AjaxLegacyPluginModal');
+			$actionRequest = new AjaxLegacyPluginModal(
+				$router->url($request, null, null, 'plugin', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+				$this->getDisplayName()
+			);
+			return new LinkAction($verbName, $actionRequest, $verbLocalized, null);
+		}
+
+		return null;
+	}
+
+	/**
+	 * @copydoc PKPPlugin::manage()
+	 */
+	function manage($verb, $args, &$message, &$messageParams, &$pluginModalContent = null) {
+		$request = $this->getRequest();
+		$press = $request->getPress();
+		$templateMgr = TemplateManager::getManager($request);
+
+		switch ($verb) {
+
+			case 'settings':
+					$this->import('BookPageSettingsForm');
+					$form = new ShariffSettingsForm($this, $press);
+					if ($request->getUserVar('save')) {
+						$form->readInputData();
+						if ($form->validate()) {
+							$form->execute();
+							$message = NOTIFICATION_TYPE_SUCCESS;
+							$messageParams = array('contents' => __('plugins.generic.bookPage.form.saved'));
+							return false;
+						} else {
+							$pluginModalContent = $form->fetch($request);
+						}
+					} else {
+						$form->initData();
+						$pluginModalContent = $form->fetch($request);
+					}
+
+				return true;
+
+
+			default:
+				// let the parent handle it.
+				return parent::manage($verb, $args, $message, $messageParams);
+		}
+	}
+
+
+	/**
+	 * Get the name of the settings file to be installed on new press
+	 * creation.
+	 * @return string
+	 */
+	function getContextSpecificPluginSettingsFile() {
+		return $this->getPluginPath() . '/settings.xml';
+	}
+
+	/**
+	 * @copydoc PKPPlugin::getTemplatePath
+	 */
+	function getTemplatePath() {
+		return parent::getTemplatePath() . '/';
+	}
+
 
 }
 

@@ -9,7 +9,6 @@
  *}
 
 
- 
 <script type="text/javascript">
 	// Attach the tab handler.
 	$(function() {ldelim}
@@ -57,24 +56,23 @@
 		</p><br> <br>
 	{/if}
 
-	<!-- display download file 
-	{if $availableFiles|@count != 0}
-	<p>
-		<div>
-			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
-			{assign var=currency value=$currentPress->getSetting('currency')}
-			{foreach from=$publicationFormats item=publicationFormat}
-				{if $publicationFormat->getIsAvailable()}
-					{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
-				{/if}
-			{/foreach}
-		<div> 
-	</p><br> <br>
-	{/if}
-	 -->
-
-	<!-- about this book  -->
 	<div class="bookAccordion">
+	
+	
+		<!-- open review  -->
+		{if $publishedMonograph->getId()=="25"}
+			<h3 class="langsciBookPage"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
+			<div>
+				This book is currently <a title="What is open review?" href="http://test.langsci-press.org/openReview/intro"> open for comments</a>. 
+				See our <a title="How to comment on our PDF files?" href="http://test.langsci-press.org/openReview/userGuide">user guide</a> to get acquainted with the commenting software.
+				
+				<div>
+					<a class="openReviewButton" href="https://via.hypothes.is/http://test.langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf"><img class="icon" src="/public/site/img/userGuideHypothesis/comment.png" alt="" /><span>{translate key="plugins.generic.bookPage.openReview.link"}</span></a>
+				</div>
+			</div>
+		{/if}
+	
+		<!-- about this book  -->
 		<h3 class="langsciBookPage"><a href="#">About this book</a></h3>
 		<div>
 			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
@@ -109,10 +107,10 @@
 				</div>
 			
 		{/if}-->
-		
+
 		
 		<!-- download files  -->
-		{if $availableFiles|@count > 1}
+		{if $availableFiles|@count > 1} <!-- display this area only when there is more than one file to download -->
 			
 				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.contents"}</a></h3>
 				<div>
@@ -128,17 +126,15 @@
 		{/if}
 		
 		<!-- Statistics -->
+		<!-- TODO: add hook and put statistics in own plugin -->
+		<!-- TODO: get images from catalog -->
 		{if $availableFiles|@count != 0}
-			
 				<h3 class="langsciBookPage"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 				<div>
 					{assign var=imageUrl value="/plugins/generic/bookPage/"}
-					<a title="{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}" href="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".jpg"}"><img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" /></a>
+					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" />
 				</div>	
-			
 		{/if}
-		
 	</div>	
-		
 		
 </div>

@@ -3,3 +3,10 @@ h3.langsciBookPage {
 	border-radius: 5px !important;
 
 }
+
+.openReviewButton{
+	background-color: #D0ECF6;
+	border-radius: 5px;
+	text-decoration: none;
+	
+}
