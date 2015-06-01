@@ -77,6 +77,8 @@
 			<li>
 				<a>About</a>
 				<ul>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" }">The press</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="workflow" }">Workflow</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="advisoryBoard" }">Advisory Board</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="supporters" }">Supporters</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="hallOfFame" }">Hall of fame</a></li>
