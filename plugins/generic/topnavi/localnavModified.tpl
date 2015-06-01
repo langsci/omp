@@ -53,7 +53,7 @@
 {capture assign="publicMenu2"}
 	{if $currentPress}
 
-		{* Carola Fanselow: Link to blog added for Language Science Press*}
+		{** Carola Fanselow: Link to blog added for Language Science Press **}
 		<li><a href="http://userblogs.fu-berlin.de/langsci-press/">Blog</a>
 
 	{/if}
@@ -78,7 +78,7 @@
 				<a>About</a>
 				<ul>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" }">The press</a></li>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="workflow" }">Workflow</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="support" }">Support us</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="advisoryBoard" }">Advisory Board</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="supporters" }">Supporters</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="hallOfFame" }">Hall of fame</a></li>
