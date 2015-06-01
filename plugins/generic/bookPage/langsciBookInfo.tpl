@@ -1,4 +1,4 @@
- 	{**
+ {**
  * templates/catalog/book/bookInfo.tpl
  *
  * Copyright (c) 2014 Simon Fraser University Library
@@ -27,11 +27,15 @@
 			active: 0
 			 {rdelim});
 	{rdelim});
+	
+	
+	
 </script>
 
 
 
 <link rel="stylesheet" href="{$baseUrl}/plugins/generic/bookPage/BookPagePlugin.css" type="text/css" />
+
 
 <div class="bookInfo">
 	<div class="bookInfoHeader">
@@ -53,6 +57,9 @@
 						{/if}
 					{/foreach}
 			<div> 
+			
+						
+			
 		</p><br> <br>
 	{/if}
 

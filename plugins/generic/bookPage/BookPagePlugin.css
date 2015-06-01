@@ -1,10 +1,8 @@
-
 .openReviewButton {
     border-radius: 5px;
     float: left;
     padding: 10px;
 }
-
 
 img.icon {
     border: 1px solid #fff;
@@ -17,6 +15,14 @@ img {
     padding: 2px 2px 0;
 }
 
+img.content{
+	width: 300px;
+	display:inline;
+	float:left;
+	margin-right: 25px;
+	padding:0;
+	border: 1px solid #999;
+}
 
 /* read more jquery test */
 
