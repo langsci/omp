@@ -30,7 +30,7 @@
 <message key="plugins.generic.registerPage.label.password2">Repeat password</message>
 <message key="plugins.generic.registerPage.label.affiliation">Affiliation</message>
 <message key="plugins.generic.registerPage.label.emailAddress">Email address</message>
-<message key="plugins.generic.registerPage.label.personalHomepageURL">Personal homepage URL</message>
+<message key="plugins.generic.registerPage.label.personalWebsiteURL">Personal website URL</message>
 <message key="plugins.generic.registerPage.label.country">Country</message>
 
 <message key="plugins.generic.registerPage.contentPrivacyStatement">The names and email addresses entered in this press

@@ -72,7 +72,7 @@
 </div>
 <div class="inline">
 	<input	type="text" maxlength="40" name="inputUserUrl" id="inputUserUrl" value="{$userUrl}"/>
-	<span><label class="sub_label">{translate key="plugins.generic.registerPage.label.personalHomepageURL"}</label></span>
+	<span><label class="sub_label">{translate key="plugins.generic.registerPage.label.personalWebsiteURL"}</label></span>
 </div>
 </div>
 

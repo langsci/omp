@@ -129,10 +129,12 @@ class RegisterPageHandler extends Handler {
   			$emailValid = true;
 		}
 
+		$urlOkay = true;
+		/* url validation removed
 		$urlOkay = false;
 		if (filter_var($userUrl, FILTER_VALIDATE_URL)||$emptyUserUrl) {
   			$urlOkay = true;
-		}
+		} */
 
 		$captchaCorrect = $issetCheckboxCaptchaCorrect || $captchaAnswer==$captchaSolution;
 
