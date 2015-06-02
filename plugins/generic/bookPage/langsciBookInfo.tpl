@@ -43,31 +43,34 @@
 		<div class="authorName">{$publishedMonograph->getAuthorString()}</div>
 	</div>
 	
-	<!-- display first document of filelist  -->
-	<!-- TODO: get name of publicationFormat that should be displayed here from the settings -->
 	
-	{if $availableFiles|@count != 0}
-		<p>
-			<div>
-				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
-				{assign var=currency value=$currentPress->getSetting('currency')}
-					{foreach from=$publicationFormats item=publicationFormat}
-						{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
-							{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
-						{/if}
-					{/foreach}
-			<div> 
-			
-						
-			
-		</p><br> <br>
-	{/if}
 
 	<div class="bookAccordion">
 	
+	
+	
+		<!-- display first document of filelist  -->
+		<!-- TODO: get name of publicationFormat that should be displayed here from the settings -->
+		
+		{if $availableFiles|@count != 0}
+		
+			<h3 class="accordionHeader"><a>{translate key="plugins.generic.bookPage.read"}</a></h3>
+			<div>
+					{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+					{assign var=currency value=$currentPress->getSetting('currency')}
+						{foreach from=$publicationFormats item=publicationFormat}
+							{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
+								{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
+							{/if}
+						{/foreach}
+	
+			</div>
+		{/if}
+	
+	
 		<!-- open review  -->
 		{if $publishedMonograph->getId()=="25"}
-			<h3 class="accordionHeader focus"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
+			<h3 class="accordionHeader"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
 			<div>
 				This book is currently under <a title="Open review work at Language Science Press" href="http://test.langsci-press.org/openReview/intro"> open review</a>. 
 				See our <a title="How to comment on our PDF files" href="http://test.langsci-press.org/openReview/userGuide">user guide</a> to get acquainted with the commenting software.
