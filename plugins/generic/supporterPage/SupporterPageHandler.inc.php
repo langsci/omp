@@ -44,9 +44,12 @@ class SupporterPageHandler extends Handler {
 			}
 			$insertLink1 = "";
 			$insertLInk2 = "";
-			if (!$supporterUrl[$supporterUserIds[$i]]=="") {
-				$insertLink1 = "<a href=".$supporterUrl[$supporterUserIds[$i]].">";
-				$insertLInk2 = "</a>";
+			$userUrl = $supporterUrl[$supporterUserIds[$i]];
+			if (!$userUrl=="") {
+				if (filter_var($userUrl, FILTER_VALIDATE_URL)) {
+					$insertLink1 = "<a href=".$userUrl.">";
+					$insertLInk2 = "</a>";
+				}
 			}
 
 
