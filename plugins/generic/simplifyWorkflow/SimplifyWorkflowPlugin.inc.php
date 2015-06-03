@@ -159,6 +159,10 @@ fclose($file);*/
 				$templateMgr->display($this->getTemplatePath() . 
 				'templates/categoriesModified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
+			case 'submission/form/series.tpl':
+				$templateMgr->display($this->getTemplatePath() . 
+				'templates/seriesModified.tpl', 'text/html', 'TemplateManager::include');
+				return true;
 		}
 		return false;
 	}
