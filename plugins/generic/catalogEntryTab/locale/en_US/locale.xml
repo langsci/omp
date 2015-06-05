@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/seriesPage/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2014 Carola Fanselow Freie Universität Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.catalogEntryTab.displayName">Catalog Entry Tab Plugin</message>
+	<message key="plugins.generic.catalogEntryTab.description">Adds a tab to the catalog entry with a form for additional data.</message>
+	<message key="plugins.generic.catalogEntryTab.coverlinks">Links to where the books can be bought</message>	
+	<message key="plugins.generic.catalogEntryTab.coverlinks.soft">Softcover</message>	
+	<message key="plugins.generic.catalogEntryTab.coverlinks.hard">Hardcover</message>
+	<message key="plugins.generic.catalogEntryTab.additionalTab">Links</message>
+
+	<message key="plugins.generic.catalogEntryTab.notification.addtionalDataSaved">Data is saved.</message>
+
+notification.savedCatalogMetadata
+
+</locale>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
