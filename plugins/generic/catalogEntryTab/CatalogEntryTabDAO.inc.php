@@ -8,6 +8,13 @@
  *
  * @class SeriesPageDAO
  *
+
+create table langsci_submission_links (
+submission_id int(6),
+softcover tinyint(1),
+link varchar(30)
+)
+
  */
 
 class CatalogEntryTabDAO extends DAO {
@@ -50,3 +57,8 @@ class CatalogEntryTabDAO extends DAO {
 }
 
 ?>
+
+
+
+
+
