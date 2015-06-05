@@ -16,8 +16,9 @@
 	{rdelim});
 </script>
 --{$pixelTagStatus}--
-<form class="pkp_form" id="vgWortInsertPixelTagForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.vgWort.controllers.grid.PixelTagGridHandler" op="updateInsertPixelTag"}">
+<form class="pkp_form" id="vgWortInsertPixelTagForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.vgWort.controllers.grid.PixelTagGridHandler" op="updateInsertPixelTag" pixelTagStatus=$pixelTagStatus}">
 	{include file="common/formErrors.tpl"}
+	<input type="hidden" name="pixelTagStatus" id="pixelTagStatus" value="{$pixelTagStatus|escape}" />
 	{fbvFormArea id="vgWortPixelTag" title="plugins.generic.vgWort.editor.insertPixelTag" class="border"}
 		{fbvFormSection title="plugins.generic.vgWort.pixelTag.privateCode" for="privateCode" inline=true size=$fbvStyles.size.MEDIUM required="true"}
 			{fbvElement type="text" name="privateCode" id="privateCode" value=""}
@@ -48,7 +49,7 @@
 		{fbvFormSection title="plugins.generic.vgWort.pixelTag.dateAssigned" for="dateAssigned" inline=true size=$fbvStyles.size.MEDIUM required="true"}
 			{fbvElement type="text" id="dateAssigned" value=$dateAssigned|date_format:"%y-%m-%d"}
 		{/fbvFormSection}
-		{if $pixelTagStatus=$smarty.const.PT_STATUS_REGISTERED}
+		{if $pixelTagStatus==$smarty.const.PT_STATUS_REGISTERED}
 			<script>
 				$('input[id^="dateRegistered"]').datepicker({ldelim} dateFormat: 'yy-mm-dd' {rdelim});
 			</script>

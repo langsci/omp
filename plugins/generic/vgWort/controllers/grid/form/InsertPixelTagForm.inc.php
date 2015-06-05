@@ -121,7 +121,8 @@ class InsertPixelTagForm extends Form {
 				'dateRegisteredYear',
 				'dateRegisteredMonth',
 				'dateRegisteredDay',
-				'dateRegistered'
+				'dateRegistered',
+				'pixelTagStatus'
 			)
 		);
 		// Format the dates
@@ -136,7 +137,7 @@ class InsertPixelTagForm extends Form {
 	 * @copydoc Form::execute()
 	 */
 	function execute($request) {
-		$contextId = $this->contextId;
+		$contextId = $this->getContextId();
 		$pixelTagDao = DAORegistry::getDAO('PixelTagDAO');
 		$pixelTag = new PixelTag();
 		$pixelTag->setContextId($contextId);
@@ -144,7 +145,7 @@ class InsertPixelTagForm extends Form {
 		$pixelTag->setPublicCode($this->getData('publicCode'));
 		$pixelTag->setDomain($this->getData('domain'));
 		$pixelTag->setDateOrdered(DAO::formatDateToDB($this->getData('dateOrdered')));
-		$pixelTag->setStatus(PT_STATUS_REGISTERED);
+		$pixelTag->setStatus($this->getData('pixelTagStatus'));
 		$pixelTag->setSubmissionId((int)$this->getData('submissionId'));
 		$pixelTag->setTextType((int)$this->getData('vgWortTextType'));
 		$pixelTag->setDateAssigned(DAO::formatDateToDB($this->getData('dateAssigned')));

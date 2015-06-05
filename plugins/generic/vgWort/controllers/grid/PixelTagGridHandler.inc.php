@@ -352,9 +352,10 @@ file_put_contents($file, $current);
 	 * @return string JSON message
 	 */
 	function updateInsertPixelTag($args, $request) {
+		$pixelTagStatus = $request->getUserVar('pixelTagStatus');
 		import('plugins.generic.vgWort.controllers.grid.form.InsertPixelTagForm');
 		$contextId = $this->_getContextId();
-		$vgWortPlugin = PluginRegistry::getPlugin('generic', VGWORT_PLUGIN_NAME);
+		$vgWortPlugin = PluginRegistry::getPlugin('generic', VGWORT_PLUGIN_NAME, $pixelTagStatus);
 		$insertPixelTagForm = new InsertPixelTagForm($vgWortPlugin, $contextId);
 		$insertPixelTagForm->readInputData();
 		if($insertPixelTagForm->validate()) {
