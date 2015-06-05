@@ -1,0 +1,23 @@
+
+
+input, textArea {
+	background-color:#eee;
+}
+
+input.test, textArea.test {
+	background-color:#FFFF93;
+}
+
+input.default, textArea.default {
+	margin-bottom: 10px;
+}
+
+td.input {
+	border-top: 1px solid #999;
+	padding: 15px 0px 5px 0px;
+}
+
+
+
+
+
