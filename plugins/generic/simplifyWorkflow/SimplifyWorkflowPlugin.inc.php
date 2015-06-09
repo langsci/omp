@@ -39,7 +39,7 @@ class SimplifyWorkflowPlugin extends GenericPlugin {
 				$locale = AppLocale::getLocale();
 				$localeFiles = AppLocale::getLocaleFiles($locale);
 
-				HookRegistry::register('PKPLocale::registerLocaleFile', array(&$this, 'addAsTopLocale'));
+				//HookRegistry::register('PKPLocale::registerLocaleFile', array(&$this, 'addAsTopLocale'));
 
 				HookRegistry::register ('TemplateManager::display',
 						array(&$this, 'handleDisplayTemplate'));
