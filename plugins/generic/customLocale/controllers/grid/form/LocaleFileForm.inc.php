@@ -36,15 +36,9 @@ class LocaleFileForm extends Form {
 	 */
 	function LocaleFileForm($customLocalePlugin, $contextId, $filePath, $locale) {
 
-
-
-		parent::Form($customLocalePlugin->getTemplatePath() . 'test.tpl');
+		parent::Form($customLocalePlugin->getTemplatePath() . 'localeFile.tpl');
 		$this->filePath = $filePath;
 		$this->locale = $locale;
-
-		$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-		fwrite($myfile, "\nLocaleFileForm->constr, locale: " . $this->locale);
-		fclose($myfile);
 
 		/*$this->contextId = $contextId;
 		$this->staticPageId = $staticPageId;*/
@@ -63,20 +57,11 @@ class LocaleFileForm extends Form {
 	 */
 	function initData() {
 
-$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-fwrite($myfile, "\nLFF->initData, filePath: " . $this->filePath);
-fclose($myfile);
 
 		$templateMgr = TemplateManager::getManager();
 		
-
-
 			//$this->setData('title', $staticPage->getTitle(null)); // Localized
 			$this->setData('title', "asfasfa"); // Localized
-		
-$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-fwrite($myfile, "\nLFF->initData (ende)");
-fclose($myfile);
 	}
 
 	/**
@@ -94,15 +79,7 @@ fclose($myfile);
 		$file =  $this->filePath;		
 		$locale = $this->locale;
 
-$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-fwrite($myfile, "\nLFF->fetch, this->filePath: " . $this->filePath);
-fwrite($myfile, "\nLFF->fetch, filePath: " . $file);
-fwrite($myfile, "\nLFF->fetch, locale: " . $locale);
-fclose($myfile);
-
 		$templateMgr =& TemplateManager::getManager();
-
-	//$templateMgr->assign('pluginJavaScriptURL', $this->plugin->getJavaScriptURL($request));
 
 		import('lib.pkp.classes.file.FileManager');
 		$fileManager = new FileManager();
@@ -129,31 +106,17 @@ fclose($myfile);
 
 		}
 
-
 		$referenceLocaleContents = EditableLocaleFile::load($file);
 		$referenceLocaleContentsRangeInfo = Handler::getRangeInfo($request,'referenceLocaleContents');
 
 		$templateMgr->assign('filePath', $this->filePath);
 		$templateMgr->assign('localeContents', $localeContents);
 		$templateMgr->assign('locale', $locale);
-import('lib.pkp.classes.core.ArrayItemIterator');
+		import('lib.pkp.classes.core.ArrayItemIterator');
 
-	$templateMgr->assign_by_ref('referenceLocaleContents', new ArrayItemIterator($referenceLocaleContents, $referenceLocaleContentsRangeInfo->getPage(), $referenceLocaleContentsRangeInfo->getCount()));
-	
-//		$templateMgr->assign('pluginJavaScriptURL', $this->plugin->getJavaScriptURL($request));
-/*
-		$context = $request->getContext();
-		if ($context) $templateMgr->assign('allowedVariables', array(
-			'contactName' => __('plugins.generic.tinymce.variables.principalContactName', array('value' => $context->getSetting('contactName'))),
-			'contactEmail' => __('plugins.generic.tinymce.variables.principalContactEmail', array('value' => $context->getSetting('contactEmail'))),
-			'supportName' => __('plugins.generic.tinymce.variables.supportContactName', array('value' => $context->getSetting('supportName'))),
-			'supportPhone' => __('plugins.generic.tinymce.variables.supportContactPhone', array('value' => $context->getSetting('supportPhone'))),
-			'supportEmail' => __('plugins.generic.tinymce.variables.supportContactEmail', array('value' => $context->getSetting('supportEmail'))),
-		));*/
-/*
-$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-fwrite($myfile, "\nLFF->fetch (ende)");
-fclose($myfile);*/
+		//$templateMgr->assign_by_ref('referenceLocaleContents', new ArrayItemIterator($referenceLocaleContents, $referenceLocaleContentsRangeInfo->getPage(), $referenceLocaleContentsRangeInfo->getCount()));
+		// no pages, put all locales in the form		
+		$templateMgr->assign_by_ref('referenceLocaleContents', new ArrayItemIterator($referenceLocaleContents, $referenceLocaleContentsRangeInfo->getPage(), sizeof($referenceLocaleContents)));	
 
 		return parent::fetch($request);
 	}

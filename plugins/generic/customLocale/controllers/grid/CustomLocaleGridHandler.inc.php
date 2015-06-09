@@ -54,13 +54,6 @@ class CustomLocaleGridHandler extends GridHandler {
 
 	function updateLocale($args,$request) {
 
-		$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-		//fwrite($myfile, "\nCLGH->updateLocale, " .implode(",",array_keys($args)));
-		fwrite($myfile, "\nCLGH->updateLocale, key: " .$args['key']);
-		fwrite($myfile, "\nCLGH->updateLocale, locale: " .$args['locale']);
-		//fwrite($myfile, "\nCLGH->updateLocale, changes " .implode(",",array_values($args['changes'])));
-		fclose($myfile);
-
 		$changes = $args['changes'];
 		$locale = $args['locale'];
 		$filename = $args['key'];
@@ -149,11 +142,6 @@ class CustomLocaleGridHandler extends GridHandler {
 	}
 
 	function loadData($request, $filter) {
-
-/*
-		$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-		fwrite($myfile, "\nCLGH->loadData, search: " . $filter['search']);
-		fclose($myfile); */
 
 		$press = $request -> getPress();
 		$locales = $press->getSupportedLocaleNames();
@@ -296,11 +284,6 @@ class CustomLocaleGridHandler extends GridHandler {
 		$searchField = $request->getUserVar('searchField');
 		$searchMatch = $request->getUserVar('searchMatch');
 		$search = $request->getUserVar('search');
-
-		$myfile = fopen("newfile.txt", "a") or die("Unable to open file!");
-		fwrite($myfile, "\nCLGH->getFilterSelectionData, searchField: " . $search);
-		fclose($myfile);
-
 
 		return $filterSelectionData = array(
 			'locale' => $locale,
