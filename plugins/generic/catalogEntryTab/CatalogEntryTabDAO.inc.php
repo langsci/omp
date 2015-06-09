@@ -1,20 +1,13 @@
 <?php
 
 /**
- * @file plugins/generic/seriesPage/SeriesPAgeDAO.inc.php
+ * @file plugins/generic/simplifyWorkflow/SimplifyWorkflowDAO.inc.php
  *
  * Copyright (c) 2000-2014 Carola Fanselow, Freie Universität Berlin
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @class SeriesPageDAO
+ * @class SimplifyWorkflowDAO
  *
-
-create table langsci_submission_links (
-submission_id int(6),
-softcover tinyint(1),
-link varchar(30)
-)
-
  */
 
 class CatalogEntryTabDAO extends DAO {
@@ -57,8 +50,3 @@ class CatalogEntryTabDAO extends DAO {
 }
 
 ?>
-
-
-
-
-

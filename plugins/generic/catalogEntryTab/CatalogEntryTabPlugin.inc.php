@@ -45,7 +45,7 @@ class CatalogEntryTabPlugin extends GenericPlugin {
 		$templateMgr = TemplateManager::getManager($request);
 		$output .= $templateMgr->fetch($this->getTemplatePath() . 'additionalTab.tpl');
 		   
-		return false;
+		return true;
 	}
 
 	/**
