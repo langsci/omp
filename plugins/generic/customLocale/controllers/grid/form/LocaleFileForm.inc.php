@@ -1,5 +1,5 @@
 <?php
-
+ini_set('memory_limit', '1024M');
 /**
  * @file controllers/grid/form/StaticPageForm.inc.php
  *
@@ -74,7 +74,7 @@ class LocaleFileForm extends Form {
 	/**
 	 * @see Form::fetch
 	 */
-	function fetch($request) {
+	function fetch($request,$currentPage,$searchKey,$searchString) {
 
 		$file =  $this->filePath;		
 		$locale = $this->locale;
@@ -109,14 +109,53 @@ class LocaleFileForm extends Form {
 		$referenceLocaleContents = EditableLocaleFile::load($file);
 		$referenceLocaleContentsRangeInfo = Handler::getRangeInfo($request,'referenceLocaleContents');
 
+		$numberOfItemsPerPage = 50;
+		$numberOfPages = ceil(sizeof($referenceLocaleContents) / $numberOfItemsPerPage);
+
+		if ($searchKey) {
+
+			$keysReferenceLocaleContents = array_keys($referenceLocaleContents);
+			$keyPosition = array_search($searchString, $keysReferenceLocaleContents); 
+
+			if ($keyPosition==0) {
+				$currentPage = 1;
+			}
+
+			if ($keyPosition>0) {
+				$currentPage = floor($keyPosition/$numberOfItemsPerPage)+1;
+			}
+
+		}
+
+		// set page number, default: go to first page
+		if (!$currentPage){
+			$currentPage=1;
+		}
+
+		$dropdownEntries = array();
+		for ($i=1; $i<=$numberOfPages; $i++) {
+			if ($i==$currentPage) {
+				$dropdownEntries[$i] = "stay on page " . $i;
+			} else {
+				$dropdownEntries[$i] = "go to page " . $i;
+			}
+
+		}
+
 		$templateMgr->assign('filePath', $this->filePath);
 		$templateMgr->assign('localeContents', $localeContents);
 		$templateMgr->assign('locale', $locale);
+		$templateMgr->assign('currentPage',$currentPage);
+		$templateMgr->assign('dropdownEntries',$dropdownEntries);
+		$templateMgr->assign('searchString',$searchString);
+
 		import('lib.pkp.classes.core.ArrayItemIterator');
 
 		//$templateMgr->assign_by_ref('referenceLocaleContents', new ArrayItemIterator($referenceLocaleContents, $referenceLocaleContentsRangeInfo->getPage(), $referenceLocaleContentsRangeInfo->getCount()));
+
+		$templateMgr->assign_by_ref('referenceLocaleContents', new ArrayItemIterator($referenceLocaleContents,$currentPage, $numberOfItemsPerPage));
 		// no pages, put all locales in the form		
-		$templateMgr->assign_by_ref('referenceLocaleContents', new ArrayItemIterator($referenceLocaleContents, $referenceLocaleContentsRangeInfo->getPage(), sizeof($referenceLocaleContents)));	
+		//$templateMgr->assign_by_ref('referenceLocaleContents', new ArrayItemIterator($referenceLocaleContents, $referenceLocaleContentsRangeInfo->getPage(), sizeof($referenceLocaleContents)));	
 
 		return parent::fetch($request);
 	}

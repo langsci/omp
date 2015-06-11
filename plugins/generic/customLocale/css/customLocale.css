@@ -1,10 +1,12 @@
-
+.highlight {
+	background-color: #A9F5F2;
+}
 
 input, textArea {
 	background-color:#eee;
 }
 
-input.test, textArea.test {
+input.valueChanged, textArea.valueChanged {
 	background-color:#FFFF93;
 }
 
@@ -17,7 +19,9 @@ td.input {
 	padding: 15px 0px 5px 0px;
 }
 
-
+#nextPage {
+	width:150px;
+}
 
 
 

@@ -1,5 +1,5 @@
 <?php
-
+ini_set('memory_limit', '1024M');
 /**
  * @file controllers/grid/StaticPageGridHandler.inc.php
  *
@@ -44,7 +44,7 @@ class CustomLocaleGridHandler extends GridHandler {
 		parent::GridHandler();
 		$this->addRoleAssignment(
 			array(ROLE_ID_MANAGER),
-			array('index', 'edit', 'editLocaleFile', 'updateLocale', 'fetchGrid', 'fetchRow')
+			array('index', 'edit', 'editLocaleFile', 'updateLocale', 'fetchGrid', 'fetchRow','searchForLocale')
 		);
 	}
 
@@ -54,51 +54,78 @@ class CustomLocaleGridHandler extends GridHandler {
 
 	function updateLocale($args,$request) {
 
-		$changes = $args['changes'];
-		$locale = $args['locale'];
-		$filename = $args['key'];
 		$press =& Request::getPress();
 		$pressId = $press->getId();
+		$locale = $args['locale'];
+		$filename = $args['key'];
+		$currentPage = $args['currentPage'];
+		$searchKey = $args['searchKey'];
+		$searchString = $args['searchString'];
 
-		$customFilesDir = Config::getVar('files', 'public_files_dir') . DIRECTORY_SEPARATOR . 'presses' . DIRECTORY_SEPARATOR . $pressId . DIRECTORY_SEPARATOR . CUSTOM_LOCALE_DIR . DIRECTORY_SEPARATOR . $locale;
-		$customFilePath = $customFilesDir . DIRECTORY_SEPARATOR . $filename;
+		// don't save changes if the locale is searched
+		if (!$searchKey) {
 
-		// Create empty custom locale file if it doesn't exist
-		import('lib.pkp.classes.file.FileManager');
-		$fileManager = new FileManager();
+			// save changes
 
-		import('lib.pkp.classes.file.EditableLocaleFile');
-		if (!$fileManager->fileExists($customFilePath)) {
+			$changes = $args['changes'];
 
-			$numParentDirs = substr_count($customFilePath, DIRECTORY_SEPARATOR); 
-			$parentDirs = '';
-			for ($i=0; $i<$numParentDirs; $i++) {
-				$parentDirs .= '..' . DIRECTORY_SEPARATOR;
-			}
+			$customFilesDir = Config::getVar('files', 'public_files_dir') .
+									DIRECTORY_SEPARATOR . 'presses' . DIRECTORY_SEPARATOR . $pressId . DIRECTORY_SEPARATOR . CUSTOM_LOCALE_DIR . DIRECTORY_SEPARATOR . $locale;
+			$customFilePath = $customFilesDir . DIRECTORY_SEPARATOR . $filename;
 
-			$newFileContents = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-			$newFileContents .= '<!DOCTYPE locale SYSTEM "' . $parentDirs . 'lib' . DIRECTORY_SEPARATOR . 'pkp' . DIRECTORY_SEPARATOR . 'dtd' . DIRECTORY_SEPARATOR . 'locale.dtd' . '">' . "\n";
-			$newFileContents .= '<locale name="' . $locale . '">' . "\n";
-			$newFileContents .= '</locale>';
-			$fileManager->writeFile($customFilePath, $newFileContents);
-		}
+			// Create empty custom locale file if it doesn't exist
+			import('lib.pkp.classes.file.FileManager');
+			$fileManager = new FileManager();
 
-		$file = new EditableLocaleFile($locale, $customFilePath);
+			import('lib.pkp.classes.file.EditableLocaleFile');
+			if (!$fileManager->fileExists($customFilePath)) {
 
-		while (!empty($changes)) {
-			$key = array_shift($changes);
-			$value = $this->correctCr(array_shift($changes));
-			if (!empty($value)) {
-				if (!$file->update($key, $value)) {
-					$file->insert($key, $value);
+				$numParentDirs = substr_count($customFilePath, DIRECTORY_SEPARATOR); 
+				$parentDirs = '';
+				for ($i=0; $i<$numParentDirs; $i++) {
+					$parentDirs .= '..' . DIRECTORY_SEPARATOR;
 				}
-			} else {
-				$file->delete($key);
-			}
-		}
-		$file->write();
 
-		return DAO::getDataChangedEvent();
+				$newFileContents = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+				$newFileContents .= '<!DOCTYPE locale SYSTEM "' . $parentDirs . 'lib' . DIRECTORY_SEPARATOR . 'pkp' . DIRECTORY_SEPARATOR . 'dtd' . DIRECTORY_SEPARATOR . 'locale.dtd' . '">' . "\n";
+				$newFileContents .= '<locale name="' . $locale . '">' . "\n";
+				$newFileContents .= '</locale>';
+				$fileManager->writeFile($customFilePath, $newFileContents);
+			}
+
+			if ($args['nextPage']) {
+				$currentPage = $args['nextPage'];
+			}
+
+			$file = new EditableLocaleFile($locale, $customFilePath);
+
+			while (!empty($changes)) {
+				$key = array_shift($changes);
+				$value = $this->correctCr(array_shift($changes));
+				if (!empty($value)) {
+					if (!$file->update($key, $value)) {
+						$file->insert($key, $value);
+					}
+				} else {
+					$file->delete($key);
+				}
+			}
+			$file->write();
+		}
+
+		$context = $request->getContext();
+		$this->setupTemplate($request);
+
+		// Create and present the edit form
+		import('plugins.generic.customLocale.controllers.grid.form.LocaleFileForm');
+
+		$customLocalePlugin = self::$plugin;
+		$localeFileForm = new LocaleFileForm(self::$plugin, $context->getId(), $filename, $locale);
+
+		$localeFileForm->initData();
+		$json = new JSONMessage(true, $localeFileForm->fetch($request,$currentPage,$searchKey,$searchString));
+
+		return $json->getString();
 
 
 	}
@@ -306,6 +333,11 @@ class CustomLocaleGridHandler extends GridHandler {
 
 		$localeFileForm->initData();
 		$json = new JSONMessage(true, $localeFileForm->fetch($request));
+
+/*
+$file = fopen("test.txt","a");
+fwrite($file,"\nCLGH->editLcaoleFile, filePath:  " . $args['filePath'] . " locale: " .  $args['locale']);
+fclose($file);*/
 
 		return $json->getString();
 	}

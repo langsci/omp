@@ -51,4 +51,7 @@
 	<message key="plugins.generic.customLocale.file.edit">Editing {$filename}</message>
 	<message key="plugins.generic.customLocale.file.reference">Default Text</message>
 	<message key="plugins.generic.customLocale.file.custom">Custom Text</message>
+
+	<message key="plugins.generic.customLocale.save">Save and continue</message>
+	<message key="plugins.generic.customLocale.search">Search for key</message>
 </locale>
