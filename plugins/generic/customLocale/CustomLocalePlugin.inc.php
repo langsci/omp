@@ -45,7 +45,7 @@ class CustomLocalePlugin extends GenericPlugin {
 				HookRegistry::register('PKPLocale::registerLocaleFile', array(&$this, 'addCustomLocale'));
 				HookRegistry::register('LoadComponentHandler', array($this, 'setupGridHandler'));
 				HookRegistry::register('Templates::Management::Settings::website', array($this, 'callbackShowWebsiteSettingsTabs'));
-
+				HookRegistry::register('LoadHandler', array($this, 'callbackHandleContent'));
 			}
 
 			return true;
@@ -71,6 +71,29 @@ class CustomLocalePlugin extends GenericPlugin {
 		return false;
 	}
 
+	function callbackHandleContent($hookName, $args) {
+
+		$request = $this -> getRequest();
+		$press   = $request -> getPress();		
+
+		$templateMgr = TemplateManager::getManager($request);
+
+		// get url path components
+		$page =& $args[0];
+		$op =& $args[1];
+		$tail = "/".implode("/",$request->getRequestedArgs());
+
+		if ($page=="manager" && $op=="plugin" && $tail=="/generic/customlocaleplugin/printChanges") {
+
+			$op = 'printCustomLocaleChanges';
+			define('HANDLER_CLASS', 'CustomLocaleHandler');
+			define('CUSTOMLOCALE_PLUGIN_NAME', $this->getName());
+			$this->import('CustomLocaleHandler');
+
+		}
+		return false;	
+	}
+
 	/**
 	 * @copydoc Plugin::getManagementVerbLinkAction()
 	 */
@@ -92,7 +115,7 @@ class CustomLocalePlugin extends GenericPlugin {
 					)),
 					$verbLocalized,
 					null
-				);
+				);		
 			default:
 				return parent::getManagementVerbLinkAction($request, $verb);
 		}
@@ -111,7 +134,6 @@ class CustomLocalePlugin extends GenericPlugin {
 		import('lib.pkp.classes.file.FileManager');
 		$fileManager = new FileManager();
 		if ($fileManager->fileExists($customLocalePath)) {
-	
 			AppLocale::registerLocaleFile($locale, $customLocalePath, false);
 		}
 
@@ -151,6 +173,7 @@ class CustomLocalePlugin extends GenericPlugin {
 
 		if ($this->getEnabled()) {
 			$verbs[] = array('index', __('plugins.generic.customLocale.customize'));
+			$verbs[] = array('printChanges', __('plugins.generic.customLocale.printChanges'));
 		}
 
 		return $verbs;

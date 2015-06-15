@@ -54,4 +54,12 @@
 
 	<message key="plugins.generic.customLocale.save">Save and continue</message>
 	<message key="plugins.generic.customLocale.search">Search for key</message>
+	<message key="plugins.generic.customLocale.printChanges">Print changes</message>
+	<message key="plugins.generic.customLocale.fileName">customLocaleChanges</message>
+	<message key="plugins.generic.customLocale.fileSaved">The changes you made with the Custom Locale Plugin have been saved to 
+	<message key="plugins.generic.customLocale.printChanges.title">Your changes are printed</message>
+
+
+
+
 </locale>
