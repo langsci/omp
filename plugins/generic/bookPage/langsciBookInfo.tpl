@@ -146,7 +146,7 @@
 				<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 				<div>
 					{assign var=imageUrl value="/plugins/generic/bookPage/"}
-					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" />
+					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" width="100%" />
 				</div>	
 		{/if}
 	</div>	
