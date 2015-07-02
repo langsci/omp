@@ -63,15 +63,15 @@
 
 <div class="sign_inputs">
 <div class="inline">
-	<input	type="text" maxlength="40" name="inputAffiliation" id="inputAffiliation" value="{$affiliation}"/>
+	<input	type="text" maxlength="60" name="inputAffiliation" id="inputAffiliation" value="{$affiliation}"/>
 	<span><label class="sub_label">{translate key="plugins.generic.registerPage.label.affiliation"}<span class="req">*</span></label></span>
 </div>
 <div class="inline">
-	<input	type="text" maxlength="40" name="inputEmail" id="inputEmail" value="{$email}"/>
+	<input	type="text" maxlength="60" name="inputEmail" id="inputEmail" value="{$email}"/>
 	<span><label class="sub_label">{translate key="plugins.generic.registerPage.label.emailAddress"}<span class="req">*</span></label></span>
 </div>
 <div class="inline">
-	<input	type="text" maxlength="40" name="inputUserUrl" id="inputUserUrl" value="{$userUrl}"/>
+	<input	type="text" maxlength="60" name="inputUserUrl" id="inputUserUrl" value="{$userUrl}"/>
 	<span><label class="sub_label">{translate key="plugins.generic.registerPage.label.personalWebsiteURL"}</label></span>
 </div>
 </div>
