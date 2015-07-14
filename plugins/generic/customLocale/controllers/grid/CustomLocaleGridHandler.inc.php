@@ -44,7 +44,7 @@ class CustomLocaleGridHandler extends GridHandler {
 		parent::GridHandler();
 		$this->addRoleAssignment(
 			array(ROLE_ID_MANAGER),
-			array('index', 'edit', 'editLocaleFile', 'updateLocale', 'fetchGrid', 'fetchRow','searchForLocale')
+			array('index', 'editLocaleFile', 'updateLocale', 'fetchGrid', 'fetchRow','searchForLocale')
 		);
 	}
 
@@ -170,17 +170,13 @@ class CustomLocaleGridHandler extends GridHandler {
 
 	function loadData($request, $filter) {
 
-		$press = $request -> getPress();
+
+		$press = $request->getPress();
 		$locales = $press->getSupportedLocaleNames();
 
 		$localeKeys = array_keys($locales);
 		$locale = $localeKeys[$filter['locale']];
 		$search = $filter['search'];
-
-		if ($locale==null) {  // todo: bessere Lösung?
-			$locale="en_US";
-		}
-
 
 		$localeFiles = CustomLocaleAction::getLocaleFiles($locale);
 
@@ -307,7 +303,8 @@ class CustomLocaleGridHandler extends GridHandler {
 	 */
 	function getFilterSelectionData($request) {
 		// Get the search terms.
-		$locale = $request->getUserVar('locale') ? (int)$request->getUserVar('locale') : null;
+
+		$locale = $request->getUserVar('locale') ? (int)$request->getUserVar('locale') : 0;
 		$searchField = $request->getUserVar('searchField');
 		$searchMatch = $request->getUserVar('searchMatch');
 		$search = $request->getUserVar('search');
@@ -333,11 +330,6 @@ class CustomLocaleGridHandler extends GridHandler {
 
 		$localeFileForm->initData();
 		$json = new JSONMessage(true, $localeFileForm->fetch($request));
-
-/*
-$file = fopen("test.txt","a");
-fwrite($file,"\nCLGH->editLcaoleFile, filePath:  " . $args['filePath'] . " locale: " .  $args['locale']);
-fclose($file);*/
 
 		return $json->getString();
 	}

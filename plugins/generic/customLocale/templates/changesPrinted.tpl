@@ -14,7 +14,7 @@
 {/strip}
 
 <p>{translate key="plugins.generic.customLocale.fileSaved"}
-{$customLocaleDir}/{translate key="plugins.generic.customLocale.fileName"}.txt.</p>
+{$customLocaleDir}/{translate key="plugins.generic.customLocale.printChanges.fileName"}.txt.</p>
 
 
 {strip}

@@ -1,5 +1,5 @@
 .highlight {
-	background-color: #A9F5F2;
+	background-color: #A9E2F3;
 }
 
 input, textArea {
@@ -14,9 +14,16 @@ input.default, textArea.default {
 	margin-bottom: 10px;
 }
 
+#searchString {
+	width: 520px;
+	margin: 0px 30px 0px 0px;
+	padding: 0;
+}
+
+
 td.input {
 	border-top: 1px solid #999;
-	padding: 15px 0px 5px 0px;
+	padding: 15px 10px 5px 10px;
 }
 
 #nextPage {
