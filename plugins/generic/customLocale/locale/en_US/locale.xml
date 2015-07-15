@@ -22,11 +22,7 @@
 
 	<message key="plugins.generic.customLocale.noneCreated">No files found.</message>
 
-	<message key="plugins.generic.customLocale.printChanges">Print changes</message>
-	<message key="plugins.generic.customLocale.printChanges.fileName">customLocaleChanges</message>
-
-	<message key="plugins.generic.customLocale.fileSaved">The changes you made with the Custom Locale Plugin have been saved to</message>
-	<message key="plugins.generic.customLocale.printChanges.title">Your changes have been printed</message>
+	<message key="plugins.generic.customLocale.printChanges">Download documentation</message>
 
 	<message key="plugins.generic.customLocale.localeKey.description">Enter an entire locale key to search for.</message>
 
@@ -34,6 +30,8 @@
 	<message key="plugins.generic.customLocale.localeKey">Key</message>
 	<message key="plugins.generic.customLocale.localeKeyValue">Value</message>
 	<message key="plugins.generic.customLocale.customize">Customize</message>
+	<message key="grid.action.printChanges">Download a file that lists all the customizations you made.</message>
+
 	<message key="plugins.generic.customLocale.file.edit">Editing {$filename}</message>
 	<message key="plugins.generic.customLocale.file.reference">Default Text</message>
 	<message key="plugins.generic.customLocale.file.custom">Custom Text</message>
@@ -48,14 +46,6 @@
 	<message key="plugins.generic.customLocale.fileDescription">Enter text into corresponding custom text field. Leave custom text field blank if the default OMP text should be used.</message>
 
 
-<!--nicht benutzt: warten, ob noch Bedarf ist und dann löschen-->
-	<message key="plugins.generic.customLocale.key">xxx</message>
-	<message key="plugins.generic.customLocale.pageTitle">aaa</message>
-	<message key="plugins.generic.customLocale.localeName">bbb</message>
-	<message key="plugins.generic.customLocale.availableLocales">ccc</message>
-	<message key="plugins.generic.customLocale.locale">vvv</message>
-	<message key="plugins.generic.customLocale.localeFiles">ddd</message>
-	<message key="plugins.generic.customLocale.file.filename">eee</message>
 
 
 

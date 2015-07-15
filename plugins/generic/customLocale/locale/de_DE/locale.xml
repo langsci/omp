@@ -22,11 +22,7 @@
 
 	<message key="plugins.generic.customLocale.noneCreated">Es wurden keine Dateien gefunden.</message>
 
-	<message key="plugins.generic.customLocale.printChanges">Veränderungen dokumentieren.</message>
-	<message key="plugins.generic.customLocale.printChanges.fileName">customLocaleDokumentation</message>
-
-	<message key="plugins.generic.customLocale.fileSaved">Die Veränderungen, die mit dem Custom Locale Plugin gemacht wurden, wurden abgespeichert in der Datei </message>
-	<message key="plugins.generic.customLocale.printChanges.title">Ihre Veränderungen wurden dokumentiert.</message>
+	<message key="plugins.generic.customLocale.printChanges">Dokumentation downloaden</message>
 
 	<message key="plugins.generic.customLocale.localeKey.description">Geben Sie hier den kompletten Schlüssen ein nach dem gesucht werden soll.</message>
 
@@ -34,6 +30,7 @@
 	<message key="plugins.generic.customLocale.localeKey">Schlüssel</message>
 	<message key="plugins.generic.customLocale.localeKeyValue">Wert</message>
 	<message key="plugins.generic.customLocale.customize">Anpassen</message>
+	<message key="grid.action.printChanges">Hier können Sie eine Datei downloaden, die alle Anpassungen auflistet.</message>
 	<message key="plugins.generic.customLocale.file.edit">{$filename} bearbeiten</message>
 	<message key="plugins.generic.customLocale.file.reference">Standardtext</message>
 	<message key="plugins.generic.customLocale.file.custom">Angepasster Text</message>
