@@ -37,7 +37,7 @@ class CustomLocaleHandler extends Handler {
 		$ompPath = str_replace('/plugins/generic/customLocale','',$absolutePath);
 		$customLocalePath = $ompPath.DIRECTORY_SEPARATOR .$customLocaleDir;
 
-		// get all xml-files in custom locale directory 		
+		// get all xml-files in the custom locale directory 		
 		$directory = new RecursiveDirectoryIterator($customLocalePath);
 		$iterator = new RecursiveIteratorIterator($directory);
 		$regex = new RegexIterator($iterator, '/^.+\.xml$/i', RecursiveRegexIterator::GET_MATCH);
@@ -47,12 +47,9 @@ class CustomLocaleHandler extends Handler {
 		import('lib.pkp.classes.file.FileManager');
 		import('lib.pkp.classes.file.EditableLocaleFile');
 		
-		//$file = fopen($customLocaleDir.__('plugins.generic.customLocale.fileName').".txt","a");
-		$file = fopen($customLocaleDir."/".__('plugins.generic.customLocale.fileName').".txt","w");
-
+		$output = "";
 
 		// iterate through all customized files
-		
 		for ($i=0; $i<sizeof($fileKeys);$i++) {
 
 			$pathToFile = $fileKeys[$i];
@@ -70,8 +67,6 @@ class CustomLocaleHandler extends Handler {
 				$ompFile = substr($pathToFile,$posLocale);
 			}
 	
-			fwrite($file,"\nFile: " . $ompFile);
-
 			$fileManagerCustomized = new FileManager();
 			$localeContentsCustomized = null;
 			if ($fileManagerCustomized->fileExists($fileKeys[$i])) {
@@ -85,24 +80,28 @@ class CustomLocaleHandler extends Handler {
 			}
 
 			$localeKeys = array_keys($localeContentsCustomized);
+
+			if (sizeof($localeKeys)>0) {
+				$output = $output . "\nFile: " . $ompFile;
+			}
+
 			for ($ii=0; $ii<sizeof($localeKeys);$ii++) {
 				$pos = $ii+1;
-				fwrite($file,"\n\n" . $pos .". locale key: " . $localeKeys[$ii]);
-				fwrite($file,"\n\n	original content:   " . $localeContents[$localeKeys[$ii]]);
-				fwrite($file,"\n	customized content: " . $localeContentsCustomized[$localeKeys[$ii]]);
-
+				$output = $output . "\n\n" . $pos .". locale key: " . $localeKeys[$ii];
+				$output = $output . "\n\n	original content:   " . $localeContents[$localeKeys[$ii]];
+				$output = $output . "\n	customized content: " . $localeContentsCustomized[$localeKeys[$ii]];
 			}
-			fwrite($file,"\n\n__________________________________________________________________________________\n\n");
+			if (sizeof($localeKeys)>0) {
+				$output = $output . "\n\n__________________________________________________________________________________\n\n";
+			}
+			
 		}
-		fclose($file);
 
-		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign('pageTitle','plugins.generic.customLocale.printChanges.title');
-		$templateMgr->assign('customLocaleDir',$customLocaleDir);
-		$customLocalePlugin = PluginRegistry::getPlugin('generic', CUSTOMLOCALE_PLUGIN_NAME);
-		//$templateMgr->assign('htmlContent',$htmlContent);
-
-		$templateMgr->display($customLocalePlugin->getTemplatePath()."displayChanges.tpl");
+		$filename = 'customLocale_changes.txt';
+		header("Content-Type: text/plain");
+		header('Content-Disposition: attachment; filename="'.$filename.'"');
+		header("Content-Length: " . strlen($output));
+		echo $output;
 	}
 
 

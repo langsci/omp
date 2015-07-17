@@ -12,52 +12,53 @@
   -->
  
 <locale name="en_US" full_name="U.S. English">
+
 	<message key="plugins.generic.customLocale.name">Custom Locale Plugin</message>
-	<message key="plugins.generic.customLocale.description">This plugin enables customization of the default user interface text used by OJS.</message>
+	<message key="plugins.generic.customLocale.description">This plugin enables customization of the default user interface text used by OMP.</message>
 
-	<message key="plugins.generic.customLocale.longDescription">This page lists all locales currently installed for the journal.</message>
-	<message key="plugins.generic.customLocale.localeDescription">This page lists all files that are available for the selected locale.</message>
+	<message key="plugins.generic.customLocale.search.fileName">Search in file names</message>
+	<message key="plugins.generic.customLocale.search.key">Search for key</message>
+	<message key="plugins.generic.customLocale.saveAndContinue">Save and continue</message>
 
-	<message key="plugins.generic.customLocale.customLocale">Locales</message>
+	<message key="plugins.generic.customLocale.noneCreated">No files found.</message>
 
+	<message key="plugins.generic.customLocale.printChanges">Download documentation</message>
 
-	<message key="plugins.generic.customLocale.files.pageTitle">File name</message>
-
-
-	<message key="plugins.generic.customLocale.introduction">This page lists all locales currently installed for the press.</message>
-
-	<message key="plugins.generic.customLocale.customLocaleFiles">Locale files</message>
-	<message key="plugins.generic.customLocale.introductionFiles"></message>
-
-	<message key="plugins.generic.customLocale.noneCreated">No locales available.</message>
-
-
-	<message key="plugins.generic.customLocale.key">Key</message>
-	<message key="plugins.generic.customLocale.path">Action</message>
-	<message key="plugins.generic.customLocale.pageTitle">Locale name</message>
-
-
-	<message key="plugins.generic.customLocale.fileDescription">Enter text into corresponding custom text field. Leave custom text field blank if the default OJS text should be used.</message>
-	<message key="plugins.generic.customLocale.localeName">Locale Name</message>
-	<message key="plugins.generic.customLocale.localeKey">Key</message>
 	<message key="plugins.generic.customLocale.localeKey.description">Enter an entire locale key to search for.</message>
+
+	<message key="plugins.generic.customLocale.path">Action</message>
+	<message key="plugins.generic.customLocale.localeKey">Key</message>
 	<message key="plugins.generic.customLocale.localeKeyValue">Value</message>
 	<message key="plugins.generic.customLocale.customize">Customize</message>
-	<message key="plugins.generic.customLocale.availableLocales">Available Locales</message>
+	<message key="grid.action.printChanges">Download a file that lists all the customizations you made.</message>
 
-	<message key="plugins.generic.customLocale.locale">{$locale} Locale</message>
-	<message key="plugins.generic.customLocale.localeFiles">Locale Files</message>
-	<message key="plugins.generic.customLocale.file.filename">Filename</message>
 	<message key="plugins.generic.customLocale.file.edit">Editing {$filename}</message>
 	<message key="plugins.generic.customLocale.file.reference">Default Text</message>
 	<message key="plugins.generic.customLocale.file.custom">Custom Text</message>
 
-	<message key="plugins.generic.customLocale.save">Save and continue</message>
-	<message key="plugins.generic.customLocale.search">Search for key</message>
-	<message key="plugins.generic.customLocale.printChanges">Print changes</message>
-	<message key="plugins.generic.customLocale.fileName">customLocaleChanges</message>
-	<message key="plugins.generic.customLocale.fileSaved">The changes you made with the Custom Locale Plugin have been saved to 
-	<message key="plugins.generic.customLocale.printChanges.title">Your changes are printed</message>
+	<message key="plugins.generic.customLocale.customLocale">Locales</message>
+	<message key="plugins.generic.customLocale.files.pageTitle">File name</message>
+	<message key="plugins.generic.customLocale.customLocaleFiles">Locale files</message>
+	<message key="plugins.generic.customLocale.introductionFiles"></message>
+
+
+	<message key="plugins.generic.customLocale.seasrchDescription">Enter a complete locale key here. Keys found are highlighted.</message>
+	<message key="plugins.generic.customLocale.fileDescription">Enter text into corresponding custom text field. Leave custom text field blank if the default OMP text should be used.</message>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

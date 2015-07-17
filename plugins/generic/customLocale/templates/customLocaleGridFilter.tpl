@@ -18,7 +18,7 @@
 
 <form class="pkp_form" id="customLocaleSearchForm" action="{url router=$smarty.const.ROUTE_COMPONENT component="plugins.generic.customLocale.controllers.grid.CustomLocaleGridHandler" op="fetchGrid"}" method="post">
 	{fbvFormArea id="userSearchFormArea"}
-		{fbvFormSection title="common.search" for="search"}
+		{fbvFormSection title="plugins.generic.customLocale.search.fileName" for="search"}
 			{fbvElement type="text" name="search" id="search" value=$filterSelectionData.search size=$fbvStyles.size.LARGE inline="true"}
 			{fbvElement type="select" name="locale" id="locale" from=$filterData.localeOptions selected=$filterSelectionData.locale size=$fbvStyles.size.SMALL translate=false inline="true"}
 		{/fbvFormSection}
