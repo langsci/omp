@@ -55,12 +55,55 @@ class BookPagePlugin extends GenericPlugin {
 		if (!isset($params['smarty_include_tpl_file'])) return false;
 		switch ($params['smarty_include_tpl_file']) {
 			case 'catalog/book/bookInfo.tpl':
-			//	echo $this->getTemplatePath();
+				
+				// VG Wort Pixel Zeugs
+				
+				// variables 
+				$publishedMonograph = $templateMgr->get_template_vars('publishedMonograph'); // get variable publishedMonograph from template 
+				$contextId = $publishedMonograph->getContextId(); 
+				$publishedMonographId = $publishedMonograph->getId();
+			
+				// imageUrl
+				$imageUrl = $this->createVgWortUrl($contextId, $publishedMonographId);
+				//echo("imageUrl: ".$imageUrl."\n");
+				
+				$templateMgr->assign('imageUrl', $imageUrl);
+				
+				// end of VG Wort Zeugs
+				
+				// plugin path as variable given to the template to overwrite bookFiles.tpl
+				$templateMgr->assign('pluginPath', $this->getPluginPath());
+				
+				// call template
 				$templateMgr->display($this->getTemplatePath() . 'langsciBookInfo.tpl', 'text/html', 'TemplateManager::include');
+				
 				return true;
 		}
 		return false;
 	}
+
+	
+	/**
+	 * Create the url for the vg wort pixel image with the domain and the public code
+	 * @param $contextId int The id of the press
+	 * @param $publishedMonographId int The id of the book
+	 * @return $imageUrl string The url of the vg wort pixel image 
+	 */
+	function createVgWortUrl($contextId, $publishedMonographId){
+		
+				// get the assigned pixel tag of the book
+				$pixelTagDao = DAORegistry::getDAO('PixelTagDAO');
+				$pixelTagObject = $pixelTagDao->getPixelTagBySubmissionId($contextId, $publishedMonographId);
+				$pixelTag = $pixelTagDao->getPixelTag($pixelTagObject->getId());
+				
+				// create url
+				$imageUrl = 'http://' . $pixelTag->getDomain() . '/na/' . $pixelTag->getPublicCode();
+				
+				return $imageUrl;
+		
+	}
+	
+	
 
 	/**
 	 * Hook callback: Handle requests.

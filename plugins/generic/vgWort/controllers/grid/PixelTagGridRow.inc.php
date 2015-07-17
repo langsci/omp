@@ -65,6 +65,9 @@ class PixelTagGridRow extends GridRow {
 								__('editor.issues.confirmPublish'), //TO-DO (for OMP)
 								__('plugins.generic.vgWort.editor.register'),
 								$router->url($request, null, null, 'registerPixelTag', null, array('pixelTagId' => $pixelTagId)),
+								'modal_confirm',
+								__('plugins.generic.vgWort.editor.update'),
+								$router->url($request, null, null, 'updateBookInHtaccess', null, array('pixelTagId' => $pixelTagId)),
 								'modal_confirm'
 							),
 							__('plugins.generic.vgWort.editor.register'),

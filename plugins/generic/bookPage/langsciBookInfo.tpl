@@ -28,6 +28,11 @@
 			 {rdelim});
 	{rdelim});
 	
+	// insert vg wort tag to download link 
+	// TODO get tag from BookPagePlugin.inc.php
+	
+	
+	
 	
 	
 </script>
@@ -47,8 +52,6 @@
 
 	<div class="bookAccordion">
 	
-	
-	
 		<!-- display first document of filelist  -->
 		<!-- TODO: get name of publicationFormat that should be displayed here from the settings -->
 		
@@ -60,7 +63,8 @@
 					{assign var=currency value=$currentPress->getSetting('currency')}
 						{foreach from=$publicationFormats item=publicationFormat}
 							{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
-								{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
+							{include file="../plugins/generic/bookPage/langsciBookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
+							<!--{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
 							{/if}
 						{/foreach}
 	
@@ -69,7 +73,8 @@
 	
 	
 		<!-- open review  -->
-		{if $publishedMonograph->getId()=="25"}
+		{assign var=publishedMonographId value=$publishedMonograph->getId()}
+		{if $publishedMonographId=="25"}
 			<h3 class="accordionHeader"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
 			<div>
 				This book is currently under <a title="Open review work at Language Science Press" href="http://test.langsci-press.org/openReview/intro"> open review</a>. 

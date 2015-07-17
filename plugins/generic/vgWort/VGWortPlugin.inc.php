@@ -43,6 +43,7 @@ class VGWortPlugin extends GenericPlugin {
 			$this->import('classes.PixelTagDAO');
 			$pixelTagDao = new PixelTagDAO($this->getName());
 			$returner =& DAORegistry::registerDAO('PixelTagDAO', $pixelTagDao);
+		
 
 			// pixel tags operations can be done just by editors specified in the plug-in settings
 			if ($this->authorize()) {
@@ -64,6 +65,8 @@ class VGWortPlugin extends GenericPlugin {
 			HookRegistry::register('authorform::execute', array($this, 'metadataExecute'));
 			HookRegistry::register('authorform::Constructor', array($this, 'addCheck'));
 			HookRegistry::register('authordao::getAdditionalFieldNames', array($this, 'addFieldName'));
+			
+
 
 /*
  			// TO-DO (for OMP)

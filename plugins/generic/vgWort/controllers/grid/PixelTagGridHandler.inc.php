@@ -41,7 +41,7 @@ class PixelTagGridHandler extends GridHandler {
 			array(ROLE_ID_SERIES_EDITOR, ROLE_ID_MANAGER),
 			array(
 				'fetchGrid',
-				'deletePixelTag', 'registerPixelTag',
+				'deletePixelTag', 'registerPixelTag', 'writeInHtaccess',
 				'orderPixelTags', 'editOrderPixelTags', 'updateOrderPixelTags',
 				'insertPixelTag'
 			)

@@ -39,6 +39,12 @@ class InsertPixelTagForm extends Form {
 		$this->_pixelTagStatus = $pixelTagStatus;
 
 		// Validation checks for this form
+		
+	//	$this->addCheck(new FormValidator($this, 'privateCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.privateCodeRequired'));
+		$this->addCheck(new FormValidatorCustom($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDDoesNotExist', create_function('$submissionId,$contextId,$submissionDao', '$submission = $submissionDao->getById($submissionId, $contextId); return isset($submission);'), array($this->_contextId, DAORegistry::getDAO('PublishedMonographDAO'))));
+		
+		//TODO: check if book has a pixel getPixelTagBySubmissionId($contextId, $submissionId)
+		
 		/*
 		$this->addCheck(new FormValidator($this, 'privateCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.privateCodeRequired'));
 		$this->addCheck(new FormValidator($this, 'publicCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.publicCodeRequired'));
@@ -154,7 +160,107 @@ class InsertPixelTagForm extends Form {
 			$pixelTag->setDateRegistered(DAO::formatDateToDB($dateRegistered));
 		}
 		$pixelTagId = $pixelTagDao->insertObject($pixelTag);
+		
+		// write redirect to vg wort with book in .htaccess 
+		$this->writeInHtaccess($request, $this->getData('submissionId'), $this->getData('publicCode'));
+		
 	}
+	
+	
+	/*
+	* Update the urls of a book in .htaccess. 
+	* @param $pixelTagId int id of the pixel tag 
+	*/
+	function updateBookInHtaccess($pixelTagId){
+		
+		$pixelTag = getPixelTag($pixelTagId);
+		$sumissionId = $pixelTag->getSubmissionId();
+		$vgWortPublicCode = $pixelTag->getPublicCode();
+		
+		
+		$this->writeInHtaccess($request, $sumissionId, $vgWortPublicCode);
+		
+		
+	}
+	
+	/*
+	* Write redirects for all files of a book in .htaccess. 
+	* TODO: get names of publicationFormat from settings
+	* @param $request object
+	* @param $submissionId int id of the submission
+	* @param $vgWortPublicCode int public code of the vg wort pixel
+	* @return string
+	*/
+	function writeInHtaccess($request, $submissionId, $vgWortPublicCode){
+		// write data in htaccess file 
+		
+		// open htaccess file or create one if not existent
+		import('lib.pkp.classes.file.FileManager');
+		$fileMgr = new FileManager();
+				
+		// find section for pixels or create one if not existent
+		// TODO
+		
+		// create rewrite rule with given variables and urls of this book 
+		
+		// load helpers and define variables
+		$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
+		$submissionDAO = DAORegistry::getDAO('PublishedMonographDAO');
+		$dispatcher = PKPApplication::getDispatcher();
+		
+		$submission = $submissionDAO->getById($submissionId);
+		$submissionId = $submission->getId();
+	
+		$publicationFormats = $submission->getPublicationFormats();
+		
+		$rewriteRules = "RewriteEngine On \n";
+		
+		// write title of submission for overview
+		$rewriteRules .= "# ".$submissionId." ".$submission->getLocalizedTitle()."\n";
+		
+		// go through all publicationFormats - handle only publicationFormats that are named "Complete book" and are available
+		// TODO: get names of publicationFormats from settings
+		foreach ($publicationFormats as $publicationFormat){
+			// 
+			if ($publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()!=="Bibliography"){
+				
+				// get the id of the publicationFormat
+				$publicationFormatId = $publicationFormat->getId();
+				
+				// filter files in this publicationFormat and show only files that are available in the public catalog
+				$availableFiles = array_filter(
+					$submissionFileDao->getLatestRevisionsByAssocId(ASSOC_TYPE_PUBLICATION_FORMAT,$publicationFormatId,	$submissionId),
+					create_function('$a', 'return $a->getViewable() && $a->getDirectSalesPrice() !== null;')
+				);
+				
+				// add name of publicationFormat for overview
+				$rewriteRules .= "#".$publicationFormat->getLocalizedName()."\n";
+				
+				// go through all file in this publicationFormat
+				foreach($availableFiles as $file){
+				
+					// generate download url of the file
+					$url = $dispatcher->url($request, ROUTE_PAGE, null, 'catalog', 'view', array($submissionId, $publicationFormatId, $file->getFileIdAndRevision()));
+					
+					// compose RewriteRule and append it to variable $rewriteRules
+					$vgWortUrl = "http://vg05.met.vgwort.de/na/".$vgWortPublicCode."?l=".$url."?rewrite=no [R,L]";
+					list($pre, $shortUrl) = split($request->getBaseUrl()."/", $url);
+					$rewriteRules .= "RewriteRule ^".$shortUrl." ".$vgWortUrl."\n";
+					
+				}
+
+			}
+		} 
+		
+		// write rewriteRules to file .htaccess
+		$fileMgr->writeFile(".htaccess", $rewriteRules);
+	
+		// test output
+		//	$fileMgr->writeFile("debug_.txt", $rewriteRule);
+		
+		
+	}
+	
 
 }
 

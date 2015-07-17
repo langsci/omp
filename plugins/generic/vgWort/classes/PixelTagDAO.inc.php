@@ -97,6 +97,7 @@ class PixelTagDAO extends DAO {
 	 * @return int
 	 */
 	function insertObject($pixelTag) {
+		
 		$ret = $this->update(
 			sprintf('
 				INSERT INTO pixel_tags
@@ -132,6 +133,9 @@ class PixelTagDAO extends DAO {
 		return $pixelTag->getId();
 	}
 
+	
+	
+	
 	/**
 	 * Update an existing pixel tag.
 	 * @param $pixelTag PixelTag
@@ -240,12 +244,6 @@ class PixelTagDAO extends DAO {
 
 		$sql .= ' context_id = ? ORDER BY ' . $sortBy . ' ' . $this->getDirectionMapping($sortDirection);
 		$paramArray[] = (int) $contextId;
-$file = 'debug.txt';
-$current = file_get_contents($file);
-$current .= print_r($sql, true);
-$current .= print_r("-----", true);
-$current .= print_r($paramArray, true);
-file_put_contents($file, $current);
 
 		$result = $this->retrieveRange($sql, $paramArray, $rangeInfo);
 
