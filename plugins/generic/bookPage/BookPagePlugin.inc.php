@@ -91,15 +91,23 @@ class BookPagePlugin extends GenericPlugin {
 	 */
 	function createVgWortUrl($contextId, $publishedMonographId){
 		
+			
 				// get the assigned pixel tag of the book
 				$pixelTagDao = DAORegistry::getDAO('PixelTagDAO');
 				$pixelTagObject = $pixelTagDao->getPixelTagBySubmissionId($contextId, $publishedMonographId);
-				$pixelTag = $pixelTagDao->getPixelTag($pixelTagObject->getId());
 				
-				// create url
-				$imageUrl = 'http://' . $pixelTag->getDomain() . '/na/' . $pixelTag->getPublicCode();
+				if($pixelTagObject){
+					
+					$pixelTag = $pixelTagDao->getPixelTag($pixelTagObject->getId());
+					
+					// create url
+					$imageUrl = 'http://' . $pixelTag->getDomain() . '/na/' . $pixelTag->getPublicCode();
+					
+					return $imageUrl;
+					
+				}else return '';
 				
-				return $imageUrl;
+				
 		
 	}
 	
