@@ -63,10 +63,12 @@
 					{assign var=currency value=$currentPress->getSetting('currency')}
 						{foreach from=$publicationFormats item=publicationFormat}
 							{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
-							{include file="../plugins/generic/bookPage/langsciBookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
+							{include file="../plugins/generic/bookPage/langsciCompleteBook.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
 							<!--{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
 							{/if}
 						{/foreach}
+						
+					
 	
 			</div>
 		{/if}
@@ -150,7 +152,7 @@
 		{if $availableFiles|@count != 0}
 				<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 				<div>
-					{assign var=imageUrl value="/plugins/generic/bookPage/"}
+					{assign var=imageUrl value="/plugins/generic/bookPage/img/"}
 					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" width="100%" />
 				</div>	
 		{/if}

@@ -52,24 +52,26 @@ class BookPagePlugin extends GenericPlugin {
 		$params =& $args[1];
 		$templateMgr->assign_by_ref('base_url', Config::getVar('general','base_url'));
 		
+		// Hardcover softcover links from catalog entry tag plugin
+		import('plugins.generic.catalogEntryTab.CatalogEntryTabDAO');
+		$catalogEntryTabDao = new CatalogEntryTabDAO();
+		DAORegistry::registerDAO('CatalogEntryTabDAO', $catalogEntryTabDao);
+		
 		if (!isset($params['smarty_include_tpl_file'])) return false;
 		switch ($params['smarty_include_tpl_file']) {
 			case 'catalog/book/bookInfo.tpl':
-				
-				// VG Wort Pixel Zeugs
-				
-				// variables 
+			
+				// variables for vg wort and hardcover/softcover
 				$publishedMonograph = $templateMgr->get_template_vars('publishedMonograph'); // get variable publishedMonograph from template 
 				$contextId = $publishedMonograph->getContextId(); 
 				$publishedMonographId = $publishedMonograph->getId();
-			
-				// imageUrl
-				$imageUrl = $this->createVgWortUrl($contextId, $publishedMonographId);
-				//echo("imageUrl: ".$imageUrl."\n");
 				
-				$templateMgr->assign('imageUrl', $imageUrl);
+				// get hardcover softcover links of this book and given them as variables to the template
+				$templateMgr->assign('softcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"1"));
+				$templateMgr->assign('hardcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"0"));
 				
-				// end of VG Wort Zeugs
+				// generate imageUrl for VG Wort and save it as template variable
+				$templateMgr->assign('imageUrl', $this->createVgWortUrl($contextId, $publishedMonographId));
 				
 				// plugin path as variable given to the template to overwrite bookFiles.tpl
 				$templateMgr->assign('pluginPath', $this->getPluginPath());

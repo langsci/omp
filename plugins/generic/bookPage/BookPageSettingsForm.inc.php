@@ -101,14 +101,7 @@ class BookPageSettingsForm extends Form {
 	//
 	function _getFormFields() {
 		return array(
-			'selectedLanguage' => 'string',
-			'selectedTheme' => 'string',
-			'facebook' => 'bool',
-			'twitter' => 'bool',
-			'googleplus' => 'bool',
-			'mail' => 'bool',
-			'info' => 'bool',
-			'backend' => 'string',
+			'pubFormat' => 'string',
 		);
 	}
 }
