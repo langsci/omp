@@ -50,7 +50,7 @@
 	}
 
 /* end of icon box */
-	
+
 /* langsci blue header for accordions */
 
 h3.accordionHeader {
@@ -71,24 +71,24 @@ h3.accordionHeader.ui-state-active {
 
 /* end of langsci blue header */
 
-
-/* kann das weg?
+/* kann das weg?*/
 .publicationFormatDownload{
 	color:white;
 	font-size:0pt;
 } 
 
+/* kann das weg?*/
 .publicationFormatName, .publicationFormatLink{
-color:black;
-font-size:12pt;
-font-weight:bold;
+	color:black;
+	font-size:12pt;
 }
 
-.publicationFormatLink{
-  margin:3px;
-  clear:right;
+/* kann das weg?*/
+#downloadTab ul li:first-child {
+    padding-left: 20px;
 }
 
+/* kann das weg?*/
 .publicationFormatLinkmod {
     background: none repeat scroll 0 0 #d0ecf6;
     border-radius: 5px;
@@ -100,10 +100,12 @@ font-weight:bold;
 }
 */
 
+/* kann das weg?*/
 #downloadTab ul li:first-child {
     padding-left: 20px;
 }
 
+/* kann das weg?*/
 .pkp_catalog_book .bookInfo #abstractTab {
   text-align:left;
 }
