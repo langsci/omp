@@ -1,3 +1,56 @@
+
+/* make menu item transparent */
+.sf-menu ul{
+	opacity:.95;
+}
+
+/* remove border from register/login */
+.pkp_structure_head_siteNav ul.pkp_helpers_align_right {
+	border: none;
+}
+
+/* icon box for startpage */
+
+	/* define icon box */
+	.lsp-icon-box{
+		width: 25%;
+		float:left;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		padding-top: 10px;
+		padding-bottom: 10px; 
+	}
+	
+	/* display box on hover*/
+	.lsp-icon-box:hover {
+		background-color: #eee;
+		border-radius: 5px;
+	}
+	
+	/* display image on hover in normal color */
+	.lsp-icon-box:hover .lsp-startpage-image{
+		opacity: 1.0;
+		filter:alpha(opacity=100);
+		background-color: #eee;
+	}
+	
+	/* change color of the link on hover */
+	.lsp-icon-box:hover .a{
+		color: #005678 !important;
+	}
+	
+	/* define image in the box with opacity*/
+	.lsp-icon-box-image{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		opacity: 0.5;
+		filter:alpha(opacity=40);
+	}
+
+/* end of icon box */
+	
 /* langsci blue header for accordions */
 
 h3.accordionHeader {
@@ -9,14 +62,20 @@ h3.accordionHeader {
 h3.accordionHeader.ui-state-active {
 	background-color: #D0ECF6 !important;
 	border-radius: 5px !important;
+}
 
+.lsp-accordion-icon{
+	float:left;
+	width:20px;
 }
 
 /* end of langsci blue header */
 
+
+/* kann das weg?
 .publicationFormatDownload{
-color:white;
-font-size:0pt;
+	color:white;
+	font-size:0pt;
 } 
 
 .publicationFormatName, .publicationFormatLink{
@@ -30,10 +89,6 @@ font-weight:bold;
   clear:right;
 }
 
-#downloadTab ul li:first-child {
-    padding-left: 20px;
-}
-
 .publicationFormatLinkmod {
     background: none repeat scroll 0 0 #d0ecf6;
     border-radius: 5px;
@@ -42,6 +97,11 @@ font-weight:bold;
     padding: 3px;
     text-align: center;
     width: 150px;
+}
+*/
+
+#downloadTab ul li:first-child {
+    padding-left: 20px;
 }
 
 .pkp_catalog_book .bookInfo #abstractTab {
