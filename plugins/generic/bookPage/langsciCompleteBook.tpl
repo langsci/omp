@@ -21,7 +21,7 @@
 </script>
 
 {foreach from=$availableFiles[$publicationFormatId] item=availableFile}{* There will be at most one of these *}
-	<li>
+	
 		<!--<div class="publicationFormatName">{$availableFile->getLocalizedName()|escape}</div> -->
 		<div class="publicationFormatLink completeBook">
 			{if $availableFile->getDocumentType()==$smarty.const.DOCUMENT_TYPE_PDF}
@@ -29,18 +29,24 @@
 			{else}
 				{url|assign:downloadUrl op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
 			{/if}
-			<a href="{$downloadUrl}" onclick="addPixel({$publishedMonograph->getId()},'{$availableFile->getLocalizedName()}');">
-				<span title="{$availableFile->getDocumentType()|upper|escape}" class="sprite {$availableFile->getDocumentType()|escape}"></span>
+			<a href="{$downloadUrl}" title="{translate key="plugins.generic.bookPage.downloadPDF.title"}" onclick="addPixel({$publishedMonograph->getId()},'{$availableFile->getLocalizedName()}');">
+				
+				<!--<span title="{translate key="monograph.accessLogoOpen.altText"}" class="sprite openaccess">-->
+				
+				<!-- pdf icon --> 
+				<!--<span title="{$availableFile->getDocumentType()|upper|escape}" class="sprite {$availableFile->getDocumentType()|escape}"></span>-->
+				
+				<!-- open access icon --> 
 				{if $availableFile->getDirectSalesPrice()}{translate key="payment.directSales.purchase amount=$availableFile->getDirectSalesPrice() currency=$currency}
 				{else}
-					{translate key="payment.directSales.download"}
-					<span title="{translate key="monograph.accessLogoOpen.altText"}" class="sprite openaccess">
+					{translate key="plugins.generic.bookPage.downloadPDF"}
+					
 					</span>
 				{/if}
 			</a>
 			<div id="vgwpixel"></div> 
 		</div>
-	</li>
+	
 {/foreach}
 
 		<div class="publicationFormatLink printOnDemand">

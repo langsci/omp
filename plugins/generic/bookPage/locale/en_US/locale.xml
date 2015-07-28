@@ -21,6 +21,11 @@
 	<message key="plugins.generic.bookPage.openReview">Open review</message>
 	<message key="plugins.generic.bookPage.openReview.link">Review this book.</message>
 	
-	<message key="plugins.generic.bookPage.hardcover">Hardcover</message>
-	<message key="plugins.generic.bookPage.softcover">Softcover</message>
+	<message key="plugins.generic.bookPage.downloadPDF">Download pdf</message>
+	<message key="plugins.generic.bookPage.downloadPDF.title"></message>
+	<message key="plugins.generic.bookPage.hardcover">Buy hardcover</message>
+	<message key="plugins.generic.bookPage.hardcover.title"></message>
+	<message key="plugins.generic.bookPage.softcover">Buy softcover</message>
+	<message key="plugins.generic.bookPage.softcover.title"></message>
+
 </locale>
