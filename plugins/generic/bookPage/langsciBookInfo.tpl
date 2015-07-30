@@ -31,16 +31,19 @@
 	// insert vg wort tag to download link 
 	// TODO get tag from BookPagePlugin.inc.php
 	
+	$(function() {ldelim}
+		function show(){ldelim} 
+			
+		{rdelim};
+	{rdelim});
+	
 	
 	
 	
 	
 </script>
 
-
-
 <link rel="stylesheet" href="{$baseUrl}/plugins/generic/bookPage/BookPagePlugin.css" type="text/css" />
-
 
 <div class="bookInfo">
 	<div class="bookInfoHeader">
@@ -48,31 +51,36 @@
 		<div class="authorName">{$publishedMonograph->getAuthorString()}</div>
 	</div>
 	
-	
-
-	<div class="bookAccordion">
-	
 		<!-- display first document of filelist  -->
 		<!-- TODO: get name of publicationFormat that should be displayed here from the settings -->
 		
 		{if $availableFiles|@count != 0}
 		
-			<h3 class="accordionHeader"><a>{translate key="plugins.generic.bookPage.read"}</a></h3>
-			<div>
-					{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
-					{assign var=currency value=$currentPress->getSetting('currency')}
-						{foreach from=$publicationFormats item=publicationFormat}
-							{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
-							{include file="../plugins/generic/bookPage/langsciCompleteBook.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
-							<!--{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
-							{/if}
-						{/foreach}
-						
-					
-	
+		<!--	<h3 class="accordionHeader"><a>{translate key="plugins.generic.bookPage.read"}</a></h3>
+			<div> -->
+				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+				{assign var=currency value=$currentPress->getSetting('currency')}
+				{foreach from=$publicationFormats item=publicationFormat}
+					{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
+						{include file="../plugins/generic/bookPage/langsciCompleteBook.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
+						<!--{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
+					{/if}
+				{/foreach}
+	<!--	</div> -->
+			<br> 
+			<br>
+		
+		{else} 
+			<div class="publicationFormatLink forthcoming">
+				Forthcoming
 			</div>
+			<br> 
+			<br>
 		{/if}
-	
+
+		
+		
+	<div class="bookAccordion">
 	
 		<!-- open review  -->
 		{assign var=publishedMonographId value=$publishedMonograph->getId()}
@@ -96,7 +104,19 @@
 		<!-- about this book  -->
 		<h3 class="accordionHeader"><a href="#">About this book</a></h3>
 		<div>
-			{$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
+			{assign var=abstract value=$publishedMonograph->getLocalizedAbstract()|strip_unsafe_html}
+			{assign var=sentences value='[.]'|split:$abstract:2}
+			{$sentences.0}.
+			
+			{if $sentences.1}
+				<br>
+				<a id="show" onclick='document.getElementById("more").style.display="block";document.getElementById("show").style.display="none";document.getElementById("less").style.display="block";'>{translate key="plugins.generic.bookPage.more"}</a> 
+				<a id="less" class="less" onclick='document.getElementById("more").style.display="none";document.getElementById("show").style.display="block";document.getElementById("less").style.display="none";'>{translate key="plugins.generic.bookPage.less"}</a> 
+				<div id="more" class="more">
+					{$sentences.1}
+				</div>
+			{/if}
+			
 		</div>
 	
 		
@@ -117,15 +137,15 @@
 		<!-- chapters  
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}
 			
-				<h3 class="accordionHeader"><a href="#">Chapters</a></h3>
-				<div>
-					{foreach from=$chapters item=chapter}
-							<strong>{$chapter->getLocalizedTitle()}</strong>
-							{if $chapter->getLocalizedSubtitle() != '' }<br />{$chapter->getLocalizedSubtitle()}{/if}
-							{assign var=chapterAuthors value=$chapter->getAuthorNamesAsString()}
-							<div class="authorName">{$chapterAuthors}</div>
-					{/foreach}
-				</div>
+			<h3 class="accordionHeader"><a href="#">Chapters</a></h3>
+			<div>
+				{foreach from=$chapters item=chapter}
+					<strong>{$chapter->getLocalizedTitle()}</strong>
+					{if $chapter->getLocalizedSubtitle() != '' }<br />{$chapter->getLocalizedSubtitle()}{/if}
+					{assign var=chapterAuthors value=$chapter->getAuthorNamesAsString()}
+					<div class="authorName">{$chapterAuthors}</div>
+				{/foreach}
+			</div>
 			
 		{/if}-->
 
@@ -133,28 +153,29 @@
 		<!-- download files  -->
 		{if $availableFiles|@count > 1} <!-- display this area only when there is more than one file to download -->
 			
-				<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.contents"}</a></h3>
-				<div>
-					{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
-					{assign var=currency value=$currentPress->getSetting('currency')}
-					{foreach from=$publicationFormats item=publicationFormat}
-						{if $publicationFormat->getIsAvailable()}
-							{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
-						{/if}
-					{/foreach}
-				</div>	
-			 
+			<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.downloads"}</a></h3>
+			<div>
+				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+				{assign var=currency value=$currentPress->getSetting('currency')}
+				{foreach from=$publicationFormats item=publicationFormat}
+					{if $publicationFormat->getIsAvailable()}
+						{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
+					{/if}
+				{/foreach}
+			</div>	
+			
 		{/if}
 		
+
 		<!-- Statistics -->
 		<!-- TODO: add hook and put statistics in own plugin -->
-		<!-- TODO: get images from catalog -->
-		{if $availableFiles|@count != 0}
-				<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
-				<div>
-					{assign var=imageUrl value="/plugins/generic/bookPage/img/"}
-					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" width="100%" />
-				</div>	
+		
+		{if $statsImageExists}
+			<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
+			<div>
+				{assign var=imageUrl value="/plugins/generic/bookPage/img/"}
+				<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" width="100%" />
+			</div>	
 		{/if}
 	</div>	
 		

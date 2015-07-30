@@ -5,8 +5,22 @@
 * 2015-07-28
 */
 
-.publicationFormatLink.completeBook, .publicationFormatLink.printOnDemand {
+.more{
+	display: none;
+}
+
+.less{
+	display: none;
+}
+
+/* allows to display links side by side*/
+.publicationFormatLink.completeBook, .publicationFormatLink.printOnDemand, .publicationFormatLink.forthcoming{
 	float: left;
+	min-height: 20px;
+}
+
+.publicationFormatLink.forthcoming:hover {
+	box-shadow:none;
 }
 
 .publicationFormatLink {
@@ -14,17 +28,25 @@
     border-radius: 5px;
     display: inline;
     float: right; 
-    padding: 3px;
+    padding-top: 3px;
+	padding-bottom: 3px;
+	margin-top: 3px;
+	margin-bottom: 3px;
     width: 30%;  
     min-width: 90px;
     text-align:center;
-	margin:3px;
-	clear:right;
+	clear: right;
 }
 
+.publicationFormatLink a{
+	display:block;
+}
+
+/* create button like feeling */
 .publicationFormatLink:hover {
     box-shadow:1px 1px 2px 1px
 }
+
 
 .openReviewButton {
     border-radius: 5px;

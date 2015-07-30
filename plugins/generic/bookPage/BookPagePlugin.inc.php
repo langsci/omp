@@ -65,8 +65,15 @@ class BookPagePlugin extends GenericPlugin {
 				$publishedMonograph = $templateMgr->get_template_vars('publishedMonograph'); // get variable publishedMonograph from template 
 				$contextId = $publishedMonograph->getContextId(); 
 				$publishedMonographId = $publishedMonograph->getId();
+	
 				
-				// get hardcover softcover links of this book and given them as variables to the template
+				// statistics: is there a statistic image of this book? statsImageExists as variable given to the template 
+				$templateMgr->assign('statsImageExists', file_exists($base_url.'/plugins/generic/bookPage/img/'.$publishedMonographId.'.png'));
+				
+				// hardcover/softcover: 
+				
+			//	$templateMgr->assign('softcoverLinkExists', file_exists($catalogEntryTabDao->getLink($publishedMonographId,"1")));
+				//get hardcover softcover links of this book and given them as variables to the template
 				$templateMgr->assign('softcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"1"));
 				$templateMgr->assign('hardcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"0"));
 				
