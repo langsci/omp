@@ -17,7 +17,7 @@
 	<message key="plugins.generic.bookPage.description">Changes the look and feel of the book page in the catalog and adds statistics.</message>
 	<message key="plugins.generic.bookPage.read">Read book</message>
 	<message key="plugins.generic.bookPage.statistics">Statistics</message>
-	<message key="plugins.generic.bookPage.contents">Contents</message>
+	<message key="plugins.generic.bookPage.downloads">Downloads</message>
 	<message key="plugins.generic.bookPage.openReview">Open review</message>
 	<message key="plugins.generic.bookPage.openReview.link">Review this book.</message>
 	
@@ -28,4 +28,6 @@
 	<message key="plugins.generic.bookPage.softcover">Buy softcover</message>
 	<message key="plugins.generic.bookPage.softcover.title"></message>
 
+	<message key="plugins.generic.bookPage.more">Read more</message>
+	<message key="plugins.generic.bookPage.less">Show less</message>
 </locale>
