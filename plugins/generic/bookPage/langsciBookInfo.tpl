@@ -28,19 +28,6 @@
 			 {rdelim});
 	{rdelim});
 	
-	// insert vg wort tag to download link 
-	// TODO get tag from BookPagePlugin.inc.php
-	
-	$(function() {ldelim}
-		function show(){ldelim} 
-			
-		{rdelim};
-	{rdelim});
-	
-	
-	
-	
-	
 </script>
 
 <link rel="stylesheet" href="{$baseUrl}/plugins/generic/bookPage/BookPagePlugin.css" type="text/css" />
@@ -56,8 +43,7 @@
 		
 		{if $availableFiles|@count != 0}
 		
-		<!--	<h3 class="accordionHeader"><a>{translate key="plugins.generic.bookPage.read"}</a></h3>
-			<div> -->
+			<div class="completeBook">
 				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 				{assign var=currency value=$currentPress->getSetting('currency')}
 				{foreach from=$publicationFormats item=publicationFormat}
@@ -66,9 +52,9 @@
 						<!--{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
 					{/if}
 				{/foreach}
-	<!--	</div> -->
+			</div>
 			<br> 
-			<br>
+			<br> 
 		
 		{else} 
 			<div class="publicationFormatLink forthcoming">
@@ -111,10 +97,10 @@
 			{if $sentences.1}
 				<br>
 				<a id="show" onclick='document.getElementById("more").style.display="block";document.getElementById("show").style.display="none";document.getElementById("less").style.display="block";'>{translate key="plugins.generic.bookPage.more"}</a> 
-				<a id="less" class="less" onclick='document.getElementById("more").style.display="none";document.getElementById("show").style.display="block";document.getElementById("less").style.display="none";'>{translate key="plugins.generic.bookPage.less"}</a> 
 				<div id="more" class="more">
 					{$sentences.1}
 				</div>
+				<a id="less" class="less" onclick='document.getElementById("more").style.display="none";document.getElementById("show").style.display="block";document.getElementById("less").style.display="none";'>{translate key="plugins.generic.bookPage.less"}</a> 
 			{/if}
 			
 		</div>
@@ -159,24 +145,26 @@
 				{assign var=currency value=$currentPress->getSetting('currency')}
 				{foreach from=$publicationFormats item=publicationFormat}
 					{if $publicationFormat->getIsAvailable()}
-						{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
+
+						{include file="../plugins/generic/bookPage/langsciBookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
+						
+				<!--	{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
 					{/if}
 				{/foreach}
 			</div>	
-			
 		{/if}
 		
-
 		<!-- Statistics -->
 		<!-- TODO: add hook and put statistics in own plugin -->
 		
-		{if $statsImageExists}
+	{!** {if $statImageExists} 
 			<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 			<div>
-				{assign var=imageUrl value="/plugins/generic/bookPage/img/"}
-				<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$base_url}{$imageUrl}{$publishedMonograph->getId()}{".png"}" width="100%" />
-			</div>	
-		{/if}
+				<a href="{$baseUrl}{"/plugins/generic/bookPage/img/"}{$publishedMonograph->getId()}{".png"}">
+					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$baseUrl}{"/plugins/generic/bookPage/img/"}{$publishedMonograph->getId()}{".png"}" width="100%" />
+				</a>
+		</div>	
+	{!** 	{/if} 
 	</div>	
 		
 </div>

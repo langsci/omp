@@ -65,15 +65,16 @@ class BookPagePlugin extends GenericPlugin {
 				$publishedMonograph = $templateMgr->get_template_vars('publishedMonograph'); // get variable publishedMonograph from template 
 				$contextId = $publishedMonograph->getContextId(); 
 				$publishedMonographId = $publishedMonograph->getId();
-	
 				
-				// statistics: is there a statistic image of this book? statsImageExists as variable given to the template 
-				$templateMgr->assign('statsImageExists', file_exists($base_url.'/plugins/generic/bookPage/img/'.$publishedMonographId.'.png'));
+				$request = $this->getRequest();
+				$baseUrl = $request->getBaseUrl();
+				$pluginPath = $this->getPluginPath();
 				
-				// hardcover/softcover: 
+				// TODO: not working, dont know why
+				// statistics: is there a statistic image of this book? statImageExists as variable given to the template 
+				$templateMgr->assign('statImageExists', file_exists($baseUrl.'/'.$pluginPath.'/img/'.$publishedMonographId.'.png'));
 				
-			//	$templateMgr->assign('softcoverLinkExists', file_exists($catalogEntryTabDao->getLink($publishedMonographId,"1")));
-				//get hardcover softcover links of this book and given them as variables to the template
+				// hardcover/softcover: get hardcover softcover links of this book and give them as variables to the template
 				$templateMgr->assign('softcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"1"));
 				$templateMgr->assign('hardcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"0"));
 				
@@ -81,7 +82,7 @@ class BookPagePlugin extends GenericPlugin {
 				$templateMgr->assign('imageUrl', $this->createVgWortUrl($contextId, $publishedMonographId));
 				
 				// plugin path as variable given to the template to overwrite bookFiles.tpl
-				$templateMgr->assign('pluginPath', $this->getPluginPath());
+				$templateMgr->assign('pluginPath', $pluginPath);
 				
 				// call template
 				$templateMgr->display($this->getTemplatePath() . 'langsciBookInfo.tpl', 'text/html', 'TemplateManager::include');

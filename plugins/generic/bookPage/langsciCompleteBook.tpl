@@ -49,9 +49,7 @@
 	
 {/foreach}
 
-
 	{if $hardcoverLink}
-
 		<div class="publicationFormatLink printOnDemand">
 			<a href="{$hardcoverLink}">
 				{translate key="plugins.generic.bookPage.hardcover"}

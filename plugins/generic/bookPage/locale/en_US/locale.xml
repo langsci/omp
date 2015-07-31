@@ -15,6 +15,7 @@
 	<message key="plugins.generic.bookPage.settings">Settings</message>
 	<message key="plugins.generic.bookPage.name">Book Page Plugin</message>
 	<message key="plugins.generic.bookPage.description">Changes the look and feel of the book page in the catalog and adds statistics.</message>
+	
 	<message key="plugins.generic.bookPage.read">Read book</message>
 	<message key="plugins.generic.bookPage.statistics">Statistics</message>
 	<message key="plugins.generic.bookPage.downloads">Downloads</message>
