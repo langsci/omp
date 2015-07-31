@@ -13,6 +13,7 @@
 
 	/* define icon box */
 	.lsp-icon-box{
+		background-color: white;
 		width: 25%;
 		float:left;
 		margin-left: auto;
@@ -52,6 +53,20 @@
 /* end of icon box */
 
 /* langsci blue header for accordions */
+
+h3.langsci{
+    border-bottom: 1px solid #92d2ea;
+    display: block;
+    font-size: 120%;
+    font-weight: bold;
+    list-style: outside none none;
+    margin-top: 20px;
+}
+
+.pkp_catalog_seriesDescription p {
+    margin-left: 30px;
+}
+
 
 h3.accordionHeader {
 	background-color: #eee !important;
