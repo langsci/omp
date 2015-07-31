@@ -37,8 +37,8 @@
 
 	{fbvFormArea id="booklinks"  class="border" title="plugins.generic.catalogEntryTab.coverlinks"}
 		{fbvFormSection }
-			{fbvElement label="plugins.generic.catalogEntryTab.coverlinks.soft" type="text"  name="softcoverlink" id="softcoverlink" value=$softcoverlink maxlength="255" size=$fbvStyles.size.SMALL inline="true"}
-			{fbvElement label="plugins.generic.catalogEntryTab.coverlinks.hard" type="text"  name="hardcoverlink" id="hardcoverlink" value=$hardcoverlink maxlength="255" size=$fbvStyles.size.SMALL inline="true"}
+			{fbvElement label="plugins.generic.catalogEntryTab.coverlinks.soft" type="text"  name="softcoverlink" id="softcoverlink" value=$softcoverlink size=$fbvStyles.size.MEDIUM} <!-- maxlength="255" size=$fbvStyles.size.SMALL inline="true" -->
+			{fbvElement label="plugins.generic.catalogEntryTab.coverlinks.hard" type="text"  name="hardcoverlink" id="hardcoverlink" value=$hardcoverlink size=$fbvStyles.size.MEDIUM}  <!-- maxlength="255" size=$fbvStyles.size.SMALL inline="true" -->
 		{/fbvFormSection}
 	{/fbvFormArea}
 	
