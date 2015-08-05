@@ -27,12 +27,12 @@ class PublicProfilesHandler extends Handler {
 
 		// if no user is logged in: display information and link to log in page/register page
 		$user = $request->getUser();
-		if (!$user) {
+		/*if (!$user) {
 			$publicProfilesPlugin = PluginRegistry::getPlugin('generic', PUBLICPROFILES_PLUGIN_NAME);
 			$templateMgr->assign('pageTitle', 'plugins.generic.publicProfiles.notLoggedIn.title');
 			$templateMgr->assign('pressPath', $this -> getPressPath($request));
 			$templateMgr->display($publicProfilesPlugin->getTemplatePath().'notLoggedIn.tpl');
-		}
+		}*/
 
 		// get profile user id from url (last string in the url)
 		$requestedUrl = $request->getCompleteUrl();
