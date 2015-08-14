@@ -18,6 +18,9 @@
 	<message key="plugins.generic.vgWort.description"><![CDATA[This plugin enables integration and management of the <a href="http://www.vgwort.de/" target="_blank">VG Wort</a> pixel tags in OMP. Requires the VG Wort publisher account and the configuration of the plugin settings.]]></message>
 	<message key="plugins.generic.vgWort.descriptionDisabled"><![CDATA[This plugin enables integration and management of the <a href="http://www.vgwort.de/" target="_blank">VG Wort</a> pixel tags in OMP. <strong>The system requirements are not fulfilled. Please ensure that PHP 5 >= 5.0.1, PHP Soap and OpenSSL extension modules are available on the server.</strong>]]></message>
 
+	<!-- VG Wort link in topnavi -->
+	<message key="plugin.generic.vgWort.navigation">Vg Wort</message>
+	
 	<!-- VG Wort manager options, setting -->
 	<message key="plugins.generic.vgWort.manager.settings">Settings</message>
 	<message key="plugins.generic.vgWort.manager.settings.description">Please do the following setup steps to be able to manage and use VG Wort pixel tags in OMP:</message>
