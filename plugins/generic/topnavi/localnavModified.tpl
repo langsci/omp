@@ -65,11 +65,11 @@
 			<li>
 				<a>Guidelines</a>
 				<ul>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="guidelines" op="forAuthors" }">For authors</a></li>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="guidelines" op="forEditors" }">For editors</a></li>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="guidelines" op="forReaders" }">For readers</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forAuthors" }">For authors</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forEditors" }">For editors</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forReaders" }">For readers</a></li>
 					{** <li><a href="{url router=$smarty.const.ROUTE_PAGE page="guidelines" op="newsletter" }">Newsletter</a></li> **}
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="guidelines" op="templates"  }">Templates</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="templatesAndTools" }">Templates</a></li>
 				</ul>
 			</li>
 
@@ -78,13 +78,13 @@
 				<a>Information</a>
 				<ul>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" }">About</a></li>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="support" }">Support us</a></li>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="advisoryBoard" }">Advisory Board</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="support" }">Support us</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="advisoryBoard" }">Advisory Board</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="supporters"}">Supporters</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="hallOfFame" }">Hall of fame</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="contact" }">Contact</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="sponsorship"  }">Sponsorship</a></li>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="imprint" }">Imprint</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="imprint" }">Imprint</a></li>
 				</ul>
 			</li>
 
@@ -136,7 +136,7 @@
 
 				{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR), $userRoles)}
 					<li>
-						<a href="#"><img src="/public/site/img/icons/1433431746_ic_settings_48px.png" width="20px"/></a>
+						<a href="#"><img src="/public/site/img/icons/settings.png" width="20px"/></a>
 						<ul>
 							<li>
 								<a href="{url router=$smarty.const.ROUTE_PAGE page="manageCatalog"}">{translate key="navigation.catalog"}</a>
@@ -166,7 +166,7 @@
 				{/if}{* ROLE_ID_MANAGER || ROLE_ID_SUB_EDITOR *}
 			{/if}
 			{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR, ROLE_ID_ASSISTANT, ROLE_ID_REVIEWER, ROLE_ID_AUTHOR), $userRoles)}
-				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="dashboard"}"><img src="/public/site/img/icons/1433431708_ic_dashboard_48px.png" title="Panel" width="20px"/></a></li>
+				<li><a href="{url router=$smarty.const.ROUTE_PAGE page="dashboard"}"><img src="/public/site/img/icons/dashboard.png" title="Panel" width="20px"/></a></li>
 			{/if}
 
 		</ul>
