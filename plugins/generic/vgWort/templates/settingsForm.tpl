@@ -44,6 +44,13 @@
 			{fbvElement type="text" name="vgWortPixelTagMin" id="vgWortPixelTagMin" value=$vgWortPixelTagMin}
 		{/fbvFormSection}
 	{/fbvFormArea}
+	{fbvFormArea id="vgWortPubFormats" title="plugins.generic.vgWort.manager.settings.vgWortPubFormats" class="border"}
+		{fbvFormSection description="plugins.generic.vgWort.manager.settings.vgWortPubFormats.description"}
+		{/fbvFormSection}
+		{fbvFormSection for="vgWortExcludedPubFormats" size=$fbvStyles.size.SMALL}
+			{fbvElement type="text" name="vgWortExcludedPubFormats" id="vgWortExcludedPubFormats" value=$vgWortExcludedPubFormats}
+		{/fbvFormSection}
+	{/fbvFormArea}
 	{fbvFormButtons submitText="common.save"}
 </form>
 <p><span class="formRequired">{translate key="common.requiredField"}</span></p>

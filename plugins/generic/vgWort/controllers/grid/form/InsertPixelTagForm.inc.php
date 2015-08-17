@@ -40,26 +40,50 @@ class InsertPixelTagForm extends Form {
 
 		// Validation checks for this form
 		
-	//	$this->addCheck(new FormValidator($this, 'privateCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.privateCodeRequired'));
-		$this->addCheck(new FormValidatorCustom($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDDoesNotExist', create_function('$submissionId,$contextId,$submissionDao', '$submission = $submissionDao->getById($submissionId, $contextId); return isset($submission);'), array($this->_contextId, DAORegistry::getDAO('PublishedMonographDAO'))));
-		
-		//TODO: check if book has a pixel getPixelTagBySubmissionId($contextId, $submissionId)
-		
-		/*
+		// privateCode, publicCode, domain and submissionId are required
 		$this->addCheck(new FormValidator($this, 'privateCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.privateCodeRequired'));
 		$this->addCheck(new FormValidator($this, 'publicCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.publicCodeRequired'));
+		$this->addCheck(new FormValidator($this, 'domain', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.domainRequired'));
+		$this->addCheck(new FormValidator($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDRequired'));
+		
+		// check if privateCode and publicCode contain only alphaNumeric content
 		$this->addCheck(new FormValidatorAlphaNum($this, 'privateCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.privateCodeAlphaNum'));
 		$this->addCheck(new FormValidatorAlphaNum($this, 'publicCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.publicCodeAlphaNum'));
+		
+		// check the length of privateCode and publicCode (max 32)
 		$this->addCheck(new FormValidatorLength($this, 'privateCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.privateCodeLength', '==', 32));
 		$this->addCheck(new FormValidatorLength($this, 'publicCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.publicCodeLength', '==', 32));
-		$this->addCheck(new FormValidator($this, 'domain', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.domainRequired'));
-		$this->addCheck(new FormValidatorRegExp($this, 'domain', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.domainPattern', '/^vg[0-9][0-9]\.met\.vgwort\.de$/'));
-		$this->addCheck(new FormValidator($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDRequired'));
-		$this->addCheck(new FormValidatorCustom($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDDoesNotExist', create_function('$submissionId,$journalId,$articleDao', '$submission = $articleDao->getArticle($submissionId, $journalId); return isset($submission);'), array($this->journalId, DAORegistry::getDAO('ArticleDAO'))));
-		$this->addCheck(new FormValidatorCustom($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDPixelTagExists', create_function('$submissionId,$journalId,$pixelTagDao', '$pixelTag = $pixelTagDao->getPixelTagByArticleId($journalId, $submissionId); return !isset($pixelTag);'), array($this->journalId, DAORegistry::getDAO('PixelTagDAO'))));
+		
+		// TODO: check the syntax of the domain 
+	//	$this->addCheck(new FormValidatorRegExp($this, 'domain', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.domainPattern', '/^vg[0-9][0-9]\.met\.vgwort\.de$/'));
+		
+		// check if the submission id does exist
+		$this->addCheck(new FormValidatorCustom($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDDoesNotExist', create_function('$submissionId,$contextId,$submissionDao', '$submission = $submissionDao->getById($submissionId, $contextId); return isset($submission);'), array($this->_contextId, DAORegistry::getDAO('PublishedMonographDAO'))));
+		
+		// check if book has a pixel
+		// TODO: allow user to update the pixel tag of a book
+		$this->addCheck(new FormValidatorCustom($this, 'submissionId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.submissionIDPixelTagExists', create_function('$submissionId,$contextId,$pixelTagDao', '$pixelTag = $pixelTagDao->getPixelTagBySubmissionId($contextId, $submissionId); return !isset($pixelTag);'), array($this->_contextId, DAORegistry::getDAO('PixelTagDAO'))));
+		
+
+		// TODO: check if pixel tag already exists
+		// getPixelTagsByContextId
+		// getPrivateCode
+		
+	/*	
+		$this->addCheck(new FormValidatorCustom($this, 'privateCode', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.create.PixelTagExists',create_function('$privateCode,$contextId,$pixelTagDao', '$pixelTags = $pixelTagDao->getPixelTagsByContextId($contextId); 
+	
+		// TODO: 
+		$array = [];
+		foreach($pixelTags as $key=>$pixelTag){	
+			$array[] = PixelTag::getPrivateCode(); 
+		}
+		return in_array($privateCode, $array);'), 
+		array($this->_contextId, DAORegistry::getDAO('PixelTagDAO'))));
 		*/
+	
 		$this->addCheck(new FormValidatorPost($this));
 	}
+
 
 	//
 	// Getters and Setters
@@ -162,7 +186,7 @@ class InsertPixelTagForm extends Form {
 		$pixelTagId = $pixelTagDao->insertObject($pixelTag);
 		
 		// write redirect to vg wort with book in .htaccess 
-		$this->writeInHtaccess($request, $this->getData('submissionId'), $this->getData('publicCode'));
+	//	$this->writeInHtaccess($request, $this->getData('submissionId'), $this->getData('publicCode'));
 		
 	}
 	

@@ -75,8 +75,9 @@ class BookPageSettingsForm extends Form {
 	function initData() {
 		$pressId = $this->getPressId();
 		$plugin = $this->getPlugin();
+	//	$pluginName = $plugin->getName();
 		foreach($this->_getFormFields() as $fieldName => $fieldType) {
-			$this->setData($fieldName, $plugin->getSetting($pressId, $fieldName));
+			$this->setData($fieldName, $plugin->getSetting($pressId,$fieldName));
 		}
 	}
 	/**

@@ -84,6 +84,12 @@ class BookPagePlugin extends GenericPlugin {
 				// plugin path as variable given to the template to overwrite bookFiles.tpl
 				$templateMgr->assign('pluginPath', $pluginPath);
 				
+				// get publication formats that shall be excluded from vg wort counting out of VG wort plugin settings
+				$vgWortPlugin = PluginRegistry::getPlugin('generic', 'vgwortplugin');
+				$excludedPubFormats = $vgWortPlugin->getSetting($contextId, 'vgWortExcludedPubFormats');
+				$excludedPubFormatsArray = explode(',', $excludedPubFormats);
+				$templateMgr->assign('excludedPubFormats', $excludedPubFormatsArray);
+				
 				// call template
 				$templateMgr->display($this->getTemplatePath() . 'langsciBookInfo.tpl', 'text/html', 'TemplateManager::include');
 				
@@ -191,7 +197,7 @@ class BookPagePlugin extends GenericPlugin {
 
 			case 'settings':
 					$this->import('BookPageSettingsForm');
-					$form = new ShariffSettingsForm($this, $press);
+					$form = new BookPageSettingsForm($this, $press);
 					if ($request->getUserVar('save')) {
 						$form->readInputData();
 						if ($form->validate()) {
