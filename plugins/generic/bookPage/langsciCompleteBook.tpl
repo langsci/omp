@@ -10,11 +10,9 @@
 
 <script type="text/javascript">
 
-	function addPixel(publishedMonographId, publicationFormatName){ldelim}
+	function addPixel(id){ldelim}
 	
-		if(publicationFormatName=='Complete book') {ldelim}
-			document.getElementById("vgwpixel").innerHTML="<img src='{$imageUrl}' alt=''></img>";
-		{rdelim}
+		document.getElementById("vgwpixel"+id).innerHTML="<img src='{$imageUrl}' alt=''></img>";
 	
 	{rdelim}
 	
@@ -29,7 +27,7 @@
 			{else}
 				{url|assign:downloadUrl op="download" path=$publishedMonograph->getId()|to_array:$publicationFormatId:$availableFile->getFileIdAndRevision()}
 			{/if}
-			<a href="{$downloadUrl}" title="{translate key="plugins.generic.bookPage.downloadPDF.title"}" onclick="addPixel({$publishedMonograph->getId()},'{$availableFile->getLocalizedName()}');">
+			<a href="{$downloadUrl}" title="{translate key="plugins.generic.bookPage.downloadPDF.title"}" onclick="addPixel('');">
 				
 				<!--<span title="{translate key="monograph.accessLogoOpen.altText"}" class="sprite openaccess">-->
 				
