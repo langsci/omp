@@ -81,7 +81,18 @@ h3.accordionHeader.ui-state-active {
 
 .lsp-accordion-icon{
 	float:left;
-	width:20px;
+	width:22px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.accordionWithImages .accordionHeader .ui-icon{
+	display: none;
+}
+
+.accordionWithImages  .ui-accordion-header a { 
+	padding-left: 0 !important; 
 }
 
 /* end of langsci blue header */
