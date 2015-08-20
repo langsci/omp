@@ -1,4 +1,9 @@
 
+.pkp_structure_foot .pkp_structure_subfoot {
+	padding-top: 20px;
+	position: relative !important;
+}
+
 /* make menu item transparent */
 .sf-menu ul{
 	opacity:.95;
