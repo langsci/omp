@@ -130,6 +130,7 @@ class AdditionalTabHandler extends PublicationEntryTabHandler {
 					$notificationKey = 'plugins.generic.catalogEntryTab.notification.addtionalDataSaved';
 					//SubmissionLog::logEvent($request, $submission, SUBMISSION_LOG_CATALOG_METADATA_UPDATE, 'submission.event.catalogMetadataUpdated');
 					break;
+					
 			}
 		}
 	}
