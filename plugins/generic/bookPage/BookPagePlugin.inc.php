@@ -55,7 +55,7 @@ class BookPagePlugin extends GenericPlugin {
 		// Hardcover softcover links from catalog entry tag plugin
 		import('plugins.generic.catalogEntryTab.CatalogEntryTabDAO');
 		$catalogEntryTabDao = new CatalogEntryTabDAO();
-		DAORegistry::registerDAO('CatalogEntryTabDAO', $catalogEntryTabDao);
+		DAORegistry::registerDAO('CatalogEntryTabDAO', $catalogEntryTabDao);		
 		
 		if (!isset($params['smarty_include_tpl_file'])) return false;
 		switch ($params['smarty_include_tpl_file']) {
@@ -74,9 +74,20 @@ class BookPagePlugin extends GenericPlugin {
 				// statistics: is there a statistic image of this book? statImageExists as variable given to the template 
 				$templateMgr->assign('statImageExists', file_exists($baseUrl.'/'.$pluginPath.'/img/'.$publishedMonographId.'.png'));
 				
+				
+				// get names of the publication formats from settings
+				$bookPagePlugin = PluginRegistry::getPlugin('generic', 'bookpageplugin');
+				$templateMgr->assign('bookPageForthcoming', $bookPagePlugin->getSetting($contextId, 'bookPageForthcoming'));
+				$templateMgr->assign('bookPageReview', $bookPagePlugin->getSetting($contextId, 'bookPageReview'));
+				$templateMgr->assign('bookPageDownload', $bookPagePlugin->getSetting($contextId, 'bookPageDownload'));
+				
 				// hardcover/softcover: get hardcover softcover links of this book and give them as variables to the template
-				$templateMgr->assign('softcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"1"));
-				$templateMgr->assign('hardcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"0"));
+				$templateMgr->assign('softcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"softcover"));
+				$templateMgr->assign('hardcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"hardcover"));
+				
+				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"openreview0"))){
+					$templateMgr->assign('openreviewLink0', $catalogEntryTabDao->getLink($publishedMonographId,"openreview0"));
+				}
 				
 				// generate imageUrl for VG Wort and save it as template variable
 				$templateMgr->assign('imageUrl', $this->createVgWortUrl($contextId, $publishedMonographId));
@@ -150,24 +161,63 @@ class BookPagePlugin extends GenericPlugin {
 	FUNCTIONS FOR SETTINGS
 	*/
 	
-	
-	/**
-	 * @copydoc PKPPlugin::getManagementVerbs()
+		/**
+	 * Display verbs for the management interface.
 	 */
 	function getManagementVerbs() {
 		$verbs = parent::getManagementVerbs();
 		if ($this->getEnabled()) {
-			$verbs[] = array('settings', __('plugins.generic.bookPage.settings'));
+			$verbs[] = array('settings', __('plugins.generic.bookPage.manager.settings'));
 		}
 		return $verbs;
 	}
-	
+
+ 	/*
+ 	 * Execute a management verb on this plugin
+ 	 * @param $verb string
+ 	 * @param $args array
+	 * @param $message string Location for the plugin to put a result msg
+ 	 * @return boolean
+ 	 */
+	function manage($verb, $args, &$message, &$messageParams, &$pluginModalContent = null) {
+		if (!parent::manage($verb, $args, $message, $messageParams, $pluginModalContent)) return false;
+
+		switch ($verb) {
+			case 'settings':
+				$request = $this->getRequest();
+				$router = $request->getRouter();
+				$context = $router->getContext($request);
+				$templateMgr = TemplateManager::getManager($request);
+				$templateMgr->register_function('plugin_url', array($this, 'smartyPluginUrl'));
+
+				$this->import('BookPageSettingsForm');
+				$form = new BookPageSettingsForm($this, $context->getId());
+				if (Request::getUserVar('save')) {
+					$form->readInputData();
+					if ($form->validate()) {
+						$form->execute();
+						$message = NOTIFICATION_TYPE_SUCCESS;
+						return false;
+					} else {
+						$pluginModalContent = $form->fetch($request);
+					}
+					return $json->getString();
+				} else {
+					$form->initData();
+					$pluginModalContent = $form->fetch($request);
+				}
+				return true;
+			default:
+				// Unknown management verb
+				assert(false);
+				return false;
+		}
+	}
+
 	/**
 	 * Define management link actions for the settings verb.
-	 * @param $request PKPRequest
-	 * @param $verb string
 	 * @return LinkAction
-	 */ 
+	 */
 	function getManagementVerbLinkAction($request, $verb) {
 		$router = $request->getRouter();
 
@@ -176,52 +226,15 @@ class BookPagePlugin extends GenericPlugin {
 		if ($verbName === 'settings') {
 			import('lib.pkp.classes.linkAction.request.AjaxLegacyPluginModal');
 			$actionRequest = new AjaxLegacyPluginModal(
-				$router->url($request, null, null, 'plugin', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
-				$this->getDisplayName()
+					$router->url($request, null, null, 'plugin', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+					$this->getDisplayName()
 			);
 			return new LinkAction($verbName, $actionRequest, $verbLocalized, null);
 		}
 
 		return null;
 	}
-
-	/**
-	 * @copydoc PKPPlugin::manage()
-	 */
-	function manage($verb, $args, &$message, &$messageParams, &$pluginModalContent = null) {
-		$request = $this->getRequest();
-		$press = $request->getPress();
-		$templateMgr = TemplateManager::getManager($request);
-
-		switch ($verb) {
-
-			case 'settings':
-					$this->import('BookPageSettingsForm');
-					$form = new BookPageSettingsForm($this, $press);
-					if ($request->getUserVar('save')) {
-						$form->readInputData();
-						if ($form->validate()) {
-							$form->execute();
-							$message = NOTIFICATION_TYPE_SUCCESS;
-							$messageParams = array('contents' => __('plugins.generic.bookPage.form.saved'));
-							return false;
-						} else {
-							$pluginModalContent = $form->fetch($request);
-						}
-					} else {
-						$form->initData();
-						$pluginModalContent = $form->fetch($request);
-					}
-
-				return true;
-
-
-			default:
-				// let the parent handle it.
-				return parent::manage($verb, $args, $message, $messageParams);
-		}
-	}
-
+	
 
 	/**
 	 * Get the name of the settings file to be installed on new press
@@ -236,7 +249,7 @@ class BookPagePlugin extends GenericPlugin {
 	 * @copydoc PKPPlugin::getTemplatePath
 	 */
 	function getTemplatePath() {
-		return parent::getTemplatePath() . '/';
+		return parent::getTemplatePath() . '/templates/';
 	}
 
 

@@ -40,52 +40,53 @@
 	
 		<!-- display first document of filelist  -->
 		<!-- TODO: get name of publicationFormat that should be displayed here from the settings -->
+			
+		{if $availableFiles|@count == 0}
 		
-		{if $availableFiles|@count != 0}
+			 <!-- Forthcoming -->
+			<div class="publicationFormatLink forthcoming">{$bookPageForthcoming}</div>
+			
+		{else}
 		
-			<div class="completeBook">
-				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
-				{assign var=currency value=$currentPress->getSetting('currency')}
+			{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
+			{assign var=currency value=$currentPress->getSetting('currency')}
+			
+			{assign var=completeBook value="false"}
+			
+			{foreach from=$publicationFormats item=publicationFormat}
+			
+				<!-- Complete Book -->
+				{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()==$bookPageDownload}
+				
+					{include file="../plugins/generic/bookPage/templates/langsciCompleteBook.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
+					
+					{assign var=completeBook value="true"}
+					
+				{/if}
+					
+			{/foreach}
+			
+			{if $completeBook=="false"}
+			
 				{foreach from=$publicationFormats item=publicationFormat}
-					{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()=="Complete book"}
-						{include file="../plugins/generic/bookPage/langsciCompleteBook.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
-						<!--{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
+					
+					<!-- Open Review -->
+					{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()==$bookPageReview}
+						
+						{include file="../plugins/generic/bookPage/templates/langsciOpenReview.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency openreviewLink0=$openreviewLink0}
+							
 					{/if}
+						
 				{/foreach}
-			</div>
-			<br> 
-			<br> 
-		
-		{else} 
-			<div class="publicationFormatLink forthcoming">
-				Forthcoming
-			</div>
-			<br> 
-			<br>
+				
+			{/if}
+			
 		{/if}
-
 		
+		<div class="clear"></div>
+		<br>
 		
 	<div class="bookAccordion">
-	
-		<!-- open review  -->
-		{assign var=publishedMonographId value=$publishedMonograph->getId()}
-		{if $publishedMonographId=="25"}
-			<h3 class="accordionHeader"><a>{translate key="plugins.generic.bookPage.openReview"}</a></h3>
-			<div>
-				This book is currently under <a title="Open review work at Language Science Press" href="http://test.langsci-press.org/openReview/intro"> open review</a>. 
-				See our <a title="How to comment on our PDF files" href="http://test.langsci-press.org/openReview/userGuide">user guide</a> to get acquainted with the commenting software.
-				
-				<div>
-					<a class="openReviewButton" href="https://via.hypothes.is/http://test.langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf"><img class="icon" src="/public/site/img/userGuideHypothesis/comment.png" alt="" /><span>preliminary version part 1</span></a>
-				</div>
-				
-				<div>
-					<a class="openReviewButton" href="https://via.hypothes.is/http://test.langsci-press.org/public/site/pdf/MuellerOpenReview2.pdf"><img class="icon" src="/public/site/img/userGuideHypothesis/comment.png" alt="" /><span>preliminary version part 2</span></a>
-				</div>
-				
-			</div>
-		{/if}
 	
 		<!-- about this book  -->
 		<h3 class="accordionHeader"><a href="#">About this book</a></h3>
@@ -105,7 +106,6 @@
 			
 		</div>
 	
-		
 		<!-- about the authors / volume editor -->
 		{assign var=authors value=$publishedMonograph->getAuthors()}
 			{foreach from=$authors item=author}
@@ -134,7 +134,6 @@
 			</div>
 			
 		{/if}-->
-
 		
 		<!-- download files  -->
 		{if $availableFiles|@count > 1} <!-- display this area only when there is more than one file to download -->
@@ -145,8 +144,9 @@
 				{assign var=currency value=$currentPress->getSetting('currency')}
 				{foreach from=$publicationFormats item=publicationFormat}
 					{if $publicationFormat->getIsAvailable()}
-
-						{include file="../plugins/generic/bookPage/langsciBookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
+						
+						{assign var=templatePath value="../`$pluginPath`/templates/langsciBookFiles.tpl"}
+						{include file=$templatePath availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
 						
 				<!--	{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
 					{/if}
@@ -157,6 +157,7 @@
 		<!-- Statistics -->
 		<!-- TODO: add hook and put statistics in own plugin -->
 		
+	{if $availableFiles|@count != 0}
 	{!** {if $statImageExists} 
 			<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 			<div>
@@ -164,7 +165,7 @@
 					<img class="pkp_helpers_container_center" alt="{$publishedMonograph->getLocalizedFullTitle()|escape}" src="{$baseUrl}{"/plugins/generic/bookPage/img/"}{$publishedMonograph->getId()}{".png"}" width="100%" />
 				</a>
 		</div>	
-	{!** 	{/if} 
+	{/if} 
 	</div>	
 		
 </div>
