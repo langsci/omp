@@ -24,6 +24,8 @@
 	<message key="plugins.generic.bookPage.openReview.title">Review this book.</message>
 	<message key="plugins.generic.bookPage.openReview.part0">Open review part 1</message>
 	<message key="plugins.generic.bookPage.openReview.part1">Open review part 2</message>
+	<message key="plugins.generic.bookPage.openReview.part0.title">Review part 1 of this book.</message>
+	<message key="plugins.generic.bookPage.openReview.part1.title">Review part 2 of this book.</message>
 	
 	<message key="plugins.generic.bookPage.downloadPDF">Download pdf</message>
 	<message key="plugins.generic.bookPage.downloadPDF.title"></message>
