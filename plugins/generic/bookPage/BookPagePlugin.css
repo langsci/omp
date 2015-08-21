@@ -55,6 +55,14 @@
     padding: 10px;
 }
 
+.clear{
+	clear: both;
+}
+
+.lsp-image-help{
+	float: left;
+}
+
 img.icon {
     border: 1px solid #fff;
     height: 35px;

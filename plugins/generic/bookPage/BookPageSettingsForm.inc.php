@@ -1,109 +1,110 @@
 <?php
+
 /**
- * @file plugins/generic/BookPageSettingsForm.inc.php
+ * @file plugins/generic/vgWort/VGWortSettingsForm.inc.php
  *
- * Copyright (c) 2015 Language Science Press
+ * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
+ * Last update: February 01, 2015
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @class BookPageSettingsForm
- * @ingroup plugins_blocks_browse
+ * @class VGWortSettingsForm
+ * @ingroup plugins_generic_vgwort
  *
- * @brief Form for press managers to setup Book Page plugin
+ * @brief Form for journal managers to setup VG Wort plugin
  */
+
+
 import('lib.pkp.classes.form.Form');
+
 class BookPageSettingsForm extends Form {
-	//
-	// Private properties
-	//
-	/** @var int press ID */
-	var $_pressId;
-	/** @var BrowseBlockPlugin Browse block plugin */
-	var $_plugin;
-	//
-	// Constructor
-	//
+
+	/** @var $contextId int */
+	var $contextId;
+
+	/** @var $plugin object */
+	var $plugin;
+
 	/**
 	 * Constructor
-	 * @param $plugin BookPagePlugin
-	 * @param $pressId int
+	 * @param $plugin object
+	 * @param $contextId int
 	 */
-	function BookPageSettingsForm($plugin, $pressId) {
-		$this->setPressId($pressId);
-		$this->setPlugin($plugin);
+	function BookPageSettingsForm(&$plugin, $contextId) {
+		$this->contextId = $contextId;
+		$this->plugin =& $plugin;
+
 		parent::Form($plugin->getTemplatePath() . 'settingsForm.tpl');
+
+	/*	$this->addCheck(new FormValidator($this, 'vgWortUserId', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.manager.settings.vgWortUserIdRequired'));
+		$this->addCheck(new FormValidator($this, 'vgWortUserPassword', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.manager.settings.vgWortUserPasswordRequired'));
+		$this->addCheck(new FormValidator($this, 'vgWortEditors', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.manager.settings.vgWortEditorsRequired'));
+		$this->addCheck(new FormValidatorRegExp($this, 'vgWortPixelTagMin', FORM_VALIDATOR_REQUIRED_VALUE, 'plugins.generic.vgWort.manager.settings.vgWortPixelTagMinRequired', '/^([1-9]|10)$/'));
 		$this->addCheck(new FormValidatorPost($this));
+		*/
+
 		$this->setData('pluginName', $plugin->getName());
-		$this->setData('pluginJavaScriptPath', $plugin->getPluginPath());
 	}
-	//
-	// Getters and Setters
-	//
+
 	/**
-	 * Get the Press ID.
-	 * @return int
+	 * Display the form.
 	 */
-	function getPressId() {
-		return $this->_pressId;
+	function fetch($request) {
+		$contextId = $this->contextId;
+		$plugin =& $this->plugin;
+
+		$roleDao =& DAORegistry::getDAO('RoleDAO');
+		$editors = array();
+		$users =& $roleDao->getUsersByRoleId(ROLE_ID_MANAGER, $contextId);
+		foreach ($users->toArray() as $user) {
+			$editors[$user->getId()] = $user->getFullName();
+		}
+
+		$templateMgr = TemplateManager::getManager($request);
+		$templateMgr->assign('editors', $editors);
+		return parent::fetch($request);
 	}
+
 	/**
-	 * Set the Press ID.
-	 * @param $pressId int
-	 */
-	function setPressId($pressId) {
-		$this->_pressId = $pressId;
-	}
-	/**
-	 * Get the plugin.
-	 * @return BookPagePlugin
-	 */
-	function getPlugin() {
-		return $this->_plugin;
-	}
-	/**
-	 * Set the plugin.
-	 * @param $plugin BookPagePlugin
-	 */
-	function setPlugin($plugin) {
-		$this->_plugin = $plugin;
-	}
-	//
-	// Implement template methods from Form
-	//
-	/**
-	 * @see Form::initData()
+	 * Initialize form data.
 	 */
 	function initData() {
-		$pressId = $this->getPressId();
-		$plugin = $this->getPlugin();
-	//	$pluginName = $plugin->getName();
+		$contextId = $this->contextId;
+		$plugin =& $this->plugin;
+
 		foreach($this->_getFormFields() as $fieldName => $fieldType) {
-			$this->setData($fieldName, $plugin->getSetting($pressId,$fieldName));
+			$this->setData($fieldName, $plugin->getSetting($contextId, $fieldName));
 		}
 	}
+
 	/**
-	 * @see Form::readInputData()
+	 * Assign form data to user-submitted data.
 	 */
 	function readInputData() {
 		$this->readUserVars(array_keys($this->_getFormFields()));
 	}
+
 	/**
-	 * @see Form::execute()
+	 * Save settings.
 	 */
 	function execute() {
-		$plugin = $this->getPlugin();
-		$pressId = $this->getPressId();
+		$plugin =& $this->plugin;
+		$contextId = $this->contextId;
+
 		foreach($this->_getFormFields() as $fieldName => $fieldType) {
-			$plugin->updateSetting($pressId, $fieldName, $this->getData($fieldName), $fieldType);
+			$plugin->updateSetting($contextId, $fieldName, $this->getData($fieldName), $fieldType);
 		}
 	}
-	
+
 	//
 	// Private helper methods
 	//
 	function _getFormFields() {
 		return array(
-			'pubFormat' => 'string',
+			'bookPageForthcoming' => 'string',
+			'bookPageReview' => 'string',
+			'bookPageDownload' => 'string'
 		);
 	}
 }
+
 ?>

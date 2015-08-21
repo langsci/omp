@@ -12,11 +12,10 @@
  
 <locale name="en_US" full_name="U.S. English">
 
-	<message key="plugins.generic.bookPage.settings">Settings</message>
-	<message key="plugins.generic.bookPage.settings.pubFormat">Publication Format</message>
+
 	
 	<message key="plugins.generic.bookPage.name">Book Page Plugin</message>
-	<message key="plugins.generic.bookPage.description">Changes the look and feel of the book page in the catalog and adds statistics.</message>
+	<message key="plugins.generic.bookPage.description">Changes the look and feel of the book page in the catalog, adds statistics and allows to highlight download and open review links.</message>
 	
 	<message key="plugins.generic.bookPage.read">Read book</message>
 	<message key="plugins.generic.bookPage.statistics">Statistics</message>
@@ -33,4 +32,25 @@
 
 	<message key="plugins.generic.bookPage.more">Read more</message>
 	<message key="plugins.generic.bookPage.less">Show less</message>
+	
+	<!-- settings -->
+	<message key="plugins.generic.bookPage.manager.settings">Settings</message>
+	<message key="plugins.generic.bookPage.manager.settings.pubFormats.description">Name the publication formats, that shall be displayed at the catalog page beneath the title of each book. Be aware that only publication formats that are named like here can be displayed (case sensitive!). </message>
+	
+	<message key="plugins.generic.bookPage.manager.settings.pubFormat">Publication format</message>
+	<message key="plugins.generic.bookPage.manager.settings.pubFormats">Publication formats</message>
+	
+	<message key="plugins.generic.bookPage.manager.settings.forthcoming">Forthcoming</message>
+	<message key="plugins.generic.bookPage.manager.settings.forthcoming.label">Enter the term that shall be displayed at books that do not jet have a public file. Example: Forthcoming</message>
+	
+	<message key="plugins.generic.bookPage.manager.settings.review">Open review</message>
+	<message key="plugins.generic.bookPage.manager.settings.review.label">Open review label</message>
+	
+	<message key="plugins.generic.bookPage.manager.settings.download">Complete book</message>
+	<message key="plugins.generic.bookPage.manager.settings.download.label">Name the publication format that includes the complete book.</message>
+	
+	
+	
+	
+	
 </locale>
