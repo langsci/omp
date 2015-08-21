@@ -21,7 +21,9 @@
 	<message key="plugins.generic.bookPage.statistics">Statistics</message>
 	<message key="plugins.generic.bookPage.downloads">Downloads</message>
 	<message key="plugins.generic.bookPage.openReview">Open review</message>
-	<message key="plugins.generic.bookPage.openReview.link">Review this book.</message>
+	<message key="plugins.generic.bookPage.openReview.title">Review this book.</message>
+	<message key="plugins.generic.bookPage.openReview.part0">Open review part 1</message>
+	<message key="plugins.generic.bookPage.openReview.part1">Open review part 2</message>
 	
 	<message key="plugins.generic.bookPage.downloadPDF">Download pdf</message>
 	<message key="plugins.generic.bookPage.downloadPDF.title"></message>
