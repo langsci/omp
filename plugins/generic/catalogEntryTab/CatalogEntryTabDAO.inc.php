@@ -18,10 +18,10 @@ class CatalogEntryTabDAO extends DAO {
 		parent::DAO();
 	}
 
-	function getLink($submission_id,$softcover) {
+	function getLink($submission_id,$link_name) {
 
 		$result = $this->retrieve(
-			'SELECT link FROM langsci_submission_links WHERE submission_id='.$submission_id.' AND softcover='.$softcover
+			'SELECT link FROM langsci_submission_links WHERE submission_id='.$submission_id.' AND link_name="'.$link_name.'"'
 		);
 
 		if ($result->RecordCount() == 0) {
@@ -35,14 +35,14 @@ class CatalogEntryTabDAO extends DAO {
 		}
 	}
 
-	function setLink($submission_id,$softcover,$link) {
+	function setLink($submission_id,$link_name,$link) {
 
 		$this->update(
-			'DELETE FROM langsci_submission_links WHERE submission_id= '.$submission_id.' AND softcover='.$softcover
+			'DELETE FROM langsci_submission_links WHERE submission_id= '.$submission_id.' AND link_name="'.$link_name.'"'
 		);
 
 		$this->update(
-			'INSERT INTO langsci_submission_links VALUES('.$submission_id.','.$softcover.',"'.$link.'")'
+			'INSERT INTO langsci_submission_links VALUES('.$submission_id.',"'.$link_name.'","'.$link.'")'
 		);
 
 	}

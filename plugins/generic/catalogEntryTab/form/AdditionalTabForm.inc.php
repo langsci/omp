@@ -77,8 +77,11 @@ class AdditionalTabForm extends Form {
 		$templateMgr->assign('formParams', $this->getFormParams());
 
 		$catalogEntryTabDAO = DAORegistry::getDAO('CatalogEntryTabDAO');
-		$templateMgr->assign('softcoverlink', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),1));
-		$templateMgr->assign('hardcoverlink', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),0));
+		$templateMgr->assign('softcoverlink', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'softcover'));
+		$templateMgr->assign('hardcoverlink', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'hardcover'));
+		
+		$templateMgr->assign('openreviewlink0', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'openreview0'));
+		$templateMgr->assign('openreviewlink1', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'openreview1'));
 
 		return parent::fetch($request);
 	}
@@ -142,7 +145,7 @@ class AdditionalTabForm extends Form {
 	 */
 	function readInputData() {
 		$vars = array(
-			 'softcoverlink','hardcoverlink',// Cover image
+			 'softcoverlink','hardcoverlink','openreviewlink0', 'openreviewlink1',// Cover image
 		);
 
 		$this->readUserVars($vars);
@@ -169,9 +172,13 @@ class AdditionalTabForm extends Form {
 
 		$catalogEntryTabDAO = DAORegistry::getDAO('CatalogEntryTabDAO');
 
-		$catalogEntryTabDAO->setLink($monograph->getId(),1,$this->getData('softcoverlink'));
-		$catalogEntryTabDAO->setLink($monograph->getId(),0,$this->getData('hardcoverlink'));
+		$catalogEntryTabDAO->setLink($monograph->getId(),'softcover',$this->getData('softcoverlink'));
+		$catalogEntryTabDAO->setLink($monograph->getId(),'hardcover',$this->getData('hardcoverlink'));
+		
+		$catalogEntryTabDAO->setLink($monograph->getId(),'openreview0',$this->getData('openreviewlink0'));
+		$catalogEntryTabDAO->setLink($monograph->getId(),'openreview1',$this->getData('openreviewlink1'));
 
+		
 //		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
 	//	$publishedMonograph = $publishedMonographDao->getById($monograph->getId(), null, false); /* @var $publishedMonograph PublishedMonograph */
 		/*$isExistingEntry = $publishedMonograph?true:false;

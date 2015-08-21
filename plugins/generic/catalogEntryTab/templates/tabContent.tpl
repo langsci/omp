@@ -42,6 +42,13 @@
 		{/fbvFormSection}
 	{/fbvFormArea}
 	
+	{fbvFormArea id="openreview"  class="border" title="plugins.generic.catalogEntryTab.openReview"}
+		{fbvFormSection }
+			{fbvElement label="plugins.generic.catalogEntryTab.openReview.link0" type="text"  name="openreviewlink0" id="openreviewlink0" value=$openreviewlink0 size=$fbvStyles.size.MEDIUM} <!-- maxlength="255" size=$fbvStyles.size.SMALL inline="true" -->
+			{fbvElement label="plugins.generic.catalogEntryTab.openReview.link1" type="text"  name="openreviewlink1" id="openreviewlink1" value=$openreviewlink1 size=$fbvStyles.size.MEDIUM}  <!-- maxlength="255" size=$fbvStyles.size.SMALL inline="true" -->
+		{/fbvFormSection}
+	{/fbvFormArea}
+	
 	{fbvFormButtons id="catalogMetadataFormSubmit" submitText="common.save"}
 
 </form>

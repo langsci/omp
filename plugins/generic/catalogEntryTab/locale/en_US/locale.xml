@@ -18,7 +18,11 @@
 	<message key="plugins.generic.catalogEntryTab.coverlinks.soft">Softcover</message>	
 	<message key="plugins.generic.catalogEntryTab.coverlinks.hard">Hardcover</message>
 	<message key="plugins.generic.catalogEntryTab.additionalTab">Links</message>
-
+	
+	<message key="plugins.generic.catalogEntryTab.openReview">Open Review</message>
+	<message key="plugins.generic.catalogEntryTab.openReview.link0">Link to Hypothesis version</message>
+	<message key="plugins.generic.catalogEntryTab.openReview.link1">Additional link to Hypothesis version (in case two files are needed).</message>
+	
 	<message key="plugins.generic.catalogEntryTab.notification.addtionalDataSaved">Data is saved.</message>
 
 notification.savedCatalogMetadata
