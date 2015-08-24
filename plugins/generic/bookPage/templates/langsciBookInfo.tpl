@@ -157,8 +157,7 @@
 		<!-- Statistics -->
 		<!-- TODO: add hook and put statistics in own plugin -->
 		
-	{if $availableFiles|@count != 0}
-	{!** {if $statImageExists} 
+	{if $statImageExists} 
 			<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.statistics"}</a></h3>
 			<div>
 				<a href="{$baseUrl}{"/plugins/generic/bookPage/img/"}{$publishedMonograph->getId()}{".png"}">

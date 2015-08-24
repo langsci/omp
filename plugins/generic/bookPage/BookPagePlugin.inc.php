@@ -70,10 +70,8 @@ class BookPagePlugin extends GenericPlugin {
 				$baseUrl = $request->getBaseUrl();
 				$pluginPath = $this->getPluginPath();
 				
-				// TODO: not working, dont know why
 				// statistics: is there a statistic image of this book? statImageExists as variable given to the template 
-				$templateMgr->assign('statImageExists', file_exists($baseUrl.'/'.$pluginPath.'/img/'.$publishedMonographId.'.png'));
-				
+				$templateMgr->assign('statImageExists', file_exists(realpath($pluginPath.'/img/'.$publishedMonographId.'.png')));
 				
 				// get names of the publication formats from settings
 				$bookPagePlugin = PluginRegistry::getPlugin('generic', 'bookpageplugin');
