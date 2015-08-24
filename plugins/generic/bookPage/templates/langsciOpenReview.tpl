@@ -14,7 +14,7 @@
 			{assign var=downloadUrl value=$openreviewLink0}
 				
 			<div class="publicationFormatLink completeBook">
-				<a href="https://via.hypothes.is/{$openreviewLink1}" title='{translate key="plugins.generic.bookPage.openReview.part0.title"}'>
+				<a href="https://via.hypothes.is/{$openreviewLink0}" title='{translate key="plugins.generic.bookPage.openReview.part0.title"}'>
 					{translate key="plugins.generic.bookPage.openReview.part0"}
 				</a>
 			</div>
