@@ -136,6 +136,7 @@
 		</div>
 	</div>
 
+	<!--
 	{if count($publicationFormats) > 1}
 		{foreach from=$publicationFormats item="publicationFormat"}
 			{if $publicationFormat->getIsApproved()}
@@ -162,5 +163,5 @@
 			</div>
 		</div>
 	{/if}{* !$categories->wasEmpty() *}
-	
+	-->
 </div>
