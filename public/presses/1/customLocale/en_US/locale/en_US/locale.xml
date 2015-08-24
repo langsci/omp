@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../../../lib/pkp/dtd/locale.dtd">
+<locale name="en_US">
+	<message key="submission.pageProofs">Final Files</message>
+	<message key="monograph.proofReadingDescription">These are the files for public download. They must be approved and inclusion of metadata must be checked in the catalog for the files to be available.</message>
+	<message key="catalog.manage.entryDescription">To list a book in the catalog, select the Content tab and fill in the necessary information. Information for each of the book’s formats can be included in the catalog entry by selecting the tab for the format.</message>
+	<message key="catalog.loginRequiredForPayment"><![CDATA[<span style="display:none">no entry<span>]]></message>
+</locale>

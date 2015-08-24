@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../../../../../lib/pkp/dtd/locale.dtd">
+<locale name="en_US">
+	<message key="editor.submission.editorial.introduction"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="editor.submission.review.reviewersDescription"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="editor.submission.editorial.copyeditingDescription"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="editor.submission.revisions">Files with incorporated revisions</message>
+	<message key="editor.submission.revisionsDescription">Please upload the revisions of the submission files listed in "Files for Review" (see above).</message>
+	<message key="editor.submission.final.manageFinalDraftFilesDescription">Any files that have already been uploaded to any submission stage can be added to the Final Draft Files listing by checking the Include checkbox below and clicking Search: all available files will be listed and can be chosen for inclusion. Additional files not already uploaded to a stage can be added to the listing by clicking the Upload A Final Draft link.</message>
+</locale>

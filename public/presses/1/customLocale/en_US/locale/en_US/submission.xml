@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../../../lib/pkp/dtd/locale.dtd">
+<locale name="en_US">
+	<message key="submission.catalogEntry.catalogMetadata">Cover</message>
+	<message key="submission.catalogEntry.monographMetadata">Content</message>
+	<message key="submission.submit.upload.description"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="submission.submit.placement.seriesDescription">Select the series your book should be considered for.</message>
+</locale>

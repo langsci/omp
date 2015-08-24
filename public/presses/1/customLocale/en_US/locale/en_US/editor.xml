@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../../../lib/pkp/dtd/locale.dtd">
+<locale name="en_US">
+	<message key="editor.submission.editorial.finalDraftDescription"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="editor.submission.introduction"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="editor.submission.production.introduction"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="editor.monograph.production.publicationFormatDescription"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="editor.externalReview.introduction">Select reviewers and files to send out to the reviewers. After receiving the reviews, either decline the submission or inform the author about requested changes. The author will upload files with incorporated revisions, which will then be sent out for proofreading in the editorial stage.</message>
+</locale>

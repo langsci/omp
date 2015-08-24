@@ -1,0 +1,180 @@
+
+File: locale/en_US/editor.xml
+
+1. locale key: editor.submission.editorial.finalDraftDescription
+
+	original content:   For edited volumes, with different authors for each chapter, the submission file can be split up into into chapter-sized files for copyediting, which are reviewed by chapter-authors after the copyedited files are uploaded to <span class="pkp_help_title">Copyediting</span>.
+	customized content: <span style="display:none">no entry</span>
+
+2. locale key: editor.submission.introduction
+
+	original content:   In Submission, the editor, after the consulting the files submitted, selects the appropriate action (which includes notifying the author): Send to Internal Review (entails selecting files for Internal Review); Send to External Review (entails selecting files for External Review); Accept Submission (entails selecting files for Editorial stage); or Decline Submission (archives submission).
+	customized content: <span style="display:none">no entry</span>
+
+3. locale key: editor.submission.production.introduction
+
+	original content:   In Production, the editor selects book formats (e.g., digital, paperback, etc.) in <span class="pkp_help_title">Publication Formats</span>, for which the layout editor prepares publication-quality files based on the production ready files. The publication-quality files are uploaded for each format in <span class="pkp_help_title">Page Proofs</span>, where they are proof read. The book is made <em>Available</em> (i.e., published) for each format in <span class="pkp_help_title">Publication Formats</span>, after the <em>Proofs</em> is checked as approved, and the Catalog entry is checked as included in the book’s catalog entry.
+	customized content: <span style="display:none">no entry</span>
+
+4. locale key: editor.monograph.production.publicationFormatDescription
+
+	original content:   Add publication formats (e.g., digital, paperback) for which the layout editor prepares page proofs for proofreading. The <em>Proofs</em> need to be checked as approved and the <em>Catalog</em> entry for the format needs to be checked as posted in the book’s catalog entry, before a format can be made <em>Available</em> (i.e., published).
+	customized content: <span style="display:none">no entry</span>
+
+5. locale key: editor.externalReview.introduction
+
+	original content:   In External Review, the editor assign reviewers external to the press to the submission files and consider the resulting reviews, before selecting the appropriate action (which includes notifying the author): Request Revisions (revisions reviewed by editor alone); Resubmit for Review (revisions initiate another round of reviews); Accept for Submission (entails selecting files for Editorial stage); or Decline Submission (editor archives submission).
+	customized content: Select reviewers and files to send out to the reviewers. After receiving the reviews, either decline the submission or inform the author about requested changes. The author will upload files with incorporated revisions, which will then be sent out for proofreading in the editorial stage.
+
+__________________________________________________________________________________
+
+
+File: locale/en_US/locale.xml
+
+1. locale key: submission.pageProofs
+
+	original content:   Page Proofs
+	customized content: Final Files
+
+2. locale key: monograph.proofReadingDescription
+
+	original content:   The layout editor uploads the production-ready files that have been prepared for publication here. Use <em>+Assign</em> to designate authors and others to proofread the page proofs, with corrected files uploaded for approval prior to publication.
+	customized content: These are the files that are downloadable from the catalog - if they are approved and metadata for the publication format is included in the catalog entry for this book.
+
+3. locale key: catalog.manage.entryDescription
+
+	original content:   To list a book in the catalog, select the Monograph tab and fill in the necessary information. Information for each of the book’s formats can be included in the catalog entry by selecting the tab for the format. The metadata specifications are based on ONIX for Books which is an international standard used by the book industry for communication of product information.
+	customized content: To list a book in the catalog, select the Content tab and fill in the necessary information. Information for each of the book’s formats can be included in the catalog entry by selecting the tab for the format. The metadata specifications are based on ONIX for Books which is an international standard used by the book industry for communication product information.
+
+4. locale key: catalog.loginRequiredForPayment
+
+	original content:   Please note: In order to purchase items, you will need to log in first. Selecting an item to purchase will direct you to the login page. Any item marked with an Open Access icon may be downloaded free of charge, without logging in.
+	customized content: <span style="display:none">no entry<span>
+
+__________________________________________________________________________________
+
+
+File: locale/en_US/submission.xml
+
+1. locale key: submission.catalogEntry.catalogMetadata
+
+	original content:   Catalog
+	customized content: Cover
+
+2. locale key: submission.catalogEntry.monographMetadata
+
+	original content:   Monograph
+	customized content: Content
+
+3. locale key: submission.submit.upload.description
+
+	original content:   Upload files associated with this submission, including manuscript, prospectus, cover letter, artwork, etc. For edited volumes, as well as monographs, upload the manuscript as a single file, if feasible.
+	customized content: <span style="display:none">no entry</span>
+
+__________________________________________________________________________________
+
+
+File: plugins/generic/hallOfFame/locale/en_US/locale.xml
+
+1. locale key: plugins.generic.hallOfFame.title
+
+	original content:   Hall of Fame
+	customized content: Custom Title of the Hall of Fame
+
+__________________________________________________________________________________
+
+
+File: lib/pkp/locale/en_US/user.xml
+
+1. locale key: user.salutation
+
+	original content:   Salutation
+	customized content: Academic title
+
+__________________________________________________________________________________
+
+
+File: lib/pkp/locale/en_US/editor.xml
+
+1. locale key: editor.submission.editorial.introduction
+
+	original content:   In Editorial, the copyeditor works on final draft files before uploading files to <span class="pkp_help_title">Copyediting</span>, where the author and others  review them, leading to the preparation and uploading to <span class="pkp_help_title">Copyediting</span> of a copyedited fair copy of the submission, where it is <em>Approved</em> by an editor and sent to the Production stage.
+	customized content: <span style="display:none">no entry</span>
+
+2. locale key: editor.submission.review.reviewersDescription
+
+	original content:   Use <em>+Add Reviewer</em> to invite readers to review the submission files. The notebook icon indicates that a review has been submitted, which is then checked <em>Considered</em> after it has been consulted. When reviews are overdue, a red envelope icon appears for reminding reviewers.
+	customized content: <span style="display:none">no entry</span>
+
+3. locale key: editor.submission.editorial.copyeditingDescription
+
+	original content:   Assign the copyedited files to authors (and others as needed) to review changes and answer queries, with their responses and uploaded files appearing in the notebook icon. These are marked <em>Considered</em> by the copyeditor, who then prepares a final copyedited fair copy to upload to <span class="pkp_help_title">Copyediting</span>, which the editor checks Approved, before sending to the Production stage.
+	customized content: <span style="display:none">no entry</span>
+
+4. locale key: editor.submission.revisions
+
+	original content:   Revisions
+	customized content: Files with incorporated revisions
+
+5. locale key: editor.submission.revisionsDescription
+
+	original content:   Revised submission files appear here, with the open folder icon indicating who uploaded the file.
+	customized content: Please upload the revisions of the submission files listed in "Files for Review" (see above).
+
+6. locale key: editor.submission.final.manageFinalDraftFilesDescription
+
+	original content:   Any files that have already been uploaded to any submission stage can be added to the Final Draft Files listing by checking the Include checkbox below and clicking Search: all available files will be listed and can be chosen for inclusion. Additional files not already uploaded to a stage can be added to the listing by clicking the Upload A Final Draft link.
+	customized content: Any files that have already been uploaded to any submission stage can be added to the Final Draft Files listing by checking the Include checkbox below and clicking Search: all available files will be listed and can be chosen for inclusion. Additional files not already uploaded to a stage can be added to the listing by clicking the Upload A Final Draft link.
+
+__________________________________________________________________________________
+
+
+File: lib/pkp/locale/en_US/submission.xml
+
+1. locale key: submission.authorDashboard.description
+
+	original content:   In each initiated workflow stage listed below you will find information on the stage's status, as well as any associated submission files and correspondence associated with that stage. You may be asked to upload a revised file to a particular stage, or audit a file that has been previously uploaded, both actions which can be completed within the stage section specified.
+	customized content: The author dashboard is not available yet.
+
+2. locale key: submission.contributorsDescription
+
+	original content:   The list of contributors associated with this submission may include other authors; individual chapter authors of an edited volume; volume editors; and/or translators. One contributor from the list may be assigned as the primary contact for editorial correspondence; this does not necessarily have to be the submitting author.
+	customized content: <span style="display:none">no entry</span>
+
+3. locale key: submission.rights.tip
+
+	original content:   If you wish, you may enter a brief statement about the access rights held in or over this submission.
+	customized content: The Language Scienc Press standard rights are CC-BY.
+
+4. locale key: reviewer.submission.reviewFiles
+
+	original content:   Review Files
+	customized content: Files for Review
+
+5. locale key: submission.copyediting
+
+	original content:   Copyediting
+	customized content: Typeset Files
+
+6. locale key: submission.finalDraft
+
+	original content:   Final Draft Files
+	customized content: Proofread Files
+
+7. locale key: submission.submit.whatNext.return
+
+	original content:   Return to your dashboard
+	customized content: Return to your panel
+
+__________________________________________________________________________________
+
+
+File: lib/pkp/locale/en_US/common.xml
+
+1. locale key: common.subtitle.tip
+
+	original content:   The submission's optional subtitle will appear after a colon (:), following the main title.
+	customized content: <span style="display:none">no entry<span>
+
+__________________________________________________________________________________
+

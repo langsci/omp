@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../../../../../lib/pkp/dtd/locale.dtd">
+<locale name="en_US">
+	<message key="submission.authorDashboard.description">The author dashboard is not available yet.</message>
+	<message key="submission.contributorsDescription"><![CDATA[<span style="display:none">no entry</span>]]></message>
+	<message key="submission.rights.tip">The Language Science Press standard rights are CC-BY.</message>
+	<message key="reviewer.submission.reviewFiles">Files for Review</message>
+	<message key="submission.copyediting">Typeset Files</message>
+	<message key="submission.finalDraft">Proofread Files</message>
+	<message key="submission.submit.whatNext.return">Return to your panel</message>
+	<message key="submission.submit.uploadExpeditedFiles"><![CDATA[<span style="display:none">no entry</span>]]></message>
+</locale>
