@@ -42,7 +42,7 @@
 		{/if}
 		
 		<div class="lsp-image-help">
-		<a title="About open review at Language Science Press" href="http://test.langsci-press.org/openReview/intro"> <img src="/public/site/img/icons/info.png" width="27px"></a> 
+		<a title="About open review at Language Science Press" href="/openReview/intro"> <img src="/public/site/img/icons/info.png" width="27px"></a> 
 		</div>
 	
 {/foreach}
