@@ -41,9 +41,12 @@
 		
 		{/if}
 		
+		<div class="lsp-image-help">
+		<a title="About open review work at Language Science Press?" href="http://test.langsci-press.org/openReview/intro"> <img src="/public/site/img/icons/info.png" width="27px"></a> 
+		</div>
 		
 		<div class="lsp-image-help">
-		<a title="How does open review work at Language Science Press?" href="http://test.langsci-press.org/openReview/intro"> <img src="/public/site/img/icons/help.svg" width="27px"></a> 
+		<a title="How to comment on our PDF files" href="http://test.langsci-press.org/openReview/userGuide"><img src="/public/site/img/icons/help.svg" width="27px"></a> 
 		</div>
 	
 {/foreach}
