@@ -52,9 +52,9 @@
 <message key="plugins.generic.registerPage.checkboxReader"><![CDATA[
 		Reader]]></message> 
 <message key="plugins.generic.registerPage.checkboxAuthor"><![CDATA[
-		Author (<a href="{$pressUrl}information/forAuthors">more information</a>)]]></message>
+		Author (<a href="{$pressUrl}forAuthors">more information</a>)]]></message>
 <message key="plugins.generic.registerPage.checkboxVolumeEditor"><![CDATA[
-		Volume Editor (<a href="{$pressUrl}information/forAuthors">more information</a>)]]></message>
+		Volume Editor (<a href="{$pressUrl}forAuthors">more information</a>)]]></message>
 <message key="plugins.generic.registerPage.checkboxReviewer"><![CDATA[
 		Reviewer]]></message>
 <message key="plugins.generic.registerPage.checkboxProofreader"><![CDATA[
