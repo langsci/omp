@@ -83,6 +83,9 @@
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="supporters"}">Supporters</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="hallOfFame" }">Hall of fame</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="contact" }">Contact</a></li>
+					{if not empty($contextInfo.editorialPolicies)}
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialPolicies"}">{translate key="about.policies"}</a></li>
+					{/if}	
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="sponsorship"  }">Sponsorship</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="imprint" }">Imprint</a></li>
 				</ul>

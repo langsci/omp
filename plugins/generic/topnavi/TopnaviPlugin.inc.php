@@ -37,6 +37,7 @@ class TopnaviPlugin extends GenericPlugin {
 
 			if ($this->getEnabled()) {
 				HookRegistry::register ('TemplateManager::include', array(&$this, 'handleTopnaviTemplateInclude'));
+				HookRegistry::register ('TemplateManager::display', array(&$this, 'handleDisplayTemplate'));
 			}
 			return true;
 		}
@@ -58,11 +59,27 @@ class TopnaviPlugin extends GenericPlugin {
 		switch ($params['smarty_include_tpl_file']) {
 			case 'header/localnav.tpl':
 				$templateMgr->display($this->getTemplatePath() . 'localnavModified.tpl', 'text/html', 'TemplateManager::include');
+				$templateMgr->assign('meintest','das ist ein test');
+
 				return true;
 		}
 		return false;
 	}
 
+
+	function handleDisplayTemplate($hookName, $args) {
+
+		$templateMgr =& $args[0];
+		$template =& $args[1];
+
+		switch ($template) {
+
+			case 'about/editorialPolicies.tpl':
+				$templateMgr->display($this->getTemplatePath() . 'editorialPoliciesModified.tpl', 'text/html', 'TemplateManager::display');
+				return true;
+		}
+		return false;
+	}
 
 
 }
