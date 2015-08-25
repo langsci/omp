@@ -55,10 +55,16 @@ class BookPagePlugin extends GenericPlugin {
 		// Hardcover softcover links from catalog entry tag plugin
 		import('plugins.generic.catalogEntryTab.CatalogEntryTabDAO');
 		$catalogEntryTabDao = new CatalogEntryTabDAO();
-		DAORegistry::registerDAO('CatalogEntryTabDAO', $catalogEntryTabDao);		
+		DAORegistry::registerDAO('CatalogEntryTabDAO', $catalogEntryTabDao);	
+
 		
 		if (!isset($params['smarty_include_tpl_file'])) return false;
 		switch ($params['smarty_include_tpl_file']) {
+			
+			case 'catalog/book/bookSpecs.tpl':
+				$templateMgr->display($this->getTemplatePath() . 'langsciBookSpecs.tpl', 'text/html', 'TemplateManager::include');
+				return true;
+			
 			case 'catalog/book/bookInfo.tpl':
 			
 				// variables for vg wort and hardcover/softcover

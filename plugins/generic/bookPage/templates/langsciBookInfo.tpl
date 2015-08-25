@@ -56,7 +56,7 @@
 			{foreach from=$publicationFormats item=publicationFormat}
 			
 				<!-- Complete Book -->
-				{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()==$bookPageDownload}
+				{if $publicationFormat->getIsAvailable() && $publicationFormat->getIsApproved() && $publicationFormat->getLocalizedName()==$bookPageDownload}
 				
 					{include file="../plugins/generic/bookPage/templates/langsciCompleteBook.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} 
 					
@@ -71,7 +71,7 @@
 				{foreach from=$publicationFormats item=publicationFormat}
 					
 					<!-- Open Review -->
-					{if $publicationFormat->getIsAvailable() && $publicationFormat->getLocalizedName()==$bookPageReview}
+					{if $publicationFormat->getIsAvailable() && $publicationFormat->getIsApproved() && $publicationFormat->getLocalizedName()==$bookPageReview}
 						
 						{include file="../plugins/generic/bookPage/templates/langsciOpenReview.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency openreviewLink0=$openreviewLink0}
 							
@@ -143,7 +143,7 @@
 				{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 				{assign var=currency value=$currentPress->getSetting('currency')}
 				{foreach from=$publicationFormats item=publicationFormat}
-					{if $publicationFormat->getIsAvailable()}
+					{if $publicationFormat->getIsAvailable() && $publicationFormat->getIsApproved()}
 						
 						{assign var=templatePath value="../`$pluginPath`/templates/langsciBookFiles.tpl"}
 						{include file=$templatePath availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency}
