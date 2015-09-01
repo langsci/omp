@@ -20,7 +20,7 @@
 	
 </script>
 
-{** Carola Fanselow: the first download link ($downloadUrl) is used for the cover image **}
+{** Carola Fanselow: the first download link ($downloadUrl) is used for the cover image 
 {if $availableFiles|@count != 0}
 	{assign var=publicationFormats value=$publishedMonograph->getPublicationFormats()}
 	{if $publicationFormats|@count>0}
@@ -37,7 +37,7 @@
 	{/if}
 {/if}
 
-{** end carola **}
+ end carola **}
 
 <div class="bookSpecs">
 	{assign var=coverImage value=$publishedMonograph->getCoverImage()}
@@ -129,14 +129,12 @@
 				<!-- press -->
 				Berlin: Language Science Press.
 				
-				
 			</div>
 			<!-- end cite as -->
 			
 		</div>
 	</div>
 
-	<!--
 	{if count($publicationFormats) > 1}
 		{foreach from=$publicationFormats item="publicationFormat"}
 			{if $publicationFormat->getIsApproved()}
@@ -163,5 +161,5 @@
 			</div>
 		</div>
 	{/if}{* !$categories->wasEmpty() *}
-	-->
+	
 </div>
