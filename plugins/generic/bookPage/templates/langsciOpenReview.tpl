@@ -41,8 +41,11 @@
 		
 		{/if}
 		
+		{** Carola Fanselow:  nur Anzeigen, wenn ein Link da ist -> nur temporär!! **}		
+		{if $openreviewLink0 or $openreviewLink1}
 		<div class="lsp-image-help">
 		<a title="About open review at Language Science Press" href="/openReview/intro"> <img src="/public/site/img/icons/info.png" width="27px"></a> 
 		</div>
+		{/if}
 	
 {/foreach}
