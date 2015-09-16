@@ -19,10 +19,10 @@
 		{/if}
 
 		{* Carola Fanselow: Catalog rename to Books for Language Science Press*}
-		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" style="font-family: Arial Narrow">Books</a>
+		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" style="font-size: 80%">Books</a>
 
 		{* Carola Fanselow: Link to series overview added for Language Science Press*}
-		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="series"}" style="font-family: Arial Narrow">Series</a>
+		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="series"}" style="font-size: 80%">Series</a>
 
 		{* Carola Fanselow: About removed
 		<li><a href="#">{translate key="navigation.about"}</a>
@@ -54,7 +54,7 @@
 	{if $currentPress}
 
 		{** Carola Fanselow: Link to blog added for Language Science Press **}
-		<li><a href="http://userblogs.fu-berlin.de/langsci-press/" style="font-family: Arial Narrow">Blog</a>
+		<li><a href="http://userblogs.fu-berlin.de/langsci-press/" style="font-size: 80%">Blog</a>
 
 	{/if}
 {/capture}
@@ -63,7 +63,7 @@
 	{if $currentPress}
 			{* Carola Fanselow: Guidelines menu added for Language Science Press *}
 			<li>
-				<a style="font-family: Arial Narrow">Guidelines</a>
+				<a style="font-size: 80%">Guidelines</a>
 				<ul>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forAuthors" }">For authors</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forEditors" }">For editors</a></li>
@@ -75,7 +75,7 @@
 
 			{* Carola Fanselow: Community menu added for Language Science Press *}
 			<li>
-				<a style="font-family: Arial Narrow">Community</a>
+				<a style="font-size: 80%">Community</a>
 				<ul>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="advisoryBoard" }">Advisory Board</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="supporters"}">Supporters</a></li>
@@ -86,7 +86,7 @@
 
 			{* Carola Fanselow: Information menu added for Language Science Press *}
 			<li>
-				<a style="font-family: Arial Narrow">Information</a>
+				<a style="font-size: 80%">Information</a>
 				<ul>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" }">About</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="goals"}">Goals</a></li>
