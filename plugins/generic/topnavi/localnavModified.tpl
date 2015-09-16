@@ -19,10 +19,10 @@
 		{/if}
 
 		{* Carola Fanselow: Catalog rename to Books for Language Science Press*}
-		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}">Books</a>
+		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="catalog"}" style="font-family: Arial Narrow">Books</a>
 
 		{* Carola Fanselow: Link to series overview added for Language Science Press*}
-		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="series"}">Series</a>
+		<li><a href="{url router=$smarty.const.ROUTE_PAGE page="series"}" style="font-family: Arial Narrow">Series</a>
 
 		{* Carola Fanselow: About removed
 		<li><a href="#">{translate key="navigation.about"}</a>
@@ -54,7 +54,7 @@
 	{if $currentPress}
 
 		{** Carola Fanselow: Link to blog added for Language Science Press **}
-		<li><a href="http://userblogs.fu-berlin.de/langsci-press/">Blog</a>
+		<li><a href="http://userblogs.fu-berlin.de/langsci-press/" style="font-family: Arial Narrow">Blog</a>
 
 	{/if}
 {/capture}
@@ -63,7 +63,7 @@
 	{if $currentPress}
 			{* Carola Fanselow: Guidelines menu added for Language Science Press *}
 			<li>
-				<a>Guidelines</a>
+				<a style="font-family: Arial Narrow">Guidelines</a>
 				<ul>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forAuthors" }">For authors</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forEditors" }">For editors</a></li>
@@ -73,15 +73,23 @@
 				</ul>
 			</li>
 
-			{* Carola Fanselow: Information menu added for Language Science Press *}
+			{* Carola Fanselow: Community menu added for Language Science Press *}
 			<li>
-				<a>Information</a>
+				<a style="font-family: Arial Narrow">Community</a>
 				<ul>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" }">About</a></li>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="support" }">Support us</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="advisoryBoard" }">Advisory Board</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="supporters"}">Supporters</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="hallOfFame" }">Hall of fame</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="support" }">Support us</a></li>
+				</ul>
+			</li>
+
+			{* Carola Fanselow: Information menu added for Language Science Press *}
+			<li>
+				<a style="font-family: Arial Narrow">Information</a>
+				<ul>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" }">About</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="goals"}">Goals</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="contact" }">Contact</a></li>
 					{if not empty($contextInfo.editorialPolicies)}
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="about" op="editorialPolicies"}">{translate key="about.policies"}</a></li>
