@@ -7,14 +7,25 @@
   * style sheet for the public profiles plugin
 }*/
 
-
 #annotations div.annotationFile {
-	padding-bottom: 20px;
-	margin-right: 400px;
+	padding-bottom: 22px;
+	margin-right: 300px;
 }
 
 #annotations .header {
 	font-weight: bold;
+}
+
+#annotations .buttonAnnotationStatistics {
+	float:right;
+}
+
+#annotations table {
+	width:100%;
+}
+
+#annotations table li span {
+	float:right;padding-right: 150px;
 }
 
 
