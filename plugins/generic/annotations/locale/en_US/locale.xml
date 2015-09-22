@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/annotations/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2014 Freie Universität Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.annotations.name">Annotation Plugin</message>
+	<message key="plugins.generic.annotations.description">Functions for Annotations</message>
+	<message key="plugin.generic.annotations.navigation">Annotations</message>
+	<message key="plugins.generic.annotations.title">Files open to annotations</message>
+	<message key="plugins.generic.annotations.file.title">Annotations</message>
+
+</locale>
