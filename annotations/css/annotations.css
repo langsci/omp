@@ -1,0 +1,21 @@
+/* 
+  * plugins/generic/publicProfiles/css/publicProfiles.css
+  *
+  * Copyright (c) 2015 Carola Fanselow, FU Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * style sheet for the public profiles plugin
+}*/
+
+
+#annotations div.annotationFile {
+	padding-bottom: 20px;
+	margin-right: 400px;
+}
+
+#annotations .header {
+	font-weight: bold;
+}
+
+
+
