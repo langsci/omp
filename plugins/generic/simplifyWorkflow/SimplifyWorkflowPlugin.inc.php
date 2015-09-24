@@ -191,6 +191,10 @@ fclose($file);*/
 				$templateMgr->display($this->getTemplatePath() . 
 				'templates/authorDashboardModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
+			case 'catalog/series.tpl':
+				$templateMgr->display($this->getTemplatePath() . 
+				'templates/seriesModified2.tpl', 'text/html', 'TemplateManager::display');
+				return true;
 		}
 		return false;
 	}
