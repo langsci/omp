@@ -37,11 +37,6 @@ class AnnotationsHandler extends Handler {
 	 */
 	function annotations($args, $request) {
 
-
-     $monographDAO = new MonographDAO;
-        $monograph = $monographDAO -> getById($submission->getId());
-
-
 		$press = $request -> getPress();
 
 		$user = $request->getUser();
@@ -90,9 +85,6 @@ class AnnotationsHandler extends Handler {
 					$templateMgr->assign('titles',$titles);
 					$templateMgr->assign('pressPath',$press -> getPath());
 					$templateMgr->assign('myBaseUrl',$myBaseUrl);
-					$templateMgr->assign('seriesTitle',$monograph->getSeriesTitle());
-
-
 				} 
 
 				$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);
