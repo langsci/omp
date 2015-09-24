@@ -11,8 +11,7 @@
 
 import('classes.handler.Handler');
 import('plugins.generic.annotations.AnnotationsDAO');
-error_reporting(E_ALL);
-ini_set('display_errors', true);
+import('classes.monograph.MonographDAO');
 
 class AnnotationsHandler extends Handler {
 
@@ -37,6 +36,11 @@ class AnnotationsHandler extends Handler {
 	 * @param $request PKPRequest Request object.
 	 */
 	function annotations($args, $request) {
+
+
+     $monographDAO = new MonographDAO;
+        $monograph = $monographDAO -> getById($submission->getId());
+
 
 		$press = $request -> getPress();
 
@@ -86,6 +90,9 @@ class AnnotationsHandler extends Handler {
 					$templateMgr->assign('titles',$titles);
 					$templateMgr->assign('pressPath',$press -> getPath());
 					$templateMgr->assign('myBaseUrl',$myBaseUrl);
+					$templateMgr->assign('seriesTitle',$monograph->getSeriesTitle());
+
+
 				} 
 
 				$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);

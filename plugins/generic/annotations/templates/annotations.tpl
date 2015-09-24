@@ -12,7 +12,6 @@
 <p>List of files that are open to annotations (book name - file name). Click on the names to go to the annotation mode. Click on the buttons to get statistics.</p>
 <br>
 
-
 <form method="post" action="annotationFile">
 
 	<input type="hidden"  name="file" value="http://langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf">
