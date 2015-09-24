@@ -57,13 +57,13 @@ function callbackHandleContent($hookName, $args) {
 		$op =& $args[1];
 		$tail =& implode($request->getRequestedArgs());
 
-		if ($tail=="file") {
-			$op = "file";
+		if ($tail=="annotationFile") {
+			$op = "annotationFile";
 		}
 	
 		if ($page=="management" && in_array($op,
 				  array('annotations', 
-						'file'))) {
+						'annotationFile'))) {
 
 			define('HANDLER_CLASS', 'AnnotationsHandler');
 			define('ANNOTATIONS_PLUGIN_NAME', $this->getName());

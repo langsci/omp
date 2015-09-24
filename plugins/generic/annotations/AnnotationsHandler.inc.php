@@ -40,60 +40,68 @@ class AnnotationsHandler extends Handler {
 
 		$press = $request -> getPress();
 
-		$templateMgr = TemplateManager::getManager($request);
-		$templateMgr->assign('pageTitle','plugins.generic.annotations.title');
-
-		$annotationsDAO = new AnnotationsDAO;
-		$fsIds = $annotationsDAO->getFileIds();   // returns matrix with keys=file_id values=submission_id
-	
-		if ($fsIds==null) {
-
-			$templateMgr->assign('filesFound',false);
-
+		$user = $request->getUser();
+		if (!$user) {
+			$request->redirect('index');
 		} else {
 
-	 	//	echo "<br>". $request->getCompleteUrl();
-		//	echo "<br>". $request->getRequestedPressPath();
-		//	echo "<br>". $request->getBaseUrl();
+			$annotationsDAO = new AnnotationsDAO;
+			$userId = $user->getId();
+			$userGroups = $annotationsDAO->getUserRoles($userId);
+			// only for press managers and admins
+			if (in_array('Press Manager',$userGroups)||in_array('Site Admin',$userGroups)) {
 
-			$fileIds = array_keys($fsIds);
-			$submissionIds = array_values($fsIds);
+				$templateMgr = TemplateManager::getManager($request);
+				$templateMgr->assign('pageTitle','plugins.generic.annotations.title');
+	
+				// get files open to annotations
+				$fsIds = $annotationsDAO->getFileIds();   // returns matrix with keys=file_id values=submission_id	
+				if ($fsIds==null) {
 
-			$publicationFormatIds =  $annotationsDAO->getPublicationFormatIds(implode(",",$fileIds));
-			$pressIds =  $annotationsDAO->getPressIds(implode(",",$submissionIds));
-			
-			$titles = array();
-			for ($i=0;$i<sizeof($submissionIds); $i++) {
-				$titles[] = $annotationsDAO->getTitle($submissionIds[$i]);
+					$templateMgr->assign('filesFound',false);
+
+				} else {
+
+					$myBaseUrl = $request->getServerHost();
+					$fileIds = array_keys($fsIds);
+					$submissionIds = array_values($fsIds);
+	
+					$titles = array();
+					$pressIds = array();
+					$publicationFormatIds = array();
+
+					for ($i=0;$i<sizeof($submissionIds); $i++) {
+						$titles[] = $annotationsDAO->getSubTitle($submissionIds[$i]) . " - " . $annotationsDAO->getFileName($fileIds[$i]);
+						$pressIds[] = $annotationsDAO->getPressId($submissionIds[$i]);
+						$publicationFormatIds[] = $annotationsDAO->getPublicationFormatId($fileIds[$i]) ;
+					}
+
+					$urlTails = array();
+					for ($i=0; $i<sizeof($fileIds);$i++) {
+						$urlTails[] = "/" . $submissionIds[$i] . "/" . $publicationFormatIds[$i] . "/" . $fileIds[$i] . "-" . $pressIds[$i];
+					}
+
+					$templateMgr->assign('filesFound',true);
+					$templateMgr->assign('urlTails',$urlTails);
+					$templateMgr->assign('titles',$titles);
+					$templateMgr->assign('pressPath',$press -> getPath());
+					$templateMgr->assign('myBaseUrl',$myBaseUrl);
+				} 
+
+				$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);
+				$templateMgr->display($annotationsPlugin->getTemplatePath()."annotations.tpl");
 			}
-		
-	 		echo "<br>file ids: ". implode(",",$fileIds);
-			echo "<br>sub ids: ". implode(",",$submissionIds);
-			echo "<br>titles: ". implode($titles);
-
-
-			$fileIds = array_keys($fsIds);
-			$submissionIds = array_values($fsIds);		
-			$urlTails = array();
-			for ($i=0; $i<sizeof($fileIds);$i++) {
-				$urlTails[] = "/" . $submissionIds[$i] . "/" . $publicationFormatIds[$i] . "/" . $fileIds[$i] . "-" . $pressIds[$i];
-			}
-
-			$templateMgr->assign('filesFound',true);
-			$templateMgr->assign('urlTails',$urlTails);
-			$templateMgr->assign('titles',$titles);
-			$templateMgr->assign('pressPath',$press -> getPath());
-
-		} 
-
-		$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);
-		$templateMgr->display($annotationsPlugin->getTemplatePath()."annotations.tpl");
+		}
 	}
+	
 
 
-	function file($args, $request) {
+
+
+	function annotationFile($args, $request) {
 
 		$url = $_POST["file"];
+		$title = $_POST["title"];
 
 		// Get cURL resource
 		$curlGet = curl_init();
@@ -123,7 +131,6 @@ class AnnotationsHandler extends Handler {
 		$user = array();
 		$created = array();
 		$references = array();
-		$uris = array();
 		$documents = array();
 		$getItem = array();
 		$ids = array();
@@ -149,14 +156,7 @@ class AnnotationsHandler extends Handler {
 			}
 			$tags[] = $item['tags'];
 			$texts[] = $item['text'];
-			$uris[] = $item['uri'];
 		}
-
-
-
-		//  Analyse der Uri
-		$countUris = array_count_values($uris);
-		arsort($countUris);
 
 		// Analyse der Tags
 		$allTags = array();
@@ -171,20 +171,18 @@ class AnnotationsHandler extends Handler {
 
 		// Analyse Datum der Erstellung (created)
 		asort($created);
+		$timeStart = "-";
+		$timeEnd = "-";
+		if (sizeof($created)>0) {
+			$timeStart = date('l, F jS Y \a\t g:ia', strtotime($created[sizeof($created)-1]));
+			$timeEnd =  date('l, F jS Y \a\t g:ia', strtotime($created[0]));
+		}
 
 		// Analyse References
 		$numberOfCommentsWithReferences = 0;
 		for ($i=0;$i<sizeof($references); $i++) {
 			if (!empty($references[$i])) {
 				$numberOfCommentsWithReferences++;
-			}
-		} 
-
-		// Analyse Document
-		$numberOfCommentsWithDocument = 0;
-		for ($i=0;$i<sizeof($documents); $i++) {
-			if (!empty($documents[$i])) {
-				$numberOfCommentsWithDocument++;
 			}
 		} 
 
@@ -207,30 +205,18 @@ class AnnotationsHandler extends Handler {
 		$countTexts = array_count_values($texts);
 		arsort($countTexts);
 
-		$keysCountUris = array_keys($countUris);
-		$fileUrl = "no name";
-		for ($i=0;$i<sizeof($countUris); $i++) {
-			if (strpos($keysCountUris[$i],"ttp://langsci-press.org")>0 && strpos($keysCountUris[$i],"file")==false) {
-				$fileUrl = $keysCountUris[$i];
-			}
-		}	
-
-		// title
-		$tmp = $documents[0];
-		$fileTitle = $tmp['title'];
-
-
 		// prepare and display template
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pageTitle','plugins.generic.annotations.file.title');
 		$templateMgr->assign('countUser',$countUser);
 		$templateMgr->assign('countTags',$countTags);
-		$templateMgr->assign('fileTitle',$fileTitle);
+		$templateMgr->assign('title',$title);
 		$templateMgr->assign('fileUrl',$fileUrl);
+		$templateMgr->assign('url',$url);
 		$templateMgr->assign('noComments',sizeof($user));
-		$templateMgr->assign('numberOfCommentsWithReferences',sizeof($numberOfCommentsWithReferences));
-		$templateMgr->assign('timeStart', date('l, F jS Y \a\t g:ia', strtotime($created[sizeof($created)-1])));
-		$templateMgr->assign('timeEnd', date('l, F jS Y \a\t g:ia', strtotime($created[0])));
+		$templateMgr->assign('numberOfCommentsWithReferences',$numberOfCommentsWithReferences);
+		$templateMgr->assign('timeStart',$timeStart);
+		$templateMgr->assign('timeEnd', $timeEnd);
 
 
 		$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);

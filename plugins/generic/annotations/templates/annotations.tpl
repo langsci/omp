@@ -9,35 +9,37 @@
 
 <div id="annotations">
 
-<p>List of books that are open to annotations. Click on the buttons to get statistics.</p>
+<p>List of files that are open to annotations (book name - file name). Click on the names to go to the annotation mode. Click on the buttons to get statistics.</p>
 <br>
 
 
-<form method="post" action="file">
+<form method="post" action="annotationFile">
 
-    <input type="hidden"  name="file" value="http://langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf">
+	<input type="hidden"  name="file" value="http://langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf">
+	<input type="hidden"  name="title" value="Grammatical theory - MuellerOpenReview1">
 	
 	<div class="annotationFile">
-		<a href="https://via.hypothes.is/http://langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf">Grammatical theory (Part 1)</a>
-			<button id="buttonRegister" name="buttonRegister" type="submit"
-					class="submitFormButton button ui-button ui-widget ui-state-default
-					ui-corner-all ui-button-text-only" role="button" style="float:right;" >
-					<span class="ui-button-text">Details</span>
+		<a href="https://via.hypothes.is/http://langsci-press.org/public/site/pdf/MuellerOpenReview1.pdf">Grammatical theory - MuellerOpenReview1</a>
+			<button type="submit"
+					class="buttonAnnotationStatistics submitFormButton button ui-button ui-widget ui-state-default
+					ui-corner-all ui-button-text-only" role="button" >
+					<span class="ui-button-text">Statistics</span>
 			</button>
 	</div>
 
 </form>
 
-<form method="post" action="file">
+<form method="post" action="annotationFile">
 
-    <input type="hidden"  name="file" value="http://langsci-press.org/public/site/pdf/MuellerOpenReview2.pdf">
+	<input type="hidden"  name="file" value="http://langsci-press.org/public/site/pdf/MuellerOpenReview2.pdf">
+	<input type="hidden"  name="title" value="Grammatical theory - MuellerOpenReview2">
 	
 	<div class="annotationFile">
-		<a href="https://via.hypothes.is/http://langsci-press.org/public/site/pdf/MuellerOpenReview2.pdf">Grammatical theory (Part 2)</a>
-			<button id="buttonRegister" name="buttonRegister" type="submit"
-					class="submitFormButton button ui-button ui-widget ui-state-default
-					ui-corner-all ui-button-text-only" role="button" style="float:right;" >
-					<span class="ui-button-text">Details</span>
+		<a href="https://via.hypothes.is/http://langsci-press.org/public/site/pdf/MuellerOpenReview2.pdf">Grammatical theory - MuellerOpenReview2</a>
+			<button type="submit"
+					class="buttonAnnotationStatistics submitFormButton button ui-button ui-widget ui-state-default
+					ui-corner-all ui-button-text-only" role="button">
+					<span class="ui-button-text">Statistics</span>
 			</button>
 	</div>
 
@@ -49,20 +51,19 @@
 		
 	{foreach from=$urlTails item=tail}
 
-		{**<br>{$baseUrl}/index.php/LangSci-Press/catalog/view{$tail}<br>**}
-		{**CURLOPT_URL => 'https://hypothes.is/api/search?uri=http://langsci-press.org/catalog/view/83/89/307-1&limit=300' http://test.langsci-press.org/about/contact**}
-		{**		https://via.hypothes.is/http://dgp07.hpsg.fu-berlin.de:9085/omp11b/index.php/LangSci/catalog/view 
-						https://via.hypothes.is/http://langsci-press.org/catalog/view/75/22/295-1**}
+			<form method="post" action="annotationFile">
 
-			<form method="post" action="file">
+				<input type="hidden"  name="file" value="{$myBaseUrl}/catalog/view{$tail}">
+				<input type="hidden"  name="title" value="{$titles[$count]}">
+
 				<div class="annotationFile">	
 
-					<a href="https://via.hypothes.is/{$baseUrl}/index.php/LangSci-Press/catalog/view{$tail}">{$titles[$count]}</a>
+					<a href="https://via.hypothes.is/{$myBaseUrl}/catalog/view{$tail}">{$titles[$count]}</a>
 
-					<button id="buttonRegister" name="buttonRegister" type="submit"
-						class="submitFormButton button ui-button ui-widget ui-state-default
-						ui-corner-all ui-button-text-only" role="button" style="float:right;" >
-						<span class="ui-button-text">Details</span>
+					<button  type="submit"
+						class="buttonAnnotationStatistics submitFormButton button ui-button ui-widget ui-state-default
+						ui-corner-all ui-button-text-only" role="button">
+						<span class="ui-button-text">Statistics</span>
 					</button>
 				</div>	
 			</form>

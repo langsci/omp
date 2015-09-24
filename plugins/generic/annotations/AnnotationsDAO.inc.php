@@ -40,31 +40,24 @@ class AnnotationsDAO extends DAO {
 			$result->Close();
 			return $ids;
 		}	
-
 	}
 
-	function getPublicationFormatIds($fileIds) {
+	function getPublicationFormatId($fileId) {
 
 		$result = $this->retrieve(
-			'SELECT assoc_id FROM submission_files WHERE file_id IN ('.$fileIds.');');
+			'SELECT assoc_id FROM submission_files WHERE file_id='.$fileId);
 
 		if ($result->RecordCount() == 0) {
 			$result->Close();
 			return null;
 		} else {
-			$publicationFormatIds = array();
-			while (!$result->EOF) {
-				$row = $result->getRowAssoc(false);
-				$publicationFormatIds[] = $this->convertFromDB($row['assoc_id']);
-				$result->MoveNext();
-			}
+			$row = $result->getRowAssoc(false);
 			$result->Close();
-			return $publicationFormatIds;
+			return $this->convertFromDB($row['assoc_id']);
 		}	
-
 	}
 
-	function getTitle($submissionId) {
+	function getSubTitle($submissionId) {
 
 		$result = $this->retrieve(
 			'select setting_value from submission_settings where setting_name="title" and locale="en_US" and
@@ -81,44 +74,11 @@ class AnnotationsDAO extends DAO {
 
 	}
 
-
-	function getPressIds($submissionIds) {
-
-		$result = $this->retrieve(
-			'select context_id from submissions where submission_id in ('.$submissionIds.');');
-
-		if ($result->RecordCount() == 0) {
-			$result->Close();
-			return null;
-		} else {
-			$pressIds = array();
-			while (!$result->EOF) {
-				$row = $result->getRowAssoc(false);
-				$pressIds[] = $this->convertFromDB($row['context_id']);
-				$result->MoveNext();
-			}
-			$result->Close();
-			return $pressIds;
-		}	
-
-	}
-
-
-
-
-
-}
-
-
-/*
-
-	function getUserSetting($user_id,$setting_name) {
+	function getFileName($fileId) {
 
 		$result = $this->retrieve(
-			"SELECT setting_value FROM langsci_website_settings WHERE
-				user_id=".$user_id." AND
-				setting_name='".$setting_name."'");
-			
+			'select setting_value from submission_file_settings where setting_name="name" and locale="en_US" and file_id='.$fileId);
+
 		if ($result->RecordCount() == 0) {
 			$result->Close();
 			return null;
@@ -127,15 +87,14 @@ class AnnotationsDAO extends DAO {
 			$result->Close();
 			return $this->convertFromDB($row['setting_value']);
 		}	
+
 	}
 
-	function getUserGroupIdByName($user_group_name) {
+
+	function getPressId($submissionId) {
+
 		$result = $this->retrieve(
-			"SELECT user_group_id FROM user_group_settings WHERE
-				locale='en_US' AND
-				setting_name = 'name' AND
-				setting_value = '" . $user_group_name . "'"
-		);
+			'select context_id from submissions where submission_id='.$submissionId);
 
 		if ($result->RecordCount() == 0) {
 			$result->Close();
@@ -143,125 +102,36 @@ class AnnotationsDAO extends DAO {
 		} else {
 			$row = $result->getRowAssoc(false);
 			$result->Close();
-			return $this->convertFromDB($row['user_group_id']);
+			return $this->convertFromDB($row['context_id']);
 		}	
-	}	
 
-	function getNameOfUser($user_id) {
+	}
+
+	function getUserRoles($userId) {
 
 		$result = $this->retrieve(
-			'SELECT first_name, last_name FROM users WHERE user_id=' . $user_id
-		);
+			'select setting_value from user_group_settings where setting_name = "name" and locale="en_US" and
+			 user_group_id in (select user_group_id from user_user_groups where user_id = '.$userId.')');
 
 		if ($result->RecordCount() == 0) {
 			$result->Close();
 			return null;
 		} else {
-			$user = "";
-			$row = $result->getRowAssoc(false);
-			$users .= $this->convertFromDB($row['first_name']);
-			$users .= " " . $this->convertFromDB($row['last_name']);
-			$result->Close();
-			return $users;	
-		}
-	}
-
-	function getUserRanking($user_group_id,$onlyPublishedSubmissions) {
-
-		if ($onlyPublishedSubmissions) {
-
-				$result = $this->retrieve(
-				'SELECT COUNT(*) AS number_of_entries, user_id from stage_assignments WHERE
-				user_group_id = '.$user_group_id.' AND
-				submission_id IN (SELECT submission_id FROM published_submissions WHERE date_published IS NOT NULL) 
-				GROUP BY user_id
-				ORDER BY number_of_entries DESC,user_id'
-			);
-
-		} else {
-
-			$result = $this->retrieve(
-				'SELECT COUNT(*) AS number_of_entries, user_id from stage_assignments WHERE
-				user_group_id = '.$user_group_id.' AND
-				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions WHERE date_published IS NOT NULL)) 
-				GROUP BY user_id
-				ORDER BY number_of_entries DESC,user_id'
-			);
-		}
-
-		if ($result->RecordCount() == 0) {
-			$result->Close();
-			return null;
-		} else {
-			$rownr=0;
-			$users = array();
+			$userGroups = array();
 			while (!$result->EOF) {
 				$row = $result->getRowAssoc(false);
-				$users[$rownr][0] = $this->convertFromDB($row['number_of_entries']);
-				$users[$rownr][1] = $this->convertFromDB($row['user_id']);
-				$rownr = $rownr + 1;
-				$result->MoveNext();
-			}
-
-			$result->Close();
-			return $users;
-		}		
-	}
-	
-	function getSubmissionsFromStageAssignments($user_id, $user_group_id,$onlyPublishedSubmissions) {
-
-		if ($onlyPublishedSubmissions) {
-			$result = $this->retrieve(
-				"SELECT submission_id FROM stage_assignments WHERE
-				user_id = " . $user_id . " AND
-				user_group_id=" . $user_group_id . " AND
-				submission_id IN (SELECT submission_id FROM published_submissions WHERE date_published IS NOT NULL)"
-			);
-		} else {
-
-
-			$result = $this->retrieve(
-				'SELECT submission_id FROM stage_assignments WHERE
-				user_id = ' . $user_id . ' AND
-				user_group_id=' . $user_group_id . ' AND
-				submission_id IN (select submission_id from submission_settings where setting_name="prefix" and setting_value not like "%Forthcoming%" and locale="en_US" and submission_id IN (select submission_id from published_submissions WHERE date_published IS NOT NULL))'
-			);
-
-		}
-		
-		if ($result->RecordCount() == 0) {
-			$result->Close();
-			return null;
-		} else {
-			$submissions = array();
-			while (!$result->EOF) {
-				$row = $result->getRowAssoc(false);
-				$submissions[] = $this->convertFromDB($row['submission_id']);
+				$userGroups[] = $this->convertFromDB($row['setting_value']);
 				$result->MoveNext();
 			}
 			$result->Close();
-			return $submissions;
+			return $userGroups;
 		}	
 	}
-	// get user_group_id by user_group (e.g. Typesetting, Proofreader, ...)
 
 
-	// get user_group_id by user_group (e.g. Typesetting, Proofreader, ...)
-	function getUserGroupId($user_group) {
 
-		$result = $this->retrieve(
-			"SELECT user_group_id FROM user_group_settings WHERE setting_name='name' AND locale='en_US' AND setting_value='".$user_group."'"				
-		);
 
-		if ($result->RecordCount() == 0) {
-			$result->Close();
-			return null;
-		} else {
-			$row = $result->getRowAssoc(false);
-			$result->Close();
-			return $this->convertFromDB($row['user_group_id']);
-		}				
-	}	
-}*/
+}
+
 
 ?>
