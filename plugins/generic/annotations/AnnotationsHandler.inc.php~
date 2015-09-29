@@ -88,7 +88,6 @@ class AnnotationsHandler extends Handler {
 					$templateMgr->assign('onlineTitles',$titles);
 					$templateMgr->assign('onlinePressPath',$press -> getPath());
 					$templateMgr->assign('serverHost',$serverHost);
-					$templateMgr->assign('urlPrefix',$urlPrefix);
 				} 
 
 				if ($fsIds_offline==null) {
@@ -121,7 +120,6 @@ class AnnotationsHandler extends Handler {
 					$templateMgr->assign('offlineTitles',$titles);
 					$templateMgr->assign('offlinePressPath',$press -> getPath());
 					$templateMgr->assign('serverHost',$serverHost);
-					$templateMgr->assign('urlPrefix',$urlPrefix);
 				} 
 
 				$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);

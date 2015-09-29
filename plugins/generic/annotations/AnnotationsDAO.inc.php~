@@ -23,7 +23,7 @@ class AnnotationsDAO extends DAO {
 
 		$result = $this->retrieve(
 			'SELECT submission_id, file_id FROM submission_files WHERE viewable='.$viewable.' AND assoc_id IN
-			(SELECT publication_format_id FROM publication_format_settings WHERE setting_value="Open Review" OR setting_value="Proofreading")');
+			(SELECT publication_format_id FROM publication_format_settings WHERE setting_value="Open Review")');
 
 		if ($result->RecordCount() == 0) {
 			$result->Close();

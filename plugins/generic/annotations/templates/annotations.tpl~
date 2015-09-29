@@ -53,7 +53,7 @@
 
 			<form method="post" action="annotationFile">
 
-				<input type="hidden"  name="file" value="{$urlPrefix}{$serverHost}/catalog/view{$tail}">
+				<input type="hidden"  name="file" value="{$serverHost}/catalog/view{$tail}">
 				<input type="hidden"  name="title" value="{$onlineTitles[$count]}">
 
 				<div class="annotationFile">	
@@ -84,7 +84,7 @@
 
 			<form method="post" action="annotationFile">
 
-				<input type="hidden"  name="file" value="{$urlPrefix}{$serverHost}/catalog/view{$tail}">
+				<input type="hidden"  name="file" value="{$serverHost}/catalog/view{$tail}">
 				<input type="hidden"  name="title" value="{$offlineTitles[$count]}">
 
 				<div class="annotationFile">	
