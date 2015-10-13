@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2014 Carola Fanselow Freie Universität Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.mail.displayName">Mail Plugin</message>
+	<message key="plugins.generic.mail.description">Plugin to control mails and notifications</message>
+	<message key="plugins.generic.title.mail">Mails</message>
+
+</locale>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
