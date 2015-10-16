@@ -89,14 +89,19 @@ class MailPlugin extends GenericPlugin {
 
 	function handleMails($hookName, $args) {
 
-		$request = $this -> getRequest();
-		$press = $request->getPress();
-		$user = $request->getUser();
-
+		// get mail template variables
 		$template =& $args[0];
 		$subject = $template->getSubject();
 		$body = $template->getBody();
 		$key = $template->emailKey;
+
+		// get general variables
+		$request = $this -> getRequest();
+		$press = $request->getPress();
+		$user = $request->getUser();
+		$series = $this->getSeries($body);
+		$seriesInfo = $series;
+		if (strlen($series)>0) {$seriesInfo = ' to the series "' . $series . '"';}
 
 		// set from-address
 		$template->setFrom('noreply@langsci-press.org','Language Science Press');
@@ -108,47 +113,26 @@ class MailPlugin extends GenericPlugin {
 			$template->setReplyTo('snordhoff@langsci-press.org','Sebastian Nordhoff');
 		}
 
-		//block emails 
-		if ($key=='NOTIFICATION' && !strpos($subject,'16777247')===false)	{				//NOTIFICATION_TYPE_EDITOR_ASSIGNMENT_REQUIRED{  
+		// block emails 
+		// block NOTIFICATION_TYPE_EDITOR_ASSIGNMENT_REQUIRED (16777247)
+		if ($key=='NOTIFICATION' && !strpos($subject,'16777247')===false)	{	 
 			$template->setRecipients(array());
 		}
 
-		// replace subject 
+		// set subject 
 		if ($key=='NOTIFICATION'){
-
-				$template->setSubject('['.$press->getPath().'] New notification from Language Science Press'); 
-				if  (!strpos($subject,'16777217')===false) {
-					$template->setSubject('['.$press->getPath().'] A new monograph has been submitted');
-				}
+			// default
+			$template->setSubject('['.$press->getPath().'] New notification from Language Science Press');
+			// specific 
+			if  (!strpos($subject,'16777217')===false) {			
+				$template->setSubject('['.$press->getPath().'] A new monograph has been submitted' . $seriesInfo);		
+			}
 		}
 
-		// replace series title in 16777217-notification body
+		// replace {$seriesInfo} in body
 		if ($key=='NOTIFICATION'){
 			if  (!strpos($subject,'16777217')===false) {
-				$seriesFound=false;
-				$tmp1 = substr($body,strpos($body,'workflow/submission/'));
-				$tmp2 = substr($tmp1,20);
-				$monographId="";
-				for ($i=0;$i<strlen($tmp2);$i++) {
-					if (ctype_digit($tmp2[$i])) {
-						$monographId=$monographId.$tmp2[$i];
-					}
-				}		
-				if (ctype_digit($monographId)) {
-					$monographDAO = new MonographDAO;
-					$monograph = $monographDAO -> getById($monographId);
-					if ($monograph) {
-						$seriesDAO = new SeriesDAO;
-						$series = $seriesDAO -> getById($monograph->getSeriesId());
-						if ($series) {
-							$template->assignParams(array('seriesInfo' =>  ' to the series "' . $series ->getLocalizedFullTitle().'"'));
-							$seriesFound=true;
-						}
-					}
-				}
-				if (!$seriesFound) {
-					$template->assignParams(array('seriesInfo' => ''));
-				}
+				$template->assignParams(array('seriesInfo' => $seriesInfo));
 			}
 		}
 
@@ -156,6 +140,34 @@ class MailPlugin extends GenericPlugin {
 		$template->assignParams(array('senderName' => $user->getFullName()));
 
 		return false;
+	}
+
+	// get series: look for link in mail body, get series via monograph id
+	function getSeries($body) {
+
+		$seriesFound=false;
+		$body_part1 = substr($body,strpos($body,'workflow/submission/'));
+		$body_part2 = substr($body_part1,20);
+		$monographId="";
+
+		for ($i=0;$i<strlen($body_part2);$i++) {
+			if (ctype_digit($body_part2[$i])) {
+				$monographId=$monographId.$body_part2[$i];
+			}
+		}		
+		
+		if (ctype_digit($monographId)) {
+			$monographDAO = new MonographDAO;
+			$monograph = $monographDAO -> getById($monographId);
+			if ($monograph) {
+				$seriesDAO = new SeriesDAO;
+				$series = $seriesDAO -> getById($monograph->getSeriesId());
+				if ($series) {
+					return $series->getLocalizedFullTitle();
+				}
+			}
+		}
+		return "";	
 	}
 
 	function getDisplayName() {
