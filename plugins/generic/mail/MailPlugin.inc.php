@@ -17,7 +17,6 @@ import('classes.press.SeriesDAO');
 
 class MailPlugin extends GenericPlugin {
 
-
 	function register($category, $path) {
 			
 		if (parent::register($category, $path)) {
