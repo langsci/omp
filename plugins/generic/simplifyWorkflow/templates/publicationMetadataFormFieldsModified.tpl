@@ -125,14 +125,17 @@
 
 </div>
 
+{** Carola Fanselow: productAvailability auf "Available" (=20) gesetzt und nicht angezeigt **}
 
-
+<div style="display:none">
+ 
 	{fbvFormArea id="productAvailability" title="monograph.publicationFormat.productAvailability" class="border"}
 		{fbvFormSection for="productAvailability" required="true"}
-			{fbvElement type="select" from=$productAvailabilityCodes required=true selected=$productAvailabilityCode translate=false id="productAvailabilityCode"}
+			{fbvElement type="select" from=$productAvailabilityCodes required=true selected="20" translate=false id="productAvailabilityCode"}
 		{/fbvFormSection}
 	{/fbvFormArea}
 
+</div>
 
 {** Carola Fanselow: imprint nicht veränderbar (in db auf "Language Science Press" festgelegt) 
 	{fbvFormArea id="imprintFormArea" title="monograph.publicationFormat.imprint"}
@@ -142,18 +145,18 @@
 	{/fbvFormArea}
 **}
 
-
-
 	{foreach from=$pubIdPlugins item=pubIdPlugin}
 		{assign var=pubIdMetadataFile value=$pubIdPlugin->getPubIdMetadataFile()}
 		{include file=$pubIdMetadataFile pubObject=$publicationFormat}
 	{/foreach}
 
+{** Carola Fanselow: Digital Information weg 
 	{if $isPhysicalFormat}
 		{include file="controllers/tab/catalogEntry/form/physicalPublicationFormat.tpl"}
 	{else}
 		{include file="controllers/tab/catalogEntry/form/digitalPublicationFormat.tpl"}
 	{/if}
+**}
 
 	{fbvFormButtons id="publicationMetadataFormSubmit" submitText="common.save"}
 </form>

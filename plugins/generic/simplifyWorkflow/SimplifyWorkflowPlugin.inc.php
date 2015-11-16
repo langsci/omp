@@ -36,16 +36,13 @@ class SimplifyWorkflowPlugin extends GenericPlugin {
 		if (parent::register($category, $path)) {
 
 			if ($this->getEnabled()) {
-				$locale = AppLocale::getLocale();
-				$localeFiles = AppLocale::getLocaleFiles($locale);
 
-				//HookRegistry::register('PKPLocale::registerLocaleFile', array(&$this, 'addAsTopLocale'));
-
+				// overwrite templates that are called with display or include
 				HookRegistry::register ('TemplateManager::display',
 						array(&$this, 'handleDisplayTemplate'));
 				HookRegistry::register ('TemplateManager::include',
 
-				// set template
+				// overwrite templates that are called with setTemplate
 						array(&$this, 'handleIncludeTemplate'));
 				HookRegistry::register ('addparticipantform::Constructor',
 						array(&$this, 'handleAddParticipantForm')); 
@@ -56,10 +53,14 @@ class SimplifyWorkflowPlugin extends GenericPlugin {
 				HookRegistry::register ('catalogentryformatmetadataform::Constructor',
 						array(&$this, 'handlePublicationEntryForm'));
 
-
+				// control database action
 				HookRegistry::register ('eventlogdao::_insertobject',
 						array(&$this, 'handleInsertObject'));
+
+				// action at the end of the submission process
 				HookRegistry::register('submissionsubmitstep3form::validate', array(&$this, 'handleAssignEditors'));
+
+				// delete notifications when loading dashboard page -> find better solution!!!
 				HookRegistry::register ('LoadHandler', array(&$this, 'handleOnLoadDeleteNotifications'));
 
 			}
@@ -68,32 +69,10 @@ class SimplifyWorkflowPlugin extends GenericPlugin {
 		return false;
 	}
 
-
 /*
 $file = fopen("test.txt","a");
-fwrite($file,"\r\n include hook: ");
+fwrite($file,"\r\n xxx: ");
 fclose($file);*/
-
-
-	/* -> PKPLocale.inc.php, static function registerLocaleFile ($locale, $filename, $addToTop = false) */
-	/* workaround: warte bis zum letzten locale file und füge dann den localefile von simplifyWorkflow hinzug, 
-	   kann u.U. noch besser gelöst werden */
-	function addAsTopLocale($hookName, $args) {
-
-		$locale =& $args[0];
-		$localeFilename =& $args[1];
- 
-		if ($localeFilename=="lib/pkp/locale/en_US/submission.xml" ||
-			$localeFilename=="locale/en_US/submission.xml" ||
-			$localeFilename=="locale/en_US/locale.xml" ||
-			$localeFilename=="lib/pkp/locale/en_US/user.xml" ||
-			$localeFilename=="lib/pkp/locale/en_US/common.xml" ||
-			$localeFilename=="lib/pkp/locale/en_US/grid.xml" ||
-			$localeFilename=="lib/pkp/locale/en_US/editor.xml" ||
-			$localeFilename=="locale/en_US/editor.xml") {
-			AppLocale::registerLocaleFile($locale, "plugins/generic/simplifyWorkflow/locale/en_US/locale.xml");
-		}
-	}
 
 	function handleAddParticipantForm($hookName, $args)  {
 
