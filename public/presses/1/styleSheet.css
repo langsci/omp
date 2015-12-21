@@ -1,65 +1,42 @@
 
 .pkp_structure_foot .pkp_structure_subfoot {
-	padding-top: 20px;
-	position: relative !important;
+    padding-top: 20px;
+    position: relative !important;
 }
-
-/* make menu item transparent */
-.sf-menu ul{
-	opacity:.95;
+.sf-menu ul {
+    opacity: 0.95;
 }
-
-/* remove border from register/login */
 .pkp_structure_head_siteNav ul.pkp_helpers_align_right {
-	border: none;
+    border: medium none;
 }
-
-/* icon box for startpage */
-
-	/* define icon box */
-	.lsp-icon-box{
-		background-color: white;
-		width: 25%;
-		float:left;
-		margin-left: auto;
-		margin-right: auto;
-		text-align: center;
-		padding-top: 10px;
-		padding-bottom: 10px; 
-	}
-	
-	/* display box on hover*/
-	.lsp-icon-box:hover {
-		background-color: #eee;
-		border-radius: 5px;
-	}
-	
-	/* display image on hover in normal color */
-	.lsp-icon-box:hover .lsp-startpage-image{
-		opacity: 1.0;
-		filter:alpha(opacity=100);
-		background-color: #eee;
-	}
-	
-	/* change color of the link on hover */
-	.lsp-icon-box:hover .a{
-		color: #005678 !important;
-	}
-	
-	/* define image in the box with opacity*/
-	.lsp-icon-box-image{
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		opacity: 0.5;
-		filter:alpha(opacity=40);
-	}
-
-/* end of icon box */
-
-/* langsci blue header for accordions */
-
-h3.langsci{
+.lsp-icon-box {
+    background-color: white;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+    width: 25%;
+}
+.lsp-icon-box:hover {
+    background-color: #eee;
+    border-radius: 5px;
+}
+.lsp-icon-box:hover .lsp-startpage-image {
+    background-color: #eee;
+    opacity: 1;
+}
+.lsp-icon-box:hover .a {
+    color: #005678 !important;
+}
+.lsp-icon-box-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.5;
+}
+h3.langsci {
     border-bottom: 1px solid #92d2ea;
     display: block;
     font-size: 120%;
@@ -67,61 +44,43 @@ h3.langsci{
     list-style: outside none none;
     margin-top: 20px;
 }
-
 .pkp_catalog_seriesDescription p {
     margin-left: 30px;
 }
-
-
 h3.accordionHeader {
-	background-color: #eee !important;
-	border-radius: 5px !important;
-	padding: 5px;
+    background-color: #eee !important;
+    border-radius: 5px !important;
+    padding: 5px;
 }
-
 h3.accordionHeader.ui-state-active {
-	background-color: #D0ECF6 !important;
-	border-radius: 5px !important;
+    background-color: #d0ecf6 !important;
+    border-radius: 5px !important;
 }
-
-.lsp-accordion-icon{
-	float:left;
-	width:22px;
-	padding-left: 10px;
-	padding-right: 10px;
+.lsp-accordion-icon {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 22px;
 }
-
-
-.accordionWithImages .accordionHeader .ui-icon{
-	display: none;
+.accordionWithImages .accordionHeader .ui-icon {
+    display: none;
 }
-
-.accordionWithImages  .ui-accordion-header a { 
-	padding-left: 0 !important; 
+.accordionWithImages .ui-accordion-header a {
+    padding-left: 0 !important;
 }
-
-/* end of langsci blue header */
-
-/* kann das weg?*/
-.publicationFormatDownload{
-	color:white;
-	font-size:0pt;
-} 
-
-/* kann das weg?*/
-.publicationFormatName, .publicationFormatLink{
-	color:black;
-	font-size:12pt;
+.publicationFormatDownload {
+    color: white;
+    font-size: 0;
 }
-
-/* kann das weg?*/
+.publicationFormatName, .publicationFormatLink {
+    color: black;
+    font-size: 12pt;
+}
 #downloadTab ul li:first-child {
     padding-left: 20px;
 }
-
-/* kann das weg?*/
 .publicationFormatLinkmod {
-    background: none repeat scroll 0 0 #d0ecf6;
+    background: #d0ecf6 none repeat scroll 0 0;
     border-radius: 5px;
     display: inline;
     min-width: 90px;
@@ -129,150 +88,102 @@ h3.accordionHeader.ui-state-active {
     text-align: center;
     width: 150px;
 }
-*/
-
-/* kann das weg?*/
-#downloadTab ul li:first-child {
-    padding-left: 20px;
-}
-
-/* kann das weg?*/
 .pkp_catalog_book .bookInfo #abstractTab {
-  text-align:left;
+    text-align: left;
 }
-
-.pkp_catalog_seriesDescription li{
-  list-style-type:disc !important;
+.pkp_catalog_seriesDescription li {
+    list-style-type: disc !important;
 }
-
-#spotlightsHome h4 { 
+#spotlightsHome h4 {
     color: black;
-    font-size: 125%; 
-    padding: 15px; 
-    text-align: left; 
-    display:none;
+    display: none;
+    font-size: 125%;
+    padding: 15px;
+    text-align: left;
 }
 .pkp_catalog_spotlight {
-    border-top: 0px solid #c8c7c7 !important;
+    border-top: 0 solid #c8c7c7 !important;
 }
-
-a{
-  text-decoration:none;
+a {
+    text-decoration: none;
 }
-
-h2 em{
-  font-style:normal !important;
+h2 em {
+    font-style: normal !important;
 }
-
 .pkp_catalog_monograph_date {
     display: none;
 }
-
 .pkp_catalog_carousel_wrapper {
     overflow: visible !important;
 }
-
-#featuresCarousel{
-  border-bottom: 0px dotted #999999 !important;
-  
+#featuresCarousel {
+    border-bottom: 0 dotted #999999 !important;
 }
-
-
-/* von Carola für alle LSP accordeons */
-
-/* don't display triangle */
-
-
 .accordeonLSP h3 {
-	height: 19px; 
-	padding:0;
-	margin:9px 0px 9px 0px;
-	padding-bottom: 20px;
-	background-image: none !important;
-	background-color: #eee !important;
-	border-radius: 8px; 
-	color: black;
+    background-color: #eee !important;
+    background-image: none !important;
+    border-radius: 8px;
+    color: black;
+    height: 19px;
+    margin: 9px 0;
+    padding: 0 0 20px;
 }
-
-.accordeonLSP h3 span{
-	background-image: none !important;
-}
-
 .accordeonLSP h3 span {
-	display:none;
+    background-image: none !important;
 }
-
+.accordeonLSP h3 span {
+    display: none;
+}
 .accordeonLSP h3 a {
-	padding: 0 !important;
+    padding: 0 !important;
 }
-
 .accordeonLSP h3 a span, .accordeonLSP h3 a img {
-	display:inline;
-	float:left;
+    display: inline;
+    float: left;
 }
-
 .accordeonLSP h3 a span {
-	padding: 13px 0px 0px 20px;
-	background-image: none !important;
+    background-image: none !important;
+    padding: 13px 0 0 20px;
 }
-
 .accordeonLSP {
-	padding-top: 10px;
+    padding-top: 10px;
 }
-
 .accordeonLSP h3 {
-	background-image: none !important;
+    background-image: none !important;
 }
-
 .accordeonLSP div.content {
-	margin: 0px 0px 15px 65px;
-	padding: 0;
+    margin: 0 0 15px 65px;
+    padding: 0;
 }
-
-
-/* von Carola für support-Seite */
-
 #supportLangSci .accordeonLSP img {
-	width: 40px;
-	height: 40px;
-	opacity: 0.5;
+    height: 40px;
+    opacity: 0.5;
+    width: 40px;
 }
-
-
-/* von Carola für userGuideHypothesis-Seite */
-
-#userGuideHypothesis img.icon{
-	width: 35px;
-	height: 35px;
-		border: 1px solid #fff;
+#userGuideHypothesis img.icon {
+    border: 1px solid #fff;
+    height: 35px;
+    width: 35px;
 }
-
-#userGuideHypothesis img.content{
-	width: 300px;
-	display:inline;
-	float:left;
-	margin-right: 25px;
-	padding:0;
-	border: 1px solid #999;
+#userGuideHypothesis img.content {
+    border: 1px solid #999;
+    display: inline;
+    float: left;
+    margin-right: 25px;
+    padding: 0;
+    width: 300px;
 }
-
 #userGuideHypothesis h3.header {
-	padding:25px 0px 5px 0px;
+    padding: 25px 0 5px;
 }
-
 #userGuideHypothesis p.descriptionImage {
-	display:block;
-	clear:left;
+    clear: left;
+    display: block;
 }
-
-
-/* ENDE */
-
-/* Carola: discs aus Manage -> Catalog entfernen */
-
 .pkp_manageCatalog_monographList li {
-	list-style-type:none !important;
+    list-style-type: none !important;
 }
 
-
-
+.ui-tabs-nav { 
+    text-transform: none;
+}

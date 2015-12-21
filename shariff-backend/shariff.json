@@ -3,7 +3,7 @@
 		"ttl": 60,
 		"cacheDir": "/data/omp/shariff-backend/cache"
 	},
-	"domain": "test.langsci-press.org",
+	"domain": "langsci-press.org",
 	"services": [
 		"GooglePlus",
 		"Twitter",

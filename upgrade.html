@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Language Science Press</title>
+	<meta name="description" content="High quaility, peer reviewed linguistics books" />
+	<meta name="keywords" content="linguistics, open access" />
+	<meta name="generator" content="##common.openMonographPress## 1.1.1.1" />
+	
+	<!-- begin langsci adding metadata to the header, if the current page ist a bookpage -->
+		<!-- end langsci -->
+	
+	<!-- Base Jquery -->
+			<script src="http://www.google.com/jsapi"></script>
+		<script>
+			// Provide a local fallback if the CDN cannot be reached
+			if (typeof google == 'undefined') {
+				document.write(unescape("%3Cscript src='http://langsci-press.org/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+				document.write(unescape("%3Cscript src='http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E"));
+			} else {
+				google.load("jquery", "1.4.4");
+				google.load("jqueryui", "1.8.6");
+			}
+		</script>
+	
+	<!-- UI elements (menus, forms, etc) -->
+	<script src="http://langsci-press.org/lib/pkp/js/lib/superfish/hoverIntent.js"></script>
+	<script src="http://langsci-press.org/lib/pkp/js/lib/superfish/superfish.js"></script>
+
+		<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/validate/jquery.validate.min.js"></script>
+
+			<script src="http://langsci-press.org/lib/pkp/js/lib/plupload/plupload.full.js"></script>
+	<script src="http://langsci-press.org/lib/pkp/js/lib/plupload/jquery.ui.plupload/jquery.ui.plupload.js"></script>
+
+	
+						<link rel="stylesheet" href="http://langsci-press.org/styles/lib.css" type="text/css" />
+					<link rel="stylesheet" href="http://langsci-press.org/$$$call$$$/page/page/css" type="text/css" />
+								<link rel="stylesheet" href="http://langsci-press.org/$$$call$$$/page/page/css?name=langscithemeplugin" type="text/css" />
+								<link rel="stylesheet" href="http://langsci-press.org/public/presses/1/styleSheet.css" type="text/css" />
+			
+	<!-- Constants for JavaScript -->
+	
+<script>
+	jQuery.pkp = jQuery.pkp || { };
+	jQuery.pkp.cons = { };
+		jQuery.pkp.cons.REALLY_BIG_NUMBER = 10000;
+		jQuery.pkp.cons.UPLOAD_MAX_FILESIZE = '200M';
+		jQuery.pkp.cons.WORKFLOW_STAGE_ID_PUBLISHED = 0;
+		jQuery.pkp.cons.WORKFLOW_STAGE_ID_SUBMISSION = 1;
+		jQuery.pkp.cons.WORKFLOW_STAGE_ID_INTERNAL_REVIEW = 2;
+		jQuery.pkp.cons.WORKFLOW_STAGE_ID_EXTERNAL_REVIEW = 3;
+		jQuery.pkp.cons.WORKFLOW_STAGE_ID_EDITING = 4;
+		jQuery.pkp.cons.WORKFLOW_STAGE_ID_PRODUCTION = 5;
+		jQuery.pkp.cons.LISTBUILDER_SOURCE_TYPE_TEXT = 0;
+		jQuery.pkp.cons.LISTBUILDER_SOURCE_TYPE_SELECT = 1;
+		jQuery.pkp.cons.LISTBUILDER_OPTGROUP_LABEL = 'optGroupLabel';
+		jQuery.pkp.cons.ORDER_CATEGORY_GRID_CATEGORIES_ONLY = 1;
+		jQuery.pkp.cons.ORDER_CATEGORY_GRID_CATEGORIES_ROWS_ONLY = 2;
+		jQuery.pkp.cons.ORDER_CATEGORY_GRID_CATEGORIES_AND_ROWS = 3;
+	</script>
+	<!-- Default global locale keys for JavaScript -->
+	
+<script>
+	jQuery.pkp = jQuery.pkp || { };
+	jQuery.pkp.locale = { };
+			
+				jQuery.pkp.locale.form_dataHasChanged = 'The data on this form has changed. Do wish to continue without saving?';
+			
+				jQuery.pkp.locale.common_close = 'Close';
+	</script>
+	<!-- Compiled scripts -->
+			
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.form.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.tag-it.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.pnotify.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.roundabout.min.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.sortElements.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.imgpreview.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.cookie.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.equalizer.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.jlabel-1.3.min.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.selectBox.min.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.scrollabletab.js"></script>
+
+<script src="http://langsci-press.org/lib/pkp/js/lib/json/json2.js"></script>
+
+<script src="http://langsci-press.org/lib/pkp/js/functions/general.js"></script>
+
+<script src="http://langsci-press.org/lib/pkp/js/classes/Helper.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/ObjectProxy.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/Handler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/LinkActionRequest.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/RedirectRequest.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/OpenWindowRequest.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/PostAndRedirectRequest.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/NullAction.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/EventAction.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/AjaxRequest.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/linkAction/ModalRequest.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/notification/NotificationHelper.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/Feature.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/OrderItemsFeature.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/OrderGridItemsFeature.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/OrderCategoryGridItemsFeature.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/OrderListbuilderItemsFeature.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/OrderMultipleListsItemsFeature.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/GridCategoryAccordionFeature.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/classes/features/PagingFeature.js"></script>
+
+<script src="http://langsci-press.org/lib/pkp/js/controllers/SiteHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/UrlInDivHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/ExtrasOnDemandHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/PageHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/TabHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/UploaderHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/AutocompleteHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/RangeSliderHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/NotificationHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/FormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/DropdownHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/AjaxFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/ClientFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/ToggleFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/FileUploadFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/MultilingualInputHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/form/reviewer/ReviewerReviewStep3FormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/GridHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/CategoryGridHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/listbuilder/ListbuilderHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/listbuilder/MultipleListsListbuilderHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/ModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/ConfirmationModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/RedirectConfirmationModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/RemoteActionConfirmationModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/CallbackConfirmationModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/ButtonConfirmationModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/JsEventConfirmationModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/AjaxModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/AjaxLegacyPluginModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modal/WizardModalHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/modals/editorDecision/form/EditorDecisionFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/linkAction/LinkActionHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/wizard/WizardHandler.js"></script>
+
+<script src="http://langsci-press.org/lib/pkp/js/controllers/wizard/fileUpload/FileUploadWizardHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/wizard/fileUpload/form/FileUploadFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/wizard/fileUpload/form/RevisionConfirmationHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/tab/settings/form/FileViewFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/tab/settings/announcements/form/AnnouncementSettingsFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/tab/settings/paymentMethod/PaymentMethodHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/header/ContextSwitcherFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/header/HeaderHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/admin/ContextsHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/submission/SubmissionTabHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/settings/user/form/UserFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/settings/roles/form/UserGroupFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/files/signoff/form/AddAuditorFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/tab/settings/siteAccessOptions/form/SiteAccessOptionsFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/tab/settings/managementSettings/UsersAndRolesTabHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/dashboard/form/DashboardTaskFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/informationCenter/NotesHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/informationCenter/SignoffNotesHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/statistics/ReportGeneratorFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/submission/SubmissionStep2FormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/submission/SubmissionStep3FormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/workflow/WorkflowHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/workflow/SubmissionHeaderHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/workflow/EditorDecisionsHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/workflow/ProductionHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/users/reviewer/AdvancedReviewerSearchHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/users/reviewer/form/LimitFilesFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/users/reviewer/form/AddReviewerFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/users/reviewer/form/ReviewerFormFooterHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/users/reviewer/form/AdvancedSearchReviewerFilterFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/users/stageParticipant/form/StageParticipantNotifyHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/controllers/grid/users/stageParticipant/form/AddParticipantFormHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/reviewer/ReviewerTabHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/authorDashboard/PKPAuthorDashboardHandler.js"></script>
+<script src="http://langsci-press.org/lib/pkp/js/pages/authorDashboard/SubmissionEmailHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/grid/content/spotlights/form/SpotlightFormHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/modals/editorDecision/ApproveProofsHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/modals/catalogEntry/form/RepresentativeFormHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/modals/catalogEntry/form/PublicationFormatMetadataFormHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/modals/submissionMetadata/MonographlessCatalogEntryHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/modals/expeditedSubmission/form/ExpeditedSubmissionMetadataFormHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/grid/files/proof/form/ApprovedProofFormHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/tab/catalogEntry/CatalogEntryTabHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/tab/publicationFormat/PublicationFormatsTabHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/catalog/form/CatalogMetadataFormHandler.js"></script>
+<script src="http://langsci-press.org/js/controllers/monographList/MonographListHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/catalog/CarouselHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/catalog/MonographPublicListHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/manageCatalog/ManageCatalogHeaderHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/manageCatalog/ManageCatalogModalHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/manageCatalog/ManageCatalogSearchFormHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/manageCatalog/MonographManagementListHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/manageCatalog/MonographHandler.js"></script>
+<script src="http://langsci-press.org/js/pages/authorDashboard/AuthorDashboardHandler.js"></script>
+
+<script src="http://langsci-press.org/lib/pkp/js/lib/jquery/plugins/jquery.pkp.js"></script>	
+	
+
+		<link rel="stylesheet" type="text/css" media="all" href="http://langsci-press.org/lib/pkp/styles/lib/selectBox/jquery.selectBox.css" />
+
+
+	
+</head><body>
+	<script type="text/javascript">
+		// Initialise JS handler.
+		$(function() {
+			$('body').pkpHandler(
+				'$.pkp.controllers.SiteHandler',
+				{
+										toggleHelpUrl: 'http://langsci-press.org/user/toggleHelp',
+					toggleHelpOnText: 'Help On',
+					toggleHelpOffText: 'Help Off',
+					
+fetchNotificationUrl: 'http://langsci-press.org/notification/fetchNotification',
+hasSystemNotifications: ''
+				});
+		});
+	</script>
+	<div class="pkp_structure_page">
+		
+		
+<script>
+	// Initialise JS handler.
+	<!--
+	$(function() {
+		$('#headerContainer').pkpHandler(
+			'$.pkp.controllers.UrlInDivHandler',
+			{
+				sourceUrl: 'http://langsci-press.org/$$$call$$$/page/page/header'
+			}
+		);
+	});
+	// -->
+</script>
+
+<div id="headerContainer" class="pkp_structure_head">
+<div class="loading_container">
+	<div class="pkp_helpers_progressIndicator"></div>
+	<span class="message">Loading ...</span>
+</div></div>
+		<div class="pkp_structure_body">
+			<div class="pkp_structure_content">
+				<div class="line">
+											<script type="text/javascript">
+	$(function() {
+		$('#topSearchFormField').jLabel();
+	});
+</script>
+
+<div class="pkp_structure_search pkp_helpers_align_right">
+	<form id="topSearchForm" action="http://langsci-press.org/catalog/results" method="post">
+		<fieldset>
+			<input id="topSearchFormField" name="query" value="" type="text" title="Search Catalog..." />
+			<button class="go">Go</button>
+		</fieldset>
+	</form>
+</div>									</div>
+
+				
+
+
+				
+<script>
+	// Initialise JS handler.
+	<!--
+	$(function() {
+		$('#sidebarContainer').pkpHandler(
+			'$.pkp.controllers.UrlInDivHandler',
+			{
+				sourceUrl: 'http://langsci-press.org/$$$call$$$/page/page/sidebar?params='
+			}
+		);
+	});
+	// -->
+</script>
+
+<div id="sidebarContainer">
+<div class="loading_container">
+	<div class="pkp_helpers_progressIndicator"></div>
+	<span class="message">Loading ...</span>
+</div></div>
+
+				<script type="text/javascript">
+					// Attach the JS page handler to the main content wrapper.
+					$(function() {
+						$('div.pkp_structure_main').pkpHandler('$.pkp.controllers.PageHandler');
+					});
+				</script>
+
+				<div class="pkp_structure_main">
+										
+
+										
+										This page is currently inactive. We are installing some new fancy stuff and will be back soon.
+
+	<br />
+	
+	
+	
+	<h2 class="pkp_helpers_text_center">
+<em>About</em>
+</h2>
+
+<p>
+Language Science Press publishes high quality, peer-reviewed open-access books in linguistics. All publications are free for both authors and readers. General Editors are <a href="http://hpsg.fu-berlin.de/~stefan/">Stefan Müller</a> (FU Berlin) and <a href="http://www.eva.mpg.de/linguistics/staff/martin-haspelmath/">Martin Haspelmath</a> (MPI for Evolutionary Anthropology). They are supported by a high-profile <a href="http://langsci-press.org/about/advisoryBoard">Advisory Board</a>.
+</p>
+ 
+
+<p>
+Language Science Press is supported by the <a href="http://www.dfg.de/">DFG</a> during the startup phase, and will continue to operate with the help of its <a href="http://langsci-press.org/about/supporters">supporters</a> among academic linguists. Our philosophy is that book publishing can be fully under the control of scholars because most of the traditional tasks of commercial publishers can be done more efficiently by scholars, at little or no cost due to the modern technology that is routinely available at universities.
+</p>
+ 
+ 
+<ul>
+<li>All books appear in a <a href="http://langsci-press.org/series">book series</a>, and the series editors are responsible for acquiring, reviewing and selecting manuscripts for publication.</li>
+
+<li>The authors are responsible for typesetting in LaTeX (together with the series editors); automatic conversion from Word is possible in principle.</li>
+
+<li>The <a href="http://langsci-press.org/information/forAuthors#Workflow">workflow</a> is controlled by the publication management system OMP (Open Monograph Press).</li>
+
+<li>Books are freely available in their PDF version; paper versions can be bought from print-on-demand companies.</li>
+</ul>
+
+<p>
+For some time now, all scholars have been accustomed to sharing their materials at no cost with their colleagues, often with the help of services like Academia.edu and ResearchGate. Scientific publication thus no longer serves the need of disseminating research results – its purpose is to make the best work prominent enough to help build careers and to guide scholars in choosing what to read. This task of selecting the best work is carried out by the series editors of Language Science Press.
+</p>
+ 
+
+<p>
+
+To see published and forthcoming books, consult our <a href="http://langsci-press.org/catalog">catalogue</a>. Other pages of this site provide <a href="http://langsci-press.org/information/forAuthors">information for authors</a> and <a href="http://langsci-press.org/information/forEditors">information for series editors</a>. We also provide <a href="http://langsci-press.org/information/templates">templates</a> for conversion from Word to LaTeX. The work of our volunteer supporters is appreciated in our <a href="http://langsci-press.org/about/hallOfFame">Hall of Fame</a>. Updates appear in our <a href="http://userblogs.fu-berlin.de/langsci-press/">blog</a>.
+</p>
+ 
+
+<p>
+
+<!--More background information can be found under <a href="">How we work</a> and <a href="">Our goals</a>.-->
+
+</p>
+ 
+<!--
+<p>
+<a href="mailto:contact@langsci-press.org">Contact Language Science Press</a>.
+</p>
+-->
+
+
+
+	<div id="spotlightsHome" class="pkp_helpers_dotted_underline">
+	<h2 class="pkp_helpers_text_center"><em>In the Spotlight</em></h2>
+	<ul>
+								<li class="pkp_helpers_align_left pkp_helpers_third">
+				<h4 class="pkp_helpers_text_center">New directions in corpus-based translation studies</h4>
+				<div class="pkp_catalog_spotlight">
+																								<a class="pkp_helpers_image_right" href="http://langsci-press.org/catalog/book/76"><img height="100" width="106" alt="New directions in corpus-based translation studies" src="http://langsci-press.org/$$$call$$$/submission/cover/thumbnail?submissionId=76" /></a>
+												<div class="pkp_catalog_spotlight_itemTitle">New directions in corpus-based translation studies</div>
+						<div class="pkp_catalog_spotlight_itemAuthorship">Claudio Fantinuoli, Federico Zanettin (Volume Editor)</div>
+						<div class="pkp_catalog_spotlight_itemDescription">
+															Corpus-based translation studies has become a major paradigm and research methodology and has investigated a wide variety of topics in the last two decades. The contributions to this volume add to the range of corpus-based studies by providing examples of some less explored applications of corpus analysis methods to translation research.
+													</div>
+						<div class="pkp_catalog_readMore"><a href="http://langsci-press.org/catalog/book/76">+ More</a></div>
+																			</div>
+			</li>
+								<li class="pkp_helpers_align_left pkp_helpers_third">
+				<h4 class="pkp_helpers_text_center">The Talking Heads experiment</h4>
+				<div class="pkp_catalog_spotlight">
+																								<a class="pkp_helpers_image_right" href="http://langsci-press.org/catalog/book/49"><img height="100" width="106" alt="The Talking Heads experiment: Origins of words and meanings" src="http://langsci-press.org/$$$call$$$/submission/cover/thumbnail?submissionId=49" /></a>
+												<div class="pkp_catalog_spotlight_itemTitle">The Talking Heads experiment: Origins of words and meanings</div>
+						<div class="pkp_catalog_spotlight_itemAuthorship">Luc L Steels (Author)</div>
+						<div class="pkp_catalog_spotlight_itemDescription">
+															The Talking Heads Experiment, conducted in the years 1999-2001, was the first large-scale experiment in which open populations of situated embodied agents created for the first time ever a new shared vocabulary by playing language games about real world scenes in front of them. The agents could teleport to different physical sites in the world through the Internet. Sites, in Antwerp, Brussels, Paris, Tokyo, London, Cambridge and several other locations were linked into the network. Humans could interact with the robotic agents either on site or remotely through the Internet and thus influence the evolving ontologies and languages of the artificial agents.
+													</div>
+						<div class="pkp_catalog_readMore"><a href="http://langsci-press.org/catalog/book/49">+ More</a></div>
+																			</div>
+			</li>
+								<li class="pkp_helpers_align_left pkp_helpers_third">
+				<h4 class="pkp_helpers_text_center">Einführung in die grammatische Beschreibung des Deutschen</h4>
+				<div class="pkp_catalog_spotlight">
+																								<a class="pkp_helpers_image_right" href="http://langsci-press.org/catalog/book/46"><img height="100" width="106" alt="Einführung in die grammatische Beschreibung des Deutschen" src="http://langsci-press.org/$$$call$$$/submission/cover/thumbnail?submissionId=46" /></a>
+												<div class="pkp_catalog_spotlight_itemTitle">Einführung in die grammatische Beschreibung des Deutschen</div>
+						<div class="pkp_catalog_spotlight_itemAuthorship">Roland Schäfer (Author)</div>
+						<div class="pkp_catalog_spotlight_itemDescription">
+															This textbook is an introduction to the descriptive grammar of German on the levels of phonetics, phonology, morphology, syntax, and graphemics. It is a recommended read for anyone interested in the grammar of German and especially for students of German philology. The book focuses on how grammatical generalizations are derived from concrete linguistic material while covering a huge number of the important phenomena of German grammar.
+													</div>
+						<div class="pkp_catalog_readMore"><a href="http://langsci-press.org/catalog/book/46">+ More</a></div>
+																			</div>
+			</li>
+			</ul>
+</div>
+<div class="pkp_helpers_clear"></div>
+
+
+
+</div><!-- pkp_structure_main -->
+</div><!-- pkp_structure_content -->
+</div><!-- pkp_structure_body -->
+
+<div class="pkp_structure_foot">
+
+<div class="pkp_structure_subfoot">
+		<div class="pkp_structure_content">
+		<a href="http://langsci-press.org/about/aboutThisPublishingSystem"><img class="pkp_helpers_align_right" alt="Open Monograph Press" src="http://langsci-press.org/templates/images/omp_brand.png"/></a>
+		<a href="http://pkp.sfu.ca/omp"><img class="pkp_helpers_align_right pkp_helpers_clear" alt="Public Knowledge Project" src="http://langsci-press.org/lib/pkp/templates/images/pkp_brand.png"/></a>
+	</div><!-- pkp_structure_content -->
+	<div class="pkp_structure_content">
+				
+		<link rel="stylesheet" href="http://langsci-press.org/plugins/generic/shariff/css/shariff.min.css" type="text/css" />
+		<div class="shariff" data-lang="en" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;googleplus&quot;,&quot;flattr&quot;]"  data-backend-url="/shariff-backend/" data-url="http://langsci-press.org"></div> <script src="http://langsci-press.org/plugins/generic/shariff/shariff.complete.js"></script>
+	</div><!-- pkp_structure_content -->
+</div><!-- pkp_structure_subfoot -->
+
+</div><!-- pkp_structure_foot -->
+
+</div><!-- pkp_structure_page -->
+
+
+</body>
+</html>
