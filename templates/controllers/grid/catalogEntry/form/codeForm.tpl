@@ -15,6 +15,11 @@
 	{rdelim});
 </script>
 
+{** Carola Fanselow: Product Identification Code vorbelegt mit "ISBN-13" **}
+{if $value==""}
+{assign var="value" value="ISBN-13"}
+{/if}
+
 <form class="pkp_form" id="addIdentificationCodeForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT component="grid.catalogEntry.IdentificationCodeGridHandler" op="updateCode"}">
 	<input type="hidden" name="submissionId" value="{$submissionId|escape}" />
 	<input type="hidden" name="publicationFormatId" value="{$publicationFormatId|escape}" />

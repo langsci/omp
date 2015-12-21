@@ -59,8 +59,6 @@ class TopnaviPlugin extends GenericPlugin {
 		switch ($params['smarty_include_tpl_file']) {
 			case 'header/localnav.tpl':
 				$templateMgr->display($this->getTemplatePath() . 'localnavModified.tpl', 'text/html', 'TemplateManager::include');
-				$templateMgr->assign('meintest','das ist ein test');
-
 				return true;
 		}
 		return false;
