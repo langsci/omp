@@ -19,3 +19,6 @@
 [submodule "plugins/generic/vgWort"]
 	path = plugins/generic/vgWort
 	url = https://github.com/langsci/vgWort.git
+[submodule "lsp-scripts"]
+	path = lsp-scripts
+	url = https://github.com/langsci/lsp-scripts.git
