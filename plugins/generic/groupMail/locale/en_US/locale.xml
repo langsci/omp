@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/groupMail/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2015 Carola Fanselow Freie Universität Berlin
+  * Distributed under the GNU GPL v2.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.groupMail.displayName">Group Mail Plugin</message>
+	<message key="plugins.generic.groupMail.description">Exports emails from OMP users</message>
+	<message key="plugins.generic.groupMail.settings">Settings</message>
+	<message key="plugins.generic.title.groupMail">Get email addresses of registered OMP users</message>
+	<message key="plugins.generic.groupMail.form.saved">Group Mail form settings saved.</message>
+	<message key="plugins.generic.groupMail.settings.title">Settings for the Group Mail Plugin</message>
+	<message key="plugins.generic.groupMail.form.useImages">Use images for list style type</message>
+	<message key="plugins.generic.groupMail.form.pathIntro">Path to the group mail page:</message>
+	<message key="plugins.generic.groupMail.form.path">(e.g. about/groupMail results in the path presspath/about/groupMail)</message>
+
+	<message key="plugins.generic.groupMail.groups.title">user groups</message>
+
+
+</locale>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
