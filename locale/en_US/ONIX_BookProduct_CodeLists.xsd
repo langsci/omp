@@ -287,100 +287,11 @@
 			<xs:documentation source="ONIX Code List 5">Product identifier type code</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="01">
-				<xs:annotation>
-					<xs:documentation>Proprietary</xs:documentation>
-					<xs:documentation>For example, a publisher's or wholesaler's product number.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="02">
-				<xs:annotation>
-					<xs:documentation>ISBN-10</xs:documentation>
-					<xs:documentation>International Standard Book Number, pre-2007, unhyphenated (10 characters) - now DEPRECATED in ONIX for Books, except where providing historical information for compatibility with legacy systems. It should only be used in relation to products published before 2007 - when ISBN-13 superseded it - and should never be used as the ONLY identifier (it should always be accompanied by the correct GTIN-13 / ISBN-13).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="03">
-				<xs:annotation>
-					<xs:documentation>GTIN-13</xs:documentation>
-					<xs:documentation>GS1 Global Trade Item Number, formerly known as EAN article number (13 digits).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="04">
-				<xs:annotation>
-					<xs:documentation>UPC</xs:documentation>
-					<xs:documentation>UPC product number (12 digits).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="05">
-				<xs:annotation>
-					<xs:documentation>ISMN-10</xs:documentation>
-					<xs:documentation>International Standard Music Number (M plus nine digits). Pre-2008 - now DEPRECATED in ONIX for Books, except where providing historical information for compatibility with legacy systems. It should only be used in relation to products published before 2008 - when ISMN-13 superseded it - and should never be used as the ONLY identifier (it should always be accompanied by the correct ISMN-13).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="06">
-				<xs:annotation>
-					<xs:documentation>DOI</xs:documentation>
-					<xs:documentation>Digital Object Identifier (variable length and character set).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="13">
-				<xs:annotation>
-					<xs:documentation>LCCN</xs:documentation>
-					<xs:documentation>Library of Congress Control Number (12 characters, alphanumeric).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="14">
-				<xs:annotation>
-					<xs:documentation>GTIN-14</xs:documentation>
-					<xs:documentation>GS1 Global Trade Item Number (14 digits).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+<!--Carola Fanselow, geändert, nur ISBN-13 zugelassen-->
 			<xs:enumeration value="15">
 				<xs:annotation>
 					<xs:documentation>ISBN-13</xs:documentation>
 					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="17">
-				<xs:annotation>
-					<xs:documentation>Legal deposit number</xs:documentation>
-					<xs:documentation>The number assigned to a publication as part of a national legal deposit process.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="22">
-				<xs:annotation>
-					<xs:documentation>URN</xs:documentation>
-					<xs:documentation>Uniform Resource Name: note that in trade applications an ISBN must be sent as a GTIN-13 and, where required, as an ISBN-13 - it should not be sent as a URN.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="23">
-				<xs:annotation>
-					<xs:documentation>OCLC number</xs:documentation>
-					<xs:documentation>A unique number assigned to a bibliographic item by OCLC.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="24">
-				<xs:annotation>
-					<xs:documentation>Co-publisher's ISBN-13</xs:documentation>
-					<xs:documentation>An ISBN-13 assigned by a co-publisher. The 'main' ISBN sent with ID type code 03 and/or 15 should always be the ISBN that is used for ordering from the supplier identified in Supply Detail. However, ISBN rules allow a co-published title to carry more than one ISBN. The co-publisher should be identified in an instance of the &lt;Publisher&gt; composite, with the applicable &lt;PublishingRole&gt; code.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="25">
-				<xs:annotation>
-					<xs:documentation>ISMN-13</xs:documentation>
-					<xs:documentation>International Standard Music Number, from 2008 (13-digit number starting 9790).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="26">
-				<xs:annotation>
-					<xs:documentation>ISBN-A</xs:documentation>
-					<xs:documentation>Actionable ISBN, in fact a special DOI incorporating the ISBN-13 within the DOI syntax. Begins '10.978.' or '10.979.' and includes a / character between the registrant element (publisher prefix) and publication element of the ISBN, eg 10.978.000/1234567. Note the ISBN-A should always be accompanied by the ISBN itself, using codes 03 and/or 15.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="27">
-				<xs:annotation>
-					<xs:documentation>JP e-code</xs:documentation>
-					<xs:documentation>E-publication identifier controlled by JPOIID's Committee for Research and Management of Electronic Publishing Codes.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -7404,118 +7315,11 @@
 			<xs:documentation source="ONIX Code List 55">Date format</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+<!--Carola Fanselow, geändert: alle Optionen außer 00 gelöscht-->
 			<xs:enumeration value="00">
 				<xs:annotation>
 					<xs:documentation>YYYYMMDD</xs:documentation>
 					<xs:documentation>Year month day (default).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="01">
-				<xs:annotation>
-					<xs:documentation>YYYYMM</xs:documentation>
-					<xs:documentation>Year and month.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="02">
-				<xs:annotation>
-					<xs:documentation>YYYYWW</xs:documentation>
-					<xs:documentation>Year and week number.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="03">
-				<xs:annotation>
-					<xs:documentation>YYYYQ</xs:documentation>
-					<xs:documentation>Year and quarter (Q = 1, 2, 3, 4).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="04">
-				<xs:annotation>
-					<xs:documentation>YYYYS</xs:documentation>
-					<xs:documentation>Year and season (S = 1, 2, 3, 4, with 1 = 'Spring').</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="05">
-				<xs:annotation>
-					<xs:documentation>YYYY</xs:documentation>
-					<xs:documentation>Year.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="06">
-				<xs:annotation>
-					<xs:documentation>YYYYMMDDYYYYMMDD</xs:documentation>
-					<xs:documentation>Spread of exact dates.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="07">
-				<xs:annotation>
-					<xs:documentation>YYYYMMYYYYMM</xs:documentation>
-					<xs:documentation>Spread of months.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="08">
-				<xs:annotation>
-					<xs:documentation>YYYYWWYYYYWW</xs:documentation>
-					<xs:documentation>Spread of week numbers.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="09">
-				<xs:annotation>
-					<xs:documentation>YYYYQYYYYQ</xs:documentation>
-					<xs:documentation>Spread of quarters.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="10">
-				<xs:annotation>
-					<xs:documentation>YYYYSYYYYS</xs:documentation>
-					<xs:documentation>Spread of seasons.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="11">
-				<xs:annotation>
-					<xs:documentation>YYYYYYYY</xs:documentation>
-					<xs:documentation>Spread of years.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="12">
-				<xs:annotation>
-					<xs:documentation>Text string</xs:documentation>
-					<xs:documentation>For complex, approximate or uncertain dates.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="13">
-				<xs:annotation>
-					<xs:documentation>YYYYMMDDThhmm</xs:documentation>
-					<xs:documentation>Exact time. Use ONLY when exact times with hour/minute precision are relevant. By default, time is local to the sender. Alternatively, the time may be suffixed with an optional 'Z' for UTC times, or with '+' or '-' and an hhmm timezone offset from UTC.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="14">
-				<xs:annotation>
-					<xs:documentation>YYYYMMDDThhmmss</xs:documentation>
-					<xs:documentation>Exact time. Use ONLY when exact times with second precision are relevant. By default, time is local to the sender. Alternatively, the time may be suffixed with an optional 'Z' for UTC times, or with '+' or '-' and an hhmm timezone offset from UTC.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="20">
-				<xs:annotation>
-					<xs:documentation>YYYYMMDD (H)</xs:documentation>
-					<xs:documentation>Year month day (Hijri calendar).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="21">
-				<xs:annotation>
-					<xs:documentation>YYYYMM (H)</xs:documentation>
-					<xs:documentation>Year and month (Hijri calendar).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="25">
-				<xs:annotation>
-					<xs:documentation>YYYY (H)</xs:documentation>
-					<xs:documentation>Year (Hijri calendar).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="32">
-				<xs:annotation>
-					<xs:documentation>Text string (H)</xs:documentation>
-					<xs:documentation>For complex, approximate or uncertain dates (Hijri calendar), text would usually be in Arabic script.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 		</xs:restriction>
@@ -21126,84 +20930,14 @@
 			<xs:documentation source="ONIX Code List 163">Publishing date role</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
+<!--Carola Fanselow, geändert: alle Optionen außer 01 gelöscht-->
 			<xs:enumeration value="01">
 				<xs:annotation>
 					<xs:documentation>Publication date</xs:documentation>
 					<xs:documentation>Nominal date of publication.</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
-			<xs:enumeration value="02">
-				<xs:annotation>
-					<xs:documentation>Embargo date</xs:documentation>
-					<xs:documentation>If there is an embargo on retail sales in this market before a certain date, the date from which the embargo is lifted and retail sales are permitted.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="09">
-				<xs:annotation>
-					<xs:documentation>Public announcement date</xs:documentation>
-					<xs:documentation>Date when a new product may be announced to the general public.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="10">
-				<xs:annotation>
-					<xs:documentation>Trade announcement date</xs:documentation>
-					<xs:documentation>Date when a new product may be announced for trade only.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="11">
-				<xs:annotation>
-					<xs:documentation>Date of first publication</xs:documentation>
-					<xs:documentation>Date when the work incorporated in a product was first published.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="12">
-				<xs:annotation>
-					<xs:documentation>Last reprint date</xs:documentation>
-					<xs:documentation>Date when a product was last reprinted.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="13">
-				<xs:annotation>
-					<xs:documentation>Out-of-print / deletion date</xs:documentation>
-					<xs:documentation>Date when a product was declared out-of-print or deleted.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="16">
-				<xs:annotation>
-					<xs:documentation>Last reissue date</xs:documentation>
-					<xs:documentation>Date when a product was last reissued.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="19">
-				<xs:annotation>
-					<xs:documentation>Publication date of print counterpart</xs:documentation>
-					<xs:documentation>Date of publication of a printed book which is the print counterpart to a digital edition.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="20">
-				<xs:annotation>
-					<xs:documentation>Date of first publication in original language</xs:documentation>
-					<xs:documentation>Year when the original language version of work incorporated in a product was first published (note, use only when different from code 11).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="21">
-				<xs:annotation>
-					<xs:documentation>Forthcoming reissue date</xs:documentation>
-					<xs:documentation>Date when a product will be reissued.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="22">
-				<xs:annotation>
-					<xs:documentation>Expected availability date after temporary withdrawal</xs:documentation>
-					<xs:documentation>Date when a product that has been temporary withdrawn from sale or recalled for any reason is expected to become available again, eg after correction of quality or technical issues.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="23">
-				<xs:annotation>
-					<xs:documentation>Review embargo date</xs:documentation>
-					<xs:documentation>Date from which reviews of a product may be published eg in newspapers and magazines or online. Provided to the book trade for information only: newspapers and magazines are not expected to be recipients of ONIX metadata.</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
+
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="List164">
