@@ -1,0 +1,253 @@
+<?php
+
+/**
+ * @file AnnotationsHandler.inc.php
+ *
+ * Copyright (c) 2015 Language Science Press
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @class AnnotationsHandler
+ */
+
+import('classes.handler.Handler');
+import('plugins.generic.annotations.AnnotationsDAO');
+
+class AnnotationsHandler extends Handler {
+
+	function AnnotationsHandler() {
+		parent::Handler();
+	}
+
+	function getPressPath(&$request) {
+		$press = $request -> getPress();
+		$pressPath = $press -> getPath();
+ 		$completeUrl = $request->getCompleteUrl();
+		return substr($completeUrl,0,strpos($completeUrl,$pressPath)) . $pressPath ;
+	}
+
+	/**
+	 * Handle view page request (redirect to "view")
+	 * @param $args array Arguments array.
+	 * @param $request PKPRequest Request object.
+	 */
+	function annotations($args, $request) {
+
+		$press = $request -> getPress();
+
+		$user = $request->getUser();
+		if (!$user) {
+			$request->redirect('index');
+		} else {
+
+			$annotationsDAO = new AnnotationsDAO;
+			$userId = $user->getId();
+			$userGroups = $annotationsDAO->getUserRoles($userId);
+			// only for press managers and admins
+			if (in_array('Press Manager',$userGroups)||in_array('Site Admin',$userGroups)) {
+
+				$templateMgr = TemplateManager::getManager($request);
+				$templateMgr->assign('pageTitle','plugins.generic.annotations.title');
+	
+				// get files open to annotations
+				$fsIds_online = $annotationsDAO->getFileIds(1);   // returns matrix with keys=file_id values=submission_id	
+				$fsIds_offline = $annotationsDAO->getFileIds(0);   // returns matrix with keys=file_id values=submission_id	
+
+				if ($fsIds_online==null) {
+
+					$templateMgr->assign('onlineFilesFound',false);
+
+				} else {
+
+					$serverHost = $request->getServerHost();
+					$baseUrl = $request->getBaseUrl();
+					$urlPrefix = substr($request->getBaseUrl(),0,strpos($request->getBaseUrl(),'://')+3);
+					$fileIds = array_keys($fsIds_online);
+					$submissionIds = array_values($fsIds_online);
+
+					$titles = array();
+					$pressIds = array();
+					$publicationFormatIds = array();
+
+					for ($i=0;$i<sizeof($submissionIds); $i++) {
+						$titles[] = $annotationsDAO->getSubTitle($submissionIds[$i]) . " - " . $annotationsDAO->getFileName($fileIds[$i]);
+						$pressIds[] = $annotationsDAO->getPressId($submissionIds[$i]);
+						$publicationFormatIds[] = $annotationsDAO->getPublicationFormatId($fileIds[$i]) ;
+					}
+
+					$urlTails = array();
+					for ($i=0; $i<sizeof($fileIds);$i++) {
+						$urlTails[] = "/" . $submissionIds[$i] . "/" . $publicationFormatIds[$i] . "/" . $fileIds[$i] . "-" . $pressIds[$i];
+					}
+
+					$templateMgr->assign('onlineFilesFound',true);
+					$templateMgr->assign('onlineUrlTails',$urlTails);
+					$templateMgr->assign('onlineTitles',$titles);
+					$templateMgr->assign('onlinePressPath',$press -> getPath());
+					$templateMgr->assign('serverHost',$serverHost);
+					$templateMgr->assign('urlPrefix',$urlPrefix);
+				} 
+
+				if ($fsIds_offline==null) {
+
+					$templateMgr->assign('offlineFilesFound',false);
+
+				} else {
+
+					$myBaseUrl = $request->getServerHost();
+					$fileIds = array_keys($fsIds_offline);
+					$submissionIds = array_values($fsIds_offline);
+	
+					$titles = array();
+					$pressIds = array();
+					$publicationFormatIds = array();
+
+					for ($i=0;$i<sizeof($submissionIds); $i++) {
+						$titles[] = $annotationsDAO->getSubTitle($submissionIds[$i]) . " - " . $annotationsDAO->getFileName($fileIds[$i]);
+						$pressIds[] = $annotationsDAO->getPressId($submissionIds[$i]);
+						$publicationFormatIds[] = $annotationsDAO->getPublicationFormatId($fileIds[$i]) ;
+					}
+
+					$urlTails = array();
+					for ($i=0; $i<sizeof($fileIds);$i++) {
+						$urlTails[] = "/" . $submissionIds[$i] . "/" . $publicationFormatIds[$i] . "/" . $fileIds[$i] . "-" . $pressIds[$i];
+					}
+
+					$templateMgr->assign('offlineFilesFound',true);
+					$templateMgr->assign('offlineUrlTails',$urlTails);
+					$templateMgr->assign('offlineTitles',$titles);
+					$templateMgr->assign('offlinePressPath',$press -> getPath());
+					$templateMgr->assign('serverHost',$serverHost);
+					$templateMgr->assign('urlPrefix',$urlPrefix);
+				} 
+
+				$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);
+				$templateMgr->display($annotationsPlugin->getTemplatePath()."annotations.tpl");
+			}
+		}
+	}
+	
+	function annotationFile($args, $request) {
+
+		$url = $_POST["file"];
+		$title = $_POST["title"];
+
+		// Get cURL resource
+		$curlGet = curl_init();
+
+		$headers = array(
+			'Accept: application/json',
+			'Content-Type: application/json;charset=utf8'
+		);
+
+		// Set some options - we are passing in a useragent too here
+		curl_setopt_array($curlGet, array(
+		   	CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_ENCODING => "UTF-8",
+			CURLOPT_HTTPHEADER=>$headers, 
+			CURLOPT_URL => 'https://hypothes.is/api/search?uri='.$url.'&limit=400'
+		));
+
+		// Send the get request + get response
+		$respGet = curl_exec($curlGet);
+		curl_close($curlGet);
+		$resultsArrayExt = json_decode($respGet,true);
+		$resultsArray = $resultsArrayExt['rows'];
+
+
+		$tags = array();
+		$texts = array();
+		$user = array();
+		$created = array();
+		$references = array();
+		$documents = array();
+		$getItem = array();
+		$ids = array();
+		$targets = array();
+
+		for ($i=0; $i<sizeof($resultsArray); $i++) {
+
+			$item = $resultsArray[$i];
+
+			$ids[] = $item['id'];
+			$user[] = $item['user'];
+			$created[] = $item['created'];
+			$targets[] = $item['target'];
+			if (in_array("references",array_keys($item)) ) {
+				$references[] = $item['references'];
+			} else {
+				$references[] = array();
+			}
+			if (in_array("document",array_keys($item)) ) {
+				$documents[] = $item['document'];
+			} else {
+				$documents[] = array();
+			}
+			$tags[] = $item['tags'];
+			$texts[] = $item['text'];
+		}
+
+		// Analyse der Tags
+		$allTags = array();
+		for ($i=0;$i<sizeof($tags); $i++) {
+			$currentTag = $tags[$i];
+			for ($ii=0;$ii<sizeof($currentTag); $ii++) {
+				$allTags[] = $currentTag[$ii];			
+			}		
+		}
+		$countTags = array_count_values($allTags);
+		arsort($countTags);
+
+		// Analyse Datum der Erstellung (created)
+		asort($created);
+		$timeStart = "-";
+		$timeEnd = "-";
+		if (sizeof($created)>0) {
+			$timeStart = date('l, F jS Y \a\t g:ia', strtotime($created[sizeof($created)-1]));
+			$timeEnd =  date('l, F jS Y \a\t g:ia', strtotime($created[0]));
+		}
+
+		// Analyse References
+		$numberOfCommentsWithReferences = 0;
+		for ($i=0;$i<sizeof($references); $i++) {
+			if (!empty($references[$i])) {
+				$numberOfCommentsWithReferences++;
+			}
+		} 
+
+		// Analyse User
+		$countUser = array_count_values($user);
+		$keysCountUser = array_keys($countUser);
+		for ($i=0;$i<sizeof($countUser); $i++) {			
+			$acct = strpos($keysCountUser[$i],":");
+			$at   = strpos($keysCountUser[$i],"@");
+
+			$userName = substr($keysCountUser[$i],$acct+1,$at-$acct-1);
+			$countUser[$userName] = $countUser[$keysCountUser[$i]];
+			unset($countUser[$keysCountUser[$i]]);
+		} 
+		arsort($countUser);
+
+		// Analyse der Einträge/Texts (doppelte Einträge finden -> Orphans identifizieren)
+		$countTexts = array_count_values($texts);
+		arsort($countTexts);
+
+		// prepare and display template
+		$templateMgr = TemplateManager::getManager($request);
+		$templateMgr->assign('pageTitle','plugins.generic.annotations.file.title');
+		$templateMgr->assign('countUser',$countUser);
+		$templateMgr->assign('countTags',$countTags);
+		$templateMgr->assign('title',$title);
+		$templateMgr->assign('fileUrl',$fileUrl);
+		$templateMgr->assign('url',$url);
+		$templateMgr->assign('noComments',sizeof($user));
+		$templateMgr->assign('numberOfCommentsWithReferences',$numberOfCommentsWithReferences);
+		$templateMgr->assign('timeStart',$timeStart);
+		$templateMgr->assign('timeEnd', $timeEnd);
+
+		$annotationsPlugin = PluginRegistry::getPlugin('generic', ANNOTATIONS_PLUGIN_NAME);
+		$templateMgr->display($annotationsPlugin->getTemplatePath()."file.tpl");
+
+	}
+}
+
+?>

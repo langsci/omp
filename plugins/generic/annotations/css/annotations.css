@@ -1,0 +1,36 @@
+/* 
+  * plugins/generic/annotations/css/annotations.css
+  *
+  * Copyright (c) 2015 Language Science Press
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * style sheet for the annotations plugin
+*/
+
+#annotations div.annotationFile {
+	padding-bottom: 22px;
+	margin-right: 300px;
+}
+
+#annotations .header {
+	font-weight: bold;
+}
+
+#annotations .buttonAnnotationStatistics {
+	float:right;
+}
+
+#annotations table {
+	width:100%;
+}
+
+#annotations table td {
+	 vertical-align: top;
+}
+
+#annotations table li span {
+	float:right;padding-right: 150px;
+}
+
+
+
