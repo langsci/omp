@@ -62,7 +62,8 @@ class GroupMailPlugin extends GenericPlugin {
 			$goToGroupMail = true;
 		}
 
-		if ($goToGroupMail || in_array('getGroupMailResults',$urlArray)) {
+		$getResults = in_array('getGroupMailResults',$urlArray);
+		if ($goToGroupMail || $getResults) {
 
 			$pageUrl = '';
 			if ($getResults) {
