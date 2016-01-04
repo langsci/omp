@@ -49,13 +49,13 @@
 			{translate key="plugins.generic.seriesOverview.seriesSection"}
 		</p>
 	{/if}
-	**}	{**
+	**}	
 
 	{if $key=="incubation"}
 		<p class="sectionHeader">
 			{translate key="plugins.generic.seriesOverview.incubationSection"}
 		</p>
-	{/if}	**}
+	{/if}	
 
 	<div class='seriesOverviewAccordion'>
 		{foreach from=$seriesGroup item=singleSeries}

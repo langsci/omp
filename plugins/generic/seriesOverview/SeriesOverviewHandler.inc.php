@@ -66,6 +66,7 @@ class SeriesOverviewHandler extends Handler {
 		}
 		usort($series['incubation'],'sort_by_title_and_numberOfBooks');
 		usort($series['series'],'sort_by_title_and_numberOfBooks');
+		arsort($series);
 
 		// check if images are used
 		$useImages = $press->getSetting('langsci_seriesOverview_useImages');
