@@ -1,0 +1,167 @@
+#hallOfFame p.intro {
+	padding: 3px 0px 10px 0px;
+}
+
+#hallOfFame img {
+	display:inline;
+	height: 25px;
+}
+
+#hallOfFame a.medalCountName {
+	color: #569BBE !important;
+	text-decoration: none;
+}
+#hallOfFame a.medalCountName:hover {
+	color: #005678 !important;
+}
+
+#hallOfFame div.medalCount {
+	display:inline-block;
+}
+
+#hallOfFame #tab-medalCount ol li {
+	height: 40px;
+}
+
+#hallOfFame #tab-medalCount img {
+	vertical-align: bottom;
+}
+
+#hallOfFame h2 {
+	background-repeat:no-repeat !important;
+	background-position: 0px 15px;
+}
+
+#hallOfFame h2.goldTitle {
+	background-image: url(../img/goldMedal.png);
+}
+
+#hallOfFame h2.silverTitle {
+	background-image: url(../img/silverMedal.png);
+}
+
+#hallOfFame h2.bronzeTitle {
+	background-image: url(../img/bronzeMedal.png);
+}
+
+#hallOfFame h2 span {
+	padding-left: 50px;
+}
+
+#hallOfFame .ui-accordion-header {
+	padding: 0 !important;
+	margin: 0 !important;
+	padding: 6px 0px 6px 0px !important;
+}
+
+#hallOfFame .ui-accordion-header a {
+	display: inline !important;
+}
+
+#hallOfFame .ui-accordion-header a.userName {
+	padding: 0px 0px 0px -8px !important;
+	padding-right: 0px !important;
+}
+
+#hallOfFame .ui-accordion-header div.user {
+	height: 22px;  /* so groß wie das Bild*/
+	display:inline-block;
+}
+
+#hallOfFame .ui-accordion-header div.achievements {
+	display:inline-block;
+	width:70px;
+	vertical-align:bottom;
+}
+
+#hallOfFame .ui-accordion-header div.achievements img {
+	padding:0px 0px 3px 0px;
+	vertical-align:bottom;
+}
+
+#hallOfFame .ui-accordion-header div.userName {
+	padding: 0 !important;
+	margin:0 !important;
+}
+
+#hallOfFame .ui-accordion-header div.colorBar { 
+	display:inline-block;
+	background-color:#B1C800;
+	background-color:#C4DF0F;
+	background-color:#FFF06B;
+	background-color:#FFE56B;
+	border-radius: 5px;
+}
+
+#hallOfFame .ui-accordion-header div.colorBar span { 
+	font-size:0.8em;
+	margin-left:6px;
+	color: #555;
+}
+
+#hallOfFame .ui-accordion-content ol li a.linkToBookPage,
+				.ui-accordion-header a.linkToProfile {
+	font-size: 0.8em !important;
+	color: #569BBE !important;
+	text-decoration: none;
+	padding: 0px;
+}
+
+#hallOfFame .ui-accordion-content ol li {
+	padding: 5px 0px 5px 5px;
+}
+
+#hallOfFame #tab-medalCount ul {
+	padding:0;
+}
+
+#hallOfFame #tab-medalCount li {
+	margin:0;
+	padding: 5px 0px 5px 0px;
+	list-style-type:none;
+}
+
+#hallOfFame #tab-medalCount div.rank {
+	width: 30px;
+	float:left;
+	padding-top: 7px;
+}
+
+/* hover-Effekte */
+
+#hallOfFame .ui-accordion-header a.userName:hover {
+	color:#005678;
+}
+
+#hallOfFame .ui-accordion-header a.linkToProfile:hover {
+	color:#005678 !important;
+}
+
+#hallOfFame .ui-accordion-content ol li a.linkToBookPage:hover {
+	color:#005678 !important;
+}
+
+
+/* active accordion */
+
+#hallOfFame .ui-accordion-header.ui-state-active a {
+	color: #569BBE !important;
+}
+
+#hallOfFame .ui-accordion-header.ui-state-active a:hover {
+	color: #005678 !important;
+}
+
+
+#hallOfFame .ui-tabs-nav li  {
+	font-size: 1.0em;
+	text-transform: none;
+	font-family: 'Linux Libertine';
+}
+
+/* tabs */
+
+.ui-tabs .ui-tabs-nav li {
+	border-radius: 3px !important;
+}
+

@@ -1,7 +1,7 @@
 {**
  * plugins/generic/hallOfFame/settings.tpl
  *
- * Copyright (c) 2015 Language Science Press
+ * Copyright (c) 2015 Carola Fanselow
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * The basic setting tab for the Hall of fame plugin.
@@ -19,6 +19,11 @@
 
 	<input type="hidden" name="tab" value="settings"/>
 
+	{if !$langsci_hallOfFame_path}
+		{assign var="langsci_hallOfFame_path" value="hallOfFame"}
+	{/if}
+
+
 	{fbvFormArea id="hallOfFameSettingsForm" class="border" title="plugins.generic.hallOfFame.settings.title"}
 
 		{** What user groups to include **}
@@ -27,7 +32,7 @@
 			<p class="pkp_help">{translate key="plugins.generic.hallOfFame.form.userGroupsIntro"}</p>
 			{fbvElement type="text" label="plugins.generic.hallOfFame.form.userGroups"
 						id="langsci_hallOfFame_userGroups" value=$langsci_hallOfFame_userGroups
-						maxlength="200" size=$fbvStyles.size.MEDIUM}
+						maxlength="40" size=$fbvStyles.size.MEDIUM}
 		{/fbvFormSection}
 
 		{** path **}
