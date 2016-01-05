@@ -10,12 +10,16 @@
 
 <script type="text/javascript">
 	// Initialize JS handler for catalog header.
-//	$(function() {ldelim}
-//		$('.bookAccordion').accordion({ldelim} autoHeight: false {rdelim});
-//	{rdelim});
-	
+/*	$(function() {ldelim}
+		$('.bookAccordion').accordion({ldelim} autoHeight: false {rdelim});
+	{rdelim});
+	*/
 	$(function() {ldelim}
 		$(".bookAccordion" ).accordion({ldelim} collapsible: true, autoHeight: false, active: true {rdelim});
+	{rdelim});
+	
+	$(function() {ldelim}
+		$(".bookAccordionClosed" ).accordion({ldelim} collapsible: true, autoHeight: false, active: false {rdelim});
 	{rdelim});
 	
 </script>
@@ -138,7 +142,7 @@
 	{if count($publicationFormats) > 1}
 		{foreach from=$publicationFormats item="publicationFormat"}
 			{if $publicationFormat->getIsApproved()}
-				<div class="bookAccordion">
+				<div class="bookAccordionClosed">
 					<h3><a href="#">{$publicationFormat->getLocalizedName()|escape}</a></h3>
 					<div class="publicationFormat">
 						{include file="catalog/book/bookPublicationFormatInfo.tpl" publicationFormat=$publicationFormat availableFiles=$availableFiles}
@@ -150,7 +154,7 @@
 
 	{assign var=categories value=$publishedMonograph->getCategories()}
 	{if !$categories->wasEmpty()}
-		<div class="bookAccordion">
+		<div class="bookAccordionClosed">
 			<h3><a href="#">{translate key="catalog.relatedCategories}</a></h3>
 			<div>
 				<ul class="relatedCategories">
