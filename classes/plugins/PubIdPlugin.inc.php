@@ -263,20 +263,29 @@ class PubIdPlugin extends Plugin {
 		// the pubId suffixes only as a pubId with the given suffix may exist
 		// (e.g. through import) even if the suffix itself is not in the
 		// database.
-		$typesToCheck = array('PublicationFormat');
+		$typesToCheck = array('PublicationFormat', 'MonographFile');
 		foreach($typesToCheck as $pubObjectType) {
+			$objectsToCheck = array();
 			switch($pubObjectType) {
 				case 'PublicationFormat':
 					// FIXME: We temporarily have to use the published article
 					// DAO here until we've moved pubId-generation to the Article
 					// class.
-					$publicationFormatDao = DAORegistry::getDAO('PublicationFormatDao'); /* @var $monographDao PublishedMonographDAO */
-					$objectsToCheck = $publicationFormatDao->getByPressId($pressId);
+					$publicationFormatDao = DAORegistry::getDAO('PublicationFormatDAO'); /* @var $monographDao PublishedMonographDAO */
+					$objectsToCheck = array_merge($objectsToCheck, $publicationFormatDao->getByPressId($pressId)->toArray());
+					break;
+				case 'MonographFile':
+					$submissionFileDao = DAORegistry::getDAO('SubmissionFileDAO');
+					$submissionDao = Application::getSubmissionDAO();
+					$submissions = $submissionDao->getByContextId($pressId);
+					while ($submission = $submissions->next()) {
+						$objectsToCheck = array_merge($objectsToCheck, $submissionFileDao->getLatestRevisions($submission->getId()));
+					}
 					break;
 			}
 
 			$excludedId = (is_a($pubObject, $pubObjectType) ? $pubObject->getId() : null);
-			while ($objectToCheck = $objectsToCheck->next()) {
+			foreach ($objectsToCheck as $objectToCheck) {
 				// The publication object for which the new pubId
 				// should be admissible is to be ignored. Otherwise
 				// we might get false positives by checking against
@@ -323,6 +332,8 @@ class PubIdPlugin extends Plugin {
 	function getPubObjectType($pubObject) {
 		$allowedTypes = array(
 			'PublicationFormat' => 'PublicationFormat',
+			'PublishedMonograph' => 'PublishedMonograph',
+			'MonographFile' => 'MonographFile',
 		);
 		$pubObjectType = null;
 		foreach ($allowedTypes as $allowedType => $pubObjectTypeCandidate) {
@@ -348,7 +359,8 @@ class PubIdPlugin extends Plugin {
 	 */
 	function setStoredPubId(&$pubObject, $pubObjectType, $pubId) {
 		$dao =& $this->getDAO($pubObjectType);
-		$dao->changePubId($pubObject->getId(), $this->getPubIdType(), $pubId);
+		$method = in_array($pubObjectType, array('PublicationFormat', 'PublishedMonograph')) ? 'getId' : 'getFileId';
+		$dao->changePubId($pubObject->$method(), $this->getPubIdType(), $pubId);
 		$pubObject->setStoredPubId($this->getPubIdType(), $pubId);
 	}
 
@@ -360,6 +372,8 @@ class PubIdPlugin extends Plugin {
 	function &getDAO($pubObjectType) {
 		$daos =  array(
 			'PublicationFormat' => 'PublicationFormatDAO',
+			'Monograph' => 'MonographDAO',
+			'MonographFile' => 'SubmissionFileDAO',
 		);
 		$daoName = $daos[$pubObjectType];
 		assert(!empty($daoName));
@@ -409,7 +423,7 @@ class PubIdPlugin extends Plugin {
 	 * @return array
 	 */
 	function _getDAOs() {
-		return array('PublicationFormatDAO');
+		return array('PublicationFormatDAO', 'MonographFileDAODelegate');
 	}
 }
 

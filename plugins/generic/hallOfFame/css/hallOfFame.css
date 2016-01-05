@@ -1,58 +1,264 @@
-/* 
-  * plugins/generic/hallOfFame/css/hallOfFame.css
-  *
-  * Copyright (c) 2015 Carola Fanselow, FU Berlin
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
-  *
-  * style sheet for the hall of fame plugin
-}*/
 
-#hallOfFame #intro {
-	padding-top: 20px;
-	padding-bottom: 20px;
+/*
+ * plugins/generic/hallOfFame/css/hallOfFame.css
+ *
+ * Copyright (c) 2015 Language Science Press
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+*/
+
+/* general */
+
+#hallOfFame img {
+	display:inline;
+	height: 25px;
+}
+
+#hallOfFame h2 {
+	background-repeat:no-repeat !important;
+	background-position: 0px 15px;
+}
+
+#hallOfFame h2 span.headerText {
+	padding-left: 50px;
+}
+
+#hallOfFame img[title]:hover:after {
+	background-color:yellow;
+  border-radius: 5px;
+}
+
+#hallOfFame p.intro {
+	padding: 15px 0px 20px 0px;
+}
+
+#hallOfFame div.star {
+	display:inline;
+}
+
+/* user group tabs */
+
+
+#hallOfFame h2.goldTitle {
+	background-image: url(../img/goldMedal.png);
+}
+
+#hallOfFame h2.silverTitle {
+	background-image: url(../img/silverMedal.png);
+}
+
+#hallOfFame h2.bronzeTitle {
+	background-image: url(../img/bronzeMedal.png);
+}
+
+#hallOfFame .ui-accordion-header {
+	padding: 0 !important;
+	margin: 0 !important;
+	padding: 6px 0px 6px 0px !important;
 }
 
 #hallOfFame .ui-accordion-header a {
-	line-height: 1.9em !important;
 	display: inline !important;
 }
 
-#hallOfFame a {
-	color:#569BBE !important;
+#hallOfFame .ui-accordion-header a.userName {
+	padding: 0px 0px 0px -8px !important;
+	padding-right: 0px !important;
 }
 
-#hallOfFame a:hover {
-	color:#2E6E9E !important;
+#hallOfFame .ui-accordion-header div.user {
+	height: 22px;  /* same size as the image */
+	display:inline-block;
+	/*padding: 0px 0px 0px 50px !important;*/
 }
 
-#hallOfFame a.linkPublicProfile {
-	line-height: 1.9em !important;
-	display: inline !important;
+#hallOfFame .ui-accordion-header a {
 	padding-left: 0px !important;
-	text-decoration:underline !important;
 }
 
-#hallOfFame a.linkPublicProfile:hover {
-	text-decoration: underline !important;
-}
-
-#hallOfFame a.userGroup {
-	color: black !important;
-}
-
-#hallOfFame a.userGroup:hover {
-	color: black !important;
-}
-
-#hallOfFame h3.userGroup {
-	padding-top: 30px !important;
-}
-
-#hallOfFame li {
-	list-style-type: disc;
+#hallOfFame .headerContent {
+	padding-left: 30px;
 }
 
 
+#hallOfFame .ui-accordion-header div.achievements {
+	display:inline-block;
+	width: 70px;
+	vertical-align:bottom;
+}
 
+#hallOfFame .ui-accordion-header div.achievements img {
+	padding:0px 0px 3px 0px;
+	vertical-align:bottom;
+}
+
+#hallOfFame .ui-accordion-header div.userName {
+	padding: 0 !important;
+	margin:0 !important;
+}
+
+#hallOfFame .ui-accordion-header div.colorBarWrapper { 
+	display:inline-block;
+}
+
+#hallOfFame .ui-accordion-header div.colorBar { 
+	display:inline-block;
+	background-color:#B1C800;
+	background-color:#C4DF0F;
+	background-color:#FFF06B;
+	background-color:#FFE56B;
+	border-radius: 5px;
+}
+
+#hallOfFame .ui-accordion-header div.colorBarWrapper span { 
+	font-size:0.8em;
+	margin-left:6px;
+	color: #555;
+}
+
+#hallOfFame .ui-accordion-content ol li {
+	padding: 5px 0px 5px 5px;
+}
+
+#hallOfFame .ui-accordion-content ol li a.linkToBookPage,
+#hallOfFame	.ui-accordion-header a.linkToProfile {
+	font-size: 0.8em !important;
+	color: #569BBE !important;
+	text-decoration: none;
+	padding: 0;
+}
+
+/* medal count tab */
+
+#hallOfFame #tab-medalCount ul {
+	padding:0;
+}
+
+#hallOfFame #tab-medalCount li {
+	margin:0;
+	padding: 5px 0px 5px 0px;
+	list-style-type:none;
+	color: #569BBE !important;
+}
+
+#hallOfFame #tab-medalCount div.rank {
+	width: 30px;
+	float:left;
+	padding-top: 7px;
+	color: #333;
+}
+
+#hallOfFame a.medalCountName {
+	text-decoration: none;
+}
+#hallOfFame a.medalCountName:hover {
+	color: #005678 !important;
+}
+
+#hallOfFame div.medalCount {
+	display:inline-block;
+}
+
+
+#hallOfFame #tab-medalCount img {
+	vertical-align: bottom;
+}
+
+/* hover-Effekte */
+
+#hallOfFame .ui-accordion-header a.userName:hover {
+	color:#005678;
+}
+
+#hallOfFame .ui-accordion-header a.linkToProfile:hover {
+	color:#005678 !important;
+}
+
+#hallOfFame .ui-accordion-content ol li a.linkToBookPage:hover {
+	color:#005678 !important;
+}
+
+
+/* active accordion */
+
+#hallOfFame .ui-accordion-header.ui-state-active a {
+	color: #569BBE !important;
+}
+
+#hallOfFame .ui-accordion-header.ui-state-active a:hover {
+	color: #005678 !important;
+}
+
+
+#hallOfFame .ui-tabs-nav li  {
+	font-size: 1.0em;
+	text-transform: none;
+	font-family: 'Linux Libertine';
+}
+
+/* tabs */
+
+.ui-tabs .ui-tabs-nav li {
+	border-radius: 3px !important;
+}
+
+/* tool tips */
+
+h2.tooltip span.tooltip,
+div.tooltip span.tooltip
+{
+z-index: 10;
+display: none; 
+border-radius:4px; 
+-moz-border-radius: 4px; 
+-webkit-border-radius: 4px; 
+} 
+
+h2.tooltip:hover span.tooltip, 
+div.tooltip:hover span.tooltip,
+{ 
+display: inline; 
+position: absolute; 
+border: 1px solid #8c8c8c; 
+background: #f4f4f4;
+} 
+
+
+h2.tooltip > span.tooltip,
+div.tooltip > span.tooltip
+{
+width: 200px; 
+padding: 10px 12px; 
+opacity: 0; 
+visibility: hidden; 
+z-index: 10; 
+position: absolute; 
+font-size: 12px; 
+font-style: normal; 
+-webkit-border-radius: 3px; 
+-moz-border-radius: 3px; -o-border-radius: 3px; 
+border-radius: 3px; 
+-webkit-box-shadow: 4px 4px 4px #c3c3c3; 
+-moz-box-shadow: 4px 4px 4px #c3c3c3; 
+box-shadow: 4px 4px 4px #c3c3c3; 
+color: #000000; 
+background: #f4f4f4; 
+border: 1px solid #8c8c8c; 
+}
+
+h2.tooltip:hover > span.tooltip,
+div.tooltip:hover > span.tooltip
+{ 
+opacity: 1; 
+text-decoration:none; 
+visibility: visible; 
+overflow: visible; 
+margin-top: 40px; 
+display: inline; 
+margin-left: -200px !important;
+}
+
+div.tooltip > span.tooltipsmall {
+	width: auto !important; 
+}
 
 

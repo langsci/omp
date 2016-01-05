@@ -4,20 +4,20 @@
 <!--
   * plugins/generic/hallOfFame/locale/en_US/locale.xml
   *
- * Copyright (c) 2015 Language Science Press
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Copyright (c) 2015 Carola Fanselow, FU Berlin
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
   * Localization strings for this plugin.
   * <![CDATA[ ... ]] 
   -->
 
 <locale name="en_US" full_name="U.S. English">
-	<message key="plugins.generic.hallOfFame.displayName">Hall of Fame</message>
+	<message key="plugins.generic.hallOfFame.displayName">Hall Of Fame</message>
 	<message key="plugins.generic.hallOfFame.description">Adds a page that displays users' achievements</message>
 	<message key="plugins.generic.hallOfFame.title">Hall Of Fame</message>
 	<message key="plugins.generic.hallOfFame.settings.title">Settings of the Hall of Fame Plugin</message>
 	<message key="plugins.generic.hallOfFame.settings">Settings</message>
-	<message key="plugins.generic.hallOfFame.intro">The following people already supported us. Click on their names to get a list of the monographs they worked on. Move the cursor over the icons to get information about prizes and statistics.</message>
+	<message key="plugins.generic.hallOfFame.intro">The following people already supported our press. Each star signifies one monograph. Click on the name to get the list of the monograph(s) a person worked on.</message>
 
 	<message key="plugins.generic.hallOfFame.form.pathIntro">Path to the hall of fame page</message>
 	<message key="plugins.generic.hallOfFame.form.path"><![CDATA[(e.g. <i>about/hallOfFame</i> results in the path 'presspath/about/hallOfFame')]]></message>
@@ -37,8 +37,8 @@
 	<message key="plugins.generic.hallOfFame.form.startCounting">(format: YYYYMMDD)</message>
 	<message key="plugins.generic.hallOfFame.form.recentDateIntro">Number of months for the recency star</message>
 	<message key="plugins.generic.hallOfFame.form.recentDate">(If you leave this field empty, no recency star will be awarded.)</message>
-	<message key="plugins.generic.hallOfFame.form.minNumberOfSeriesIntro">Minimal number of series to be awarded the series star</message>
-	<message key="plugins.generic.hallOfFame.form.minNumberOfSeries">(If you leave this field empty, no series star will be awarded.)</message>
+	<message key="plugins.generic.hallOfFame.form.numberOfSeriesIntro">Minimal number of series to be awarded the series star</message>
+	<message key="plugins.generic.hallOfFame.form.numberOfSeries">(If you leave this field empty, no series star will be awarded.)</message>
 
 
 

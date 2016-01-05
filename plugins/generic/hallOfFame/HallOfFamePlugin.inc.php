@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @file StaticPagesPlugin.inc.php
+ * @file plugins/generic/hallOfFame/HallOfFamePlugin.inc.php
  *
- * Copyright (c) 2015 Carola Fanselow
+ * Copyright (c) 2015 Language Science Press
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class HallOfFamePlugin
@@ -44,47 +44,48 @@ class HallOfFamePlugin extends GenericPlugin {
 				import('plugins.generic.hallOfFame.HallOfFameDAO');
 				$hallOfFameDao = new HallOfFameDAO();
 				DAORegistry::registerDAO('HallOfFameDAO', $hallOfFameDao);
-				HookRegistry::register('LoadHandler', array($this, 'callbackHandleContent'));
+				HookRegistry::register('LoadHandler', array($this, 'handleLoadRequest'));
 			}
 			return true;
 		}
 		return false;
 	}
 
-	/**
-	 * Declare the handler function to process the actual page PATH
-	 * @param $hookName string The name of the invoked hook
-	 * @param $args array Hook parameters
-	 * @return boolean Hook handling status
-	 */
-	function callbackHandleContent($hookName, $args) {
+	// handle load request
+	function handleLoadRequest($hookName, $args) {
 
-		$request = $this -> getRequest();
-		$press   = $request -> getPress();		
+		$request = $this->getRequest();
+		$press   = $request->getPress();		
 
-		$templateMgr = TemplateManager::getManager($request);
-
-		// get url path components
+		// get url path components to overwrite them 
 		$pageUrl =& $args[0];
 		$opUrl =& $args[1];
-		$tailUrl = "/".implode("/",$request->getRequestedArgs());
+
+		// get path components
+		$urlArray = array();
+		$urlArray[] = $args[0];
+		$urlArray[] = $args[1];
+		$urlArray = array_merge($urlArray,$request->getRequestedArgs());
+		$urlArrayLength = sizeof($urlArray);
 
 		// get path components specified in the plugin settings
-		$settingPathArray = explode("/", $press->getSetting('langsci_hallOfFame_path'));
-		$numberOfComponentsSettings = sizeof($settingPathArray);
-		$pageSettings = $settingPathArray[0];
-		$opSettings = $settingPathArray[1];
-		$tailSettings = "";
-		if (sizeof($settingPathArray) >2) {
-			for ($i=2; $i<sizeof($settingPathArray); $i++) {
-				$tailSettings = $tailSettings . "/" . $settingPathArray[$i];	
-			}
+		$settingPath = $press->getSetting('langsci_hallOfFame_path');
+		if (!ctype_alpha(substr($settingPath,0,1))&&!ctype_digit(substr($settingPath,0,1))) {
+			return false;
 		}
-//echo "<br>vor if: " . $pageSettings . " " . $opSettings . " " .$tailSettings . " ". $numberOfComponentsSettings;
-		if ( ($numberOfComponentsSettings==1 && $pageUrl==$pageSettings && $opUrl=="index"     && $tailUrl=="/") ||
-			 ($numberOfComponentsSettings==2 && $pageUrl==$pageSettings && $opUrl==$opSettings && $tailUrl=="/") ||
-			 ($numberOfComponentsSettings >2 && $pageUrl==$pageSettings && $opUrl==$opSettings && $tailUrl==$tailSettings)
-			) {
+		$settingPathArray = explode("/",$settingPath);
+		$settingPathArrayLength = sizeof($settingPathArray);
+		if ($settingPathArrayLength==1) {
+			$settingPathArray[] = 'index';
+		}
+
+		// compare path and path settings
+		$goToHallOfFame = false;
+		if ($settingPathArray==$urlArray){
+			$goToHallOfFame = true;
+		}
+
+		if ($goToHallOfFame) {
 
 			$pageUrl = '';
 			$opUrl = 'viewHallOfFame';
@@ -94,16 +95,13 @@ class HallOfFamePlugin extends GenericPlugin {
 
 			$this->import('HallOfFameHandler');
 
-		return true;
-
+			return true;
 		}
-
+		return false;
 	}
 
 	
-	/**
-	 * @copydoc PKPPlugin::getManagementVerbs()
-	 */
+	// PKPPlugin::getManagementVerbs()
 	function getManagementVerbs() {
 		$verbs = parent::getManagementVerbs();
 		if ($this->getEnabled()) {
@@ -112,12 +110,6 @@ class HallOfFamePlugin extends GenericPlugin {
 		return $verbs;
 	}
 
-	/**
-	 * Define management link actions for the settings verb.
-	 * @param $request PKPRequest
-	 * @param $verb string
-	 * @return LinkAction
-	 */ 
 	function getManagementVerbLinkAction($request, $verb) {
 		$router = $request->getRouter();
 
@@ -135,9 +127,7 @@ class HallOfFamePlugin extends GenericPlugin {
 		return null;
 	}
 
-	/**
-	 * @copydoc PKPPlugin::manage()
-	 */
+	// PKPPlugin::manage()
 	function manage($verb, $args, &$message, &$messageParams, &$pluginModalContent = null) {
 		$request = $this->getRequest();
 		$press = $request->getPress();
@@ -164,62 +154,21 @@ class HallOfFamePlugin extends GenericPlugin {
 					}
 
 				return true;
-
-
 			default:
 				// let the parent handle it.
 				return parent::manage($verb, $args, $message, $messageParams);
 		}
 	}
 
-	/**
-	 * Determines if statistics settings have been enabled for this plugin.
-	 * @param $press Press
-	 * @return boolean
-	 */ 
-	function statsConfigured($press) {
-
-		$langsci_hallOfFame_userGroups = $press->getSetting('langsci_hallOfFame_userGroups');
-		$langsci_hallOfFame_path = $press->getSetting('langsci_hallOfFame_path');
-
-		if (isset($langsci_hallOfFame_userGroups) && isset($langsci_hallOfFame_path)) {
-			return true;
-		}
-
-		return false;
-	}
-
-
-	/**
-	 * Get the name of the settings file to be installed on new press
-	 * creation.
-	 * @return string
-	 */
+	// Get the name of the settings file to be installed on new press
 	function getContextSpecificPluginSettingsFile() {
 		return $this->getPluginPath() . '/settings.xml';
 	}
 
-	/**
-	 * Get the filename of the ADODB schema for this plugin.
-	 * @return string Full path and filename to schema descriptor.
-	 *//*
-	function getInstallSchemaFile() {
-		return $this->getPluginPath() . '/schema.xml';
-	}*/
-
-	/**
-	 * @copydoc PKPPlugin::getTemplatePath
-	 */
+	// PKPPlugin::getTemplatePath
 	function getTemplatePath() {
 		return parent::getTemplatePath() . 'templates/';
 	}
-
-	/**
-	 * Get the JavaScript URL for this plugin.
-	 *//*
-	function getJavaScriptURL($request) {
-		return $request->getBaseUrl() . '/' . $this->getPluginPath() . '/js';
-	}*/
 }
 
 ?>
