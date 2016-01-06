@@ -1,14 +1,13 @@
 <?php
 
 /**
- * @file plugins/generic/addThis/AddThisSettingsForm.inc.php
+ * @file plugins/generic/hallOfFame/HallOfFameSettingsForm.inc.php
  *
- * Copyright (c) 2015 Carola Fanselow, FU Berlin
+ * Copyright (c) 2015 Language Science Press
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class HallOfFameSettingsForm
- *
- * @brief Form for adding/editing the settings for the Hall of fame plugin
+ * 
  */
 
 import('lib.pkp.classes.form.Form');
@@ -83,9 +82,15 @@ class HallOfFameSettingsForm extends Form {
 			$this->_data = array(
 				'langsci_hallOfFame_userGroups' => $press->getSetting('langsci_hallOfFame_userGroups'),
 				'langsci_hallOfFame_path' => $press->getSetting('langsci_hallOfFame_path'),
-				'langsci_hallOfFame_onlyPublishedMonographs' => $press->getSetting('langsci_hallOfFame_onlyPublishedMonographs'),
+				'langsci_hallOfFame_recentDate' => $press->getSetting('langsci_hallOfFame_recentDate'),
 				'langsci_hallOfFame_linksToPublicProfile' => $press->getSetting('langsci_hallOfFame_linksToPublicProfile'),
 				'langsci_hallOfFame_unifiedStyleSheetForLinguistics' => $press->getSetting('langsci_hallOfFame_unifiedStyleSheetForLinguistics'),
+				'langsci_hallOfFame_startCounting' => $press->getSetting('langsci_hallOfFame_startCounting'),
+				'langsci_hallOfFame_path' => $press->getSetting('langsci_hallOfFame_path'),
+				'langsci_hallOfFame_percentileRanks' => $press->getSetting('langsci_hallOfFame_percentileRanks'),
+				'langsci_hallOfFame_minNumberOfSeries' => $press->getSetting('langsci_hallOfFame_minNumberOfSeries'),
+				'langsci_hallOfFame_medalCount' => $press->getSetting('langsci_hallOfFame_medalCount'),
+				'langsci_hallOfFame_includeCommentators' => $press->getSetting('langsci_hallOfFame_includeCommentators'),
 			);
 		}
 	}
@@ -118,11 +123,18 @@ class HallOfFameSettingsForm extends Form {
 		$this->readUserVars(array(
 			'langsci_hallOfFame_path',
 			'langsci_hallOfFame_userGroups',
-			'langsci_hallOfFame_onlyPublishedMonographs',
+			'langsci_hallOfFame_recentDate',
 			'langsci_hallOfFame_linksToPublicProfile',
 			'langsci_hallOfFame_unifiedStyleSheetForLinguistics',
+			'langsci_hallOfFame_startCounting',
+			'langsci_hallOfFame_percentileRanks',
+			'langsci_hallOfFame_minNumberOfSeries',
+			'langsci_hallOfFame_medalCount',
+			'langsci_hallOfFame_includeCommentators',
 		));
 	}
+
+
 
 	/**
 	 * Save the plugin's data.
@@ -134,9 +146,16 @@ class HallOfFameSettingsForm extends Form {
 
 		$press->updateSetting('langsci_hallOfFame_path', trim($this->getData('langsci_hallOfFame_path'), "\"\';"), 'string');
 		$press->updateSetting('langsci_hallOfFame_userGroups', trim($this->getData('langsci_hallOfFame_userGroups'), "\"\';"), 'string');
-		$press->updateSetting('langsci_hallOfFame_onlyPublishedMonographs', trim($this->getData('langsci_hallOfFame_onlyPublishedMonographs'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_recentDate', trim($this->getData('langsci_hallOfFame_recentDate'), "\"\';"), 'string');
 		$press->updateSetting('langsci_hallOfFame_linksToPublicProfile', trim($this->getData('langsci_hallOfFame_linksToPublicProfile'), "\"\';"), 'string');
 		$press->updateSetting('langsci_hallOfFame_unifiedStyleSheetForLinguistics', trim($this->getData('langsci_hallOfFame_unifiedStyleSheetForLinguistics'), "\"\';"), 'string');
+
+		$press->updateSetting('langsci_hallOfFame_startCounting', trim($this->getData('langsci_hallOfFame_startCounting'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_percentileRanks', trim($this->getData('langsci_hallOfFame_percentileRanks'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_minNumberOfSeries', trim($this->getData('langsci_hallOfFame_minNumberOfSeries'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_medalCount', trim($this->getData('langsci_hallOfFame_medalCount'), "\"\';"), 'string');
+		$press->updateSetting('langsci_hallOfFame_includeCommentators', trim($this->getData('langsci_hallOfFame_includeCommentators'), "\"\';"), 'string');
 	}
+
 }
 ?>
