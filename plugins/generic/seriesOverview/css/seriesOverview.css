@@ -50,10 +50,6 @@
 	float:left;
 }
 
-#seriesOverview div.accordionContent li.books {
-	list-style-type: decimal;	
-}
-
 #seriesOverview div.accordionContent div.bookList {
 	overflow:auto;
 	padding-left:10px;
