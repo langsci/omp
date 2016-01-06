@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/seriesOverview/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2015 Language Science Press
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.seriesOverview.displayName">Series Overview Plugin</message>
+	<message key="plugins.generic.seriesOverview.description">Displays all series</message>
+	<message key="plugins.generic.seriesOverview.settings">Settings</message>
+	<message key="plugins.generic.title.seriesOverview">Series</message>
+	<message key="plugins.generic.seriesOverview.form.saved">Series Overview form settings saved.</message>
+	<message key="plugins.generic.seriesOverview.settings.title">Settings for the Serives Overview Plugin</message>
+	<message key="plugins.generic.seriesOverview.form.useImages">Use images for list style type</message>
+	<message key="plugins.generic.seriesOverview.form.pathIntro">Path to the series overview page:</message>
+	<message key="plugins.generic.seriesOverview.form.path">(e.g. about/seriesOverview results in the path presspath/about/seriesOverview)</message>
+	<message key="plugins.generic.seriesOverview.noPublications">No publications yet.</message>
+
+</locale>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

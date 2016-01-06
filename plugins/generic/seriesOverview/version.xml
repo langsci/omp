@@ -4,17 +4,17 @@
 <!--
   * version.xml
   *
-  * Copyright (c) 2014 Carola Fanselow
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2015 Language Science Press
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
   *
-  * Plugin Meta Pages.
+  * Series Overview Plugin.
   -->
 <version>
-	<application>seriesPage</application>
+	<application>seriesOverview</application>
 	<type>plugins.generic</type>
 	<release>1.0.0.0</release>
-	<date>2014-12-17</date>
+	<date>2015-09-28</date>
 	<lazy-load>1</lazy-load>
 	<sitewide>1</sitewide>
-	<class>SeriesPagePlugin</class>
+	<class>SeriesOverviewPlugin</class>
 </version>
