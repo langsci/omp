@@ -1,0 +1,73 @@
+/*
+ * CSS for Series Overview Plugin	
+ *
+ * Copyright (c) 2015 Language Science Press
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * 
+*/
+
+#seriesOverview h3 {
+	height: 30px;
+}
+
+#seriesOverview p.sectionHeader {
+	padding: 20px 0px 10px 0px;
+}
+
+#seriesOverview h3 div.header {
+	padding-left:30px;
+}
+
+#seriesOverview h3 div.headerText {
+	float:left;
+	padding-top: 6px;
+}
+
+
+#seriesOverview h3 a.linkToSeries{
+	float:right;
+	padding:6px 0px 0px 0px;
+   color:#569BBE;
+}
+
+#seriesOverview h3 img.listIconImage {
+	height:20px;
+	display:inline;
+	float:left;
+	padding:4px 10px 0px 0px;
+}
+
+#seriesOverview h3 span.numberOfBooks {
+	color: #999;
+	font-size: 0.8em;
+}
+
+#seriesOverview div.seriesOverviewAccordion {
+	padding: 10px 0px 0px 0px;
+}
+
+#seriesOverview div.accordionContent img {
+	float:left;
+}
+
+#seriesOverview div.accordionContent li.books {
+	list-style-type: decimal;	
+}
+
+#seriesOverview div.accordionContent div.bookList {
+	overflow:auto;
+	padding-left:10px;
+}
+
+/* hover-Effekte */
+
+#seriesOverview h3 a.linkToSeries:hover {
+	color: #005678;
+}
+
+
+#seriesOverview  .seriesTitle:hover {
+	color: #005678;
+}
+
+
