@@ -83,9 +83,9 @@
 							{assign var=middleName value=$author->getMiddleName()}
 							{assign var=lastName value=$author->getLastName()}
 							{if $i == 0}
-								{$firstName|escape} {$middleName|escape} {$lastName}
+								{$firstName|escape} {$middleName|escape} {$lastName}.
 							{elseif $i}
-								&amp; {$lastName|escape}, {$middleName|escape} {$firstName}
+								&amp; {$lastName|escape}, {$middleName|escape} {$firstName}.
 							{/if}
 						{/if}
 					{/foreach}
@@ -115,7 +115,7 @@
 				
 				{if $publishedMonograph->getDatePublished()}{assign var=datePublished value= $publishedMonograph->getDatePublished()|date_format:'%Y'}{/if}
 				
-				{$datePublished}
+				{$datePublished}.
 				
 				<!-- title -->
 				<em>{$publishedMonograph->getLocalizedFullTitle()|strip_tags|escape}</em>
