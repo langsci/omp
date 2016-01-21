@@ -39,17 +39,12 @@
 </style>
 {/if}
 
-
 <div id="seriesOverview">
 	{foreach from=$series item=seriesGroup key=key}
 
-	{**
-	{if $key=="series"}
-		<p class="sectionHeader">
-			{translate key="plugins.generic.seriesOverview.seriesSection"}
-		</p>
-	{/if}
-	**}	
+	{**	{foreach from=$seriesGroup item=singleSeries}
+<img  src="{url router=$smarty.const.ROUTE_PAGE page="catalog" width="10" height="10" op="thumbnail" type="series" id=$singleSeries.seriesObject->getId()}">
+	{/foreach}**}
 
 	{if $key=="incubation"}
 		<p class="sectionHeader">
@@ -60,20 +55,24 @@
 	<div class='seriesOverviewAccordion'>
 		{foreach from=$seriesGroup item=singleSeries}
 			<h3>
-				<div class="header">	
-					{if $useImages}<img class="listIconImage" src='{$baseUrl}/{$imageDirectory}/{$singleSeries.path}.png' alt='-'>{/if}
-					<div class="headerText">				
-						<span class="seriesTitle">{$singleSeries.title}</span>
+				<div class="header">
+					{if $useImages}<img  class="listIconImage" src="{url router=$smarty.const.ROUTE_PAGE page="catalog"
+					op="thumbnail" type="series" id=$singleSeries.seriesObject->getId()}">{/if}
+					{**{if $useImages}<img class="listIconImage"
+					src='{url router=$smarty.const.ROUTE_PAGE page="catalog" op="thumbnail"
+					type="series" id=$singleSeries.seriesObject->getId()}' alt='-'>{/if}**}
+					<div class="headerText">		
+						<span class="seriesTitle">{$singleSeries.seriesObject->getLocalizedFullTitle()}</span>
 						<span class='numberOfBooks'">({$singleSeries.numberOfPublishedBooks} {if $singleSeries.numberOfPublishedBooks==1}{translate key="plugins.generic.seriesOverview.book"}{else}{translate key="plugins.generic.seriesOverview.books"}{/if}
 								{if $singleSeries.numberOfForthcomingBooks>0}, {$singleSeries.numberOfForthcomingBooks} {translate key="plugins.generic.seriesOverview.forthcoming"}{/if})
-						</span>
-						
+						</span>			
 					</div>
 					<a href={$singleSeries.link} class='linkToSeries'>{translate key="plugins.generic.seriesOverview.linkToSeries"}</a>
 				</div>
 			</h3> 
 			<div class='accordionContent'>
-				{if $useImages}<img class="contentImage" src='{$baseUrl}/{$imageDirectory}/{$singleSeries.path}.png' alt='-'>{/if}
+				{if $useImages}<img class="contentImage" src='{url router=$smarty.const.ROUTE_PAGE page="catalog"
+					op="fullSize" type="series" id=$singleSeries.seriesObject->getId()}' alt='-'>{/if}
 				<div class="bookList">
 					<ul>
 						{if $singleSeries.numberOfBooks>0}

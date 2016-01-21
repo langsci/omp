@@ -21,6 +21,8 @@
 	<message key="plugins.generic.seriesOverview.form.useImages">Verwende Bilder</message>
 	<message key="plugins.generic.seriesOverview.form.pathIntro">Pfad zur Reihenübersichtsseite:</message>
 	<message key="plugins.generic.seriesOverview.form.path">(z.B. "about/reihen" ergibt den Pfad "presspath/about/reihen"</message>
+	<message key="plugins.generic.seriesOverview.form.imageOnSeriesPages">Zeige das Reihenbild auf der Reihenseite an</message>
+	<message key="plugins.generic.seriesOverview.form.setTabTitle">Überschreibe den Tabinhalt mit dem Reihennamen</message>
 	<message key="plugins.generic.seriesOverview.noPublications">Bislang keine Publikationen.</message>
 	<message key="plugins.generic.seriesOverview.books">Bücher</message>
 	<message key="plugins.generic.seriesOverview.forthcoming">im Erscheinen</message>

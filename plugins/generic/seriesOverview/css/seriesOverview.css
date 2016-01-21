@@ -6,6 +6,10 @@
  * 
 */
 
+.contentImage {
+	width: 200px !important;
+}
+
 #seriesOverview h3 {
 	height: 30px;
 }
@@ -44,6 +48,10 @@
 
 #seriesOverview div.seriesOverviewAccordion {
 	padding: 10px 0px 0px 0px;
+}
+
+#seriesOverview div.accordionContent {
+	padding-left: 21px;
 }
 
 #seriesOverview div.accordionContent img {

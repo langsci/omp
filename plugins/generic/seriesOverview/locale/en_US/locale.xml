@@ -21,6 +21,9 @@
 	<message key="plugins.generic.seriesOverview.form.useImages">Use images</message>
 	<message key="plugins.generic.seriesOverview.form.pathIntro">Path to the series overview page:</message>
 	<message key="plugins.generic.seriesOverview.form.path">(e.g. about/seriesOverview results in the path presspath/about/seriesOverview)</message>
+	<message key="plugins.generic.seriesOverview.form.imageOnSeriesPages">Display the series image on the series page</message>
+	<message key="plugins.generic.seriesOverview.form.setTabTitle">Set the tab title on the series pages</message>
+
 	<message key="plugins.generic.seriesOverview.noPublications">No publications yet.</message>
 	<message key="plugins.generic.seriesOverview.book">book</message>
 	<message key="plugins.generic.seriesOverview.books">books</message>
@@ -28,6 +31,8 @@
 	<message key="plugins.generic.seriesOverview.linkToSeries">view series page</message>
 	<message key="plugins.generic.seriesOverview.seriesSection">Series</message>
 	<message key="plugins.generic.seriesOverview.incubationSection">Incubation series</message>
+
+
 </locale>
 
 

@@ -22,6 +22,8 @@ class SeriesOverviewPlugin extends GenericPlugin {
 			
 			if ($this->getEnabled()) {
 				HookRegistry::register ('LoadHandler', array(&$this, 'handleLoadRequest'));
+				HookRegistry::register ('TemplateManager::display',
+						array(&$this, 'handleDisplayTemplate'));
 			}
 			return true;
 		}
@@ -29,10 +31,33 @@ class SeriesOverviewPlugin extends GenericPlugin {
 
 	}
 
+	function handleDisplayTemplate($hookName, $args) {
+
+		$request = $this->getRequest();
+		$press = $request->getPress();
+		$imageOnSeriesPages = $press->getSetting('langsci_seriesOverview_imageOnSeriesPages');
+		$pathSettings = $press->getSetting('langsci_seriesOverview_path');
+		$setTabTitle = $press->getSetting('langsci_seriesOverview_setTabTitle');
+
+		$templateMgr =& $args[0];
+		$template =& $args[1];
+
+		switch ($template) {
+
+			case 'catalog/series.tpl':
+				$templateMgr->assign('imageOnSeriesPages',$imageOnSeriesPages);	
+				$templateMgr->assign('setTabTitle',$setTabTitle);	
+				$templateMgr->display($this->getTemplatePath() . 
+				'seriesModified2.tpl', 'text/html', 'TemplateManager::display');
+				return true;
+		}
+		return false;
+	}
+
 	function handleLoadRequest($hookName, $args) {
 
 		$request = $this->getRequest();
-		$press = $request -> getPress();
+		$press = $request->getPress();
 
 		// get path components from the url in the browser
 		$pageUrl =& $args[0];

@@ -38,11 +38,8 @@ class SeriesOverviewHandler extends Handler {
 			if ($numberOfBooks>0) {
 				$seriesGroup = 'series';
 			}
+			$series[$seriesGroup][$series_id]['seriesObject'] = $seriesObject;
 			$series[$seriesGroup][$series_id]['numberOfBooks'] = $numberOfBooks;
-			$series[$seriesGroup][$series_id]['id'] = $seriesObject->getId();
-			$series[$seriesGroup][$series_id]['fullTitle'] = $seriesObject->getLocalizedFullTitle();
-			$series[$seriesGroup][$series_id]['title'] = $seriesObject->getLocalizedTitle();
-			$series[$seriesGroup][$series_id]['path'] = $seriesObject->getPath();
 			$series[$seriesGroup][$series_id]['link'] = $request->url($press,'catalog','series',$seriesObject->getPath());
 
 			$monographsForSeries = array();
@@ -64,17 +61,9 @@ class SeriesOverviewHandler extends Handler {
 			$series[$seriesGroup][$series_id]['numberOfPublishedBooks'] = $numberOfPublishedBooks;
 			$series[$seriesGroup][$series_id]['numberOfForthcomingBooks'] = $numberOfBooks-$numberOfPublishedBooks;
 		}
+		krsort($series);
 		usort($series['incubation'],'sort_by_title_and_numberOfBooks');
 		usort($series['series'],'sort_by_title_and_numberOfBooks');
-		arsort($series);
-
-		// check if images are used
-		$useImages = $press->getSetting('langsci_seriesOverview_useImages');
-		$imageDirectory = 'plugins/generic/seriesOverview/img';
-		$fileManager = new FileManager();
-		if (!$fileManager->fileExists($imageDirectory)) {
-			$useImages = false;
-		}
 
 		$templateMgr = TemplateManager::getManager($request);
 		$templateMgr->assign('pageTitle', 'plugins.generic.title.seriesOverview');
@@ -83,7 +72,7 @@ class SeriesOverviewHandler extends Handler {
 		$templateMgr->assign('imageDirectory',$imageDirectory);
 		$templateMgr->assign('monographs',$monographs);
 		$templateMgr->assign('series',$series);
-		$templateMgr->assign('useImages',$useImages);
+		$templateMgr->assign('useImages',$press->getSetting('langsci_seriesOverview_useImages'));	
 
 		$seriesOverviewPlugin = PluginRegistry::getPlugin('generic', SERIESOVERVIEW_PLUGIN_NAME);
 		$templateMgr->display($seriesOverviewPlugin->getTemplatePath().'seriesOverview.tpl');

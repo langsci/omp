@@ -29,6 +29,8 @@
 
 		{fbvFormSection list=true}
 			{fbvElement type="checkbox" id="langsci_seriesOverview_useImages" value="1" checked=$langsci_seriesOverview_useImages label="plugins.generic.seriesOverview.form.useImages"}
+			{fbvElement type="checkbox" id="langsci_seriesOverview_imageOnSeriesPages" value="1" checked=$langsci_seriesOverview_imageOnSeriesPages label="plugins.generic.seriesOverview.form.imageOnSeriesPages"}
+			{fbvElement type="checkbox" id="langsci_seriesOverview_setTabTitle" value="1" checked=$langsci_seriesOverview_setTabTitle label="plugins.generic.seriesOverview.form.setTabTitle"}
 		{/fbvFormSection}
 
 		{fbvFormButtons submitText="common.save"}

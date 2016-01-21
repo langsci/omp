@@ -14,10 +14,10 @@
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.generic.hallOfFame.displayName">Hall of Fame</message>
 	<message key="plugins.generic.hallOfFame.description">Adds a page that displays users' achievements</message>
-	<message key="plugins.generic.hallOfFame.title">Hall Of Fame</message>
+	<message key="plugins.generic.hallOfFame.title">Hall of Fame</message>
 	<message key="plugins.generic.hallOfFame.settings.title">Settings of the Hall of Fame Plugin</message>
 	<message key="plugins.generic.hallOfFame.settings">Settings</message>
-	<message key="plugins.generic.hallOfFame.intro">The following people have already supported us.</message>
+	<message key="plugins.generic.hallOfFame.intro">The following community members have already participated in a published volume.</message>
 
 	<message key="plugins.generic.hallOfFame.form.pathIntro">Path to the hall of fame page</message>
 	<message key="plugins.generic.hallOfFame.form.path"><![CDATA[(e.g. <i>about/hallOfFame</i> results in the path 'presspath/about/hallOfFame')]]></message>
