@@ -86,26 +86,20 @@ class DOIPubIdPlugin extends PubIdPlugin {
 	 * @see PubIdPlugin::getPubId()
 	 */
 	function getPubId(&$pubObject, $preview = false) {
+
+		if ($this->isExcluded($pubObject)) return null;
+
 		// Determine the type of the publishing object.
 		$pubObjectType = $this->getPubObjectType($pubObject);
 
 		// Initialize variables for publication objects.
 		$publicationFormat = ($pubObjectType == 'PublicationFormat' ? $pubObject : null);
 		$monograph = ($pubObjectType == 'Monograph' ? $pubObject : null);
-		$file = ($pubObjectType == 'MonographFile' ? $pubObject : null);
+
 
 		// Get the press id of the object.
 		if (in_array($pubObjectType, array('PublicationFormat', 'Monograph'))) {
 			$pressId = $pubObject->getContextId();
-		} else if ($pubObjectType === 'MonographFile') {
-			$submissionId = $pubObject->getSubmissionId();
-			$submissionDao = Application::getSubmissionDAO();
-			$submission = $submissionDao->getById($submissionId);
-			if ($submission) {
-				$pressId = $submission->getContextId();
-			} else {
-				return null;
-			}
 		} else {
 			return null;
 		}
@@ -124,6 +118,7 @@ class DOIPubIdPlugin extends PubIdPlugin {
 
 		// Generate the DOI suffix.
 		$doiSuffixGenerationStrategy = $this->getSetting($pressId, 'doiSuffix');
+
 		switch ($doiSuffixGenerationStrategy) {
 			case 'customId':
 				$doiSuffix = $pubObject->getData('doiSuffix');
@@ -144,10 +139,6 @@ class DOIPubIdPlugin extends PubIdPlugin {
 					// %m - monograph id
 					$doiSuffix = String::regexp_replace('/%m/', $monograph->getId(), $doiSuffix);
 				}
-				if ($file) {
-					// %i - file id
-					$doiSuffix = String::regexp_replace('/%i/', $file->getId(), $doiSuffix);
-				}
 
 				break;
 
@@ -156,19 +147,17 @@ class DOIPubIdPlugin extends PubIdPlugin {
 
 				if ($publicationFormat) {
 					$doiSuffix .= '.' . $publicationFormat->getMonographId();
- 					$doiSuffix .= '.' . $publicationFormat->getId();
+					$doiSuffix .= '.' . $publicationFormat->getId();
 				}
 				if ($monograph) {
 					$doiSuffix .= '.' . $monograph->getId();
-				}
-				if ($file) {
-					$doiSuffix .= '.' . $file->getId();
 				}
 		}
 		if (empty($doiSuffix)) return null;
 
 		// Join prefix and suffix.
 		$doi = $doiPrefix . '/' . $doiSuffix;
+
 
 		if (!$preview) {
 			// Save the generated DOI.
@@ -203,14 +192,21 @@ class DOIPubIdPlugin extends PubIdPlugin {
 	 * @see PubIdPlugin::getResolvingURL()
 	 */
 	function getResolvingURL($pressId, $pubId) {
-		return 'http://dx.doi.org/'.urlencode($pubId);
+		return 'http://dx.doi.org/'.$this->_doiURLEncode($pubId);
 	}
 
 	/**
 	 * @see PubIdPlugin::getFormFieldNames()
 	 */
 	function getFormFieldNames() {
-		return array('doiSuffix');
+		return array('doiSuffix', 'excludeDoi');
+	}
+
+	/**
+	 * @see PubIdPlugin::getExcludeFormFieldName()
+	 */
+	function getExcludeFormFieldName() {
+		return 'excludeDoi';
 	}
 
 	/**
@@ -239,28 +235,29 @@ class DOIPubIdPlugin extends PubIdPlugin {
 	 */
 	function verifyData($fieldName, $fieldValue, &$pubObject, $pressId, &$errorMsg) {
 		// Verify DOI uniqueness.
-		assert($fieldName == 'doiSuffix');
-		if (empty($fieldValue)) return true;
+		if ($fieldName == 'doiSuffix') {
+			if (empty($fieldValue)) return true;
 
-		// Construct the potential new DOI with the posted suffix.
-		$doiPrefix = $this->getSetting($pressId, 'doiPrefix');
-		if (empty($doiPrefix)) return true;
-		$newDoi = $doiPrefix . '/' . $fieldValue;
+			// Construct the potential new DOI with the posted suffix.
+			$doiPrefix = $this->getSetting($pressId, 'doiPrefix');
+			if (empty($doiPrefix)) return true;
+			$newDoi = $doiPrefix . '/' . $fieldValue;
 
-		if($this->checkDuplicate($newDoi, $pubObject, $pressId)) {
-			return true;
-		} else {
-			$errorMsg = __('plugins.pubIds.doi.editor.doiSuffixCustomIdentifierNotUnique');
-			return false;
+			if($this->checkDuplicate($newDoi, $pubObject, $pressId)) {
+				return true;
+			} else {
+				$errorMsg = __('plugins.pubIds.doi.editor.doiSuffixCustomIdentifierNotUnique');
+				return false;
+			}
 		}
+		return true;
 	}
 
 	/**
 	 * @see PubIdPlugin::validatePubId()
 	 */
 	function validatePubId($pubId) {
-		$doiParts = explode('/', $pubId, 2);
-		return count($doiParts) == 2;
+		return preg_match('/^\d+(.\d+)+\//', $pubId);
 	}
 
 
@@ -289,6 +286,19 @@ class DOIPubIdPlugin extends PubIdPlugin {
 
 		return $press;
 	}
+
+	/**
+	 * Encode DOI according to ANSI/NISO Z39.84-2005, Appendix E.
+	 * @param $pubId string
+	 * @return string
+	 */
+	function _doiURLEncode($pubId) {
+		$search = array ('%', '"', '#', ' ', '<', '>', '{');
+		$replace = array ('%25', '%22', '%23', '%20', '%3c', '%3e', '%7b');
+		$pubId = str_replace($search, $replace, $pubId);
+		return $pubId;
+	}
+
 }
 
 ?>
