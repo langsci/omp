@@ -65,7 +65,11 @@
 			<li>
 				<a style="font-size: 80%">Guidelines</a>
 				<ul>
-					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forAuthors" }">For authors</a></li>
+					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forAuthors" }">For authors</a>
+						<ul>
+							<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forAuthors" op="latex" }">Working with LaTeX</a></li>
+						</ul>
+					</li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forEditors" }">For editors</a></li>
 					<li><a href="{url router=$smarty.const.ROUTE_PAGE page="forReaders" }">For readers</a></li>
 					{** <li><a href="{url router=$smarty.const.ROUTE_PAGE page="guidelines" op="newsletter" }">Newsletter</a></li> **}
