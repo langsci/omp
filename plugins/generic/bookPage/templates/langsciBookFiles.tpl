@@ -39,8 +39,9 @@
 					</span>
 				{/if}
 			</a>
+			
 			{else}
-				<a href="{$downloadUrl}" onclick="addPixel({$id});">
+				<a href="{$downloadUrl}" onclick="addPixel({$publicationFormatId}{$id});">
 					<span title="{$availableFile->getDocumentType()|upper|escape}" class="sprite {$availableFile->getDocumentType()|escape}"></span>
 					{if $availableFile->getDirectSalesPrice()}{translate key="payment.directSales.purchase amount=$availableFile->getDirectSalesPrice() currency=$currency}
 					{else}
@@ -49,11 +50,12 @@
 						</span>
 					{/if}
 				</a>
-				<div id="vgwpixel{$id}"></div> 
+				<div id="vgwpixel{$publicationFormatId}{$id}"></div> 
 			{/if}
 		</div>
 	</li>
 {/foreach}
+
 
 
 
