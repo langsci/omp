@@ -288,27 +288,27 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 <!--Carola Fanselow, geändert, eigene ISBNs zugelassen, mit eigenen Ids-->
+			<xs:enumeration value="15">
+				<xs:annotation>
+					<xs:documentation>ISBN-13</xs:documentation>
+					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
 			<xs:enumeration value="28">
 				<xs:annotation>
-					<xs:documentation>ISBN-13 digital</xs:documentation>
+					<xs:documentation>ISBN-13 hardcover</xs:documentation>
 					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="29">
 				<xs:annotation>
-					<xs:documentation>ISBN-13 hard cover</xs:documentation>
+					<xs:documentation>ISBN-13 softcover</xs:documentation>
 					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
 			<xs:enumeration value="30">
 				<xs:annotation>
-					<xs:documentation>ISBN-13 soft cover</xs:documentation>
-					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="31">
-				<xs:annotation>
-					<xs:documentation>ISBN-13 soft cover -US</xs:documentation>
+					<xs:documentation>ISBN-13 softcover-US</xs:documentation>
 					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
