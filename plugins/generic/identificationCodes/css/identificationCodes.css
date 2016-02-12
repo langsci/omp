@@ -1,0 +1,25 @@
+/*
+ * CSS for Series Overview Plugin	
+ * Copyright (c) 2015 Carola Fanselow, Freie Universität Berlin
+ * Distributed under the GNU GPL v2.
+ * 
+*/
+
+ #identificationCodes table th {
+	font-weight:bold;
+	background-color:#eee;
+}
+
+#identificationCodes table td, #identificationCodes table th {
+	padding: 5px 10px 5px 10px;
+}
+
+#identificationCodes table th {
+	padding: 5px 10px 5px 10px;
+}
+
+#identificationCodes table, #identificationCodes th, #identificationCodes td {
+   border: 1px solid black;
+} 
+
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/groupMail/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2015 Carola Fanselow Freie Universität Berlin
+  * Distributed under the GNU GPL v2.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+
+	<message key="plugins.generic.identificationCodes.displayName">Identification Codes Plugin</message>
+	<message key="plugins.generic.identificationCodes.description">Displays all identifcation codes.</message>
+	<message key="plugins.generic.title.identificationCodes">Identification codes</message>
+	<message key="plugins.generic.identificationCodes.introduction">Display all identification codes for publication format 'Complete book'.</message>
+
+</locale>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
