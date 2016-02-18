@@ -12,7 +12,6 @@ Beschreibung
 
  ... (kurze Beschreibung der Funktionsweise des Plugins)
  
-
 Implementation
 ================
 
