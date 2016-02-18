@@ -49,8 +49,8 @@ Funktionen und Software
  
 Metriken
 --------
-- Anzahl Dateien im Plugin: ...
-- Codeumfang des Plugins in Zeilen: ... 
+- Anzahl Dateien im Plugin: ... (Anzahl)
+- Codeumfang des Plugins in Zeilen: ... (Anzahl)
 
 Settings
 --------
