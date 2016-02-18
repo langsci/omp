@@ -1,7 +1,10 @@
 
 Name des Plugins: ...
 Entwickler/in: ...
-Version: ...
+aktuelle Version: ...
+getestet auf OMP-Versionen: ...
+github-Link: ...
+Community-Plugin : ... (ja/nein)
 Datum: ...
 
 Beschreibung
@@ -9,41 +12,55 @@ Beschreibung
 
  ... (kurze Beschreibung der Funktionsweise des Plugins)
  
-Eigenschaften
-=============
 
-- Settings: nein/ja: ... (Beschreibung der Settings aus Readme ergänzen)
-- Plugin ausschließlich für Language Science Press / Communityplugin online unter: ...
-- Spezielles Wissen erforderlich? nein/ja: ... (z.B. projektinternes Wissen, plugin-spezifisches Wissen, omp-spezifisches Wissen)
- 
 Implementation
 ================
 
- ... (kurze Beschreibung der Implementation des Plugins. Bitte ergänzen bzw. löschen, falls nicht zutreffend)
- 
+Hooks
+-----
+- Verwendete Hooks: ... (Anzahl, Namen der Hooks)
+
+Seiten
+------
+- neu angelegte Seiten: ... (Pfade)
+
 Templates
 ---------
-- Template/s überschrieben:  nein/ja: ... (Template/s nennen)
-- neue/s Template/s erzeugt und eingebunden:  nein/ja: ... (Template/s nennen)
-- Anzahl veränderter Templates: ...
-- Verwendete Hooks: nein/ja: ... (Hooks nennen)
+- überschriebene Templates: ... (Anzahl, Namen der Templates)
+- veränderte Templates, mit Template-Hooks: ... (Anzahl, Namen der Templates)
+- neue/eigene Templates: ... (Anzahl, Namen der Templates)
 
 Datenbank- und Serverzugriff
 -----------------------------
-- Lesezugriff auf folgende DB-Tabellen:  nein/ja: ... (Tabelle/n nennen)
-- Schreibzugriff auf folgende OMP-Tabellen:  nein/ja: ... (Datensätze beschreiben, neue Spalte/n und Tabelle/n nennen)
-- hinzugefügte DB-Tabellen: nein/ja: ... (Tabelle/n nennen)
-- einmaliger Zugriff auf Server: nein/ja: ... (beschreiben, wie und warum)
-- regelmäßiger Zugriff auf Server: nein/ja: ... (beschreiben, wie und warum)
+- Lesezugriff auf OMP-Tabellen: ... (Anzahl, Namen der Tabellen)
+- Schreibzugriff auf OMP-Tabellen: ... (Anzahl, Namen der Tabellen)
+- hinzugefügte Datenbank-Tabellen: ... (Anzahl, Namen der Tabellen)
+- einmaliger Zugriff auf Server: ... (ja/nein,beschreiben, wie und warum)
+- regelmäßiger Zugriff auf Server: ... (ja/nein,beschreiben, wie und warum)
  
 Funktionen und Software
 -----------------------
-- eigene Funktionen ergänzt: nein/ja: ... (Funktion/en nennen)
-- OMP-Funktionen verwendet: nein/ja: ... (Funktion/en nennen)
-- verwendete Plugins: nein/ja: ... (nennen und Funktionsweise beschreiben)
-- externe Software verwendet: nein/ja: ... (externe Software nennen und beschreiben, was sie tut)
+- verwendete OMP-Klassen (php): ... (Anzahl, Namen)
+- verwendete OMP-Klassen (js, jqeury, ajax): ... (Anzahl, Namen)
+- notwendige Plugins: ... (benennen, kurze Beschreibung)
+- optionale Plugins: ... (benennen, kurze Beschreibung)
+- externe Software verwendet: ... (externe Software nennen und beschreiben, was sie tut)
+- Fileupload: ... (ja/nein)
  
 Metriken
 --------
-- Codeumfang des Plugins in Zeilen: ...
 - Anzahl Dateien im Plugin: ...
+- Codeumfang des Plugins in Zeilen: ... 
+
+Settings
+--------
+- Settings: ... (Anzahl, Namen, ggf. Erläuterung)
+
+Pluginkategorie
+----------
+- Pluginkategore: ... (z.B. generic, importexport, block)
+
+Sonstiges
+=============
+- Spezielles Wissen erforderlich? ... (kurze Erkläuterung, z.B. projektinternes Wissen, plugin-spezifisches Wissen, omp-spezifisches Wissen)
+- Zugriff: ... (z.B. uneingeschränkt, Admins, Press Manager)
