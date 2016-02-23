@@ -83,7 +83,9 @@ class SeriesOverviewSettingsForm extends Form {
 		if (isset($plugin)) {
 			$this->_data = array(
 				'langsci_seriesOverview_path' => $press->getSetting('langsci_seriesOverview_path'),
-				'langsci_seriesOverview_useImages' => $press->getSetting('langsci_seriesOverview_useImages')
+				'langsci_seriesOverview_useImages' => $press->getSetting('langsci_seriesOverview_useImages'),
+				'langsci_seriesOverview_imageOnSeriesPages' => $press->getSetting('langsci_seriesOverview_imageOnSeriesPages'),
+				'langsci_seriesOverview_setTabTitle' => $press->getSetting('langsci_seriesOverview_setTabTitle')
 			);
 		}
 	}
@@ -115,7 +117,9 @@ class SeriesOverviewSettingsForm extends Form {
 	function readInputData() {
 		$this->readUserVars(array(
 			'langsci_seriesOverview_path',
-			'langsci_seriesOverview_useImages'
+			'langsci_seriesOverview_useImages',
+			'langsci_seriesOverview_imageOnSeriesPages',
+			'langsci_seriesOverview_setTabTitle'
 		));
 	}
 
@@ -129,6 +133,8 @@ class SeriesOverviewSettingsForm extends Form {
 
 		$press->updateSetting('langsci_seriesOverview_path', trim($this->getData('langsci_seriesOverview_path'), "\"\';"), 'string');
 		$press->updateSetting('langsci_seriesOverview_useImages', trim($this->getData('langsci_seriesOverview_useImages'), "\"\';"), 'string');
+		$press->updateSetting('langsci_seriesOverview_imageOnSeriesPages', trim($this->getData('langsci_seriesOverview_imageOnSeriesPages'), "\"\';"), 'string');
+		$press->updateSetting('langsci_seriesOverview_setTabTitle', trim($this->getData('langsci_seriesOverview_setTabTitle'), "\"\';"), 'string');
 	}
 }
 

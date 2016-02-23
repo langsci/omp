@@ -6,6 +6,20 @@
  * 
 */
 
+#seriesOverview .editor {
+	font-size: 0.8em;
+	font-style: italic;
+	color: #999;
+}
+
+#seriesOverview li.books {
+	padding: 3px 0px 3px 0px;
+}
+
+#seriesOverview .seriesImage {
+	padding: 0px 15px 0px 15px;
+}
+
 #seriesOverview h3 {
 	height: 30px;
 }
@@ -46,6 +60,10 @@
 	padding: 10px 0px 0px 0px;
 }
 
+#seriesOverview div.accordionContent {
+	padding-left: 21px;
+}
+
 #seriesOverview div.accordionContent img {
 	float:left;
 }
@@ -60,7 +78,6 @@
 #seriesOverview h3 a.linkToSeries:hover {
 	color: #005678;
 }
-
 
 #seriesOverview  .seriesTitle:hover {
 	color: #005678;

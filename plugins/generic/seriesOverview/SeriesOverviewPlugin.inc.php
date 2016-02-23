@@ -22,6 +22,8 @@ class SeriesOverviewPlugin extends GenericPlugin {
 			
 			if ($this->getEnabled()) {
 				HookRegistry::register ('LoadHandler', array(&$this, 'handleLoadRequest'));
+				HookRegistry::register ('TemplateManager::display',
+						array(&$this, 'handleDisplayTemplate'));
 			}
 			return true;
 		}
@@ -29,44 +31,63 @@ class SeriesOverviewPlugin extends GenericPlugin {
 
 	}
 
+	function handleDisplayTemplate($hookName, $args) {
+
+		$request = $this->getRequest();
+		$press = $request->getPress();
+		$imageOnSeriesPages = $press->getSetting('langsci_seriesOverview_imageOnSeriesPages');
+		$pathSettings = $press->getSetting('langsci_seriesOverview_path');
+		$setTabTitle = $press->getSetting('langsci_seriesOverview_setTabTitle');
+
+		$templateMgr =& $args[0];
+		$template =& $args[1];
+
+		switch ($template) {
+
+			case 'catalog/series.tpl':
+				$templateMgr->assign('imageOnSeriesPages',$imageOnSeriesPages);	
+				$templateMgr->assign('setTabTitle',$setTabTitle);	
+				$templateMgr->display($this->getTemplatePath() . 
+				'seriesModified2.tpl', 'text/html', 'TemplateManager::display');
+				return true;
+		}
+		return false;
+	}
+
 	function handleLoadRequest($hookName, $args) {
 
 		$request = $this->getRequest();
-		$press = $request -> getPress();
+		$press   = $request->getPress();		
 
-		// get path components from the url in the browser
+		// get url path components to overwrite them 
 		$pageUrl =& $args[0];
 		$opUrl =& $args[1];
-		$tailUrl = "/".implode("/",$request->getRequestedArgs());
+
+		// get path components
+		$urlArray = array();
+		$urlArray[] = $args[0];
+		$urlArray[] = $args[1];
+		$urlArray = array_merge($urlArray,$request->getRequestedArgs());
+		$urlArrayLength = sizeof($urlArray);
 
 		// get path components specified in the plugin settings
-		$pathArraySettings = array();
-		$pathSettings = $press->getSetting('langsci_seriesOverview_path');
-
-		if (strlen($pathSettings)>0) {
-			$pathArraySettings = explode("/", $pathSettings);
+		$settingPath = $press->getSetting('langsci_seriesOverview_path');
+		if (!ctype_alpha(substr($settingPath,0,1))&&!ctype_digit(substr($settingPath,0,1))) {
+			return false;
 		}
-		$numberOfComponentsSettings = sizeof($pathArraySettings);
-
-		if ($numberOfComponentsSettings>0) {
-			$pageSettings = $pathArraySettings[0];
-		} 
-
-		if ($numberOfComponentsSettings>1) {
-			$opSettings = $pathArraySettings[1];
-		} 
-
-		$tailSettings = "";
-		if ($numberOfComponentsSettings>2) {
-			for ($i=2; $i<$numberOfComponentsSettings; $i++) {
-				$tailSettings = $tailSettings . "/" . $pathArraySettings[$i];	
-			}
+		$settingPathArray = explode("/",$settingPath);
+		$settingPathArrayLength = sizeof($settingPathArray);
+		if ($settingPathArrayLength==1) {
+			$settingPathArray[] = 'index';
 		}
 
-		if (($numberOfComponentsSettings==1 && $pageUrl==$pageSettings && $opUrl=="index"     && $tailUrl=="/") ||
-			 ($numberOfComponentsSettings==2 && $pageUrl==$pageSettings && $opUrl==$opSettings && $tailUrl=="/") ||
-			 ($numberOfComponentsSettings >2 && $pageUrl==$pageSettings && $opUrl==$opSettings && $tailUrl==$tailSettings)
-			) {
+		// compare path and path settings
+		$goToSeriesOverview = false;
+		if ($settingPathArray==$urlArray){
+			$goToSeriesOverview = true;
+		}
+
+		if ($goToSeriesOverview) {
 
 			$pageUrl = '';
 			$opUrl = 'viewSeriesOverview';
@@ -80,6 +101,53 @@ class SeriesOverviewPlugin extends GenericPlugin {
 		}
 		return false;
 	}
+
+	/**
+	 * @see Plugin::getActions()
+	 */
+/*	function getActions($request, $verb) {
+		$router = $request->getRouter();
+		import('lib.pkp.classes.linkAction.request.AjaxModal');
+		return array_merge(
+			$this->getEnabled()?array(
+				new LinkAction(
+					'settings',
+					new AjaxModal(
+						$router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+						$this->getDisplayName()
+					),
+					__('manager.plugins.settings'),
+					null
+				),
+			):array(),
+			parent::getActions($request, $verb)
+		);
+	}*/
+
+ 	/**
+	 * @see Plugin::manage()
+	 */
+/*	function manage($args, $request) {
+		switch ($request->getUserVar('verb')) {
+			case 'settings':
+				$context = $request->getContext();
+				$this->import('SettingsForm');
+				$form = new SettingsForm($this, $context->getId());
+
+				if ($request->getUserVar('save')) {
+					$form->readInputData();
+					if ($form->validate()) {
+						$form->execute();
+						return new JSONMessage(true);
+					}
+				} else {
+					$form->initData();
+				}
+				return new JSONMessage(true, $form->fetch($request));
+		}
+		return parent::manage($args, $request);
+	}*/
+
 
 	/**
 	 * @copydoc PKPPlugin::getManagementVerbs()

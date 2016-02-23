@@ -41,54 +41,66 @@
 
 
 <div id="seriesOverview">
+
+{if $series|@count gt 0} 
+
 	{foreach from=$series item=seriesGroup key=key}
 
-	{**
-	{if $key=="series"}
-		<p class="sectionHeader">
-			{translate key="plugins.generic.seriesOverview.seriesSection"}
-		</p>
-	{/if}
-	**}	
+		{if $key=="incubation"}
+			<p class="sectionHeader">
+				{translate key="plugins.generic.seriesOverview.incubationSection"}
+			</p>
+		{/if}	
 
-	{if $key=="incubation"}
-		<p class="sectionHeader">
-			{translate key="plugins.generic.seriesOverview.incubationSection"}
-		</p>
-	{/if}	
+		<div class='seriesOverviewAccordion'>
+			{foreach from=$seriesGroup item=singleSeries}
+				<h3>
+					{assign var=seriesId value=$singleSeries.seriesObject->getId()}
+					{assign var=monographId value=$mostRecentMonographs[$seriesId]}
+					<div class="header">
 
-	<div class='seriesOverviewAccordion'>
-		{foreach from=$seriesGroup item=singleSeries}
-			<h3>
-				<div class="header">	
-					{if $useImages}<img class="listIconImage" src='{$baseUrl}/{$imageDirectory}/{$singleSeries.path}.png' alt='-'>{/if}
-					<div class="headerText">				
-						<span class="seriesTitle">{$singleSeries.title}</span>
-						<span class='numberOfBooks'">({$singleSeries.numberOfPublishedBooks} {if $singleSeries.numberOfPublishedBooks==1}{translate key="plugins.generic.seriesOverview.book"}{else}{translate key="plugins.generic.seriesOverview.books"}{/if}
-								{if $singleSeries.numberOfForthcomingBooks>0}, {$singleSeries.numberOfForthcomingBooks} {translate key="plugins.generic.seriesOverview.forthcoming"}{/if})
-						</span>
-						
-					</div>
-					<a href={$singleSeries.link} class='linkToSeries'>{translate key="plugins.generic.seriesOverview.linkToSeries"}</a>
-				</div>
-			</h3> 
-			<div class='accordionContent'>
-				{if $useImages}<img class="contentImage" src='{$baseUrl}/{$imageDirectory}/{$singleSeries.path}.png' alt='-'>{/if}
-				<div class="bookList">
-					<ul>
-						{if $singleSeries.numberOfBooks>0}
-    						{foreach from=$singleSeries.monographs item=publishedMonograph}
-								<li class='books'><a href={$publishedMonograph.link}>{$publishedMonograph.fullTitle}</a></li>
-	    					{/foreach} 
-						{else}
-							<li>{translate key="plugins.generic.seriesOverview.noPublications"}</li>
+						{if $useImages && not $monographId}
+							<img  class="listIconImage" alt='-' src="{url router=$smarty.const.ROUTE_PAGE page="catalog"
+						op="thumbnail" type="series" id=$seriesId}">
+						{elseif $useImages}
+							<img class="listIconImage" alt='-' src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="thumbnail" submissionId=$monographId}" />
 						{/if}
-					</ul>	
+
+						<div class="headerText">		
+							<span class="seriesTitle">{$singleSeries.seriesObject->getLocalizedFullTitle()}</span>
+							<span class='numberOfBooks'">({$singleSeries.numberOfPublishedBooks} {if $singleSeries.numberOfPublishedBooks==1}{translate key="plugins.generic.seriesOverview.book"}{else}{translate key="plugins.generic.seriesOverview.books"}{/if}{if $singleSeries.numberOfForthcomingBooks>0}, {$singleSeries.numberOfForthcomingBooks} {translate key="plugins.generic.seriesOverview.forthcoming"}{/if})
+							</span>			
+						</div>
+
+						<a href={$singleSeries.link} class='linkToSeries'>{translate key="plugins.generic.seriesOverview.linkToSeries"}</a>
+
+					</div>
+				</h3> 
+				<div class='accordionContent'>
+
+					{if $useImages && not $monographId}
+						<img class="seriesImage" alt='-' src='{url router=$smarty.const.ROUTE_PAGE page="catalog" op="fullSize" type="series" id=$seriesId}'>
+					{elseif $useImages}
+						<img alt='-' src="{url router=$smarty.const.ROUTE_COMPONENT component="submission.CoverHandler" op="catalog" submissionId=$monographId}" />
+					{/if}
+
+					<div class="bookList">
+						<ul>
+							{if $singleSeries.numberOfBooks>0}
+	    						{foreach from=$singleSeries.monographs item=publishedMonograph}
+									<li class='books'><a href={$publishedMonograph.link}>{$publishedMonograph.presentationString}</a></li>
+		    					{/foreach} 
+							{else}
+								<li>{translate key="plugins.generic.seriesOverview.noPublications"}</li>
+							{/if}
+						</ul>	
+					</div>
 				</div>
-			</div>
- 		{/foreach} 
-	</div>
- 	{/foreach} 
+	 		{/foreach} 
+		</div>
+	 	{/foreach} 
+
+{/if}
 </div> 
 
 {strip}
