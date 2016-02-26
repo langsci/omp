@@ -82,6 +82,8 @@ class AdditionalTabForm extends Form {
 		
 		$templateMgr->assign('openreviewlink0', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'openreview0'));
 		$templateMgr->assign('openreviewlink1', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'openreview1'));
+		
+		$templateMgr->assign('reviews', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'reviews'));
 
 		return parent::fetch($request);
 	}
@@ -145,7 +147,7 @@ class AdditionalTabForm extends Form {
 	 */
 	function readInputData() {
 		$vars = array(
-			 'softcoverlink','hardcoverlink','openreviewlink0', 'openreviewlink1',// Cover image
+			 'softcoverlink','hardcoverlink','openreviewlink0', 'openreviewlink1', 'reviews',// Cover image
 		);
 
 		$this->readUserVars($vars);
@@ -177,6 +179,8 @@ class AdditionalTabForm extends Form {
 		
 		$catalogEntryTabDAO->setLink($monograph->getId(),'openreview0',$this->getData('openreviewlink0'));
 		$catalogEntryTabDAO->setLink($monograph->getId(),'openreview1',$this->getData('openreviewlink1'));
+		
+		$catalogEntryTabDAO->setLink($monograph->getId(),'reviews',$this->getData('reviews'));
 
 		
 //		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');
