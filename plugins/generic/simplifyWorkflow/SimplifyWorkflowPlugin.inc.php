@@ -12,6 +12,7 @@
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 import('plugins.generic.simplifyWorkflow.SimplifyWorkflowDAO');
+import('plugins.generic.simplifyWorkflow.SWAboutContextHandler');
 
 class SimplifyWorkflowPlugin extends GenericPlugin {
 
@@ -155,7 +156,7 @@ class SimplifyWorkflowPlugin extends GenericPlugin {
 				return true;
 			case 'about/editorialPolicies.tpl':
 				$context = $this->getRequest()->getContext();
-				$templateMgr->assign('submissionInfo', AboutContextHandler::getSubmissionsInfo($context));
+				$templateMgr->assign('submissionInfo', SWAboutContextHandler::getSubmissionsInfo($context));
 				$templateMgr->display($this->getTemplatePath() . 'editorialPoliciesModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
 		}
