@@ -3,30 +3,16 @@
 /**
  * @file plugins/generic/topnavi/TopnaviPlugin.inc.php
  *
- * Copyright (c) 2014 Freie Universität Berlin
+ * Copyright (c) 2015 Language Science Press
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class TopnaviPlugin
  *
- * @brief topnavi plugin for all topnavi changes
  */
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 
 class TopnaviPlugin extends GenericPlugin {
-	/**
-	 * @copydoc Plugin::getDisplayName()
-	 */
-	function getDisplayName() {
-		return __('plugins.generic.topnavi.name');
-	}
-
-	/**
-	 * @copydoc Plugin::getDescription()
-	 */
-	function getDescription() {
-		return __('plugins.generic.topnavi.description');
-	}
 
 	/**
 	 * @copydoc Plugin::register()
@@ -37,7 +23,6 @@ class TopnaviPlugin extends GenericPlugin {
 
 			if ($this->getEnabled()) {
 				HookRegistry::register ('TemplateManager::include', array(&$this, 'handleTopnaviTemplateInclude'));
-				HookRegistry::register ('TemplateManager::display', array(&$this, 'handleDisplayTemplate'));
 			}
 			return true;
 		}
@@ -45,7 +30,6 @@ class TopnaviPlugin extends GenericPlugin {
 	}
 
 	/**
-	 * Overwrite the bookSpecs and bookInfo templates
 	 * @param $hookName string The name of the hook being invoked
 	 * @param $args array The parameters to the invoked hook
 	 */
@@ -64,21 +48,23 @@ class TopnaviPlugin extends GenericPlugin {
 		return false;
 	}
 
-
-	function handleDisplayTemplate($hookName, $args) {
-
-		$templateMgr =& $args[0];
-		$template =& $args[1];
-
-		switch ($template) {
-
-			case 'about/editorialPolicies.tpl':
-				$templateMgr->display($this->getTemplatePath() . 'editorialPoliciesModified.tpl', 'text/html', 'TemplateManager::display');
-				return true;
-		}
-		return false;
+	/**
+	 * @copydoc Plugin::getDisplayName()
+	 */
+	function getDisplayName() {
+		return __('plugins.generic.topnavi.name');
 	}
 
+	/**
+	 * @copydoc Plugin::getDescription()
+	 */
+	function getDescription() {
+		return __('plugins.generic.topnavi.description');
+	}
+
+	function getTemplatePath() {
+		return parent::getTemplatePath() . 'templates/';
+	}
 
 }
 

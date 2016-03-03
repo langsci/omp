@@ -3,7 +3,7 @@
 /**
  * @file plugins/generic/simplifyWorkflow/SimplifyWorkflowDAO.inc.php
  *
- * Copyright (c) 2000-2014 Carola Fanselow, Freie Universität Berlin
+ * Copyright (c) 2015 Language Science Press
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class SimplifyWorkflowDAO
