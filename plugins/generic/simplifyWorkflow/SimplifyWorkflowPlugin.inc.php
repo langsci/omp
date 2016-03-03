@@ -3,7 +3,7 @@
 /**
  * @file plugins/generic/simplifyWorkflow/SimplifyWorkflowPlugin.inc.php
  *
- * Copyright (c) 2014 Freie Universität Berlin
+ * Copyright (c) 2015 Language Science Press
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class SimplifyWorkflowPlugin
@@ -12,21 +12,9 @@
 
 import('lib.pkp.classes.plugins.GenericPlugin');
 import('plugins.generic.simplifyWorkflow.SimplifyWorkflowDAO');
+import('plugins.generic.simplifyWorkflow.SWAboutContextHandler');
 
 class SimplifyWorkflowPlugin extends GenericPlugin {
-	/**
-	 * @copydoc Plugin::getDisplayName()
-	 */
-	function getDisplayName() {
-		return __('plugins.generic.simplifyWorkflow.name');
-	}
-
-	/**
-	 * @copydoc Plugin::getDescription()
-	 */
-	function getDescription() {
-		return __('plugins.generic.simplifyWorkflow.description');
-	}
 
 	/**
 	 * @copydoc Plugin::register()
@@ -69,17 +57,13 @@ class SimplifyWorkflowPlugin extends GenericPlugin {
 		return false;
 	}
 
-/*
-$file = fopen("test.txt","a");
-fwrite($file,"\r\n xxx: ");
-fclose($file);*/
-
 	function handleAddParticipantForm($hookName, $args)  {
 
 		$form =& $args[0]; 
 
 		$form->setTemplate($this->getTemplatePath() . 
-				'templates/coreAddParticipantFormModified.tpl'); 
+				'coreAddParticipantFormModified.tpl'); 
+
 		return true;
 
 	}
@@ -89,7 +73,7 @@ fclose($file);*/
 		$form =& $args[0]; 
 
 		$form->setTemplate($this->getTemplatePath() . 
-				'templates/fileUploadFormModified.tpl'); 
+				'fileUploadFormModified.tpl'); 
 
 		return true;
 	}
@@ -100,7 +84,8 @@ fclose($file);*/
 		$form =& $args[0]; 
 
 		$form->setTemplate($this->getTemplatePath() . 
-				'templates/catalogMetadataFormFieldsModified.tpl'); 
+				'catalogMetadataFormFieldsModified.tpl'); 
+
 		return true;
 	}
 
@@ -109,7 +94,7 @@ fclose($file);*/
 		$form =& $args[0]; 
 
 		$form->setTemplate($this->getTemplatePath() . 
-				'templates/publicationMetadataFormFieldsModified.tpl'); 
+				'publicationMetadataFormFieldsModified.tpl'); 
 
 		return true;
 	}
@@ -124,28 +109,27 @@ fclose($file);*/
 		switch ($params['smarty_include_tpl_file']) {
 			case 'core:submission/form/step1.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/coreStep1Modified.tpl', 'text/html', 'TemplateManager::include');
+				'coreStep1Modified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 			case 'core:submission/form/step3.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/coreStep3Modified.tpl', 'text/html', 'TemplateManager::include');
+				'coreStep3Modified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 			case 'core:submission/submissionMetadataFormFields.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/coreSubmissionMetadataFormFieldsModified.tpl', 'text/html', 'TemplateManager::include');
+				'coreSubmissionMetadataFormFieldsModified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 			case 'submission/form/categories.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/categoriesModified.tpl', 'text/html', 'TemplateManager::include');
+				'categoriesModified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 			case 'submission/form/series.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/seriesModified.tpl', 'text/html', 'TemplateManager::include');
+				'seriesModified.tpl', 'text/html', 'TemplateManager::include');
 				return true;
 		}
 		return false;
 	}
-
 
 	function handleDisplayTemplate($hookName, $args) {
 
@@ -156,24 +140,25 @@ fclose($file);*/
 
 			case 'workflow/submission.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/coreSubmissionModified.tpl', 'text/html', 'TemplateManager::display');
+				'coreSubmissionModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
 			case 'workflow/editorial.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/coreEditorialModified.tpl', 'text/html', 'TemplateManager::display');
+				'coreEditorialModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
 			case 'workflow/production.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/productionModified.tpl', 'text/html', 'TemplateManager::display');
+				'productionModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
 			case 'authorDashboard/authorDashboard.tpl':
 				$templateMgr->display($this->getTemplatePath() . 
-				'templates/authorDashboardModified.tpl', 'text/html', 'TemplateManager::display');
+				'authorDashboardModified.tpl', 'text/html', 'TemplateManager::display');
 				return true;
-			/*case 'catalog/series.tpl':
-				$templateMgr->display($this->getTemplatePath() . 
-				'templates/seriesModified2.tpl', 'text/html', 'TemplateManager::display');
-				return true;*/
+			case 'about/editorialPolicies.tpl':
+				$context = $this->getRequest()->getContext();
+				$templateMgr->assign('submissionInfo', SWAboutContextHandler::getSubmissionsInfo($context));
+				$templateMgr->display($this->getTemplatePath() . 'editorialPoliciesModified.tpl', 'text/html', 'TemplateManager::display');
+				return true;
 		}
 		return false;
 	}
@@ -223,7 +208,6 @@ fclose($file);*/
 		// entry key: DA, ... ,rights: CC-BY
 		$simplifyWorkflowDAO->addStandardValuesAfterSubmit($submission_id);
 
-
 		return false;
 	}
 
@@ -237,6 +221,23 @@ fclose($file);*/
 		return false;
 	}
 
+	/**
+	 * @copydoc Plugin::getDisplayName()
+	 */
+	function getDisplayName() {
+		return __('plugins.generic.simplifyWorkflow.name');
+	}
+
+	/**
+	 * @copydoc Plugin::getDescription()
+	 */
+	function getDescription() {
+		return __('plugins.generic.simplifyWorkflow.description');
+	}
+
+	function getTemplatePath() {
+		return parent::getTemplatePath() . 'templates/';
+	}
 
 }
 
