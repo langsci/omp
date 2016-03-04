@@ -23,6 +23,10 @@
 	<message key="plugins.generic.catalogEntryTab.openReview.link0">Link to Hypothesis version</message>
 	<message key="plugins.generic.catalogEntryTab.openReview.link1">Additional link to Hypothesis version (in case two files are needed).</message>
 	
+	<message key="plugins.generic.catalogEntryTab.reviews">Reviews</message>
+	<message key="plugins.generic.catalogEntryTab.reviews.description">Add a description of the review.</message>
+	<message key="plugins.generic.catalogEntryTab.reviews.link">Add the URL of the review.</message>
+	
 	<message key="plugins.generic.catalogEntryTab.notification.addtionalDataSaved">Data is saved.</message>
 
 notification.savedCatalogMetadata
