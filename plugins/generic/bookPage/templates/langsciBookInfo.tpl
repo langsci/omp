@@ -8,8 +8,8 @@
  * Display the information pane of a public-facing book view in the catalog.
  *}
 
-
 <script type="text/javascript">
+
 	// Attach the tab handler.
 	$(function() {ldelim}
 		$('#bookInfoTabs').pkpHandler(
@@ -28,8 +28,17 @@
 			 {rdelim});
 	{rdelim});
 	
+	// vg wort
+	function addPixel(id){ldelim}
+	
+		document.getElementById("vgwpixel"+id).innerHTML="<img src='{$imageUrl}' alt=''></img>";
+	
+	{rdelim}
+	
 </script>
 
+<!-- css for font awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{$baseUrl}/plugins/generic/bookPage/BookPagePlugin.css" type="text/css" />
 
 <div class="bookInfo">
@@ -154,12 +163,12 @@
 				{/foreach}
 				
 				<!-- view the code on github -->
-				
-				<br></br>
-				<div>
-					{translate key="plugins.generic.bookPage.latexSource.text"}
-					<a href={"https://github.com/langsci/"}{$publishedMonograph->getId()} target="blank" title="{translate key="plugins.generic.bookPage.latexSource.title"}">{translate key="plugins.generic.bookPage.latexSource.link"}<i class="fa fa-github"></i></a>
-				</div>
+				<li>
+					<div class="publicationFormatName">
+						{translate key="plugins.generic.bookPage.latexSource.text"}
+						<a href={"https://github.com/langsci/"}{$publishedMonograph->getId()} target="blank" title="{translate key="plugins.generic.bookPage.latexSource.title"}"><i class="fa fa-github"></i>{translate key="plugins.generic.bookPage.latexSource.link"}</a>
+					</div>
+				</li>
 			</div>	
 		{/if}
 		

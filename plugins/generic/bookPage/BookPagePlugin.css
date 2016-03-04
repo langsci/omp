@@ -5,6 +5,10 @@
 * 2015-07-28
 */
 
+.fa-github{
+	text-indent: 0px;
+}
+
 .more{
 	display: none;
 }

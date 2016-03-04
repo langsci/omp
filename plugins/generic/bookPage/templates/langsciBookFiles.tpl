@@ -8,15 +8,6 @@
  * Displays a book file list with download/payment links in the public catalog.
  *}
 
-<script type="text/javascript">
-
-	function addPixel(id){ldelim}
-	
-		document.getElementById("vgwpixel"+id).innerHTML="<img src='{$imageUrl}' alt=''></img>";
-	
-	{rdelim}
-	
-</script>
 
 {foreach key=id from=$availableFiles[$publicationFormatId] item=availableFile}{* There will be at most one of these *}
 	<li>
