@@ -152,6 +152,14 @@
 				<!--	{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
 					{/if}
 				{/foreach}
+				
+				<!-- view the code on github -->
+				
+				<br></br>
+				<div>
+					{translate key="plugins.generic.bookPage.latexSource.text"}
+					<a href={"https://github.com/langsci/"}{$publishedMonograph->getId()} target="blank" title="{translate key="plugins.generic.bookPage.latexSource.title"}">{translate key="plugins.generic.bookPage.latexSource.link"}<i class="fa fa-github"></i></a>
+				</div>
 			</div>	
 		{/if}
 		

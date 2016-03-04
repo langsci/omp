@@ -33,6 +33,9 @@
 	<message key="plugins.generic.bookPage.hardcover.title"></message>
 	<message key="plugins.generic.bookPage.softcover">Buy softcover</message>
 	<message key="plugins.generic.bookPage.softcover.title"></message>
+	<message key="plugins.generic.bookPage.latexSource.text">LaTeX source on</message>
+	<message key="plugins.generic.bookPage.latexSource.link">GitHub</message>
+	<message key="plugins.generic.bookPage.latexSource.title">Go to GitHub</message>
 	
 	<message key="plugins.generic.bookPage.reviews">Reviews</message>
 	<message key="plugins.generic.bookPage.reviews.title"></message>
