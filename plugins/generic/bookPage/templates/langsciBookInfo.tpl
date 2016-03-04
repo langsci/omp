@@ -129,20 +129,22 @@
 				{/if}
 			{/foreach}
 			
-		<!-- chapters  
+		<!-- chapters  -->
 		{if $publishedMonograph->getWorkType() == WORK_TYPE_EDITED_VOLUME && $chapters|@count != 0}
 			
 			<h3 class="accordionHeader"><a href="#">Chapters</a></h3>
 			<div>
 				{foreach from=$chapters item=chapter}
+					<div class="chapterListItem"> 
 					<strong>{$chapter->getLocalizedTitle()}</strong>
 					{if $chapter->getLocalizedSubtitle() != '' }<br />{$chapter->getLocalizedSubtitle()}{/if}
 					{assign var=chapterAuthors value=$chapter->getAuthorNamesAsString()}
 					<div class="authorName">{$chapterAuthors}</div>
+					</div>
 				{/foreach}
 			</div>
 			
-		{/if}-->
+		{/if}
 		
 
 		<!-- download files  -->
