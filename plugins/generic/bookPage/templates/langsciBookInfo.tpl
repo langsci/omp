@@ -135,6 +135,7 @@
 			
 		{/if}-->
 		
+
 		<!-- download files  -->
 		{if $availableFiles|@count > 1} <!-- display this area only when there is more than one file to download -->
 			
@@ -151,6 +152,20 @@
 				<!--	{include file="catalog/book/bookFiles.tpl" availableFile=$availableFile publicationFormatId=$publicationFormat->getId() publishedMonograph=$publishedMonograph currency=$currency} -->
 					{/if}
 				{/foreach}
+			</div>	
+		{/if}
+		
+		<!-- reviews -->
+		{if $reviewlink}
+		<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.reviews"}</a></h3>
+			<div>
+				
+					<div>
+						<a href="{$reviewlink}">
+							{$reviewdescription}
+						</a>
+					</div>
+				
 			</div>	
 		{/if}
 		
