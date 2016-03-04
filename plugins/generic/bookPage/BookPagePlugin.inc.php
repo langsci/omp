@@ -89,11 +89,20 @@ class BookPagePlugin extends GenericPlugin {
 				$templateMgr->assign('softcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"softcover"));
 				$templateMgr->assign('hardcoverLink', $catalogEntryTabDao->getLink($publishedMonographId,"hardcover"));
 				
+				// get open review links from the catalog entry tab plugin 
 				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"openreview0"))){
 					$templateMgr->assign('openreviewLink0', $catalogEntryTabDao->getLink($publishedMonographId,"openreview0"));
 				}
 				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"openreview1"))){
 					$templateMgr->assign('openreviewLink1', $catalogEntryTabDao->getLink($publishedMonographId,"openreview1"));
+				}
+				
+				// get review links from the catalog entry tab plugin 
+				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"reviewdescription"))){
+					$templateMgr->assign('reviewdescription', $catalogEntryTabDao->getLink($publishedMonographId,"reviewdescription"));
+				}
+				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"reviewlink"))){
+					$templateMgr->assign('reviewlink', $catalogEntryTabDao->getLink($publishedMonographId,"reviewlink"));
 				}
 				
 				// generate imageUrl for VG Wort and save it as template variable
