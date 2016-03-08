@@ -168,7 +168,7 @@
 				<li>
 					<div class="publicationFormatName">
 						{translate key="plugins.generic.bookPage.latexSource.text"}
-						<a href={"https://github.com/langsci/"}{$publishedMonograph->getId()} target="blank" title="{translate key="plugins.generic.bookPage.latexSource.title"}"><i class="fa fa-github"></i>{translate key="plugins.generic.bookPage.latexSource.link"}</a>
+						 <a href={"https://github.com/langsci/"}{$publishedMonograph->getId()} target="blank" title="{translate key="plugins.generic.bookPage.latexSource.title"}">{translate key="plugins.generic.bookPage.latexSource.link"}</a> <i class="fa fa-github"></i>
 					</div>
 				</li>
 			</div>	
