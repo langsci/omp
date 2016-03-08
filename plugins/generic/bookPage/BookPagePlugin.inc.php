@@ -104,6 +104,12 @@ class BookPagePlugin extends GenericPlugin {
 				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"reviewlink"))){
 					$templateMgr->assign('reviewlink', $catalogEntryTabDao->getLink($publishedMonographId,"reviewlink"));
 				}
+				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"reviewauthor"))){
+					$templateMgr->assign('reviewauthor', $catalogEntryTabDao->getLink($publishedMonographId,"reviewauthor"));
+				}
+				if(null!==($catalogEntryTabDao->getLink($publishedMonographId,"reviewdate"))){
+					$templateMgr->assign('reviewdate', $catalogEntryTabDao->getLink($publishedMonographId,"reviewdate"));
+				}
 				
 				// generate imageUrl for VG Wort and save it as template variable
 				$templateMgr->assign('imageUrl', $this->createVgWortUrl($contextId, $publishedMonographId));

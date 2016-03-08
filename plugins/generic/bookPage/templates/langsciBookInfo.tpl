@@ -178,13 +178,19 @@
 		{if $reviewlink}
 		<h3 class="accordionHeader"><a href="#">{translate key="plugins.generic.bookPage.reviews"}</a></h3>
 			<div>
-				
-					<div>
+				<ul>
+					<li>
 						<a href="{$reviewlink}">
 							{$reviewdescription}
 						</a>
-					</div>
-				
+						{if $reviewauthor}
+							by {$reviewauthor}
+						{/if}
+						{if $reviewdate}
+							published {$reviewdate}
+						{/if}
+					</li>
+				</ul>
 			</div>	
 		{/if}
 		
