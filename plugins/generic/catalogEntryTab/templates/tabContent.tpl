@@ -53,6 +53,8 @@
 		{fbvFormSection }
 			{fbvElement label="plugins.generic.catalogEntryTab.reviews.description" type="text"  name="reviewdescription" id="reviewdescription" value=$reviewdescription size=$fbvStyles.size.MEDIUM}
 			{fbvElement label="plugins.generic.catalogEntryTab.reviews.link" type="text"  name="reviewlink" id="reviewlink" value=$reviewlink size=$fbvStyles.size.MEDIUM}
+			{fbvElement label="plugins.generic.catalogEntryTab.reviews.author" type="text"  name="reviewauthor" id="reviewauthor" value=$reviewauthor size=$fbvStyles.size.MEDIUM}
+			{fbvElement label="plugins.generic.catalogEntryTab.reviews.date" type="text"  name="reviewdate" id="reviewdate" value=$reviewdate size=$fbvStyles.size.MEDIUM}
 		{/fbvFormSection}
 	{/fbvFormArea}
 	
