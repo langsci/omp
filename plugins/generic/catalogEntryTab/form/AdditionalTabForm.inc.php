@@ -85,6 +85,8 @@ class AdditionalTabForm extends Form {
 		
 		$templateMgr->assign('reviewdescription', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'reviewdescription'));
 		$templateMgr->assign('reviewlink', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'reviewlink'));
+		$templateMgr->assign('reviewauthor', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'reviewauthor'));
+		$templateMgr->assign('reviewdate', $catalogEntryTabDAO->getLink($this->getMonograph()->getId(),'reviewdate'));
 
 		return parent::fetch($request);
 	}
@@ -148,7 +150,7 @@ class AdditionalTabForm extends Form {
 	 */
 	function readInputData() {
 		$vars = array(
-			 'softcoverlink','hardcoverlink','openreviewlink0', 'openreviewlink1', 'reviewdescription', 'reviewlink', // Cover image
+			 'softcoverlink','hardcoverlink','openreviewlink0', 'openreviewlink1', 'reviewdescription', 'reviewlink', 'reviewauthor', 'reviewdate' // Cover image
 		);
 
 		$this->readUserVars($vars);
@@ -183,6 +185,8 @@ class AdditionalTabForm extends Form {
 		
 		$catalogEntryTabDAO->setLink($monograph->getId(),'reviewdescription',$this->getData('reviewdescription'));
 		$catalogEntryTabDAO->setLink($monograph->getId(),'reviewlink',$this->getData('reviewlink'));
+		$catalogEntryTabDAO->setLink($monograph->getId(),'reviewauthor',$this->getData('reviewauthor'));
+		$catalogEntryTabDAO->setLink($monograph->getId(),'reviewdate',$this->getData('reviewdate'));
 
 		
 //		$publishedMonographDao = DAORegistry::getDAO('PublishedMonographDAO');

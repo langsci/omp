@@ -26,6 +26,8 @@
 	<message key="plugins.generic.catalogEntryTab.reviews">Reviews</message>
 	<message key="plugins.generic.catalogEntryTab.reviews.description">Add a description of the review.</message>
 	<message key="plugins.generic.catalogEntryTab.reviews.link">Add the URL of the review.</message>
+	<message key="plugins.generic.catalogEntryTab.reviews.author">Add the author of the review.</message>
+	<message key="plugins.generic.catalogEntryTab.reviews.date">Add the date of the review.</message>
 	
 	<message key="plugins.generic.catalogEntryTab.notification.addtionalDataSaved">Data is saved.</message>
 
