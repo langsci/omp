@@ -33,15 +33,13 @@
 	<message key="plugins.generic.bookPage.hardcover.title"></message>
 	<message key="plugins.generic.bookPage.softcover">Buy softcover</message>
 	<message key="plugins.generic.bookPage.softcover.title"></message>
-<<<<<<< HEAD
-=======
+
 	<message key="plugins.generic.bookPage.latexSource.text">LaTeX source on</message>
 	<message key="plugins.generic.bookPage.latexSource.link">GitHub</message>
 	<message key="plugins.generic.bookPage.latexSource.title">Go to GitHub</message>
 	
 	<message key="plugins.generic.bookPage.reviews">Reviews</message>
 	<message key="plugins.generic.bookPage.reviews.title"></message>
->>>>>>> b6cefb1... link to github added
 
 	<message key="plugins.generic.bookPage.more">Read more</message>
 	<message key="plugins.generic.bookPage.less">Show less</message>
