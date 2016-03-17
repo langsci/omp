@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file plugins/importexport/native/index.php
+ *
+ * Copyright (c) 2014 Simon Fraser University Library
+ * Copyright (c) 2003-2014 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * @ingroup plugins_importexport_native
+ * @brief Wrapper for XML native import/export plugin.
+ *
+ */
+
+require_once('IdentificationCodesImportExportPlugin.inc.php');
+
+return new IdentificationCodesImportExportPlugin();
+
+?>

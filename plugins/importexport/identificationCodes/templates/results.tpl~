@@ -1,0 +1,65 @@
+{**
+ * plugins/importexport/native/templates/results.tpl
+ *
+ * Copyright (c) 2014 Simon Fraser University Library
+ * Copyright (c) 2003-2014 John Willinsky
+ * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ *
+ * List of operations this plugin can perform
+ *}
+
+<link rel="stylesheet" href="http://localhost/omp1111/plugins/importexport/identificationCodes/css/identificationCodes.css" type="text/css" />
+
+{if not $errorMessage}
+
+	<p>{translate key="plugins.importexport.identificationCodes.results.inserted"}</p>
+
+	{if $insertedCodes}
+
+		<table class="identificationCodesTable">
+			<tr>
+				<th>Note</th>
+				<th>SubId</th>
+				<th>PubFormat</th>
+				<th>Value</th>
+			</tr>
+			{foreach from=$insertedCodes item=entry}
+			<tr>
+				<td>{$entry.note}</td>	
+				<td>{$entry.subId}</td>	
+				<td>{$entry.publicationFormat}</td>	
+				<td>{$entry.codeValue}</td>	
+			</tr>
+			{/foreach}
+		</table>
+	{/if}
+
+	{if $nonInsertedCodes}
+
+		<p>{translate key="plugins.importexport.identificationCodes.results.notInserted"}</p>
+
+		<table class="identificationCodesTable">
+			<tr>
+				<th>Note</th>
+				<th>SubId</th>
+				<th>PubFormat</th>
+				<th>Value</th>
+			</tr>
+			{foreach from=$nonInsertedCodes item=entry}
+			<tr>
+				<td>{$entry.note}</td>	
+				<td>{$entry.subId}</td>	
+				<td>{$entry.publicationFormat}</td>	
+				<td>{$entry.codeValue}</td>	
+			</tr>
+			{/foreach}
+		</table>
+	{/if}
+
+{else}
+
+	{$errorMessage}
+
+{/if}
+
+
