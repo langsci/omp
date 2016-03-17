@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * locale.xml
+  *
+  * Copyright (c) 2014 Simon Fraser University Library
+  * Copyright (c) 2003-2014 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.importexport.identificationCodes.displayName">Identification Codes Import/Export Plugin</message>
+	<message key="plugins.importexport.identificationCodes.description">Import and export of identification codes.</message>
+	<message key="plugins.importexport.identificationCodes.import">Import</message>
+	<message key="plugins.importexport.identificationCodes.export">Export</message>
+	<message key="plugins.importexport.identificationCodes.results">Results</message>
+
+	<message key="plugins.importexport.title.identificationCodes">Identification codes</message>
+	<message key="plugins.importexport.identificationCodes.introduction">The code values for the following ONIX code types are selected (select code types in the settings of the plugin):</message>
+	<message key="plugins.importexport.identificationCodes.noCodesSelected">You did not select any ONIX codes types that match the code types in the ONIX code list. Go to the settings of this plugin to select code types, go to file 'ONIX_BookProduct_CodeLists.xsd' (List5) to view all ONIX code types available.</message>
+
+
+	<message key="plugins.importexport.identificationCodes.settings.title">Settings for the Identification Codes Plugin</message>
+	<message key="plugins.importexport.identificationCodes.form.saved">Settings for Identification Code Plugin saved.</message>
+	<message key="plugins.importexport.identificationCodes.settings">Settings</message>
+	<message key="plugins.importexport.identificationCodes.intro.codes">Identification codes to be listed</message>
+	<message key="plugins.importexport.identificationCodes.lable.codes">(separate by commas, e.g. 'ISBN-10, ISBN-13')</message>
+
+	<message key="plugins.importexport.identificationCodes.import.instructions">Please select an csv-file to upload and press "Start Upload". When the upload has completed, press "OK" to import the data. See example file "example.csv". Groups must have unique names. Users are regarded as identical, if all their variables are identical. </message>
+	<message key="plugins.importexport.identificationCodes.export.instructions">To export the identification codes click on 'OK'.</message>
+
+
+
+
+  	<message key="plugins.importexport.identificationCodes.results">Results</message>
+  	<message key="plugins.importexport.identificationCodes.results.inserted">The following entries have been imported:</message>
+  	<message key="plugins.importexport.identificationCodes.results.notInserted">The following entries have not been imported:</message>
+
+  	<message key="plugins.inportexport.identificationCodes.uploadFile">Error uploading the file.</message>
+  	<message key="plugins.importexport.identificationCodes.instruction">To use this import/export function, the generic plugin "Unregistered Users" must be installed and enabled. To view the groups and users </message>
+
+</locale>
