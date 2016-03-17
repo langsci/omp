@@ -287,10 +287,28 @@
 			<xs:documentation source="ONIX Code List 5">Product identifier type code</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-<!--Carola Fanselow, geändert, nur ISBN-13 zugelassen-->
+<!--Carola Fanselow, geändert, eigene ISBNs zugelassen, mit eigenen Ids-->
 			<xs:enumeration value="15">
 				<xs:annotation>
 					<xs:documentation>ISBN-13</xs:documentation>
+					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="28">
+				<xs:annotation>
+					<xs:documentation>ISBN-13 hardcover</xs:documentation>
+					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="29">
+				<xs:annotation>
+					<xs:documentation>ISBN-13 softcover</xs:documentation>
+					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="30">
+				<xs:annotation>
+					<xs:documentation>ISBN-13 softcover-US</xs:documentation>
 					<xs:documentation>International Standard Book Number, from 2007, unhyphenated (13 digits starting 978 or 9791-9799).</xs:documentation>
 				</xs:annotation>
 			</xs:enumeration>
