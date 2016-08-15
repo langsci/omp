@@ -28,3 +28,6 @@
 [submodule "plugins/generic/catalogEntryTab"]
 	path = plugins/generic/catalogEntryTab
 	url = https://github.com/langsci/catalogEntryTab.git
+[submodule "plugins/generic/hallOfFame"]
+	path = plugins/generic/hallOfFame
+	url = https://github.com/langsci/hallOfFame.git
