@@ -22,3 +22,6 @@
 [submodule "plugins/generic/userWebsiteSettings"]
 	path = plugins/generic/userWebsiteSettings
 	url = https://github.com/langsci/userWebsiteSettings.git
+[submodule "plugins/generic/publicProfiles"]
+	path = plugins/generic/publicProfiles
+	url = https://github.com/langsci/publicProfiles.git
