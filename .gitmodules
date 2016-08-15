@@ -16,3 +16,6 @@
 [submodule "docs/manual"]
 	path = docs/manual
 	url = https://github.com/pkp/omp-user-guide
+[submodule "plugins/generic/registerPage"]
+	path = plugins/generic/registerPage
+	url = https://github.com/langsci/registerPage.git
