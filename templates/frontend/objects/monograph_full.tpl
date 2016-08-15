@@ -387,7 +387,9 @@
 							{/if}
 
 							{* Physical dimensions *}
-							{if $publicationFormat->getPhysicalFormat()&& $publicationFormat->getDimensions() != ''}
+
+							{if $publicationFormat->getPhysicalFormat() && $publicationFormat->getDimensions() != ''}
+
 								<div class="sub_item dimensions">
 									<div class="label">
 										{translate key="monograph.publicationFormat.productDimensions"}
