@@ -25,3 +25,6 @@
 [submodule "plugins/generic/publicProfiles"]
 	path = plugins/generic/publicProfiles
 	url = https://github.com/langsci/publicProfiles.git
+[submodule "plugins/generic/catalogEntryTab"]
+	path = plugins/generic/catalogEntryTab
+	url = https://github.com/langsci/catalogEntryTab.git
