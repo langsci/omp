@@ -34,3 +34,6 @@
 [submodule "plugins/generic/sliderContent"]
 	path = plugins/generic/sliderContent
 	url = https://github.com/langsci/sliderContent.git
+[submodule "plugins/generic/vgWort"]
+	path = plugins/generic/vgWort
+	url = https://github.com/langsci/vgWort.git
