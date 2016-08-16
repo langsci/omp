@@ -31,3 +31,6 @@
 [submodule "plugins/generic/hallOfFame"]
 	path = plugins/generic/hallOfFame
 	url = https://github.com/langsci/hallOfFame.git
+[submodule "plugins/generic/sliderContent"]
+	path = plugins/generic/sliderContent
+	url = https://github.com/langsci/sliderContent.git
