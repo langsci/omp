@@ -37,3 +37,6 @@
 [submodule "plugins/generic/vgWort"]
 	path = plugins/generic/vgWort
 	url = https://github.com/langsci/vgWort.git
+[submodule "plugins/generic/seriesOverview"]
+	path = plugins/generic/seriesOverview
+	url = https://github.com/langsci/seriesOverview.git
